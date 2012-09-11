@@ -54,14 +54,14 @@ Canceling the $dz$ term,
 \label{eq:strainWave}
 \end{equation}
 
-$C*_{33}$ is the elastic constant in the z direction and is defined as the ratio of the stress and strain in the z direction. This is given by,
+$C^*_{33}$ is the elastic constant in the z direction and is defined as the ratio of the stress and strain in the z direction. This is given by,
 
 \begin{equation}
-C*_{33} = \frac{T_3}{S_{33}} \implies T_3 = C*_{33}S_{33}
+C^*_{33} = \frac{T_3}{S_{33}} \implies T_3 = C^*_{33}S_{33}
 \label{eq:T_3}
 \end{equation}
 
-\nomenclature{$C*_{33}$}{Elastic constant in the z direction}
+\nomenclature{$C^*_{33}$}{Elastic constant in the z direction}
 \nomenclature{$S_{33}$}{Strain in the z direction}
 
 With $S_{33}$ being the strain in the z direction. Strain is the ratio of the change in material length to the original length and in this case is given by,
@@ -74,29 +74,29 @@ S_{33} = \frac{dw}{dz}
 Inserting \ref{eq:S_33} in to \ref{eq:T_3} we see that
 
 \begin{equation}
-T_3 = C*_{33}\frac{dw}{dz}
+T_3 = C^*_{33}\frac{dw}{dz}
 \label{eq:T_3fin}
 \end{equation}
 
-Putting \ref{eq:T_3fin} back in to \ref{eq:strainWave},
+Putting \ref{eq:T_3fin} back in to \ref{eq:strainWave} and realizing that $w$ is a function of both $t$ and $z$,
 
 \begin{equation}
-C*_{33}\frac{d^2w}{dz^2} = \rho \frac{d^2w}{dt^2}
+C^*_{33}\frac{\partial ^2w}{\partial z^2} = \rho \frac{\partial ^2w}{\partial t^2}
 \end{equation}
 
 Dividing through by $\rho$ and moving the LHS term to the RHS, we arrive at
 
 \begin{equation}
-\frac{d^2w}{dt^2} - c*^2 \frac{d^2w}{dz^2} = 0
+\frac{\partial ^2w}{\partial t^2} - c^{*2} \frac{\partial ^2w}{\partial z^2} = 0
 \label{eq:waveEquationFin}
 \end{equation}
 
-\nomenclature{$c*$}{Velocity of wave propagation through the rod}
+\nomenclature{$c^*$}{Velocity of wave propagation through the rod}
 
-With $c*$ being the velocity of the wave propagation and is defined as,
+With $c^*$ being the velocity of the wave propagation and is defined as,
 
 \begin{equation}
-c* = \sqrt{\frac{C*_{33}}{\rho}}
+c^* = \sqrt{\frac{C^*_{33}}{\rho}}
 \end{equation}
 
 \section{Piezoelectric transducers with rod}
@@ -110,4 +110,34 @@ This section describes the governing equations for $d_{33}$ piezoelectric transd
 	 \label{fig:rodTrans}} 
 \end{figure}
 
+The constitutive equations for the transducers are:
 
+\begin{equation}
+T_3 = \overline{C_{33}} S_3 + \overline{d_{33}} D_3
+\end{equation}
+
+and 
+
+\begin{equation}
+D_3 = \overline{\epsilon ^T_{33}} E_3 + \frac{d_{33}}{s^E_{33}} S_3
+\end{equation}
+
+Where $D_3$, $E_3$, and $d_{33}$ are the electric displacement, electric field intensity, and the strain constant relating strain and field intensity, respectively, all in the z direction. The other variables are given by the following equations:
+
+\begin{equation}
+s^E_{33} = \frac{1}{C_{33}}
+\end{equation}
+
+\begin{equation}
+\overline{C_{33}} = \frac{1}{s^E_{33}(1 - \frac{d^2_{33}}{s^E_{33}\epsilon ^T_{33}})}
+\end{equation}
+
+\begin{equation}
+\overline{d_{33}} = -\frac{d_{33} / \epsilon ^T_{33}}{s^E_{33}(1 - \frac{d^2_{33}}{s^E_{33}\epsilon ^T_{33}})}
+\end{equation}
+
+\begin{equation}
+\overline{\epsilon ^T_{33}} = -\frac{\epsilon ^T_{33}}{s^E_{33}(1 - \frac{d^2_{33}}{s^E_{33}\epsilon ^T_{33}})}
+\end{equation}
+
+With $C_{33}$ and $\epsilon ^T_{33}$ being the PZT elastic constant in the z direction and permiitivity constant in the z direction respectively.

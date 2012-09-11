@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=latex 2012.8.31)  11 SEP 2012 11:38
+This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=latex 2012.8.31)  11 SEP 2012 17:13
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -554,22 +554,18 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 
 [11]
 File: eps_pics/rodTrans.eps Graphic file (type eps)
- <eps_pics/rodTrans.eps>)
+ <eps_pics/rodTrans.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 12
  []
 
-[12]
-Chapter 3.
-
+[12])
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 13
  []
 
-[13
-
-]
-Chapter 4.
+[13]
+Chapter 3.
 
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 14
@@ -578,7 +574,7 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [14
 
 ]
-Chapter 5.
+Chapter 4.
 
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 15
@@ -587,13 +583,22 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [15
 
 ]
-Chapter 6.
-(./thesis.bbl
+Chapter 5.
+
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 16
  []
 
 [16
+
+]
+Chapter 6.
+(./thesis.bbl
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 17
+ []
+
+[17
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 4--10
@@ -619,17 +624,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--23
 
 
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 17
- []
-
-[17
-
-]
-Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 18
  []
 
-[18]
+[18
+
+]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 19
  []
@@ -644,12 +644,17 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 21
  []
 
-[21])
+[21]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 22
  []
 
-[22] (./thesis.aux) ) 
+[22])
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 23
+ []
+
+[23] (./thesis.aux) ) 
 Here is how much of TeX's memory you used:
  5256 strings out of 493500
  69003 string characters out of 3143858
@@ -659,4 +664,4 @@ Here is how much of TeX's memory you used:
  953 hyphenation exceptions out of 8191
  37i,7n,43p,2496b,426s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on thesis.dvi (28 pages, 57092 bytes).
+Output written on thesis.dvi (29 pages, 59768 bytes).

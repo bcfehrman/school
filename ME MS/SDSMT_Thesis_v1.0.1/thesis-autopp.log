@@ -1,0 +1,785 @@
+This is pdfTeX, Version 3.1415926-2.3-1.40.12 (MiKTeX 2.9) (preloaded format=latex 2012.8.2)  22 AUG 2012 15:51
+entering extended mode
+**\let \APPmakepictures \empty \input  thesis.tex
+
+("C:\Users\jb-office\Desktop\Folders\School\ME MS\SDSMT_Thesis_v1.0.1\thesis.te
+x"
+("C:\Users\jb-office\Desktop\Folders\School\ME MS\SDSMT_Thesis_v1.0.1\ucthesis.
+cls"
+Document Class: ucthesis 2004/12/19 v3.2 University of California Thesis Class
+(C:\Users\jb-office\AppData\Roaming\MiKTeX\2.9\tex\latex\ucthesis\uct12.clo)
+\descriptionmargin=\dimen102
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\ltxmisc\url.sty"
+\Urlmuskip=\muskip10
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\pstricks\pstricks.sty"
+Package: pstricks 2011/04/23 v0.50 LaTeX wrapper for `PSTricks' (RN,HV)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.sty"
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is not detected.
+) ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ifluatex.sty"
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+) ("C:\Program Files\MiKTeX 2.9\tex\generic\pstricks\pstricks.tex" ("C:\Program
+ Files\MiKTeX 2.9\tex\generic\xkeyval\pst-xkey.tex"
+File: pst-xkey.tex 2005/11/25 v1.6 PSTricks specialization of xkeyval (HA)
+("C:\Program Files\MiKTeX 2.9\tex\latex\xkeyval\xkeyval.sty"
+Package: xkeyval 2008/08/13 v2.6a package option processing (HA)
+("C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\xkeyval.tex"
+\XKV@toks=\toks14
+\XKV@tempa@toks=\toks15
+\XKV@depth=\count88
+File: xkeyval.tex 2008/08/13 v2.6a key=value parser (HA)
+("C:\Program Files\MiKTeX 2.9\tex\generic\xkeyval\keyval.tex")))) ("C:\Program 
+Files\MiKTeX 2.9\tex\generic\pstricks\pst-fp.tex" `pst-fp' v0.05, 2010/01/17 (h
+v)
+\pstFP@xs=\count89
+\pstFP@xia=\count90
+\pstFP@xib=\count91
+\pstFP@xfa=\count92
+\pstFP@xfb=\count93
+\pstFP@rega=\count94
+\pstFP@regb=\count95
+\pstFP@regs=\count96
+\pstFP@times=\count97
+)
+\psLoopIndex=\count98
+`PSTricks' v2.21  <2011/06/07> (tvz)
+\pst@dima=\dimen103
+\pst@dimb=\dimen104
+\pst@dimc=\dimen105
+\pst@dimd=\dimen106
+\pst@dimg=\dimen107
+\pst@dimh=\dimen108
+\pst@dimm=\dimen109
+\pst@dimn=\dimen110
+\pst@dimo=\dimen111
+\pst@dimp=\dimen112
+\pst@hbox=\box26
+\pst@ibox=\box27
+\pst@boxg=\box28
+\pst@cnta=\count99
+\pst@cntb=\count100
+\pst@cntc=\count101
+\pst@cntd=\count102
+\pst@cntg=\count103
+\pst@cnth=\count104
+\pst@cntm=\count105
+\pst@cntn=\count106
+\pst@cnto=\count107
+\pst@cntp=\count108
+\@zero=\count109
+\pst@toks=\toks16
+("C:\Program Files\MiKTeX 2.9\tex\generic\pstricks\pstricks.con")
+\psunit=\dimen113
+\psxunit=\dimen114
+\psyunit=\dimen115
+\pst@C@@rType=\count110
+\pslinewidth=\dimen116
+\psk@startLW=\dimen117
+\psk@endLW=\dimen118
+\pst@customdefs=\toks17
+\pslinearc=\dimen119
+\pst@symbolStep=\dimen120
+\pst@symbolWidth=\dimen121
+\everypsbox=\toks18
+\psframesep=\dimen122
+\pslabelsep=\dimen123
+\pst@shift=\dimen124
+\theoverlaybox=\box29
+)
+File: pstricks.tex 2011/06/07 v2.21 `PSTricks' (tvz,hv)
+("C:\Program Files\MiKTeX 2.9\tex\generic\pstricks\pst-fp.tex")
+File: pst-fp.tex 2011/06/07 v2.21 `PST-fp' (hv)
+(C:\Users\jb-office\AppData\Roaming\MiKTeX\2.9\tex\latex\xcolor\xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\color.cfg"
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: dvips.def on input line 225.
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\dvips.def"
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+)) (C:\Users\jb-office\AppData\Roaming\MiKTeX\2.9\tex\latex\pst-node\pst-node.s
+ty
+Package: pst-node 2011/06/05 v1.00 LaTeX wrapper for `pst-node' (HV)
+Package: pst-node 2010/04/22 package wrapper for pst-node.tex
+
+(C:\Users\jb-office\AppData\Roaming\MiKTeX\2.9\tex\generic\pst-node\pst-node.te
+x  v1.22, 2012/02/12
+\psrow=\count111
+\pscol=\count112
+\psmatrixcnt=\count113
+\psrowsep=\skip41
+\pscolsep=\skip42
+\pst@args=\count114
+\num@pts=\count115
+\pst@argcnt=\count116
+)
+File: pst-node.tex 2012/02/12 1.22 `pst-node' (tvz)
+) (C:\Users\jb-office\AppData\Roaming\MiKTeX\2.9\tex\latex\pst-text\pst-text.st
+y
+Package: pst-text 2006/01/01 package wrapper for pst-text.tex (hv)
+
+(C:\Users\jb-office\AppData\Roaming\MiKTeX\2.9\tex\generic\pst-text\pst-text.te
+x  v1.00, 2006/11/05(tvz,hv))
+File: pst-text.tex 2006/11/05 1.00 `pst-text' (tvz)
+) (C:\Users\jb-office\AppData\Roaming\MiKTeX\2.9\tex\latex\pst-3d\pst-3d.sty
+Package: pst-3d 2009/07/28 package wrapper for pst-3d.tex (hv)
+(C:\Users\jb-office\AppData\Roaming\MiKTeX\2.9\tex\generic\pst-3d\pst-3d.tex `P
+ST-3d' v1.11, 2010/02/14 (tvz))
+File: pst-3d.tex 2010/02/14 v1.11 `PST-3d' (hv)
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsmath.sty"
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip43
+For additional information on amsmath, use the `?' option.
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amstext.sty"
+Package: amstext 2000/06/29 v2.01
+("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsgen.sty"
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks19
+\ex@=\dimen125
+)) ("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsbsy.sty"
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen126
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\ams\math\amsopn.sty"
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count117
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count118
+\leftroot@=\count119
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count120
+\DOTSCASE@=\count121
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box30
+\strutbox@=\box31
+\big@size=\dimen127
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count122
+\c@MaxMatrixCols=\count123
+\dotsspace@=\muskip11
+\c@parentequation=\count124
+\dspbrk@lvl=\count125
+\tag@help=\toks20
+\row@=\count126
+\column@=\count127
+\maxfields@=\count128
+\andhelp@=\toks21
+\eqnshift@=\dimen128
+\alignsep@=\dimen129
+\tagshift@=\dimen130
+\tagwidth@=\dimen131
+\totwidth@=\dimen132
+\lineht@=\dimen133
+\@envbody=\toks22
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks23
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\jknappen\mathrsfs.sty"
+Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
+\symrsfs=\mathgroup4
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
+Package: amssymb 2009/06/22 v3.00
+("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
+Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+\symAMSa=\mathgroup5
+\symAMSb=\mathgroup6
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+)) ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
+File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+)
+Package graphics Info: Driver file: dvips.def on input line 91.
+) ("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\epsfig.sty"
+Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
+("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+\Gin@req@height=\dimen134
+\Gin@req@width=\dimen135
+)
+\epsfxsize=\dimen136
+\epsfysize=\dimen137
+) (C:\Users\jb-office\AppData\Roaming\MiKTeX\2.9\tex\latex\fancyhdr\fancyhdr.st
+y
+\fancy@headwidth=\skip46
+\f@ncyO@elh=\skip47
+\f@ncyO@erh=\skip48
+\f@ncyO@olh=\skip49
+\f@ncyO@orh=\skip50
+\f@ncyO@elf=\skip51
+\f@ncyO@erf=\skip52
+\f@ncyO@olf=\skip53
+\f@ncyO@orf=\skip54
+)
+(C:\Users\jb-office\AppData\Roaming\MiKTeX\2.9\tex\latex\auto-pst-pdf\auto-pst-
+pdf.sty
+Package: auto-pst-pdf 2009/04/26 v0.6 Wrapper for pst-pdf
+
+(C:\Users\jb-office\AppData\Roaming\MiKTeX\2.9\tex\latex\ifplatform\ifplatform.
+sty
+Package: ifplatform 2010/10/22 v0.4 Testing for the operating system
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\pdftexcmds.sty"
+Package: pdftexcmds 2011/04/22 v0.16 Utilities of pdfTeX for LuaTeX (HO)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/message (HO)
+) ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
+Package: ltxcmds 2011/04/18 v1.20 LaTeX kernel commands for general use (HO)
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode is ignored in DVI mode.
+) ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\catchfile.sty"
+Package: catchfile 2011/03/01 v1.6 Catches the contents of a file (HO)
+("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\etexcmds.sty"
+Package: etexcmds 2011/02/16 v1.5 Prefix for e-TeX command names (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+))
+
+Package ifplatform Warning: 
+    shell escape is disabled, so I can only detect \ifwindows.
+
+)
+\c@app@runs=\count129
+(C:\Users\jb-office\AppData\Roaming\MiKTeX\2.9\tex\latex\pst-pdf\pst-pdf.sty
+Package: pst-pdf 2008/10/09 v1.1v PS graphics for pdfLaTeX (RN,HjG)
+\c@pspicture=\count130
+Package pst-pdf Info: MODE: 0 (dvi -- extraction mode) on input line 102.
+No auxiliary output files.
+
+(C:\Users\jb-office\AppData\Roaming\MiKTeX\2.9\tex\latex\preview\preview.sty
+Package: preview 2010/02/14 11.86 (AUCTeX/preview-latex)
+
+(C:\Users\jb-office\AppData\Roaming\MiKTeX\2.9\tex\latex\preview\prtightpage.de
+f
+\PreviewBorder=\dimen138
+)
+\pr@snippet=\count131
+\pr@box=\box32
+\pr@output=\toks24
+)
+\pdfoutput=\count132
+("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+\Gread@gobject=\count133
+))) (C:\Users\jb-office\AppData\Roaming\MiKTeX\2.9\tex\latex\cite\cite.sty
+LaTeX Info: Redefining \cite on input line 302.
+LaTeX Info: Redefining \nocite on input line 373.
+Package: cite 2010/09/10  v 5.3
+)
+("C:\Users\jb-office\Desktop\Folders\School\ME MS\SDSMT_Thesis_v1.0.1\nomencl.s
+ty"
+Package: nomencl 2000/12/03 v3.1a Nomenclature package (BS)
+\nomlabelwidth=\dimen139
+\nom@tempdim=\dimen140
+\nomitemsep=\skip55
+)
+(C:\Users\jb-office\AppData\Roaming\MiKTeX\2.9\tex\latex\subfigure\subfigure.st
+y
+Package: subfigure 2002/07/30 v2.1.4 subfigure package
+\subfigtopskip=\skip56
+\subfigcapskip=\skip57
+\subfigcaptopadj=\dimen141
+\subfigbottomskip=\skip58
+\subfigcapmargin=\dimen142
+\subfiglabelskip=\skip59
+\c@subfigure=\count134
+\c@lofdepth=\count135
+\c@subtable=\count136
+\c@lotdepth=\count137
+****************************************
+* Local config file subfigure.cfg used *
+****************************************
+
+(C:\Users\jb-office\AppData\Roaming\MiKTeX\2.9\tex\latex\subfigure\subfigure.cf
+g)
+\subfig@top=\skip60
+\subfig@bottom=\skip61
+)
+(C:\Users\jb-office\AppData\Roaming\MiKTeX\2.9\tex\latex\subfigmat\subfigmat.st
+y
+Package: subfigmat 1999/02/27 v1.0 Subfigure Matrix Package
+\sfm@width=\skip62
+\sfmcolsep=\skip63
+\c@sfm@count=\count138
+)
+\@glossaryfile=\write3
+Writing glossary file thesis-autopp.glo
+
+LaTeX Warning: Unused global option(s):
+    [13pt].
+
+No file thesis-autopp.aux.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+Preview: Fontsize 12pt
+
+("C:\Users\jb-office\Desktop\Folders\School\ME MS\SDSMT_Thesis_v1.0.1\abstract.
+tex")
+Overfull \hbox (20.60574pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 i
+ []
+
+No file thesis-autopp.toc.
+
+Overfull \hbox (23.8696pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 ii
+ []
+
+No file thesis-autopp.lof.
+
+Overfull \hbox (27.13345pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 iii
+ []
+
+Chapter 1.
+
+("C:\Users\jb-office\Desktop\Folders\School\ME MS\SDSMT_Thesis_v1.0.1\introduct
+ion.tex"
+
+LaTeX Warning: Citation `Close2010' on page 1 undefined on input line 4.
+
+
+LaTeX Warning: Reference `fig:orbitalDebris' on page 1 undefined on input line 
+4.
+
+
+LaTeX Warning: Citation `NASAOD2012' on page 1 undefined on input line 4.
+
+
+LaTeX Warning: Citation `NASAHVIT2012' on page 1 undefined on input line 4.
+
+
+LaTeX Warning: Citation `Lee2009' on page 1 undefined on input line 4.
+
+
+Overfull \hbox (23.21683pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 1
+ []
+
+
+LaTeX Warning: Citation `Wool1981' on page 2 undefined on input line 17.
+
+
+LaTeX Warning: Citation `Wool1982' on page 2 undefined on input line 17.
+
+
+LaTeX Warning: Citation `Song2009' on page 2 undefined on input line 17.
+
+
+LaTeX Warning: Citation `Sloof2009' on page 2 undefined on input line 17.
+
+
+LaTeX Warning: Citation `Bosman2009' on page 2 undefined on input line 17.
+
+
+LaTeX Warning: Citation `Djugum2009' on page 2 undefined on input line 17.
+
+
+LaTeX Warning: Citation `Luo2009' on page 2 undefined on input line 17.
+
+
+LaTeX Warning: Citation `Caruso2009' on page 2 undefined on input line 17.
+
+
+LaTeX Warning: Citation `White2001' on page 2 undefined on input line 17.
+
+
+LaTeX Warning: Reference `fig:selfHealingMedium' on page 2 undefined on input l
+ine 17.
+
+
+LaTeX Warning: Citation `Sottos2009' on page 2 undefined on input line 17.
+
+
+LaTeX Warning: Citation `Mcllroy2009' on page 2 undefined on input line 17.
+
+
+LaTeX Warning: Citation `Zhao2012' on page 2 undefined on input line 17.
+
+
+LaTeX Warning: Citation `Manuel2009' on page 2 undefined on input line 17.
+
+
+LaTeX Warning: Citation `Jin2009' on page 2 undefined on input line 17.
+
+
+LaTeX Warning: Citation `Dry2009' on page 2 undefined on input line 17.
+
+
+LaTeX Warning: Citation `Wu2012' on page 2 undefined on input line 17.
+
+
+Overfull \hbox (23.21683pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 2
+ []
+
+
+LaTeX Warning: Citation `Brown2003' on page 3 undefined on input line 30.
+
+
+LaTeX Warning: Citation `Sheng2009' on page 3 undefined on input line 30.
+
+
+LaTeX Warning: Citation `Burattini2009' on page 3 undefined on input line 30.
+
+
+LaTeX Warning: Citation `Nakao2009' on page 3 undefined on input line 30.
+
+
+LaTeX Warning: Citation `Imperiale2009' on page 3 undefined on input line 30.
+
+
+LaTeX Warning: Citation `Zhang2007' on page 3 undefined on input line 30.
+
+
+LaTeX Warning: Citation `Tang2009' on page 3 undefined on input line 30.
+
+
+LaTeX Warning: Citation `Burnworth2009' on page 3 undefined on input line 30.
+
+
+LaTeX Warning: Citation `Wool1981' on page 3 undefined on input line 30.
+
+
+LaTeX Warning: Citation `Murphy2009' on page 3 undefined on input line 30.
+
+
+LaTeX Warning: Citation `Garcia2009' on page 3 undefined on input line 30.
+
+
+LaTeX Warning: Citation `Nishiwaki2009' on page 3 undefined on input line 30.
+
+
+LaTeX Warning: Citation `Sarrazin2009' on page 3 undefined on input line 30.
+
+
+LaTeX Warning: Citation `Cushman2012' on page 3 undefined on input line 30.
+
+
+LaTeX Warning: Citation `Barnes2009' on page 3 undefined on input line 30.
+
+
+LaTeX Warning: Citation `Fettig2009' on page 3 undefined on input line 30.
+
+
+LaTeX Warning: Citation `Sarrazin2-2009' on page 3 undefined on input line 30.
+
+
+Overfull \hbox (23.21683pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 3
+ []
+
+
+LaTeX Warning: Reference `fig:detectChange' on page 4 undefined on input line 3
+8.
+
+
+LaTeX Warning: Citation `Ultrasound2006' on page 4 undefined on input line 38.
+
+
+LaTeX Warning: Citation `Harris1974' on page 4 undefined on input line 38.
+
+
+LaTeX Warning: Citation `Zinin2000' on page 4 undefined on input line 38.
+
+
+LaTeX Warning: Citation `DeKetelaere2000' on page 4 undefined on input line 38.
+
+
+
+LaTeX Warning: Citation `Matsushita2012' on page 4 undefined on input line 38.
+
+
+Overfull \hbox (23.21683pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 4
+ []
+
+
+Overfull \hbox (2.77782pt too wide) in paragraph at lines 43--43
+[]\OT1/cmr/m/n/10 (a)
+ []
+
+
+Overfull \hbox (19.77782pt too wide) in paragraph at lines 43--43
+\OT1/cmr/m/n/10 Acous-
+ []
+
+
+Overfull \hbox (1.11113pt too wide) in paragraph at lines 43--43
+\OT1/cmr/m/n/10 tic
+ []
+
+
+Overfull \hbox (11.11113pt too wide) in paragraph at lines 43--43
+\OT1/cmr/m/n/10 wave
+ []
+
+
+Overfull \hbox (13.36116pt too wide) in paragraph at lines 43--43
+\OT1/cmr/m/n/10 prop-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 43--43
+\OT1/cmr/m/n/10 a-
+ []
+
+
+Overfull \hbox (7.22226pt too wide) in paragraph at lines 43--43
+\OT1/cmr/m/n/10 gat-
+ []
+
+
+Overfull \hbox (3.33337pt too wide) in paragraph at lines 43--43
+\OT1/cmr/m/n/10 ing
+ []
+
+
+Overfull \hbox (24.47232pt too wide) in paragraph at lines 43--43
+\OT1/cmr/m/n/10 through
+ []
+
+
+Overfull \hbox (25.00009pt too wide) in paragraph at lines 43--43
+\OT1/cmr/m/n/10 medium
+ []
+
+
+Overfull \hbox (9.44449pt too wide) in paragraph at lines 43--43
+\OT1/cmr/m/n/10 with
+ []
+
+
+Overfull \hbox (0.55559pt too wide) in paragraph at lines 43--43
+\OT1/cmr/m/n/10 no
+ []
+
+
+Overfull \hbox (3.33334pt too wide) in paragraph at lines 43--43
+\OT1/cmr/m/n/10 de-
+ []
+
+
+Overfull \hbox (5.83336pt too wide) in paragraph at lines 43--43
+\OT1/cmr/m/n/10 fect 
+ []
+
+
+Overfull \hbox (3.33337pt too wide) in paragraph at lines 45--45
+[]\OT1/cmr/m/n/10 (b)
+ []
+
+
+Overfull \hbox (19.77782pt too wide) in paragraph at lines 45--45
+\OT1/cmr/m/n/10 Acous-
+ []
+
+
+Overfull \hbox (1.11113pt too wide) in paragraph at lines 45--45
+\OT1/cmr/m/n/10 tic
+ []
+
+
+Overfull \hbox (11.11113pt too wide) in paragraph at lines 45--45
+\OT1/cmr/m/n/10 wave
+ []
+
+
+Overfull \hbox (13.36116pt too wide) in paragraph at lines 45--45
+\OT1/cmr/m/n/10 prop-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 45--45
+\OT1/cmr/m/n/10 a-
+ []
+
+
+Overfull \hbox (7.22226pt too wide) in paragraph at lines 45--45
+\OT1/cmr/m/n/10 gat-
+ []
+
+
+Overfull \hbox (3.33337pt too wide) in paragraph at lines 45--45
+\OT1/cmr/m/n/10 ing
+ []
+
+
+Overfull \hbox (24.47232pt too wide) in paragraph at lines 45--45
+\OT1/cmr/m/n/10 through
+ []
+
+
+Overfull \hbox (25.00009pt too wide) in paragraph at lines 45--45
+\OT1/cmr/m/n/10 medium
+ []
+
+
+Overfull \hbox (9.44449pt too wide) in paragraph at lines 45--45
+\OT1/cmr/m/n/10 with
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 45--45
+\OT1/cmr/m/n/10 a
+ []
+
+
+Overfull \hbox (12.80559pt too wide) in paragraph at lines 45--45
+\OT1/cmr/m/n/10 crack 
+ []
+
+
+LaTeX Warning: Reference `fig:trDrawing' on page 5 undefined on input line 55.
+
+
+Overfull \hbox (23.21683pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 5
+ []
+
+
+LaTeX Warning: Citation `Pepper1982' on page 6 undefined on input line 64.
+
+
+LaTeX Warning: Citation `Fink1993' on page 6 undefined on input line 64.
+
+
+LaTeX Warning: Citation `Derode1995' on page 6 undefined on input line 64.
+
+
+LaTeX Warning: Citation `Smith2003' on page 6 undefined on input line 64.
+
+
+LaTeX Warning: Citation `Song2012' on page 6 undefined on input line 64.
+
+
+LaTeX Warning: Citation `Shimura2012' on page 6 undefined on input line 64.
+
+
+LaTeX Warning: Citation `Fink2003' on page 6 undefined on input line 64.
+
+
+LaTeX Warning: Citation `Lerosey2004' on page 6 undefined on input line 64.
+
+
+LaTeX Warning: Citation `Liu2008' on page 6 undefined on input line 64.
+
+
+LaTeX Warning: Citation `Davy2010' on page 6 undefined on input line 64.
+
+
+Overfull \hbox (23.21683pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 6
+ []
+
+
+LaTeX Warning: Citation `Fouque2006' on page 7 undefined on input line 67.
+
+
+LaTeX Warning: Citation `Fehrman2012' on page 7 undefined on input line 67.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 67--68
+
+ []
+
+
+Overfull \hbox (23.21683pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 7
+ []
+
+)
+Overfull \hbox (23.21683pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 8
+ []
+
+Chapter 2.
+
+Overfull \hbox (23.21683pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 9
+ []
+
+Chapter 3.
+
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 10
+ []
+
+Chapter 4.
+
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 11
+ []
+
+Chapter 5.
+
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 12
+ []
+
+Chapter 6.
+No file thesis-autopp.bbl.
+
+Package pst-pdf Warning: Picture container needs cropping..
+
+
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 13
+ []
+
+
+LaTeX Warning: There were undefined references.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 5394 strings out of 494046
+ 71984 string characters out of 3148399
+ 161174 words of memory out of 3000000
+ 8580 multiletter control sequences out of 15000+200000
+ 6062 words of font info for 22 fonts, out of 3000000 for 9000
+ 715 hyphenation exceptions out of 8191
+ 37i,6n,43p,2533b,333s stack positions out of 5000i,500n,10000p,200000b,50000s
+
+No pages of output.

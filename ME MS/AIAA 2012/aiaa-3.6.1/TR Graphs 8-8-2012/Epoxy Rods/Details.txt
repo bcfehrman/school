@@ -1,0 +1,3 @@
+Two epoxy rods, dimensions specified in AIAA 2012 paper. 
+
+500 samples, convergence iteration 10th, 15 total iterations, 1500ms wait time

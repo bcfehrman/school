@@ -1,0 +1,15 @@
+Steel rods. Rods 2-3. 
+
+130Khz - 7pts
+115Khz - 8pts
+100Khz - 9pts
+
+Sent from Rod 2 side (ch1)
+
+Length Keep: 60
+RMS Length: 40
+Throw Away: 100rator	brianfehrman
+Date	1903/12/31
+Time	17:00:00
+***End_of_Header***	
+	

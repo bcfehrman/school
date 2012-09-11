@@ -1,0 +1,3 @@
+Steel Rods, dimensions in AIAA 2012 paper
+
+20 iterations, 1500ms wait time. Pick signal portion based on rods and wave speed.

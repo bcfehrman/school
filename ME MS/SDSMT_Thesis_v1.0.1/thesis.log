@@ -1,0 +1,663 @@
+This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=latex 2012.8.31)  6 SEP 2012 13:50
+entering extended mode
+ restricted \write18 enabled.
+ Source specials enabled.
+ %&-line parsing enabled.
+**thesis.tex
+(./thesis.tex
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, po
+lish, russian, ukrainian, pinyin, finnish, swedish, french, coptic, croatian, l
+atin, assamese, bengali, gujarati, hindi, kannada, malayalam, marathi, oriya, p
+anjabi, tamil, telugu, ukenglish, usenglishmax, danish, german, ngerman, swissg
+erman, slovenian, afrikaans, uppersorbian, interlingua, galician, spanish, ital
+ian, ethiopic, sanskrit, greek, portuguese, irish, esperanto, ancientgreek, iby
+cus, basque, bokmal, nynorsk, icelandic, kurmanji, lithuanian, czech, estonian,
+ serbian, serbianc, latvian, german-x-2012-05-30, ngerman-x-2012-05-30, romania
+n, friulan, welsh, indonesian, armenian, mongolian, mongolianlmc, farsi, turkis
+h, turkmen, romansh, bulgarian, hungarian, dutch, arabic, slovak, catalan, load
+ed.
+(./ucthesis.cls
+Document Class: ucthesis 2004/12/19 v3.2 University of California Thesis Class
+(/usr/share/texlive/texmf-dist/tex/latex/ucthesis/uct12.clo)
+\descriptionmargin=\dimen102
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+)
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip10
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pstricks/pstricks.sty
+Package: pstricks 2011/10/31 v0.52 LaTeX wrapper for `PSTricks' (RN,HV)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pstricks/pstricks.tex
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/pst-xkey.tex
+File: pst-xkey.tex 2005/11/25 v1.6 PSTricks specialization of xkeyval (HA)
+
+(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2008/08/13 v2.6a package option processing (HA)
+
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+\XKV@toks=\toks14
+\XKV@tempa@toks=\toks15
+\XKV@depth=\count88
+File: xkeyval.tex 2008/08/13 v2.6a key=value parser (HA)
+
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/keyval.tex))))
+(/usr/share/texlive/texmf-dist/tex/generic/pstricks/pst-fp.tex
+`pst-fp' v0.05, 2010/01/17 (hv)
+\pstFP@xs=\count89
+\pstFP@xia=\count90
+\pstFP@xib=\count91
+\pstFP@xfa=\count92
+\pstFP@xfb=\count93
+\pstFP@rega=\count94
+\pstFP@regb=\count95
+\pstFP@regs=\count96
+\pstFP@times=\count97
+)
+\psLoopIndex=\count98
+
+`PSTricks' v2.30  <2012/08/13> (tvz)
+\pst@dima=\dimen103
+\pst@dimb=\dimen104
+\pst@dimc=\dimen105
+\pst@dimd=\dimen106
+\pst@dimg=\dimen107
+\pst@dimh=\dimen108
+\pst@dimm=\dimen109
+\pst@dimn=\dimen110
+\pst@dimo=\dimen111
+\pst@dimp=\dimen112
+\pst@hbox=\box26
+\pst@ibox=\box27
+\pst@boxg=\box28
+\pst@cnta=\count99
+\pst@cntb=\count100
+\pst@cntc=\count101
+\pst@cntd=\count102
+\pst@cntg=\count103
+\pst@cnth=\count104
+\pst@cntm=\count105
+\pst@cntn=\count106
+\pst@cnto=\count107
+\pst@cntp=\count108
+\@zero=\count109
+\pst@toks=\toks16
+(/usr/share/texlive/texmf-dist/tex/generic/pstricks/pstricks.con)
+\psunit=\dimen113
+\psxunit=\dimen114
+\psyunit=\dimen115
+\pst@C@@rType=\count110
+\pslinewidth=\dimen116
+\psk@startLW=\dimen117
+\psk@endLW=\dimen118
+\pst@customdefs=\toks17
+\pslinearc=\dimen119
+\pst@symbolStep=\dimen120
+\pst@symbolWidth=\dimen121
+\pst@symbolLinewidth=\dimen122
+\everypsbox=\toks18
+\psframesep=\dimen123
+\pslabelsep=\dimen124
+\pst@shift=\dimen125
+\theoverlaybox=\box29
+)
+File: pstricks.tex 2012/08/13 v2.30 `PSTricks' (tvz,hv)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pstricks/pst-fp.tex)
+File: pst-fp.tex 2012/08/13 v2.30 `PST-fp' (hv)
+
+(/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: dvips.def on input line 225.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/dvips.def
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/pst-node/pst-node.sty
+Package: pst-node 2011/06/05 v1.00 LaTeX wrapper for `pst-node' (HV)
+Package: pst-node 2010/04/22 package wrapper for pst-node.tex
+
+(/usr/share/texlive/texmf-dist/tex/generic/pst-node/pst-node.tex
+ v1.22, 2012/02/12
+\psrow=\count111
+\pscol=\count112
+\psmatrixcnt=\count113
+\psrowsep=\skip41
+\pscolsep=\skip42
+\pst@args=\count114
+\num@pts=\count115
+\pst@argcnt=\count116
+)
+File: pst-node.tex 2012/02/12 1.22 `pst-node' (tvz)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pst-text/pst-text.sty
+Package: pst-text 2006/01/01 package wrapper for pst-text.tex (hv)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pst-text/pst-text.tex
+ v1.00, 2006/11/05(tvz,hv))
+File: pst-text.tex 2006/11/05 1.00 `pst-text' (tvz)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/pst-3d/pst-3d.sty
+Package: pst-3d 2009/07/28 package wrapper for pst-3d.tex (hv)
+
+(/usr/share/texlive/texmf-dist/tex/generic/pst-3d/pst-3d.tex
+`PST-3d' v1.11, 2010/02/14 (tvz))
+File: pst-3d.tex 2010/02/14 v1.11 `PST-3d' (hv)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks19
+\ex@=\dimen126
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen127
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count117
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count118
+\leftroot@=\count119
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count120
+\DOTSCASE@=\count121
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box30
+\strutbox@=\box31
+\big@size=\dimen128
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count122
+\c@MaxMatrixCols=\count123
+\dotsspace@=\muskip11
+\c@parentequation=\count124
+\dspbrk@lvl=\count125
+\tag@help=\toks20
+\row@=\count126
+\column@=\count127
+\maxfields@=\count128
+\andhelp@=\toks21
+\eqnshift@=\dimen129
+\alignsep@=\dimen130
+\tagshift@=\dimen131
+\tagwidth@=\dimen132
+\totwidth@=\dimen133
+\lineht@=\dimen134
+\@envbody=\toks22
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks23
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
+Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
+\symrsfs=\mathgroup4
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2009/06/22 v3.00
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+\symAMSa=\mathgroup5
+\symAMSb=\mathgroup6
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: dvips.def on input line 91.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/epsfig.sty
+Package: epsfig 1999/02/16 v1.7a (e)psfig emulation (SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+\Gin@req@height=\dimen135
+\Gin@req@width=\dimen136
+)
+\epsfxsize=\dimen137
+\epsfysize=\dimen138
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+\fancy@headwidth=\skip46
+\f@ncyO@elh=\skip47
+\f@ncyO@erh=\skip48
+\f@ncyO@olh=\skip49
+\f@ncyO@orh=\skip50
+\f@ncyO@elf=\skip51
+\f@ncyO@erf=\skip52
+\f@ncyO@olf=\skip53
+\f@ncyO@orf=\skip54
+)
+(/usr/share/texlive/texmf-dist/tex/latex/auto-pst-pdf/auto-pst-pdf.sty
+Package: auto-pst-pdf 2009/04/26 v0.6 Wrapper for pst-pdf
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is not detected.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
+Package: ifplatform 2010/10/22 v0.4 Testing for the operating system
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode is ignored in DVI mode.
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
+Package: catchfile 2011/03/01 v1.6 Catch the contents of a file (HO)
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+))
+
+Package ifplatform Warning: 
+    shell escape is disabled, so I can only detect \ifwindows.
+
+)
+\c@app@runs=\count129
+ (/usr/share/texlive/texmf-dist/tex/latex/pst-pdf/pst-pdf.sty
+Package: pst-pdf 2008/10/09 v1.1v PS graphics for pdfLaTeX (RN,HjG)
+\c@pspicture=\count130
+Package pst-pdf Info: MODE: 9 (inactive mode) on input line 458.
+))
+(/usr/share/texlive/texmf-dist/tex/latex/cite/cite.sty
+LaTeX Info: Redefining \cite on input line 302.
+LaTeX Info: Redefining \nocite on input line 373.
+Package: cite 2010/09/10  v 5.3
+) (./nomencl.sty
+Package: nomencl 2000/12/03 v3.1a Nomenclature package (BS)
+\nomlabelwidth=\dimen139
+\nom@tempdim=\dimen140
+\nomitemsep=\skip55
+)
+(/usr/share/texlive/texmf-dist/tex/latex/subfigure/subfigure.sty
+Package: subfigure 2002/03/15 v2.1.5 subfigure package
+
+
+Package subfigure Warning: Your document class has a bad definition
+ of \endfigure, most likely
+ \let\endfigure=\end@float
+ which has now been changed to
+ \def\endfigure{\end@float}
+ because otherwise subsequent changes to \end@float
+ (like done by several packages changing float behaviour)
+ can't take effect on \endfigure.
+ Please complain to your document class author.
+
+
+Package subfigure Warning: Your document class has a bad definition
+ of \endtable, most likely
+ \let\endtable=\end@float
+ which has now been changed to
+ \def\endtable{\end@float}
+ because otherwise subsequent changes to \end@float
+ (like done by several packages changing float behaviour)
+ can't take effect on \endtable.
+ Please complain to your document class author.
+
+\subfigtopskip=\skip56
+\subfigcapskip=\skip57
+\subfigcaptopadj=\dimen141
+\subfigbottomskip=\skip58
+\subfigcapmargin=\dimen142
+\subfiglabelskip=\skip59
+\c@subfigure=\count131
+\c@lofdepth=\count132
+\c@subtable=\count133
+\c@lotdepth=\count134
+****************************************
+* Local config file subfigure.cfg used *
+****************************************
+(/usr/share/texlive/texmf-dist/tex/latex/subfigure/subfigure.cfg)
+\subfig@top=\skip60
+\subfig@bottom=\skip61
+)
+(/usr/share/texlive/texmf-dist/tex/latex/subfigmat/subfigmat.sty
+Package: subfigmat 1999/02/27 v1.0 Subfigure Matrix Package
+\sfm@width=\skip62
+\sfmcolsep=\skip63
+\c@sfm@count=\count135
+)
+\@glossaryfile=\write3
+\openout3 = `thesis.glo'.
+
+
+Writing glossary file thesis.glo
+
+LaTeX Warning: Unused global option(s):
+    [13pt].
+
+(./thesis.aux
+
+LaTeX Warning: Label `fig:deriveWaveRod' multiply defined.
+
+)
+\openout1 = `thesis.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+ [1
+
+] (./abstract.tex)
+Overfull \hbox (20.60574pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 i
+ []
+
+[1] (./thesis.gls
+LaTeX Font Info:    Try loading font information for U+rsfs on input line 5.
+ (/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd
+File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 5.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 5.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+))
+Overfull \hbox (23.8696pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 ii
+ []
+
+[2
+
+] (./thesis.toc)
+\tf@toc=\write4
+\openout4 = `thesis.toc'.
+
+
+Overfull \hbox (27.13345pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 iii
+ []
+
+[3
+
+] (./thesis.lof
+Overfull \hbox (65.53462pt too wide) in paragraph at lines 2--2
+ \OT1/cmr/m/n/12 imagesource:[http://orbitaldebris.jsc.nasa.gov/photogallery/be
+ehives/GEO640.jpg] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2--2
+ [][]  
+ []
+
+)
+\tf@lof=\write5
+\openout5 = `thesis.lof'.
+
+
+Overfull \hbox (26.80707pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 iv
+ []
+
+[4
+
+]
+Overfull \hbox (23.54321pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 v
+ []
+
+[5]
+Chapter 1.
+(./introduction.tex
+File: eps_pics/orbitalDebris.eps Graphic file (type eps)
+ <eps_pics/orbitalDebris.eps>
+Overfull \hbox (23.21683pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 1
+ []
+
+[1
+
+]
+Overfull \hbox (23.21683pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 2
+ []
+
+[2]
+File: eps_pics/selfHealingMedium.eps Graphic file (type eps)
+ <eps_pics/selfHealingMedium.eps>
+Overfull \hbox (23.21683pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 3
+ []
+
+[3]
+Overfull \hbox (23.21683pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 4
+ []
+
+[4]
+File: eps_pics/sentNoCrack.eps Graphic file (type eps)
+ <eps_pics/sentNoCrack.eps>
+File: eps_pics/sentCrack.eps Graphic file (type eps)
+ <eps_pics/sentCrack.eps>
+Overfull \hbox (23.21683pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 5
+ []
+
+[5]
+Overfull \hbox (23.21683pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 6
+ []
+
+[6]
+File: eps_pics/trDrawing.eps Graphic file (type eps)
+ <eps_pics/trDrawing.eps>
+Overfull \hbox (23.21683pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 7
+ []
+
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 67--68
+
+ []
+
+
+Overfull \hbox (23.21683pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 8
+ []
+
+[8])
+Overfull \hbox (23.21683pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 9
+ []
+
+[9]
+Chapter 2.
+(./modeling.tex
+File: eps_pics/deriveWaveRod.eps Graphic file (type eps)
+ <eps_pics/deriveWaveRod.eps>
+File: eps_pics/deriveWaveRod.eps Graphic file (type eps)
+ <eps_pics/deriveWaveRod.eps>)
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 10
+ []
+
+[10
+
+]
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 11
+ []
+
+[11]
+Chapter 3.
+
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 12
+ []
+
+[12
+
+]
+Chapter 4.
+
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 13
+ []
+
+[13
+
+]
+Chapter 5.
+
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 14
+ []
+
+[14
+
+]
+Chapter 6.
+(./thesis.bbl
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 15
+ []
+
+[15
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 4--10
+[][]\OT1/cmr/m/n/12 Sigrid Close.  Shoot-ing Stars Can Shoot Down Satel-lites.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--10
+\OT1/cmr/m/n/12 http://spectrum.ieee.org/aerospace/satellites/shooting-stars-ca
+n-shoot-down-
+ []
+
+
+Overfull \hbox (71.90375pt too wide) in paragraph at lines 12--17
+[][]\OT1/cmr/m/n/12 NASA.  Or-bital De-bris.  http://www.nasa.gov/mission[]page
+s/station/news/orbital[]debris.html,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--23
+[][]\OT1/cmr/m/n/12 NASA.  Hy-per-ve-loc-ity Im-pact Tech-nol-ogy.
+ []
+
+
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 16
+ []
+
+[16
+
+]
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 17
+ []
+
+[17]
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 18
+ []
+
+[18]
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 19
+ []
+
+[19]
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 20
+ []
+
+[20])
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 21
+ []
+
+[21] (./thesis.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 5245 strings out of 493500
+ 68828 string characters out of 3143858
+ 156386 words of memory out of 3000000
+ 8414 multiletter control sequences out of 15000+200000
+ 11250 words of font info for 43 fonts, out of 3000000 for 9000
+ 953 hyphenation exceptions out of 8191
+ 37i,6n,43p,2496b,426s stack positions out of 5000i,500n,10000p,200000b,50000s
+
+Output written on thesis.dvi (27 pages, 52548 bytes).

@@ -1,0 +1,73 @@
+\documentclass[a4paper]{spie}  %>>> use this instead for A4 paper
+
+\usepackage[]{graphicx}
+\usepackage{cite}
+
+\title{Experiments on the focusing and use of acoustic energy to accelerate polymer healing} 
+
+\author{Alexander J. Cushman\supit{a}, Brian C. Fehrman\supit{a}, Shaun D. Gruenig\supit{a}, and Umesh A. Korde\supit{a}
+\skiplinehalf
+\supit{a}South Dakota School of Mines \& Technology, 501 E. St. Joseph St. Rapid City, SD 57701, USA \\
+}
+
+\authorinfo{Further author information: (Send correspondence to Umesh A. Korde) \\ U.A.K.: E-mail: umesh.korde@sdsmt.edu, Telephone: 1(605) 394-2401}
+ 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
+%>>>> uncomment following for page numbers
+% \pagestyle{plain}    
+%>>>> uncomment following to start page numbering at 301 
+%\setcounter{page}{301} 
+ 
+  \begin{document} 
+  \maketitle 
+
+\begin{abstract}
+In this paper, we cover our studies on accelerating the molding process of a polymer by applying acoustic stress-wave time reversal. Tests carried out on an epoxy polymer mixed with a curing agent have shown evidence that the introduction of unfocused acoustic energy during the molding process will accelerate that process. The effects of focusing acoustic energy at a mold discontinuity while curing are explored. We also detail our investigations on focusing acoustic energy at a crack location by iteratively applying time reversal. Multiple types of media were tested.
+\end{abstract}
+
+%>>>> Include a list of keywords after the abstract 
+
+\keywords{Self healing, Time Reversal, Crack Healing, Polymer Curing}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{INTRODUCTION}
+\label{sec:intro}  % \label{} allows reference to this section
+The costs associated with traveling to repair most structures is not a high concern. When it comes to space structures, however, travel becomes a higher concern. Satellites and lightweight space structures are constantly being bombarded by micro-meteoroids and space debris. It is estimated that over 100 billion meteoroids larger than a microgram enter the atmosphere of the Earth everyday. This means that space structures are subject to a high chance of collision with many meteoroids. Damage can also come in the form of impact from space debris. There are over 20,000 trackable space debris objects exceeding a size of 10cm that are in orbit. Surface damage to the structures caused by object impact is nearly inevitable. In addition to high cost and danger of traveling to repair the space structure, there is also the possibility that more space debris will be left behind and further increase the chances of damage to the structures in orbit. For these reasons, it is very desirable to have a structure with measures to autonomously repair its surface damage. 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{FIGURES AND TABLES} 
+ 
+%%  Use following command to specify that graphics file is in 
+%%  a directory other than this LaTeX source file.
+%%  Note use of / to separate subdirectories, for UNIX and Windows OS.
+%%\graphicspath{{H:/HANSON/SPIESTY/}}
+%% tabular environment useful for creating an array of images  
+%-------------
+%   \begin{figure}
+%   \begin{center}
+%   \begin{tabular}{c}
+%   \includegraphics[height=7cm]{mcr3b.eps}
+%   \end{tabular}
+%   \end{center}
+%   \caption[example] 
+%%>>>> use \label inside caption to get Fig. number with \ref{}
+%   { \label{fig:example} 
+%Figure captions are used to describe the figure and help the reader understand it's significance.  The caption should be centered underneath the figure and set in 9-point font.  It is preferable for figures and tables to be placed at the top or bottom of the page. LaTeX tends to adhere to this standard.}
+%   \end{figure} 
+%-------------
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\acknowledgments     %>>>> equivalent to \section*{ACKNOWLEDGMENTS}       
+ 
+This unnumbered section is used to identify those who have aided the authors in understanding or accomplishing the work presented and to acknowledge sources of funding.  \cite{Anderson2009}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%% References %%%%%
+
+\bibliography{references1}   %>>>> bibliography data in report.bib
+\bibliographystyle{spiebib}   %>>>> makes bibtex use spiebib.bst
+
+\end{document} 

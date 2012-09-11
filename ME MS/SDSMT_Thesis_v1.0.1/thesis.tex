@@ -1,0 +1,73 @@
+%  This is the main thesis tex file.  It will assemble the separate source
+%  files into a document.  It is intended to be built by the supplied Makefile.
+%  Author:  Anthony Gervasi
+%
+%  Usage:  type 'make' in the command shell
+%  Requirements:  Tex installed, Linux/Unix environment
+
+
+\documentclass[13pt]{ucthesis}
+
+\usepackage{url}
+\usepackage{pstricks,pst-node,pst-text,pst-3d}
+\usepackage{amsmath}
+\usepackage{mathrsfs}
+\usepackage{amssymb}
+\usepackage{graphics}
+\usepackage{epsfig}
+\usepackage{fancyhdr}
+\usepackage{auto-pst-pdf}
+\usepackage{cite}
+\usepackage{nomencl}
+ \usepackage{subfigure}% subcaptions for subfigures
+ \usepackage{subfigmat}% matrices of similar subfigures, aka small mulitples
+
+\author{Brian Fehrman}
+\title{Experiments on Time Reversal Focusing of Acoustic Energy at a Crack Location in One Dimension}
+\degreeyear{2012}
+
+\setlength\topmargin{-0.5in}
+\setlength\oddsidemargin{0.45in}
+
+\makeglossary
+
+\begin{document}
+
+
+\maketitle
+
+\begin{frontmatter}
+\begin{abstract}
+\input{abstract.tex}  % You may enter in the file or directly here.
+\end{abstract}
+\printglossary
+\tableofcontents
+\listoffigures
+%\listoftables
+\end{frontmatter}
+
+
+
+% You will need to add chapter and input lines for your own work.
+%  The following give some examples:
+
+\chapter{Introduction}\label{ch:Introduction}
+
+\input{introduction.tex} % You may enter in the file or directly here.
+
+\chapter{Modeling}\label{ch:Modeling}
+\input{modeling.tex}
+
+\chapter{Experiments}\label{ch:Experiments}
+
+\chapter{Results}\label{ch:Results}
+
+\chapter{Recommended Future Work}\label{ch:RecommendedFutureWork}
+
+\chapter{Conclusion}\label{ch:Conclusion}
+
+\bibliographystyle{unsrt}
+\bibliography{thesis}
+
+\end{document}
+

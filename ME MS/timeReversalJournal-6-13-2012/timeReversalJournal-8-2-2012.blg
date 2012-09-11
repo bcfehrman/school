@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/dev)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: timeReversalJournal-8-2-2012.aux
+The style file: unsrt.bst
+Database file #1: references_time.bib
+You've used 19 entries,
+            1791 wiz_defined-function locations,
+            556 strings with 6546 characters,
+and the built_in function-call counts, 4746 in all, are:
+= -- 378
+> -- 283
+< -- 0
++ -- 101
+- -- 82
+* -- 370
+:= -- 787
+add.period$ -- 64
+call.type$ -- 19
+change.case$ -- 19
+chr.to.int$ -- 0
+cite$ -- 19
+duplicate$ -- 191
+empty$ -- 458
+format.name$ -- 82
+if$ -- 1018
+int.to.chr$ -- 0
+int.to.str$ -- 19
+missing$ -- 19
+newline$ -- 105
+num.names$ -- 19
+pop$ -- 54
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 61
+stack$ -- 0
+substring$ -- 292
+swap$ -- 26
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 40
+width$ -- 21
+write$ -- 218

@@ -1,0 +1,675 @@
+This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=latex 2012.8.31)  3 SEP 2012 16:49
+entering extended mode
+ restricted \write18 enabled.
+ Source specials enabled.
+ %&-line parsing enabled.
+**timeReversalJournal-8-2-2012.tex
+(./timeReversalJournal-8-2-2012.tex
+LaTeX2e <2011/06/27>
+Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, po
+lish, russian, ukrainian, pinyin, finnish, swedish, french, coptic, croatian, l
+atin, assamese, bengali, gujarati, hindi, kannada, malayalam, marathi, oriya, p
+anjabi, tamil, telugu, ukenglish, usenglishmax, danish, german, ngerman, swissg
+erman, slovenian, afrikaans, uppersorbian, interlingua, galician, spanish, ital
+ian, ethiopic, sanskrit, greek, portuguese, irish, esperanto, ancientgreek, iby
+cus, basque, bokmal, nynorsk, icelandic, kurmanji, lithuanian, czech, estonian,
+ serbian, serbianc, latvian, german-x-2012-05-30, ngerman-x-2012-05-30, romania
+n, friulan, welsh, indonesian, armenian, mongolian, mongolianlmc, farsi, turkis
+h, turkmen, romansh, bulgarian, hungarian, dutch, arabic, slovak, catalan, load
+ed.
+(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@section=\count80
+\c@subsection=\count81
+\c@subsubsection=\count82
+\c@paragraph=\count83
+\c@subparagraph=\count84
+\c@figure=\count85
+\c@table=\count86
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip43
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks14
+\ex@=\dimen103
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen104
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count87
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count88
+\leftroot@=\count89
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count90
+\DOTSCASE@=\count91
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen105
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count92
+\c@MaxMatrixCols=\count93
+\dotsspace@=\muskip10
+\c@parentequation=\count94
+\dspbrk@lvl=\count95
+\tag@help=\toks15
+\row@=\count96
+\column@=\count97
+\maxfields@=\count98
+\andhelp@=\toks16
+\eqnshift@=\dimen106
+\alignsep@=\dimen107
+\tagshift@=\dimen108
+\tagwidth@=\dimen109
+\totwidth@=\dimen110
+\lineht@=\dimen111
+\@envbody=\toks17
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks18
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2009/06/22 v3.00
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/varioref.sty
+Package: varioref 2011/10/02 v1.4z package for extended references (FMi)
+\c@vrcnt=\count99
+) (./wrapfig.sty
+\wrapoverhang=\dimen112
+\WF@size=\dimen113
+\c@WF@wrappedlines=\count100
+\WF@box=\box28
+\WF@everypar=\toks19
+Package: wrapfig 2003/01/31  v 3.6
+)
+(./graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks20
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: dvips.def on input line 91.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/dvips.def
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
+\Gin@req@height=\dimen114
+\Gin@req@width=\dimen115
+)
+(/usr/share/texlive/texmf-dist/tex/latex/algorithmicx/algpseudocode.sty
+Package: algpseudocode 
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/algorithmicx/algorithmicx.sty
+Package: algorithmicx 2005/04/27 v1.2 Algorithmicx
+
+Document Style algorithmicx 1.2 - a greatly improved `algorithmic' style
+\c@ALG@line=\count101
+\c@ALG@rem=\count102
+\c@ALG@nested=\count103
+\ALG@tlm=\skip46
+\ALG@thistlm=\skip47
+\c@ALG@Lnr=\count104
+\c@ALG@blocknr=\count105
+\c@ALG@storecount=\count106
+\c@ALG@tmpcounter=\count107
+\ALG@tmplength=\skip48
+)
+Document Style - pseudocode environments for use with the `algorithmicx' style
+) (/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: dvips.def on input line 130.
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/threeparttable/threeparttable.sty
+Package: threeparttable 2003/06/13  v 3.0
+\@tempboxb=\box29
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/dcolumn.sty
+Package: dcolumn 2001/05/28 v1.06 decimal alignment package (DPC)
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen116
+\extrarowheight=\dimen117
+\NC@list=\toks21
+\extratabsurround=\skip49
+\backup@length=\skip50
+))
+(/usr/share/texlive/texmf-dist/tex/latex/glossaries/base/glossaries.sty
+Package: glossaries 2012/05/21 v3.02 (NLCT)
+
+(/usr/share/texlive/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2008/08/13 v2.6a package option processing (HA)
+
+(/usr/share/texlive/texmf-dist/tex/generic/xkeyval/xkeyval.tex
+\XKV@toks=\toks22
+\XKV@tempa@toks=\toks23
+\XKV@depth=\count108
+File: xkeyval.tex 2008/08/13 v2.6a key=value parser (HA)
+))
+(/usr/share/texlive/texmf-dist/tex/latex/glossaries/base/mfirstuc.sty
+Package: mfirstuc 2012/05/21 v1.06 (NLCT)
+
+(/usr/share/texlive/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2011/01/03 v2.1 e-TeX tools for LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/latex/etex-pkg/etex.sty
+Package: etex 1998/03/26 v2.0 eTeX basic definition package (PEB)
+\et@xins=\count109
+)
+\etb@tempcnta=\count110
+)
+\@glsmfirst=\toks24
+\@glsmrest=\toks25
+)
+(/usr/share/texlive/texmf-dist/tex/latex/xfor/xfor.sty
+Package: xfor 2009/02/05 v1.05 (NLCT)
+)
+\gls@level=\count111
+\@gls@tmpb=\toks26
+\gls@tmplen=\skip51
+\glswrite=\write3
+\glskeylisttok=\toks27
+\glslabeltok=\toks28
+\glsshorttok=\toks29
+\glslongtok=\toks30
+
+(/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-hypernav.st
+y
+Package: glossary-hypernav 2007/07/04 v1.01 (NLCT)
+) (/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-list.sty
+Package: glossary-list 2011/03/28 v3.0 (NLCT)
+\glslistdottedwidth=\skip52
+) (/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-long.sty
+Package: glossary-long 2011/03/28 v3.0 (NLCT)
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip53
+\LTright=\skip54
+\LTpre=\skip55
+\LTpost=\skip56
+\LTchunksize=\count112
+\LTcapwidth=\dimen118
+\LT@head=\box30
+\LT@firsthead=\box31
+\LT@foot=\box32
+\LT@lastfoot=\box33
+\LT@cols=\count113
+\LT@rows=\count114
+\c@LT@tables=\count115
+\c@LT@chunks=\count116
+\LT@p@ftn=\toks31
+)
+\glsdescwidth=\skip57
+\glspagelistwidth=\skip58
+)
+(/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-super.sty
+Package: glossary-super 2011/03/28 v3.0 (NLCT)
+
+(/usr/share/texlive/texmf-dist/tex/latex/supertabular/supertabular.sty
+Package: supertabular 2004/02/20 v4.1e the supertabular environment
+\c@tracingst=\count117
+\ST@wd=\dimen119
+\ST@rightskip=\skip59
+\ST@leftskip=\skip60
+\ST@parfillskip=\skip61
+\ST@pageleft=\dimen120
+\ST@headht=\dimen121
+\ST@tailht=\dimen122
+\ST@pagesofar=\dimen123
+\ST@pboxht=\dimen124
+\ST@lineht=\dimen125
+\ST@stretchht=\dimen126
+\ST@prevht=\dimen127
+\ST@toadd=\dimen128
+\ST@dimen=\dimen129
+\ST@pbox=\box34
+))
+(/usr/share/texlive/texmf-dist/tex/latex/glossaries/styles/glossary-tree.sty
+Package: glossary-tree 2011/03/28 v3.0 (NLCT)
+\glstreeindent=\skip62
+))
+(./nomencl.sty
+Package: nomencl 2000/12/03 v3.1a Nomenclature package (BS)
+\nomlabelwidth=\dimen130
+\nom@tempdim=\dimen131
+\nomitemsep=\skip63
+)
+\glo@main@file=\write4
+\openout4 = `timeReversalJournal-8-2-2012.glo'.
+
+Package glossaries Info: Writing glossary file timeReversalJournal-8-2-2012.glo
+ on input line 16.
+ (./subfigure.sty
+Package: subfigure 1995/03/06 v2.0 subfigure package
+
+Package: subfigure 1995/03/06 v2.0
+\c@subfigure=\count118
+\c@lofdepth=\count119
+\c@subtable=\count120
+\c@lotdepth=\count121
+) (./subfigmat.sty
+Package: subfigmat 1999/02/27 v1.0 Subfigure Matrix Package
+\sfm@width=\skip64
+\sfmcolsep=\skip65
+\c@sfm@count=\count122
+) (./fancyvrb.sty
+Package: fancyvrb 1998/07/17
+
+Style option: `fancyvrb' v2.6, with DG/SPQR fixes <1998/07/17> (tvz)
+\FV@CodeLineNo=\count123
+\FV@InFile=\read1
+\FV@TabBox=\box35
+\c@FancyVerbLine=\count124
+\FV@StepNumber=\count125
+\FV@OutFile=\write5
+
+No file fancyvrb.cfg.
+) (./lettrine.sty
+File: lettrine.sty 2002/10/26 v1.4 (D. Flipo)
+\c@DefaultLines=\count126
+\DefaultFindent=\dimen132
+\DefaultNindent=\dimen133
+\DefaultSlope=\dimen134
+\L@lbox=\box36
+\L@tbox=\box37
+\c@L@lines=\count127
+\L@Pindent=\dimen135
+\L@Findent=\dimen136
+\L@Nindent=\dimen137
+\L@lraise=\dimen138
+\L@first=\dimen139
+\L@next=\dimen140
+\L@slope=\dimen141
+\L@height=\dimen142
+
+(/usr/share/texlive/texmf-dist/tex/latex/lettrine/lettrine.cfg))
+(./dropping.sty
+Package: dropping 1997/06/12 v.0.12
+\bigscale=\count128
+\down=\count129
+\saveunitlength=\dimen143
+\wantedheight=\dimen144
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+\wantedcount=\count130
+\actualcount=\count131
+\actualheight=\dimen145
+)
+\wantedcount=\count132
+\actualcount=\count133
+\actualheight=\dimen146
+)
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2012/08/18 v6.83b Hypertext links for LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2012/05/28 v1.13 Construct package bundles (HO)
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is not detected.
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode is ignored in DVI mode.
+Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
+)
+Package: bitset 2011/01/30 v1.1 Handle bit-vector datatype (HO)
+Package: uniquecounter 2011/01/30 v1.2 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+Package: hopatch 2012/05/28 v1.2 Wrapper for package hooks (HO)
+Package: xcolor-patch 2011/01/30 xcolor patch
+Package: atveryend 2011/06/30 v1.8 Hooks at the very end of document (HO)
+Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
+Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
+Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+)
+\@linkdim=\dimen147
+\Hy@linkcounter=\count134
+\Hy@pagecounter=\count135
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2012/08/18 v6.83b Hyperref: PDFDocEncoding definition (HO)
+)
+\Hy@SavedSpaceFactor=\count136
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 4138.
+Package hyperref Info: Hyper figures OFF on input line 4262.
+Package hyperref Info: Link nesting OFF on input line 4267.
+Package hyperref Info: Hyper index ON on input line 4270.
+Package hyperref Info: Plain pages OFF on input line 4277.
+Package hyperref Info: Backreferencing OFF on input line 4282.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4500.
+\c@Hy@tempcnt=\count137
+
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip11
+Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 4853.
+\XeTeXLinkMargin=\dimen148
+\Fld@menulength=\count138
+\Field@Width=\dimen149
+\Fld@charsize=\dimen150
+Package hyperref Info: Hyper figures OFF on input line 6093.
+Package hyperref Info: Link nesting OFF on input line 6098.
+Package hyperref Info: Hyper index ON on input line 6101.
+Package hyperref Info: backreferencing OFF on input line 6108.
+Package hyperref Info: Link coloring ON on input line 6111.
+Package hyperref Info: Link coloring with OCG OFF on input line 6118.
+Package hyperref Info: PDF/A mode OFF on input line 6123.
+LaTeX Info: Redefining \ref on input line 6163.
+LaTeX Info: Redefining \pageref on input line 6167.
+\Hy@abspage=\count139
+\c@Item=\count140
+\c@Hfootnote=\count141
+)
+
+Package hyperref Message: Driver (default): hdvips.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hdvips.def
+File: hdvips.def 2012/08/18 v6.83b Hyperref driver for dvips
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pdfmark.def
+File: pdfmark.def 2012/08/18 v6.83b Hyperref definitions for pdfmark specials
+\pdf@docset=\toks32
+\pdf@box=\box38
+\pdf@toks=\toks33
+\pdf@defaulttoks=\toks34
+\Fld@listcount=\count142
+\c@bookmark@seq@number=\count143
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip66
+))
+(./timeReversalJournal-8-2-2012.aux)
+\openout1 = `timeReversalJournal-8-2-2012.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+\AtBeginShipoutBox=\box39
+Package hyperref Info: Link coloring ON on input line 34.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2012/07/31 v2.42 Cross-referencing by name of section
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
+)
+\c@section@level=\count144
+LaTeX Info: Redefining \Ref on input line 503.
+)
+LaTeX Info: Redefining \ref on input line 34.
+LaTeX Info: Redefining \pageref on input line 34.
+LaTeX Info: Redefining \nameref on input line 34.
+
+(./timeReversalJournal-8-2-2012.out) (./timeReversalJournal-8-2-2012.out)
+\@outlinefile=\write6
+\openout6 = `timeReversalJournal-8-2-2012.out'.
+
+LaTeX Info: Redefining \Ref on input line 34.
+LaTeX Font Info:    Try loading font information for U+msa on input line 37.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 37.
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
+) [1
+
+\openout3 = `timeReversalJournal-8-2-2012.ist'.
+
+]
+No file timeReversalJournal-8-2-2012.gls.
+[2]
+File: tr.eps Graphic file (type eps)
+ <tr.eps> [3] [4]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 284.
+
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 284.
+
+[5] [6]
+File: trans_circ.eps Graphic file (type eps)
+ <trans_circ.eps> [7] [8] [9] [10]
+Overfull \hbox (1.71373pt too wide) in paragraph at lines 707--707
+[] 
+ []
+
+[11] [12] [13] [14]
+File: tr_dimensions.eps Graphic file (type eps)
+ <tr_dimensions.eps>
+File: lsCompression.eps Graphic file (type eps)
+ <lsCompression.eps>
+File: rsCompression.eps Graphic file (type eps)
+
+<rsCompression.eps>
+File: self_healing_setup1.eps Graphic file (type eps)
+ <self_healing_setup1.eps>
+File: self_healing_setup2.eps Graphic file (type eps)
+ <self_healing_setup2.eps>
+File: tr_setup_3.eps Graphic file (type eps)
+
+<tr_setup_3.eps>
+File: tr_setup_4.eps Graphic file (type eps)
+ <tr_setup_4.eps> [15] [16] [17]
+File: hardwareComm.eps Graphic file (type eps)
+ <hardwareComm.eps> [18]
+File: initialWave.eps Graphic file (type eps)
+
+<initialWave.eps>
+File: ch0Read.eps Graphic file (type eps)
+ <ch0Read.eps>
+File: ch1Read.eps Graphic file (type eps)
+ <ch1Read.eps> [19] [20]
+File: ch0RMS.eps Graphic file (type eps)
+ <ch0RMS.eps>
+File: ch1RMS.eps Graphic file (type eps)
+
+<ch1RMS.eps> [21] [22]
+File: ch0Chosen.eps Graphic file (type eps)
+ <ch0Chosen.eps>
+File: ch1Chosen.eps Graphic file (type eps)
+ <ch1Chosen.eps>
+File: ch0Scaled.eps Graphic file (type eps)
+ <ch0Scaled.eps>
+File: ch1Scaled.eps Graphic file (type eps)
+
+<ch1Scaled.eps> [23]
+File: newFlow.eps Graphic file (type eps)
+ <newFlow.eps> [24] [25]
+File: steel-1-2_Iter_th_exp.eps Graphic file (type eps)
+ <steel-1-2_Iter_th_exp.eps>
+File: steel-1-3_Iter_th_exp.eps Graphic file (type eps)
+
+<steel-1-3_Iter_th_exp.eps>
+File: steel-2-3_Iter_th_exp.eps Graphic file (type eps)
+ <steel-2-3_Iter_th_exp.eps> [26] [27]
+File: steel-1-2_Initial.eps Graphic file (type eps)
+
+<steel-1-2_Initial.eps>
+File: steel-1-2_Final.eps Graphic file (type eps)
+ <steel-1-2_Final.eps>
+File: steel-1-2_iterationVsGain.eps Graphic file (type eps)
+ <steel-1-2_iterationVsGain.eps>
+File: steel-1-3_Initial.eps Graphic file (type eps)
+
+<steel-1-3_Initial.eps>
+File: steel-1-3_Final.eps Graphic file (type eps)
+ <steel-1-3_Final.eps>
+File: steel-1-3_iterationVsGain.eps Graphic file (type eps)
+ <steel-1-3_iterationVsGain.eps>
+File: steel-2-3_Initial.eps Graphic file (type eps)
+
+<steel-2-3_Initial.eps>
+File: steel-2-3_Final.eps Graphic file (type eps)
+ <steel-2-3_Final.eps>
+File: steel-2-3_iterationVsGain.eps Graphic file (type eps)
+ <steel-2-3_iterationVsGain.eps>
+File: nylon-2-3_Iter_th_exp.eps Graphic file (type eps)
+
+<nylon-2-3_Iter_th_exp.eps>
+File: nylon-2-4_Iter_th_exp.eps Graphic file (type eps)
+ <nylon-2-4_Iter_th_exp.eps>
+File: nylon-3-4_Iter_th_exp.eps Graphic file (type eps)
+
+<nylon-3-4_Iter_th_exp.eps>
+File: nylon-2-3_Initial.eps Graphic file (type eps)
+ <nylon-2-3_Initial.eps>
+File: nylon-2-3_Final.eps Graphic file (type eps)
+ <nylon-2-3_Final.eps>
+File: nylon-2-3_iterationVsGain.eps Graphic file (type eps)
+
+<nylon-2-3_iterationVsGain.eps>
+File: nylon-2-4_Initial.eps Graphic file (type eps)
+ <nylon-2-4_Initial.eps>
+File: nylon-2-4_Final.eps Graphic file (type eps)
+ <nylon-2-4_Final.eps>
+File: nylon-2-4_iterationVsGain.eps Graphic file (type eps)
+
+<nylon-2-4_iterationVsGain.eps>
+File: nylon-3-4_Initial.eps Graphic file (type eps)
+ <nylon-3-4_Initial.eps>
+File: nylon-3-4_Final.eps Graphic file (type eps)
+ <nylon-3-4_Final.eps>
+File: nylon-3-4_iterationVsGain.eps Graphic file (type eps)
+
+<nylon-3-4_iterationVsGain.eps> [28] [29] [30] [31] [32] [33] [34] [35]
+(./timeReversalJournal-8-2-2012.bbl [36]
+Missing character: There is no ï in font cmr10!
+Missing character: There is no ¿ in font cmr10!
+Missing character: There is no ½ in font cmr10!
+ [37])
+
+Package glossaries Warning: No \printglossary or \printglossaries found.
+This document will not have a glossary.
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1485.
+[38]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 1485.
+ (./timeReversalJournal-8-2-2012.aux)
+Package atveryend Info: Empty hook `AtVeryEndDocument' on input line 1485.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1485.
+
+Package rerunfilecheck Info: File `timeReversalJournal-8-2-2012.out' has not ch
+anged.
+(rerunfilecheck)             Checksum: 157B723D9882F4699F69BEAED0874F1B;832.
+ ) 
+Here is how much of TeX's memory you used:
+ 9325 strings out of 493500
+ 133308 string characters out of 3143858
+ 251747 words of memory out of 3000000
+ 12432 multiletter control sequences out of 15000+200000
+ 15126 words of font info for 57 fonts, out of 3000000 for 9000
+ 953 hyphenation exceptions out of 8191
+ 37i,13n,35p,1554b,432s stack positions out of 5000i,500n,10000p,200000b,50000s
+
+Output written on timeReversalJournal-8-2-2012.dvi (38 pages, 180088 bytes).

@@ -1,0 +1,27 @@
+\glossaryentry{a$T_3$@[{$T_3$}]\begingroup Stress in the $z$ direction; i.e. along the longitudinal axis\nomeqref {1}|nompageref}{8}
+\glossaryentry{a$S_3$@[{$S_3$}]\begingroup Strain developed in the $z$ direction; i.e., along the longitudinal axis\nomeqref {1}|nompageref}{8}
+\glossaryentry{a$C_{33}, C^\ast_{33}, C^c_{33}$@[{$C_{33}, C^\ast_{33}, C^c_{33}$}]\begingroup Elastic constants relating stress in $z$ direction to strain in $z$ direction (longitudinal axis): for transducer, rod material, `defect' respectively\nomeqref {1}|nompageref}{8}
+\glossaryentry{a$D_3$@[{$D_3$}]\begingroup Electric displacement in the z direction; i.e., charge density on a plane normal to the longitudinal axis\nomeqref {1}|nompageref}{8}
+\glossaryentry{a$E_3$@[{$E_3$}]\begingroup Electric field intensity in the $z$ direction\nomeqref {1}|nompageref}{8}
+\glossaryentry{a$\varepsilon^T_{33}$@[{$\varepsilon^T_{33}$}]\begingroup Permittivity constant at constant stress in the $z$ direction acting on field intensity in the $z$ direction\nomeqref {1}|nompageref}{8}
+\glossaryentry{a$d_{33}$@[{$d_{33}$}]\begingroup Piezoelectric strain constant relating strain in $z$ direction to electric field intensity in the $z$ direction\nomeqref {1}|nompageref}{8}
+\glossaryentry{a$s^E_{33}$@[{$s^E_{33}$}]\begingroup Compliance constant at constant electric field; reciprocal of $C_{33}$\nomeqref {1}|nompageref}{8}
+\glossaryentry{a$L$@[{$L$}]\begingroup Length of steel or nylon rod\nomeqref {1}|nompageref}{8}
+\glossaryentry{a$l$@[{$l$}]\begingroup Length of piezoceramic transducers A and B\nomeqref {1}|nompageref}{8}
+\glossaryentry{a$c$@[{$c$}]\begingroup Acoustic velocity in the piezoceramic transducer\nomeqref {5}|nompageref}{9}
+\glossaryentry{a$c^\ast$@[{$c^\ast$}]\begingroup Acoustic velocity in the rod material (steel or nylon); $=c_a$ for epoxy\nomeqref {6}|nompageref}{9}
+\glossaryentry{a$\overline{\bf R}$@[{$\overline{\bf R}$}]\begingroup Complex reflection coefficient at defect\nomeqref {17}|nompageref}{11}
+\glossaryentry{a$\overline{\bf T}$@[{$\overline{\bf T}$}]\begingroup Complex transmission coefficient at defect\nomeqref {17}|nompageref}{11}
+\glossaryentry{a$l_c$@[{$l_c$}]\begingroup Crack location, {\em a priori} unknown\nomeqref {19}|nompageref}{11}
+\glossaryentry{a$V^+_s(t), V^+_s(i\omega)$@[{$V^+_s(t), V^+_s(i\omega)$}]\begingroup Voltage created at transducer A by pulse returning from defect\nomeqref {20}|nompageref}{11}
+\glossaryentry{a$\frac{\partial w}{\partial z}(t)$; $\frac{\partial w}{\partial z}(i\omega)$@[{$\frac{\partial w}{\partial z}(t)$; $\frac{\partial w}{\partial z}(i\omega)$}]\begingroup Strain created in the sending transducer A; its Fourier transform\nomeqref {21}|nompageref}{11}
+\glossaryentry{a$\frac{\partial w_{sR}}{\partial z}(t)$; $\frac{\partial w_{sR}}{\partial z}(i\omega)$@[{$\frac{\partial w_{sR}}{\partial z}(t)$; $\frac{\partial w_{sR}}{\partial z}(i\omega)$}]\begingroup Strain under reversed pulse caused by sending transducer A; its Fourier transform\nomeqref {21}|nompageref}{11}
+\glossaryentry{a$\frac{\partial w_{tR}}{\partial z}(t)$; $\frac{\partial w_{cR}}{\partial z}(i\omega)$@[{$\frac{\partial w_{tR}}{\partial z}(t)$; $\frac{\partial w_{cR}}{\partial z}(i\omega)$}]\begingroup Strain under focused pulse at `defect' transducer; its Fourier transform\nomeqref {21}|nompageref}{11}
+\glossaryentry{a$\frac{\partial w_{cR}}{\partial z}(t)$; $\frac{\partial w_{tR}}{\partial z}(i\omega)$@[{$\frac{\partial w_{cR}}{\partial z}(t)$; $\frac{\partial w_{tR}}{\partial z}(i\omega)$}]\begingroup Strain under reversed pulse caused by receiving transducer B; its Fourier transform\nomeqref {21}|nompageref}{11}
+\glossaryentry{a$\Delta_c, \Delta_t; \Delta_M, \Delta_m$@[{$\Delta_c, \Delta_t; \Delta_M, \Delta_m$}]\begingroup Time taken for pulse to return to transducer A from defect, reach transducer B, the greater, the smaller of the two\nomeqref {30}|nompageref}{12}
+\glossaryentry{a$h_{def}(t)$@[{$h_{def}(t)$}]\begingroup Impulse response function for the focused pulse at the defect\nomeqref {41}|nompageref}{14}
+\glossaryentry{a$G_{def}(x,\xi;0,t)$@[{$G_{def}(x,\xi;0,t)$}]\begingroup Green's function showing the influence at $x$ of the time reversed focused pulse at $\xi$\nomeqref {41}|nompageref}{14}
+\glossaryentry{a$S^{(n)}_{def}(t)$, $S^{(n)}_{def}(i\omega)$@[{$S^{(n)}_{def}(t)$, $S^{(n)}_{def}(i\omega)$}]\begingroup Strain at the defect after the nth iteration; its Fourier transform\nomeqref {45}|nompageref}{14}
+\glossaryentry{a$H_{def}(i\omega)$@[{$H_{def}(i\omega)$}]\begingroup Fourier transform of Green's function; i.e. frequency response function at defect\nomeqref {45}|nompageref}{14}
+\glossaryentry{a$\rho$@[{$\rho$}]\begingroup Mass density of the rod material\nomeqref {48}|nompageref}{15}
+\glossaryentry{a$w_s(t)$@[{$w_s(t)$}]\begingroup Transducer caused deflection at $z=0$\nomeqref {48}|nompageref}{15}

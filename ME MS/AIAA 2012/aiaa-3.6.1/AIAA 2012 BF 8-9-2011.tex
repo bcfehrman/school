@@ -1,0 +1,280 @@
+% `template.tex', a bare-bones example employing the AIAA class.
+%
+% For a more advanced example that makes use of several third-party
+% LaTeX packages, see `advanced_example.tex', but please read the
+% Known Problems section of the users manual first.
+%
+% Typical processing for PostScript (PS) output:
+%
+%  latex template
+%  latex template   (repeat as needed to resolve references)
+%
+%  xdvi template    (onscreen draft display)
+%  dvips template   (postscript)
+%  gv template.ps   (onscreen display)
+%  lpr template.ps  (hardcopy)
+%
+% With the above, only Encapsulated PostScript (EPS) images can be used.
+%
+% Typical processing for Portable Document Format (PDF) output:
+%
+%  pdflatex template
+%  pdflatex template      (repeat as needed to resolve references)
+%
+%  acroread template.pdf  (onscreen display)
+%
+% If you have EPS figures, you will need to use the epstopdf script
+% to convert them to PDF because PDF is a limmited subset of EPS.
+% pdflatex accepts a variety of other image formats such as JPG, TIF,
+% PNG, and so forth -- check the documentation for your version.
+%
+% If you do *not* specify suffixes when using the graphicx package's
+% \includegraphics command, latex and pdflatex will automatically select
+% the appropriate figure format from those available.  This allows you
+% to produce PS and PDF output from the same LaTeX source file.
+%
+% To generate a large format (e.g., 11"x17") PostScript copy for editing
+% purposes, use
+%
+%  dvips -x 1467 -O -0.65in,0.85in -t tabloid template
+%
+% For further details and support, read the Users Manual, aiaa.pdf.
+
+
+% Try to reduce the number of latex support calls from people who
+% don't read the included documentation.
+%
+\typeout{}\typeout{If latex fails to find aiaa-tc, read the README file!}
+%
+
+\documentclass[]{aiaa-tc}% insert '[draft]' option to show overfull boxes
+
+\usepackage{graphicx}
+\usepackage{float}
+
+ \title{Iterative Time Reversal in Dispersive and Non-Dispersive Media}
+
+ \author{
+  Brian C. Fehrman
+    \thanks{Advanced Dynamics Laboratory, Research Assistant, Mechanical Engineering Department, 501 E. St. Joseph Street, Rapid
+City, SD 57701, AIAA Student Member.}
+  \ and Alexander J. Cushman \thanksibid{1}\\
+  \ and Umesh A. Korde%
+   \thanks{Professor, Mechanical Engineering Department, 501 E. St. Joseph Street, Rapid City, SD 57701, AIAA Member.}\\
+ }
+
+ % Data used by 'handcarry' option if invoked
+ \AIAApapernumber{YEAR-NUMBER}
+ \AIAAconference{Conference Name, Date, and Location}
+ \AIAAcopyright{\AIAAcopyrightD{YEAR}}
+
+ % Define commands to assure consistent treatment throughout document
+ \newcommand{\eqnref}[1]{(\ref{#1})}
+ \newcommand{\class}[1]{\texttt{#1}}
+ \newcommand{\package}[1]{\texttt{#1}}
+ \newcommand{\file}[1]{\texttt{#1}}
+ \newcommand{\BibTeX}{\textsc{Bib}\TeX}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+In this paper we further investigate acoustic energy as a tool to enhance the recovery rate of a self healing material. Time reversal is the method used for the focusing of acoustic energy at a recovering location. Our recent tests, which have produced promising results, included applying acoustic time reversal in an iterative fashion in order to focus and amplify a stress-wave at a defect within a solid rod. Two types of rods were used for testing; (i) a solid steel rod (non-dispersive) and (ii) a brass tube filled with a fully cured two-part epoxy (dispersive). The curing of a two-part epoxy is treated as being analogous to the curing of a self healing material. We have continued to look at the effects of acoustic energy on the curing of the epoxy. It was found that the curing rate of the epoxy was accelerated with the introduction of acoustic energy.
+\end{abstract}
+
+
+\section{Introduction}
+
+Many times it is taken for granted that machines and structures will be accessible for repair in the event that damage occurs. When it comes to space structures, however, we are not afforded the convenience of reasonably easy access in order to repair damages. Damage to space structures can occur quite frequently in the form of surface cracks as a result of collisions with mirco-meteroids or space debris. Materials with the ability to heal themselves are very desirable for this application \cite{Lee2009}. 
+
+There has been a large interest in self healing materials recently. Some of this work applies biological concepts to the problem \cite{Blaysik2010}. The rate of recovery is of importance because the damage in the material may be able to continue its growth while the material is attempting to mend itself. If the damage expands quicker than the material is able to heal itself, then the material may never reach full mechanical recovery.  A lot of the research performed on accelerating the recovery rate has looked at the problem from a materials level \cite{White2001, Sheng2009, Burattini2009, Nakao2009, Fettig2009, Imperiale2009, Zhang2007}. Heating the material, cooling the material, and introducing ultra-violet light are other methods that have been used to speed the healing of the material \cite{Sloof2009, Song2009, Bosman2009, Djugum2009, Murphy2009, Garcia2009}. Calculations based on work by Wool and O'Connor have shown that increasing the pressure at a recovery site will increase the rate of that recovery \cite{Wool1981, Barnes2009, Sarrazin2009}. It is our goal to use acoustic energy to increase the localized pressure at a damaged location in order to speed its recovery rate. 
+
+In the interest of efficiency, we aim to focus the energy at the recovery site rather than arbitrarily sending it throughout the whole material. In addition to power considerations, focusing the energy is important because a large amount of unfocused energy could damage the structure even further. Time reversal is the method we choose to focus acoustic energy at a recovering location. One of the many advantages of this method is that no actual knowledge of the damaged location is ever needed for the algorithm to work. Time reversal is not a new concept and many implementations of it have been studied \cite{ Anderson2008, Borcea2003, Fink2009, Sutin2004, Harley2009}.  One implementation of time reversal allows for it to be applied iteratively. Better focusing is achieved with each iteration of the time reversal. 
+
+In this paper we continue our studies on time reversal in solid rods \cite{AIAASelfHeal2011}. This time, however, we apply iterative time reversal to both a non-dispersive and a dispersive rod. Each rod has a defect location in which we wish to focus acoustic energy.  These experiments bring us another step closer to directly testing the effects of using time reversal to focus energy at a recovering location. We have also performed further tests on the two-part epoxy curing without and with unfocused acoustic energy being introduced into the system.
+
+\section{Experimental Implications}
+
+For us to further our work on accelerating the healing rate of a damaged location, we continue to look at what we feel are the two most important aspects of the project; (i) how the recovery rate of a self healing material is affected by the introduction of acoustic energy and (ii) how to best focus the acoustic energy at a recovering site. We take care of the first item by our continued studies on epoxy curing. As shown by Wool and O'Connor, epoxy curing is analogous to self healing recovery because of the fact that they both go through the same five stages when recovering which are: (a) surface rearrangement, (b) surface approach, (c) wetting, (d) diffusion, and (e) randomization. New experimental setups using time reversal have helped to further address the second item of how to focus the acoustic energy.
+
+\subsection{Epoxy Curing Experiments}
+The setup and experiments used for the epoxy curing experiments have largely remained the same. We fill brass tubes with a two-part epoxy and then monitor the curing process of the epoxy. There are two objective ways that the state of epoxy is characterized; (i) the temperature of the epoxy and (ii) the vibrational response of the epoxy. A thermistor embedded within the epoxy before the curing begins provides a temperature reading of the epoxy throughout the curing process. A marble dropper is used to cause a vibrational response in the epoxy-filled brass tube and is recorded using an accelerometer attached to the outside of the tube. New software has been written for the data acquisition which provides for more reliable testing and easier data manipulation. This new software, which is written in LabVIEW, also uses different hardware than what was used previously. This has enabled us to have better control over acquiring the different measurements needed for our experiments. This entire setup is still housed within a wooden box which allows us to control the ambient temperature of the experiment which provides us with more consistent results. 
+
+Our experiments look at the rate at which the epoxy cures without and with acoustic excitation. A speaker placed on top of the box mentioned above introduces the acoustic excitation into the system. These setups, minus the box and marble dropper, are shown in Figures \ref{fig:epoxy_no_sound} and \ref{fig:epoxy_sound}
+
+\begin{figure}[H]% order of placement preference: here, top, bottom
+\centering
+ \includegraphics{epoxy_diagram_new}
+ \caption{Diagram showing the setup and dimensions of the epoxy curing experiment without acoustic excitation}
+ \label{fig:epoxy_no_sound}
+\end{figure}
+
+
+\begin{figure}[H]% order of placement preference: here, top, bottom
+\centering
+ \includegraphics[height = 8cm]{epoxy_diagram_new_speaker}
+ \caption{Diagram showing the setup of the epoxy curing experiment with acoustic excitation. Please note that the dimensions of the rod setup are the same as those shown in the previous figure. Speaker not to scale.}
+ \label{fig:epoxy_sound}
+\end{figure}
+
+
+\subsection{Iterative Time Reversal Experiments}
+
+In these experiments we continue to use solid, circular rod segments which simplify both analysis and experimental design. The ceramic piezoelectric transducers (PZTS) are still used to send and receive ultrasonic signals. One PZT acts as the defect location and is placed between the ends of the two rod segments (Defect PZT). PZTs are then placed on each open end of the rod segments (Ch0  PZT and Ch1 PZT) for a total of three PZTs used. This system is then placed under compression. The rough dimensions of the experimental setup are shown in Figure \ref{fig:tr_dimensions}. Notice that two different lengths of rod are used in each experiment, with one of rods being substantially longer than the other. This essentially places the defect location at an arbitrary location within the system instead of just in the middle. This is used to further emphasis the robustness of the time reversal algorithm that is used.
+
+\begin{figure}[H]% order of placement preference: here, top, bottom
+\centering
+ \includegraphics[height = 9cm]{tr_setup}
+ \caption{Diagram showing the setup and dimensions of the time reversal experiment}
+ \label{fig:tr_dimensions}
+\end{figure}
+
+Instead of just solid steel rods, however, we now introduce time reversal tests using nylon 6/6 rods. This material provides much more dispersion than does the steel. For this reason, we consider the solid steel rods to be non-dispersive and the nylon rods to be dispersive.
+
+The time reversal algorithm used in these experiments has also changed. In the algorithm used before, a signal is sent out from the Ch0 PZT. This signal propagates through the first rod segment and towards the Defect PZT. When the signal reaches the Defect PZT, part of its energy is reflected back towards Ch0 PZT and part of it continues its propagation through the other rod segment and towards the Ch1 PZT. These reflected and transmitted signals are recorded by the Ch0 PZT and the Ch1 PZT, respectively. These recorded signals are then amplified and played back in a time reversed fashion such that they meet and combine at the point where they originally split apart (i.e., the Defect PZT). This implies a focusing of their energy at that location. This is where our previous experiments would end. In the newest experiments we apply this process iteratively which causes the focusing to increase with each iteration. The flowchart for the time reversal algorithm is shown in Figure \ref{fig:tr_flowchart}.
+
+\begin{figure}[H]% order of placement preference: here, top, bottom
+ \includegraphics{new_flow_chart}
+ \centering
+ \caption{Flowchart for the time reversal experiment}
+ \label{fig:tr_flowchart}
+\end{figure}
+
+
+
+\section{Experimental Results}
+Our self healing experiment studies consist of two main parts; (i) epoxy curing and (ii) time reversal. In order to achieve our goal of accelerating the recovery rate of a self healing material, we need to first show that acoustic excitation increases the curing rate of the epoxy and also show that time reversal increases acoustic energy focusing at a defect location. 
+
+\subsection{Epoxy Curing Results}
+
+As mentioned previously, one of the measures used to characterize the state of the curing epoxy within the brass tube is its vibrational response to a marble being dropped on it. This response is recorded via an accelerometer placed on the outside of the tube. The FFT of this response is then plotted. As the epoxy cures, the frequencies that it responds greatest to will shift. This can be seen on the FFT graph as the peaks moving from one frequency to another and/or growing in amplitude. By plotting these responses and their frequency shifts as a function of time the epoxy’s cure progress can be followed. Figures \ref{fig:epoxy_15} - \ref{fig:epoxy_24hr} show sample FFT plots. Notice the shifting of peaks as the epoxy cures.
+
+\begin{figure}[H]% order of placement preference: here, top, bottom
+\centering
+ \includegraphics[height = 7cm]{epoxy_15}
+ \caption{FFT of epoxy marble dropper response at 15 minutes}
+ \label{fig:epoxy_15}
+\end{figure}
+
+\begin{figure}[H]% order of placement preference: here, top, bottom
+\centering
+ \includegraphics[height = 7cm]{epoxy_1hr}
+ \caption{FFT of epoxy marble dropper response at 1 hour}
+ \label{fig:epoxy_1hr}
+\end{figure}
+
+\begin{figure}[H]% order of placement preference: here, top, bottom
+\centering
+ \includegraphics[height = 7cm]{epoxy_2hr}
+ \caption{FFT of epoxy marble dropper response at 2 hours}
+ \label{fig:epoxy_2hr}
+\end{figure}
+
+\begin{figure}[H]% order of placement preference: here, top, bottom
+\centering
+ \includegraphics[height = 7cm]{epoxy_24hr}
+ \caption{FFT of epoxy marble dropper response at 24 hours}
+ \label{fig:epoxy_24hr}
+\end{figure}
+
+  In the case of an acoustically-excited test, a 10-inch voice coil is placed overhead and plays a singular frequency of about 1 kHz for the first 7 hours of the test. Plotted in Figure \ref{fig:epoxy_fft_no_sound} is the peak frequency response from an epoxy curing test.  At around the 1 hour mark the frequency comes into view and as the epoxy continues to cure (that is, stiffen) the frequency continues to rise before plateauing near the 24 hour mark (the epoxy manufacturer's stated cure time).  A curing epoxy stiffens, raising the spring constant of the epoxy-tube system and thereby increases the natural frequency response peaks seen in the FFTs.
+
+
+\begin{figure}[H]% order of placement preference: here, top, bottom
+\centering
+ \includegraphics[height = 6cm]{fft_epoxy}
+ \caption{One test's peak frequency response changing as the epoxy cures.}
+ \label{fig:epoxy_fft_no_sound}
+\end{figure}
+
+Responses at 30 hours are taken to be the final values and by comparing the times at which a test reaches 98, 99, and 99.5\% of the final value (Hertz) comparisons can be made and a relative ‘acceleration’ can be observed.  Compared in Figure \ref{fig:epoxy_table} are results from an acoustically-excited test and a control test.
+
+\begin{figure}[H]% order of placement preference: here, top, bottom
+\centering
+ \includegraphics[height = 3.5cm]{epoxy_table}
+ \caption{Test results from an excited and a control epoxy curing test.}
+ \label{fig:epoxy_table}
+\end{figure}
+
+Figure \ref{fig:epoxy_table} demonstrates a consistent advancement of the excited test when compared to the control test.  Other fractions of the final values display similar advancements; these were chosen for their early placement in the epoxy’s cure progress- when changes in frequency are occurring most rapidly.  These results lead us to believe that the acoustic energy does increase the rate of the epoxy curing.
+
+\subsection{Time Reversal Results}
+
+In both the steel rod and nylon rod experiments we saw an increase in the amplitude of the response recorded at the Defect PZT by using the iterative time reversal. With the steel rod experiments we saw a very close match between the analytical and experimental results.  
+
+Figure \ref{fig:steel_initial} shows the response at the defect on the first iteration for the steel rods, as well as a windowed RMS of that signal. You can see that there is a large initial peak followed by smaller and smaller subsequent peaks which are a result of the wave reflections within the steel rod system.
+
+\begin{figure}[H]% order of placement preference: here, top, bottom
+\centering
+ \includegraphics[height = 8cm]{steel_initial}
+ \caption{Response at the defect PZT in the steel rod system on the first iteration (top), windowed RMS of the response signal (bottom)}
+ \label{fig:steel_initial}
+\end{figure}
+
+Figure \ref{fig:steel_final} shows what the response at the defect looks like after the time reversal algorithm has converged on a solution. You can see that the first peak in the RMS signal has grown substantially faster than any of the other peaks in the signal. This strongly suggests that we are achieving a focusing at the defect location.
+
+\begin{figure}[H]% order of placement preference: here, top, bottom
+\centering
+ \includegraphics[height = 8cm]{steel_final}
+ \caption{Response at the defect PZT in the steel rod system on the final iteration (top), windowed RMS of the response signal (bottom)}
+ \label{fig:steel_final}
+\end{figure}
+
+In Figure \ref{fig:steel_amps}, you can see the amplitude of the response at the defect plotted for each iteration. Notice that the amplitude starts at about \begin{math}4.5V\end{math} and converges at about \begin{math}11.5V\end{math}; a nearly 3 fold increase in amplitude after the time reversal algorithm has converged.
+
+\begin{figure}[H]% order of placement preference: here, top, bottom
+\centering
+ \includegraphics[height = 8cm]{steel_amps}
+ \caption{Amplitude of the response at the defect PZT for each iteration in the steel rod setup}
+ \label{fig:steel_amps}
+\end{figure}
+
+You can compare the experimental to analytical results of the steel rod experiments in Figure \ref{fig:steel_theory_exp}.
+
+
+\begin{figure}[H]% order of placement preference: here, top, bottom
+\centering
+ \includegraphics[height = 8cm]{steel_theory_exp}
+ \caption{Analytical vs experimental results of the steel rod tests}
+ \label{fig:steel_theory_exp}
+\end{figure}
+
+Next were the nylon rods experiments. Other than being of different lengths than the steel rods, the test setup was exactly the same as the steel rod tests. The algorithm used was also the same. In Figure \ref{fig:nylon_initial}, you can again see the response at the defect for the first iteration and also a windowed RMS of that signal. This time, however, we do not see the large amount of reflections in the system as were seen with the steel rod tests. This is due to the dispersion of the nylon rods. We see 2 main peaks that are less distinguishable from one another.
+
+\begin{figure}[H]% order of placement preference: here, top, bottom
+\centering
+ \includegraphics[height = 8cm]{nylon_initial}
+ \caption{Response at the defect PZT in the nylon rod system on the first iteration (top), windowed RMS of the response signal (bottom)}
+ \label{fig:nylon_initial}
+\end{figure}
+
+Figure \ref{fig:nylon_final} shows the response at the defect in the nylon rod tests after the time reversal algorithm has converged. Just like with the steel rod experiments, the first peak in the signal has grown at a much quicker rate than any of the other peaks in the signal. This gives good evidence that we are also achieving a focusing in the nylon rod setup. The amplitudes seen at the defect for each iteration are plotted in Figure \ref{fig:nylon_amps}. The amplitude begins at around \begin{math}0.3V\end{math} and ends near \begin{math}1.5V\end{math}, almost a 5 fold increase once the algorithm has converged.
+
+\begin{figure}[H]% order of placement preference: here, top, bottom
+\centering
+ \includegraphics[height = 8cm]{nylon_final}
+ \caption{Response at the defect PZT in the nylon rod system on the final iteration (top), windowed RMS of the response signal (bottom)}
+ \label{fig:nylon_final}
+\end{figure}
+
+
+\begin{figure}[H]% order of placement preference: here, top, bottom
+\centering
+ \includegraphics[height = 8cm]{nylon_amps}
+ \caption{Amplitude of the response at the defect PZT for each iteration in the nylon rod setup}
+ \label{fig:nylon_amps}
+\end{figure}
+
+\section{Conclusion and Future Work}
+
+In our epoxy experiments we have seen that the rate of curing is increased with the introduction of acoustic energy. The time reversal experiments strongly suggest that we can achieve a focusing and thus an increase in pressure at a defect location. By applying time reversal in an iterative fashion we are able to further increase the amplitude of that response. We have been able to achieve the same results in a dispersive medium where as before we were testing solely with a non-dispersive medium. Further tests will include testing the time reversal in multiple dimensions. We will also combine the epoxy curing and time reversal experiments in an attempt to increase the curing rate by focusing acoustic energy.
+
+\section{Acknowledgments}
+
+We would like to thank the AFRL/RV for their support. Also, we would like to thank Dr. Chris Jenkins from Montana State University for his input. Thanks are also due to Dr. Jeffry Welsh and Mr. Jeremy Banik from the AFRL for their suggestions. We also give our gratitude to Dr. Robb Winter for all of his help with this project. 
+
+\bibliography{references}{}
+\bibliographystyle{unsrt}
+
+\end{document}

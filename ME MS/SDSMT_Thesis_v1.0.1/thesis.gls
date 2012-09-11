@@ -1,0 +1,14 @@
+\begin{theglossary} 
+
+ \nomgroup{A}
+
+  \item [{$A$}]\begingroup Cross-sectional area of the rod\nomeqref {2.1}
+		\nompageref{10}
+  \item [{$dz$}]\begingroup Differential element of length for the rod\nomeqref {2.1}
+		\nompageref{10}
+  \item [{$P$}]\begingroup Axial pressure applied to rod end\nomeqref {2.1}
+		\nompageref{10}
+  \item [{$T_3$}]\begingroup Stress in the z direction\nomeqref {2.1}
+		\nompageref{10}
+
+\end{theglossary}

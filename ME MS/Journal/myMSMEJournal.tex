@@ -1,0 +1,116 @@
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% This is a simple template for a LaTeX document using the "article" class.
+% See "book", "report", "letter" for other types of document.
+
+\documentclass[11pt]{article} % use larger type; default would be 10pt
+
+\usepackage[utf8]{inputenc} % set input encoding (not needed with XeLaTeX)
+
+%%% Examples of Article customizations
+% These packages are optional, depending whether you want the features they provide.
+% See the LaTeX Companion or other references for full information.
+
+%%% PAGE DIMENSIONS
+\usepackage{geometry} % to change the page dimensions
+\geometry{a4paper} % or letterpaper (US) or a5paper or....
+% \geometry{margin=2in} % for example, change the margins to 2 inches all round
+% \geometry{landscape} % set up the page for landscape
+%   read geometry.pdf for detailed page layout information
+
+\usepackage{graphicx} % support the \includegraphics command and options
+
+% \usepackage[parfill]{parskip} % Activate to begin paragraphs with an empty line rather than an indent
+
+%%% PACKAGES
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+% These packages are all incorporated in the memoir class to one degree or another...
+
+%%% HEADERS & FOOTERS
+\usepackage{fancyhdr} % This should be set AFTER setting up the page geometry
+\pagestyle{fancy} % options: empty , plain , fancy
+\renewcommand{\headrulewidth}{0pt} % customise the layout...
+\lhead{}\chead{}\rhead{}
+\lfoot{}\cfoot{\thepage}\rfoot{}
+
+%%% SECTION TITLE APPEARANCE
+\usepackage{sectsty}
+\allsectionsfont{\sffamily\mdseries\upshape} % (See the fntguide.pdf for font help)
+% (This matches ConTeXt defaults)
+
+%%% ToC (table of contents) APPEARANCE
+\usepackage[nottoc,notlof,notlot]{tocbibind} % Put the bibliography in the ToC
+\usepackage[titles,subfigure]{tocloft} % Alter the style of the Table of Contents
+\renewcommand{\cftsecfont}{\rmfamily\mdseries\upshape}
+\renewcommand{\cftsecpagefont}{\rmfamily\mdseries\upshape} % No bold!
+
+\usepackage{cite}
+\usepackage{amsmath}
+\usepackage{url}
+
+
+%%% END Article customizations
+
+%%% The "real" document content comes below...
+
+\title{ME MS Journal}
+\author{Brian Fehrman}
+%\date{} % Activate to display a given date or no date (if empty),
+         % otherwise the current date is printed 
+
+\begin{document}
+\maketitle
+
+\section{8/15/2012}
+Types of orbital debris include: broken spacecraft, upper stage launch vehicles, intentionally released debris from missions, debris resulting from impacts, paint flecks, etc.
+
+Over 21,000 objects larger than 10cm (softball). Around 500,000 particles between 1cm and 10cm (larger than marble). Over 100 million pieces smaller than 1cm (not trackable). 
+
+\cite{NASAOD2012}
+
+More than 100 billion meteoroids larger than 1 microgram enter the earth's atmosphere daily with speeds greater than 11km/s.
+
+Smaller sized meteoroids in the micrometer range are estimated to travel around 60km/s. Whipple bumper can protect from collisions up to 18km/s.
+
+\cite{Close2010}
+
+\section{8/16/2012}
+Shielding technology exists, so called Whipple Shields and variations of it. Also called meteor bumpers. Help to break the larger debris into smaller debris clouds. Not perfect, some debris will still make it to the main structure and can cause damage in the form of abrasions, cracks, and even craters. 
+
+[side notes]
+
+Access to these structures is difficult, costly, and dangerous. Repair missions will inevitably leave behind more debris which will increase the likelihood of future damage to the structure being repaired as well as other structures.
+
+[end side notes]
+
+\cite{NASAHVIT2012}
+
+Much attention has been given to enhancing the self-healing within concrete using mutliple methods.
+
+\cite{Wu2012}
+
+Coatings have been made using epoxy resin filled microcapsules. These coatings were tested on cold rolled steel sheets and found to have good results.
+
+\cite{Zhao2012}
+
+White, Moore, and Sottos were the first to demonstrate the self healing concept less than 10 years ago. Self-healing polymers mimic biological systems which respond to damage. These systems recover mechanical function by remending original material and or polymerizing stored reserve material. 
+
+[side notes]
+
+This Lee2009 article is what talks about the strong motivation for self healing materials in the recent times.
+
+[end side notes]
+
+\cite{Lee2009}
+
+
+
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+\end{document}

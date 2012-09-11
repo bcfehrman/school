@@ -2,20 +2,20 @@
 
  \nomgroup{A}
 
-  \item [{$\epsilon_{33}$}]\begingroup Strain in the z direction\nomeqref {2.6}
-		\nompageref{11}
   \item [{$\rho$}]\begingroup Density of the rod material\nomeqref {2.2}
 		\nompageref{11}
   \item [{$A$}]\begingroup Cross-sectional area of the rod\nomeqref {2.1}
 		\nompageref{10}
-  \item [{$c$}]\begingroup Velocity of wave propagation through the rod\nomeqref {2.10}
+  \item [{$c*$}]\begingroup Velocity of wave propagation through the rod\nomeqref {2.10}
 		\nompageref{12}
-  \item [{$C_{33}$}]\begingroup Elastic constant in the z direction\nomeqref {2.6}
+  \item [{$C*_{33}$}]\begingroup Elastic constant in the z direction\nomeqref {2.6}
 		\nompageref{11}
   \item [{$dz$}]\begingroup Differential element of length for the rod\nomeqref {2.1}
 		\nompageref{10}
   \item [{$P$}]\begingroup Axial pressure applied to rod end\nomeqref {2.1}
 		\nompageref{10}
+  \item [{$S_{33}$}]\begingroup Strain in the z direction\nomeqref {2.6}
+		\nompageref{11}
   \item [{$T_3$}]\begingroup Stress in the z direction\nomeqref {2.1}
 		\nompageref{10}
   \item [{$w$}]\begingroup Displacement of the rod\nomeqref {2.2}

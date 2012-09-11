@@ -54,53 +54,60 @@ Canceling the $dz$ term,
 \label{eq:strainWave}
 \end{equation}
 
-$C_{33}$ is the elastic constant in the z direction and is defined as the ratio of the stress and strain in the z direction. This is given by,
+$C*_{33}$ is the elastic constant in the z direction and is defined as the ratio of the stress and strain in the z direction. This is given by,
 
 \begin{equation}
-C_{33} = \frac{T_3}{\epsilon_{33}} \implies T_3 = C_{33}\epsilon_{33}
+C*_{33} = \frac{T_3}{S_{33}} \implies T_3 = C*_{33}S_{33}
 \label{eq:T_3}
 \end{equation}
 
-\nomenclature{$C_{33}$}{Elastic constant in the z direction}
-\nomenclature{$\epsilon_{33}$}{Strain in the z direction}
+\nomenclature{$C*_{33}$}{Elastic constant in the z direction}
+\nomenclature{$S_{33}$}{Strain in the z direction}
 
-With $\epsilon_{33}$ being the strain in the z direction. Strain is the ratio of the change in material length to the original length and in this case is given by,
+With $S_{33}$ being the strain in the z direction. Strain is the ratio of the change in material length to the original length and in this case is given by,
 
 \begin{equation}
-\epsilon_{33} = \frac{dw}{dz}
-\label{eq:eps33}
+S_{33} = \frac{dw}{dz}
+\label{eq:S_33}
 \end{equation}
 
-Inserting \ref{eq:eps33} in to \ref{eq:T_3} we see that
+Inserting \ref{eq:S_33} in to \ref{eq:T_3} we see that
 
 \begin{equation}
-T_3 = C_{33}\frac{dw}{dz}
+T_3 = C*_{33}\frac{dw}{dz}
 \label{eq:T_3fin}
 \end{equation}
 
 Putting \ref{eq:T_3fin} back in to \ref{eq:strainWave},
 
 \begin{equation}
-C_{33}\frac{d^2w}{dz^2} = \rho \frac{d^2w}{dt^2}
+C*_{33}\frac{d^2w}{dz^2} = \rho \frac{d^2w}{dt^2}
 \end{equation}
 
 Dividing through by $\rho$ and moving the LHS term to the RHS, we arrive at
 
 \begin{equation}
-\frac{d^2w}{dt^2} - c^2 \frac{d^2w}{dz^2} = 0
+\frac{d^2w}{dt^2} - c*^2 \frac{d^2w}{dz^2} = 0
 \label{eq:waveEquationFin}
 \end{equation}
 
-\nomenclature{$c$}{Velocity of wave propagation through the rod}
+\nomenclature{$c*$}{Velocity of wave propagation through the rod}
 
-With $c$ being the velocity of the wave propagation and is defined as,
+With $c*$ being the velocity of the wave propagation and is defined as,
 
 \begin{equation}
-c = \sqrt{\frac{C_{33}}{\rho}}
+c* = \sqrt{\frac{C*_{33}}{\rho}}
 \end{equation}
 
 \section{Piezoelectric transducers with rod}
 
 This section describes the governing equations for $d_{33}$ piezoelectric transducers that are placed on each end of a rod. The following work is based on derivations by Dr. Korde.
 
-Testing git version
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.8\textwidth]{eps_pics/rodTrans.eps}
+\caption{Diagram of a rod with $d_{33}$ piezoelectric transducers placed on each end.
+	 \label{fig:rodTrans}} 
+\end{figure}
+
+

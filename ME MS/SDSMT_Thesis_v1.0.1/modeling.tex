@@ -99,16 +99,9 @@ With $c^*$ being the velocity of the wave propagation and is defined as,
 c^* = \sqrt{\frac{C^*_{33}}{\rho}}
 \end{equation}
 
-\section{Piezoelectric transducers with rod}
+\section{Piezoelectric transducers}
 
 This section describes the governing equations for $d_{33}$ piezoelectric transducers that are placed on each end of a rod. The following work is based on derivations by Dr. Korde.
-
-\begin{figure}[ht!]
-\centering
-\includegraphics[width=0.8\textwidth]{eps_pics/rodTrans.eps}
-\caption{Diagram of a rod with $d_{33}$ piezoelectric transducers placed on each end.
-	 \label{fig:rodTrans}} 
-\end{figure}
 
 The constitutive equations for the transducers are:
 
@@ -141,3 +134,27 @@ s^E_{33} = \frac{1}{C_{33}}
 \end{equation}
 
 With $C_{33}$ and $\epsilon ^T_{33}$ being the PZT elastic constant in the z direction and permittivity constant in the z direction respectively.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=1\textwidth]{eps_pics/trans_circ}
+\caption{Equivalent circuit diagram for the piezoelectric transudcers.
+	 \label{fig:trans_circ}} 
+\end{figure}
+
+The equivalent circuit for the transducers is modeled as a resistor and capacitor in series as shown in Figure \ref{fig:trans_circ} and with $C_c$ being the equivalent capacitance and is given by
+
+\begin{equation}
+C_c = \overline{\epsilon_{33}} \pi a^2/l
+\end{equation}
+
+Where $a$ and $l$ are the transducer area and length respectively.
+
+\section{Time reversal modeling}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.8\textwidth]{eps_pics/rodTrans.eps}
+\caption{Diagram of a rod with $d_{33}$ piezoelectric transducers placed on each end.
+	 \label{fig:rodTrans}} 
+\end{figure}

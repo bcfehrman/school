@@ -9,9 +9,10 @@
 \contentsline {section}{\numberline {1.5}Objectives}{8}
 \contentsline {chapter}{\numberline {2}Modeling}{10}
 \contentsline {section}{\numberline {2.1}One Dimensional Wave Equation}{10}
-\contentsline {section}{\numberline {2.2}Piezoelectric transducers with rod}{12}
-\contentsline {chapter}{\numberline {3}Experiments}{14}
-\contentsline {chapter}{\numberline {4}Results}{15}
-\contentsline {chapter}{\numberline {5}Recommended Future Work}{16}
-\contentsline {chapter}{\numberline {6}Conclusion}{17}
-\contentsline {chapter}{Bibliography}{18}
+\contentsline {section}{\numberline {2.2}Piezoelectric transducers}{12}
+\contentsline {section}{\numberline {2.3}Time reversal modeling}{14}
+\contentsline {chapter}{\numberline {3}Experiments}{15}
+\contentsline {chapter}{\numberline {4}Results}{16}
+\contentsline {chapter}{\numberline {5}Recommended Future Work}{17}
+\contentsline {chapter}{\numberline {6}Conclusion}{18}
+\contentsline {chapter}{Bibliography}{19}

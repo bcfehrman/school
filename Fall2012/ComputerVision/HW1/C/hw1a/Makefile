@@ -1,30 +1,11 @@
-IDIR =/usr/include
-CC=gcc
-CPP=g++
-CFLAGS=-I$(IDIR)
+INCPATH = -I /usr/include/opencv
+LIBPATH = -L /usr/lib
+LIBRARIES = -lm -lopencv_highgui -lopencv_core
+EXEC = hw1a
+COMPILER = g++
 
-ODIR=obj
-LDIR =/usr/lib
-
-LIBS=-lcv -lhighgui -lm -lcvaux
-
-_DEPS = cv.h cvaux.h highgui.h
-DEPS = $(patsubst %,$(IDIR)/%,$(_DEPS))
-
-_OBJ = hw1a.o 
-OBJ = $(patsubst %,$(ODIR)/%,$(_OBJ))
-
-
-$(ODIR)/%.o: %.c $(DEPS)
-	$(CC) -c -o $@ $< $(CFLAGS)
-
-make_c: $(OBJ)
-	$(CC) -o $@ $^ $(CFLAGS) $(LIBS)
-
-make_cpp: $(OBJ)
-	$(CPP) -o $@ $^ $(CFLAGS) $(LIBS)
-
-.PHONY: clean
+$(EXEC): $(EXEC).cpp
+	$(COMPILER) $(INCPATH) $(LIBPATH) $(LIBRARIES) $(OPTIONS) $^ -o $@
 
 clean:
-	rm -f $(ODIR)/*.o *~ core $(INCDIR)/*~ 
+	rm -rf $(EXEC) *o 

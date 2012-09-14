@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=latex 2012.8.31)  13 SEP 2012 10:47
+This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=latex 2012.8.31)  13 SEP 2012 19:24
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -539,8 +539,6 @@ Chapter 2.
 (./modeling.tex
 File: eps_pics/deriveWaveRod.eps Graphic file (type eps)
  <eps_pics/deriveWaveRod.eps>
-File: eps_pics/diffElementRod.eps Graphic file (type eps)
- <eps_pics/diffElementRod.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 10
  []
@@ -548,6 +546,8 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [10
 
 ]
+File: eps_pics/diffElementRod.eps Graphic file (type eps)
+ <eps_pics/diffElementRod.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 11
  []
@@ -560,13 +560,13 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [12]
 File: eps_pics/trans_circ.eps Graphic file (type eps)
  <eps_pics/trans_circ.eps>
-File: eps_pics/rodTrans.eps Graphic file (type eps)
- <eps_pics/rodTrans.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 13
  []
 
-[13])
+[13]
+File: eps_pics/rodTrans.eps Graphic file (type eps)
+ <eps_pics/rodTrans.eps>)
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 14
  []
@@ -663,12 +663,12 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 
 [24] (./thesis.aux) ) 
 Here is how much of TeX's memory you used:
- 5259 strings out of 493500
- 69056 string characters out of 3143858
+ 5263 strings out of 493500
+ 69126 string characters out of 3143858
  156386 words of memory out of 3000000
- 8425 multiletter control sequences out of 15000+200000
+ 8429 multiletter control sequences out of 15000+200000
  11250 words of font info for 43 fonts, out of 3000000 for 9000
  953 hyphenation exceptions out of 8191
  37i,7n,43p,2496b,426s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on thesis.dvi (30 pages, 61368 bytes).
+Output written on thesis.dvi (30 pages, 63312 bytes).

@@ -10,7 +10,7 @@
 \contentsline {chapter}{\numberline {2}Modeling}{10}
 \contentsline {section}{\numberline {2.1}One Dimensional Wave Equation}{10}
 \contentsline {section}{\numberline {2.2}Piezoelectric transducers}{12}
-\contentsline {section}{\numberline {2.3}Time reversal modeling}{14}
+\contentsline {section}{\numberline {2.3}Rod with Transducers}{14}
 \contentsline {chapter}{\numberline {3}Experiments}{15}
 \contentsline {chapter}{\numberline {4}Results}{16}
 \contentsline {chapter}{\numberline {5}Recommended Future Work}{17}

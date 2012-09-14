@@ -1,7 +1,10 @@
 % Modeling
-\section{One Dimensional Wave Equation}
+This chapter begins with the models and derivations for the case of one dimensional time reversal and is based upon work performed by Korde \cite{Fehrman2012}. Following that material will be a brief overview of two dimensional time reversal which is drawn from a number of published sources.
 
-In this section the one dimensional wave equation for a linear elastic material with uniform density and cross-sectional area will be derived. The derivation is based on knowledge from a number of published sources.
+\section{One Dimensional Wave Equation}
+\label{sec:oneDWaveEquation}
+
+In this section the one dimensional wave equation for a linear elastic material with uniform density and cross-sectional area will be derived. The derivation is based on knowledge from numerous books such as Kolsky \cite{Kolsky1963} and Brown et. al. \cite{Brown2008}.
 
 \begin{figure}[ht!]
 \centering
@@ -31,26 +34,26 @@ T_3 = \frac{P}{A}
 Applying Newton's second law and summing the forces,
 
 \begin{equation}
--T_3A + (T_3 + \frac{dT_3}{dz}dz)A = A\rho dz \frac{d^2w}{dt^2}
+-T_3A + (T_3 + \frac{dT_3}{dz}dz)A = A\rho^* dz \frac{d^2w}{dt^2}
 \end{equation}
 
-\nomenclature{$\rho$}{Density of the rod material}
+\nomenclature{$\rho^*$}{Density of the rod material}
 \nomenclature{$w$}{Displacement of the rod}
 
-With $\rho$ being the density of the rod material and $w$ being the displacement. Dividing through by the area,
+With $\rho^*$ being the density of the rod material and $w$ being the displacement. Dividing through by the area,
 
 \begin{equation}
--T_3 + T_3 + \frac{dT_3}{dz}dz = \rho dz \frac{d^2w}{dt^2}
+-T_3 + T_3 + \frac{dT_3}{dz}dz = \rho^* dz \frac{d^2w}{dt^2}
 \end{equation}
 
 \begin{equation}
-\frac{dT_3}{dz}dz = \rho dz \frac{d^2w}{dt^2}
+\frac{dT_3}{dz}dz = \rho^* dz \frac{d^2w}{dt^2}
 \end{equation}
 
 Canceling the $dz$ term,
 
 \begin{equation}
-\frac{dT_3}{dz} = \rho \frac{d^2w}{dt^2}
+\frac{dT_3}{dz} = \rho^* \frac{d^2w}{dt^2}
 \label{eq:strainWave}
 \end{equation}
 
@@ -81,10 +84,10 @@ T_3 = C^*_{33}\frac{dw}{dz}
 Putting \ref{eq:T_3fin} back in to \ref{eq:strainWave} and realizing that $w$ is a function of both $t$ and $z$,
 
 \begin{equation}
-C^*_{33}\frac{\partial ^2w}{\partial z^2} = \rho \frac{\partial ^2w}{\partial t^2}
+C^*_{33}\frac{\partial ^2w}{\partial z^2} = \rho^* \frac{\partial ^2w}{\partial t^2}
 \end{equation}
 
-Dividing through by $\rho$ and moving the LHS term to the RHS, we arrive at
+Dividing through by $\rho^*$ and moving the LHS term to the RHS, we arrive at
 
 \begin{equation}
 \frac{\partial ^2w}{\partial t^2} - c^{*2} \frac{\partial ^2w}{\partial z^2} = 0
@@ -96,7 +99,7 @@ Dividing through by $\rho$ and moving the LHS term to the RHS, we arrive at
 With $c^*$ being the velocity of the wave propagation and is defined as,
 
 \begin{equation}
-c^* = \sqrt{\frac{C^*_{33}}{\rho}}
+c^* = \sqrt{\frac{C^*_{33}}{\rho^*}}
 \end{equation}
 
 \section{Piezoelectric transducers}
@@ -142,15 +145,15 @@ With $C_{33}$ and $\epsilon ^T_{33}$ being the PZT elastic constant in the z dir
 	 \label{fig:trans_circ}} 
 \end{figure}
 
-The equivalent circuit for the transducers is modeled as a resistor and capacitor in series as shown in Figure \ref{fig:trans_circ} and with $C_c$ being the equivalent capacitance and is given by
+The equivalent circuits for the transducers are modeled as a resistor and capacitor in series as shown in Figure \ref{fig:trans_circ} and with $C_c$ being the equivalent capacitance and is given by
 
 \begin{equation}
 C_c = \overline{\epsilon_{33}} \pi a^2/l
 \end{equation}
 
-Where $a$ and $l$ are the transducer area and length respectively.
+Where $a$ and $l$ are the transducer area and length respectively. 
 
-\section{Time reversal modeling}
+\section{Rod with Transducers}
 
 \begin{figure}[ht!]
 \centering
@@ -158,3 +161,12 @@ Where $a$ and $l$ are the transducer area and length respectively.
 \caption{Diagram of a rod with $d_{33}$ piezoelectric transducers placed on each end.
 	 \label{fig:rodTrans}} 
 \end{figure}
+
+Consider a rod with $d_{33}$ transducers affixed to each end as pictured in Figure \ref{fig:rodTrans}. We wish to model propagation of a wave through the system with the wave being sent by one of the transducers. The one-dimensional wave results from Section \ref{sec:oneDWaveEquation} can be applied here such that the equation of the motion for the wave propagating through transducers is the same as through the rod but with a different density and elastic coefficient which will be denoted as $\rho$ and $C_{33}$ respectively. Then for $0 \le z \le l$ and $L < z \le (L+l)$ we have
+
+\begin{equation}
+\frac{\partial ^2w}{\partial t^2} - c^2 \frac{\partial ^2w}{\partial z^2} = 0
+\label{eq:transWaveEquationFin}
+\end{equation}
+
+

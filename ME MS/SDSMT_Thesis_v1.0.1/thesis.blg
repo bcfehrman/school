@@ -1,21 +1,64 @@
-This is BibTeX, Version 0.99dThe top-level auxiliary file: thesis.aux
+This is BibTeX, Version 0.99d (TeX Live 2013/dev)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: thesis.aux
 The style file: unsrt.bst
 Database file #1: thesis.bib
-I was expecting a `,' or a `}'---line 63 of file thesis.bib
+I was expecting a `,' or a `}'---line 73 of file thesis.bib
  : 
  : @UNPUBLISHED{Burattini2009,
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
 Warning--entry type for "Close2010" isn't style-file defined
---line 83 of file thesis.bib
+--line 93 of file thesis.bib
 Warning--entry type for "NASAOD2012" isn't style-file defined
---line 313 of file thesis.bib
+--line 332 of file thesis.bib
 Warning--entry type for "NASAHVIT2012" isn't style-file defined
---line 322 of file thesis.bib
+--line 341 of file thesis.bib
 Warning--entry type for "Ultrasound2006" isn't style-file defined
---line 436 of file thesis.bib
+--line 455 of file thesis.bib
 Warning--empty booktitle in Luo2009
 Warning--empty year in Luo2009
 Warning--empty booktitle in Caruso2009
 Warning--empty year in Caruso2009
+You've used 55 entries,
+            1791 wiz_defined-function locations,
+            743 strings with 11537 characters,
+and the built_in function-call counts, 8986 in all, are:
+= -- 714
+> -- 574
+< -- 0
++ -- 214
+- -- 159
+* -- 483
+:= -- 1657
+add.period$ -- 174
+call.type$ -- 55
+change.case$ -- 54
+chr.to.int$ -- 0
+cite$ -- 59
+duplicate$ -- 382
+empty$ -- 811
+format.name$ -- 159
+if$ -- 1905
+int.to.chr$ -- 0
+int.to.str$ -- 55
+missing$ -- 32
+newline$ -- 287
+num.names$ -- 55
+pop$ -- 127
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 144
+stack$ -- 0
+substring$ -- 147
+swap$ -- 39
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 4
+while$ -- 67
+width$ -- 57
+write$ -- 571
 (There was 1 error message)

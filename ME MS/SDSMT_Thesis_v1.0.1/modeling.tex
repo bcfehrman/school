@@ -243,10 +243,48 @@ In this section a crack located at an arbitrary position is introduced into the 
   \nomenclature{$C^c_{33}$}{Elastic coefficient of the crack in the z direction}
   
   \section{One Dimensional Time Reversal Focusing at a Crack}
-  Here we will consider time reversal playback of the system modeled thus far. As before, transducer A plays out a stress wave which will propagate along the rod towards transducer B on the opposite end. When the wave reaches the crack location it will refract in which part of its energy is transmitted and part is reflected and is described by the coefficients shown in Section \ref{sec:rodTransCrack}. The strain caused by the wave reflected portion returning to the transducer A is
+  Considered here is the time reversal playback of the system modeled thus far. First there is an interrogatory phase in which transducer A plays out a stress wave which will propagate along the rod towards transducer B on the opposite end. The strain resulting from this stress wave is taken as
   
   \begin{equation}
-  \frac{\partial w_{cr}}{\partial z} = 
+  \frac{\partial w}{\partial z}
   \end{equation}
   
+  \nomenclature{$\frac{\partial w}{\partial z}$}{The strain resulting from the stress wave that is played by transducer A during the initial phase}
   
+  When the wave reaches the crack location it will refract causing part of its energy to be transmitted and part to be reflected and is described by the coefficients shown in Section \ref{sec:rodTransCrack}. The strain caused by the wave reflected portion returning to the transducer A is
+  
+  \begin{equation}
+  \frac{\partial w_{cr}}{\partial z} = \overline{\boldsymbol{R}}\frac{\partial w_t}{\partial z}
+  \label{eq:reflStrain}
+  \end{equation}
+  
+  For the reflected portion of the wave, its strain will be
+  
+    \begin{equation}
+    \frac{\partial w_{ct}}{\partial z} = \overline{\boldsymbol{T}}\frac{\partial w_t}{\partial z}
+    \label{eq:tranStrain}
+    \end{equation}
+    
+    In both \ref{eq:reflStrain} and \ref{eq:tranStrain}
+    
+    \begin{equation}
+    \frac{\partial w_t}{\partial z} = \boldsymbol{T} \frac{\partial w}{\partial z}
+    \end{equation}
+    
+    \nomenclature{$\frac{\partial w_{ct}}{\partial z}$}{Strain caused by wave portion reflecting to transducer A}
+    
+    \nomenclature{$\frac{\partial w_{cr}}{\partial z}$}{Strain caused by wave portion transmitting to transducer B}
+    
+    This will create a voltage at transducer A which is found in the frequency domain as
+    
+    \begin{equation}
+    V^+_a(i\omega) = -\frac{d_{33} \pi a^2}{2 s^E_{33} C_c} \frac{\partial w_{cr}}{\partial z} (i\omega)
+    \end{equation}
+    
+    and at transducer B
+    
+    \begin{equation}
+    V^+_t(i\omega) = \frac{d_{33} \pi a^2}{2 s^E_{33} C_c} \boldsymbol{\hat{T}}\frac{\partial w_{ct}}{\partial z} (i\omega)
+    \end{equation}
+    
+    

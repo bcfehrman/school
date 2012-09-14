@@ -12,6 +12,16 @@
 		\nompageref{15}
   \item [{$\epsilon ^T_{33}$}]\begingroup PZT permittivity constant for the z direction\nomeqref {2.17}
 		\nompageref{13}
+  \item [{$\frac{\partial w_{cr}}{\partial z}$}]\begingroup Strain caused by wave portion transmitting to transducer B\nomeqref {2.30}
+		\nompageref{17}
+  \item [{$\frac{\partial w_{ct}}{\partial z}$}]\begingroup Strain caused by wave portion reflecting to transducer A\nomeqref {2.30}
+		\nompageref{17}
+  \item [{$\frac{\partial w}{\partial z}$}]\begingroup The strain resulting from the stress wave that is played by transducer A during the initial phase\nomeqref {2.27}
+		\nompageref{16}
+  \item [{$\overline{R}$}]\begingroup Reflection coefficient at $z = l_c$\nomeqref {2.26}
+		\nompageref{16}
+  \item [{$\overline{T}$}]\begingroup Transmission coefficient at $z = l_c$\nomeqref {2.26}
+		\nompageref{16}
   \item [{$\rho ^c$}]\begingroup Density of the crack\nomeqref {2.26}
 		\nompageref{16}
   \item [{$\rho$}]\begingroup Density of the transducer material\nomeqref {2.19}

@@ -7,8 +7,8 @@ Scanning style file ./nomencl.ist.......
 ** Input style error (file = ./nomencl.ist, line = 67):
    -- Unknown specifier lethead_flag.
 ...done (10 attributes redefined, 3 ignored).
-Scanning input file thesis.glo....done (24 entries accepted, 0 rejected).
-Sorting entries....done (113 comparisons).
-Generating output file thesis.gls....done (54 lines written, 0 warnings).
+Scanning input file thesis.glo....done (29 entries accepted, 0 rejected).
+Sorting entries....done (139 comparisons).
+Generating output file thesis.gls....done (64 lines written, 0 warnings).
 Output written in thesis.gls.
 Transcript written in thesis.ilg.

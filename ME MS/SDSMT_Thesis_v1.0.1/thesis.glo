@@ -20,5 +20,10 @@
 \glossaryentry{a$\boldsymbol{T}$@[{$\boldsymbol{T}$}]\begingroup Transmission coefficient at $z = l$\nomeqref {2.22}|nompageref}{15}
 \glossaryentry{a$\boldsymbol{\hat{R}}$@[{$\boldsymbol{\hat{R}}$}]\begingroup Reflection coefficient at $z = (L+ l)$\nomeqref {2.24}|nompageref}{15}
 \glossaryentry{a$\boldsymbol{\hat{T}}$@[{$\boldsymbol{\hat{T}}$}]\begingroup Transmission coefficient at $z = (L = l)$\nomeqref {2.24}|nompageref}{15}
+\glossaryentry{a$\overline{R}$@[{$\overline{R}$}]\begingroup Reflection coefficient at $z = l_c$\nomeqref {2.26}|nompageref}{16}
+\glossaryentry{a$\overline{T}$@[{$\overline{T}$}]\begingroup Transmission coefficient at $z = l_c$\nomeqref {2.26}|nompageref}{16}
 \glossaryentry{a$\rho ^c$@[{$\rho ^c$}]\begingroup Density of the crack\nomeqref {2.26}|nompageref}{16}
 \glossaryentry{a$C^c_{33}$@[{$C^c_{33}$}]\begingroup Elastic coefficient of the crack in the z direction\nomeqref {2.26}|nompageref}{16}
+\glossaryentry{a$\frac{\partial w}{\partial z}$@[{$\frac{\partial w}{\partial z}$}]\begingroup The strain resulting from the stress wave that is played by transducer A during the initial phase\nomeqref {2.27}|nompageref}{16}
+\glossaryentry{a$\frac{\partial w_{ct}}{\partial z}$@[{$\frac{\partial w_{ct}}{\partial z}$}]\begingroup Strain caused by wave portion reflecting to transducer A\nomeqref {2.30}|nompageref}{17}
+\glossaryentry{a$\frac{\partial w_{cr}}{\partial z}$@[{$\frac{\partial w_{cr}}{\partial z}$}]\begingroup Strain caused by wave portion transmitting to transducer B\nomeqref {2.30}|nompageref}{17}

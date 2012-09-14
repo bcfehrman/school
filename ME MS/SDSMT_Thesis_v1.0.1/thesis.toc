@@ -13,8 +13,8 @@
 \contentsline {section}{\numberline {2.3}Rod with Transducers}{14}
 \contentsline {section}{\numberline {2.4}Cracked Rod with Transducers}{15}
 \contentsline {section}{\numberline {2.5}One Dimensional Time Reversal Focusing at a Crack}{16}
-\contentsline {chapter}{\numberline {3}Experiments}{17}
-\contentsline {chapter}{\numberline {4}Results}{18}
-\contentsline {chapter}{\numberline {5}Recommended Future Work}{19}
-\contentsline {chapter}{\numberline {6}Conclusion}{20}
-\contentsline {chapter}{Bibliography}{21}
+\contentsline {chapter}{\numberline {3}Experiments}{18}
+\contentsline {chapter}{\numberline {4}Results}{19}
+\contentsline {chapter}{\numberline {5}Recommended Future Work}{20}
+\contentsline {chapter}{\numberline {6}Conclusion}{21}
+\contentsline {chapter}{Bibliography}{22}

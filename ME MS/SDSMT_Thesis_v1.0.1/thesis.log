@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=latex 2012.8.31)  13 SEP 2012 19:24
+This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=latex 2012.8.31)  14 SEP 2012 14:34
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -425,23 +425,28 @@ LaTeX Font Info:    Try loading font information for U+msb on input line 5.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
-))
+)
 Overfull \hbox (23.8696pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 ii
  []
 
 [2
 
-] (./thesis.toc)
-\tf@toc=\write4
-\openout4 = `thesis.toc'.
-
-
+])
 Overfull \hbox (27.13345pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 iii
  []
 
-[3
+[3] (./thesis.toc)
+\tf@toc=\write4
+\openout4 = `thesis.toc'.
+
+
+Overfull \hbox (26.80707pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 iv
+ []
+
+[4
 
 ] (./thesis.lof
 Overfull \hbox (65.53462pt too wide) in paragraph at lines 2--2
@@ -455,22 +460,22 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--2
  []
 
 
-Overfull \hbox (26.80707pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 iv
+Overfull \hbox (23.54321pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 v
  []
 
-[4
+[5
 
 ])
 \tf@lof=\write5
 \openout5 = `thesis.lof'.
 
 
-Overfull \hbox (23.54321pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 v
+Overfull \hbox (26.80707pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 vi
  []
 
-[5]
+[6]
 Chapter 1.
 (./introduction.tex
 File: eps_pics/orbitalDebris.eps Graphic file (type eps)
@@ -566,31 +571,25 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 
 [13]
 File: eps_pics/rodTrans.eps Graphic file (type eps)
- <eps_pics/rodTrans.eps>)
+ <eps_pics/rodTrans.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 14
  []
 
 [14]
-Chapter 3.
-
+File: eps_pics/rodTransCrack.eps Graphic file (type eps)
+ <eps_pics/rodTransCrack.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 15
  []
 
-[15
-
-]
-Chapter 4.
-
+[15])
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 16
  []
 
-[16
-
-]
-Chapter 5.
+[16]
+Chapter 3.
 
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 17
@@ -599,13 +598,31 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [17
 
 ]
-Chapter 6.
-(./thesis.bbl
+Chapter 4.
+
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 18
  []
 
 [18
+
+]
+Chapter 5.
+
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 19
+ []
+
+[19
+
+]
+Chapter 6.
+(./thesis.bbl
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 20
+ []
+
+[20
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 4--10
@@ -631,22 +648,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--23
 
 
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 19
- []
-
-[19
-
-]
-Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 20
- []
-
-[20]
-Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 21
  []
 
-[21]
+[21
+
+]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 22
  []
@@ -656,19 +663,29 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 23
  []
 
-[23])
+[23]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 24
  []
 
-[24] (./thesis.aux) ) 
+[24]
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 25
+ []
+
+[25])
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 26
+ []
+
+[26] (./thesis.aux) ) 
 Here is how much of TeX's memory you used:
- 5263 strings out of 493500
- 69126 string characters out of 3143858
+ 5284 strings out of 493500
+ 69387 string characters out of 3143858
  156386 words of memory out of 3000000
- 8429 multiletter control sequences out of 15000+200000
- 11250 words of font info for 43 fonts, out of 3000000 for 9000
+ 8441 multiletter control sequences out of 15000+200000
+ 13712 words of font info for 51 fonts, out of 3000000 for 9000
  953 hyphenation exceptions out of 8191
  37i,7n,43p,2496b,426s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on thesis.dvi (30 pages, 63312 bytes).
+Output written on thesis.dvi (33 pages, 73004 bytes).

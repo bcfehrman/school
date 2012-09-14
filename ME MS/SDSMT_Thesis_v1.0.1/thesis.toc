@@ -1,4 +1,4 @@
-\contentsline {chapter}{List of Figures}{iv}
+\contentsline {chapter}{List of Figures}{v}
 \contentsline {chapter}{\numberline {1}Introduction}{1}
 \contentsline {section}{\numberline {1.1}Motivation}{1}
 \contentsline {section}{\numberline {1.2}Self-Healing}{2}
@@ -11,8 +11,10 @@
 \contentsline {section}{\numberline {2.1}One Dimensional Wave Equation}{10}
 \contentsline {section}{\numberline {2.2}Piezoelectric transducers}{12}
 \contentsline {section}{\numberline {2.3}Rod with Transducers}{14}
-\contentsline {chapter}{\numberline {3}Experiments}{15}
-\contentsline {chapter}{\numberline {4}Results}{16}
-\contentsline {chapter}{\numberline {5}Recommended Future Work}{17}
-\contentsline {chapter}{\numberline {6}Conclusion}{18}
-\contentsline {chapter}{Bibliography}{19}
+\contentsline {section}{\numberline {2.4}Cracked Rod with Transducers}{15}
+\contentsline {section}{\numberline {2.5}One Dimensional Time Reversal Focusing at a Crack}{16}
+\contentsline {chapter}{\numberline {3}Experiments}{17}
+\contentsline {chapter}{\numberline {4}Results}{18}
+\contentsline {chapter}{\numberline {5}Recommended Future Work}{19}
+\contentsline {chapter}{\numberline {6}Conclusion}{20}
+\contentsline {chapter}{Bibliography}{21}

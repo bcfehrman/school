@@ -118,6 +118,10 @@ and
 D_3 = \overline{\epsilon ^T_{33}} E_3 + \frac{d_{33}}{s^E_{33}} S_3
 \end{equation}
 
+\nomenclature{$D_3$}{Electric displacement in the z direction}
+\nomenclature{$E_3$}{Electric field intensity in the z direction}
+\nomenclature{$d_{33}$}{Strain constant relating the strain and field intensity in the z direction}
+
 Where $D_3$, $E_3$, and $d_{33}$ are the electric displacement, electric field intensity, and the strain constant relating strain and field intensity, respectively, all in the z direction. The other variables are given by the following equations:
 
 \begin{equation}
@@ -136,14 +140,19 @@ s^E_{33} = \frac{1}{C_{33}}
 \overline{\epsilon ^T_{33}} = -\frac{\epsilon ^T_{33}}{s^E_{33}(1 - \frac{d^2_{33}}{s^E_{33}\epsilon ^T_{33}})}
 \end{equation}
 
+\nomenclature{$C_{33}$}{PZT elastic constant in the z direction}
+\nomenclature{$\epsilon ^T_{33}$}{PZT permittivity constant for the z direction}
+
 With $C_{33}$ and $\epsilon ^T_{33}$ being the PZT elastic constant in the z direction and permittivity constant in the z direction respectively.
 
 \begin{figure}[ht!]
 \centering
 \includegraphics[width=1\textwidth]{eps_pics/trans_circ}
-\caption{Equivalent circuit diagram for the piezoelectric transudcers.
+\caption{Equivalent circuit diagram for the piezoelectric transducers.
 	 \label{fig:trans_circ}} 
 \end{figure}
+
+\nomenclature{$C_c$}{Equivalent capacitance for the transducers}
 
 The equivalent circuits for the transducers are modeled as a resistor and capacitor in series as shown in Figure \ref{fig:trans_circ} and with $C_c$ being the equivalent capacitance and is given by
 
@@ -151,9 +160,12 @@ The equivalent circuits for the transducers are modeled as a resistor and capaci
 C_c = \overline{\epsilon_{33}} \pi a^2/l
 \end{equation}
 
+\nomenclature{$a$}{Transducer cross sectional area}
+\nomenclature{$l$}{Transducer length}
 Where $a$ and $l$ are the transducer area and length respectively. 
 
 \section{Rod with Transducers}
+\label{sec:rodWithTrans}
 
 \begin{figure}[ht!]
 \centering
@@ -162,11 +174,79 @@ Where $a$ and $l$ are the transducer area and length respectively.
 	 \label{fig:rodTrans}} 
 \end{figure}
 
-Consider a rod with $d_{33}$ transducers affixed to each end as pictured in Figure \ref{fig:rodTrans}. We wish to model propagation of a wave through the system with the wave being sent by one of the transducers. The one-dimensional wave results from Section \ref{sec:oneDWaveEquation} can be applied here such that the equation of the motion for the wave propagating through transducers is the same as through the rod but with a different density and elastic coefficient which will be denoted as $\rho$ and $C_{33}$ respectively. Then for $0 \le z \le l$ and $L < z \le (L+l)$ we have
+Consider a rod with $d_{33}$ transducers affixed to each end as pictured in Figure \ref{fig:rodTrans}. We wish to model propagation of a wave through the system with the wave being sent by one of the transducers. The one-dimensional wave results from Section \ref{sec:oneDWaveEquation} can be applied here such that the equation of the motion for the wave propagating through the transducers is the same as through the rod but with a different density and elastic coefficient which will be denoted as $\rho$ and $C_{33}$ respectively. The wave velocity through the transducer is then described as
+
+\begin{equation}
+c = \sqrt{\frac{C_{33}}{\rho}}
+\end{equation}
+
+\nomenclature{$\rho$}{Density of the transducer material}
+
+So for $0 \le z \le l$ and $L < z \le (L+l)$ we have
 
 \begin{equation}
 \frac{\partial ^2w}{\partial t^2} - c^2 \frac{\partial ^2w}{\partial z^2} = 0
 \label{eq:transWaveEquationFin}
 \end{equation}
 
+For the rod domain, $l < z \le L$, we just apply equation \ref{eq:waveEquationFin}. Let the stress and deflection across the interfaces be continuous. When a wave encounters either of the interfaces it will experience refraction in which part of the wave will be reflected and part will be transmitted into the next medium. This phenomena can be accounted for by finding the reflection and transmission coefficients for each interface. For $z = l$ these coefficients are found to be
 
+\begin{equation}
+\boldsymbol{R} = \frac{\overline{C_{33}} + \frac{\overline{d_{33}}d_{33}}{2s^E_{33}} - C^*_{33}}{\overline{C_{33}} + \frac{\overline{d_{33}}d_{33}}{2s^E_{33}} + C^*_{33}}
+\end{equation}
+
+\begin{equation}
+\boldsymbol{T} = \frac{2(\overline{C_{33}} + \frac{\overline{d_{33}}d_{33}}{2s^E_{33}})}{\overline{C_{33}} + \frac{\overline{d_{33}}d_{33}}{2s^E_{33}} + C^*_{33}}
+\end{equation}
+
+\nomenclature{$\boldsymbol{R}$}{Reflection coefficient at $z = l$}
+\nomenclature{$\boldsymbol{T}$}{Transmission coefficient at $z = l$}
+
+Similarly, for the interface at $z = (L + l)$
+
+\begin{equation}
+\boldsymbol{\hat{R}} = \frac{\overline{C_{33}} - \frac{\overline{d_{33}}d_{33}}{2s^E_{33}} - C^*_{33}}{\overline{C_{33}} + \frac{\overline{d_{33}}d_{33}}{2s^E_{33}} + C^*_{33}}
+\end{equation}
+
+\begin{equation}
+\boldsymbol{\hat{T}} = \frac{2C^*_{33}}{\overline{C_{33}} + \frac{\overline{d_{33}}d_{33}}{2s^E_{33}} + C^*_{33}}
+\end{equation}
+
+\nomenclature{$\boldsymbol{\hat{R}}$}{Reflection coefficient at $z = (L+ l)$}
+\nomenclature{$\boldsymbol{\hat{T}}$}{Transmission coefficient at $z = (L = l)$}
+
+\section{Cracked Rod with Transducers}
+\label{sec:rodTransCrack}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.8\textwidth]{eps_pics/rodTransCrack.eps}
+\caption{Diagram of a rod with $d_{33}$ piezoelectric transducers placed on each end and a crack located at an arbitrary location within the system, with $l_c$ being the distance of the crack from the origin and is not known a prior.
+	 \label{fig:rodTransCrack}} 
+\end{figure}
+
+
+In this section a crack located at an arbitrary position is introduced into the system modeled in Section \ref{sec:rodWithTrans} and is shown in Figure \ref{fig:rodTransCrack}. The crack can be modeled as another interface boundary within the system as we saw previously. If a stress wave is played out from one of these transducers, say transducer A, then it will travel through the rod and refracts upon reaching the crack location due to a change in the medium. The crack can then be accounted for as a change in the material density and elastic coefficient from $\rho ^*$ to $\rho ^c$ and from $C^*_{33}$ to $C^c_{33}$ respectively. Again, let the stress and strain at the crack interface be continuous. As seen before we will have a reflection coefficient and a transmission coefficient which are given by
+
+ \begin{equation}
+ \boldsymbol{\overline{R}} = \frac{C^*_{33} - C^c_{33}}{C^*_{33} + C^c_{33}}
+ \end{equation}
+ 
+  \begin{equation}
+  \boldsymbol{\overline{T}} = \frac{2C^*_{33}}{C^*_{33} + C^c_{33}}
+  \end{equation}
+  
+  
+  \nomenclature{$\overline{R}$}{Reflection coefficient at $z = l_c$}
+  \nomenclature{$\overline{T}$}{Transmission coefficient at $z = l_c$}
+  \nomenclature{$\rho ^c$}{Density of the crack}
+  \nomenclature{$C^c_{33}$}{Elastic coefficient of the crack in the z direction}
+  
+  \section{One Dimensional Time Reversal Focusing at a Crack}
+  Here we will consider time reversal playback of the system modeled thus far. As before, transducer A plays out a stress wave which will propagate along the rod towards transducer B on the opposite end. When the wave reaches the crack location it will refract in which part of its energy is transmitted and part is reflected and is described by the coefficients shown in Section \ref{sec:rodTransCrack}. The strain caused by the wave reflected portion returning to the transducer A is
+  
+  \begin{equation}
+  \frac{\partial w_{cr}}{\partial z} = 
+  \end{equation}
+  
+  

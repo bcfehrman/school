@@ -2,22 +2,52 @@
 
  \nomgroup{A}
 
-  \item [{$\rho$}]\begingroup Density of the rod material\nomeqref {2.2}
+  \item [{$\boldsymbol{\hat{R}}$}]\begingroup Reflection coefficient at $z = (L+ l)$\nomeqref {2.24}
+		\nompageref{15}
+  \item [{$\boldsymbol{\hat{T}}$}]\begingroup Transmission coefficient at $z = (L = l)$\nomeqref {2.24}
+		\nompageref{15}
+  \item [{$\boldsymbol{R}$}]\begingroup Reflection coefficient at $z = l$\nomeqref {2.22}
+		\nompageref{15}
+  \item [{$\boldsymbol{T}$}]\begingroup Transmission coefficient at $z = l$\nomeqref {2.22}
+		\nompageref{15}
+  \item [{$\epsilon ^T_{33}$}]\begingroup PZT permittivity constant for the z direction\nomeqref {2.17}
+		\nompageref{13}
+  \item [{$\rho ^c$}]\begingroup Density of the crack\nomeqref {2.26}
+		\nompageref{16}
+  \item [{$\rho$}]\begingroup Density of the transducer material\nomeqref {2.19}
+		\nompageref{14}
+  \item [{$\rho^*$}]\begingroup Density of the rod material\nomeqref {2.2}
 		\nompageref{11}
   \item [{$A$}]\begingroup Cross-sectional area of the rod\nomeqref {2.1}
-		\nompageref{10}
-  \item [{$c*$}]\begingroup Velocity of wave propagation through the rod\nomeqref {2.10}
+		\nompageref{11}
+  \item [{$a$}]\begingroup Transducer cross sectional area\nomeqref {2.18}
+		\nompageref{14}
+  \item [{$c^*$}]\begingroup Velocity of wave propagation through the rod\nomeqref {2.10}
 		\nompageref{12}
-  \item [{$C*_{33}$}]\begingroup Elastic constant in the z direction\nomeqref {2.6}
-		\nompageref{11}
+  \item [{$C^*_{33}$}]\begingroup Elastic constant in the z direction\nomeqref {2.6}
+		\nompageref{12}
+  \item [{$C^c_{33}$}]\begingroup Elastic coefficient of the crack in the z direction\nomeqref {2.26}
+		\nompageref{16}
+  \item [{$C_c$}]\begingroup Equivalent capacitance for the transducers\nomeqref {2.17}
+		\nompageref{13}
+  \item [{$C_{33}$}]\begingroup PZT elastic constant in the z direction\nomeqref {2.17}
+		\nompageref{13}
+  \item [{$D_3$}]\begingroup Electric displacement in the z direction\nomeqref {2.13}
+		\nompageref{13}
+  \item [{$d_{33}$}]\begingroup Strain constant relating the strain and field intensity in the z direction\nomeqref {2.13}
+		\nompageref{13}
   \item [{$dz$}]\begingroup Differential element of length for the rod\nomeqref {2.1}
-		\nompageref{10}
-  \item [{$P$}]\begingroup Axial pressure applied to rod end\nomeqref {2.1}
-		\nompageref{10}
-  \item [{$S_{33}$}]\begingroup Strain in the z direction\nomeqref {2.6}
 		\nompageref{11}
+  \item [{$E_3$}]\begingroup Electric field intensity in the z direction\nomeqref {2.13}
+		\nompageref{13}
+  \item [{$l$}]\begingroup Transducer length\nomeqref {2.18}
+		\nompageref{14}
+  \item [{$P$}]\begingroup Axial pressure applied to rod end\nomeqref {2.1}
+		\nompageref{11}
+  \item [{$S_{33}$}]\begingroup Strain in the z direction\nomeqref {2.6}
+		\nompageref{12}
   \item [{$T_3$}]\begingroup Stress in the z direction\nomeqref {2.1}
-		\nompageref{10}
+		\nompageref{11}
   \item [{$w$}]\begingroup Displacement of the rod\nomeqref {2.2}
 		\nompageref{11}
 

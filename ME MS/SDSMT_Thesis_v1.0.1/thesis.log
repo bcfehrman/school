@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=latex 2012.8.31)  14 SEP 2012 17:37
+This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=latex 2012.8.31)  15 SEP 2012 08:53
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -380,6 +380,9 @@ Package: subfigmat 1999/02/27 v1.0 Subfigure Matrix Package
 \sfmcolsep=\skip63
 \c@sfm@count=\count135
 )
+(/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
+)
 \@glossaryfile=\write3
 \openout3 = `thesis.glo'.
 
@@ -392,18 +395,18 @@ LaTeX Warning: Unused global option(s):
 (./thesis.aux)
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
-LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
+LaTeX Font Info:    ... okay on input line 35.
  [1
 
 ] (./abstract.tex)
@@ -525,7 +528,7 @@ Overfull \hbox (23.21683pt too wide) has occurred while \output is active
  []
 
 [7]
-Underfull \hbox (badness 10000) in paragraph at lines 67--68
+Underfull \hbox (badness 10000) in paragraph at lines 66--67
 
  []
 
@@ -563,47 +566,54 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
  []
 
 [12]
-File: eps_pics/trans_circ.eps Graphic file (type eps)
- <eps_pics/trans_circ.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 13
  []
 
 [13]
-File: eps_pics/rodTrans.eps Graphic file (type eps)
- <eps_pics/rodTrans.eps>
+File: eps_pics/trans_circ.eps Graphic file (type eps)
+ <eps_pics/trans_circ.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 14
  []
 
 [14]
-File: eps_pics/rodTransCrack.eps Graphic file (type eps)
- <eps_pics/rodTransCrack.eps>
+File: eps_pics/rodTrans.eps Graphic file (type eps)
+ <eps_pics/rodTrans.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 15
  []
 
 [15]
+File: eps_pics/rodTransCrack.eps Graphic file (type eps)
+ <eps_pics/rodTransCrack.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 16
  []
 
-[16])
+[16]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 17
  []
 
 [17]
-Chapter 3.
+Overfull \hbox (32.60722pt too wide) detected at line 362
+[]\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 l[]; t\OT1/cmr/m/n/12 ) = \OMS/cmsy/m/n/12 
+^^@[]\OML/cmm/m/it/12 V[]^^N\OT1/cmr/m/n/12 (\OML/cmm/m/it/12 t\OT1/cmr/m/n/12 
+)([])([](\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 2\OML/cmm/m/it/12 ^^Wl[]\OT1/cmr/m
+/n/12 ) + [] [](\OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 2\OML/cmm/m/it/12 ^^Wl[]\OT
+1/cmr/m/n/12 ) \OMS/cmsy/m/n/12 ^^B []\OT1/cmr/m/n/12 [\OMS/cmsy/m/n/12 ^^@[]\O
+T1/cmr/m/n/12 (\OML/cmm/m/it/12 t \OMS/cmsy/m/n/12 ^^@ [] ^^@ []\OT1/cmr/m/n/12
+ )])
+ []
 
+)
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 18
  []
 
-[18
-
-]
-Chapter 4.
+[18]
+Chapter 3.
 
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 19
@@ -612,7 +622,7 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [19
 
 ]
-Chapter 5.
+Chapter 4.
 
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 20
@@ -621,13 +631,22 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [20
 
 ]
-Chapter 6.
-(./thesis.bbl
+Chapter 5.
+
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 21
  []
 
 [21
+
+]
+Chapter 6.
+(./thesis.bbl
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 22
+ []
+
+[22
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 4--10
@@ -653,17 +672,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--23
 
 
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 22
- []
-
-[22
-
-]
-Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 23
  []
 
-[23]
+[23
+
+]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 24
  []
@@ -678,19 +692,24 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 26
  []
 
-[26])
+[26]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 27
  []
 
-[27] (./thesis.aux) ) 
+[27])
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 28
+ []
+
+[28] (./thesis.aux) ) 
 Here is how much of TeX's memory you used:
- 5286 strings out of 493500
- 69417 string characters out of 3143858
- 156386 words of memory out of 3000000
- 8443 multiletter control sequences out of 15000+200000
+ 5324 strings out of 493500
+ 70089 string characters out of 3143858
+ 157386 words of memory out of 3000000
+ 8477 multiletter control sequences out of 15000+200000
  13712 words of font info for 51 fonts, out of 3000000 for 9000
  953 hyphenation exceptions out of 8191
  37i,7n,43p,2496b,426s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on thesis.dvi (34 pages, 75832 bytes).
+Output written on thesis.dvi (35 pages, 80720 bytes).

@@ -74,6 +74,8 @@ S_{33} = \frac{dw}{dz}
 \label{eq:S_33}
 \end{equation}
 
+\nomenclature{$\frac{\partial w}{\partial z}$}{The strain resulting from the stress wave that is played by transducer A during the initial phase}
+
 Inserting \ref{eq:S_33} in to \ref{eq:T_3} we see that
 
 \begin{equation}
@@ -101,6 +103,60 @@ With $c^*$ being the velocity of the wave propagation and is defined as,
 \begin{equation}
 c^* = \sqrt{\frac{C^*_{33}}{\rho^*}}
 \end{equation}
+
+For the fixed-fixed unforced case, the solution can be found by a separation of variables approach. Let 
+
+\begin{equation}
+w(z,t) = Z(z)T(t)
+\label{eq:wProduct}
+\end{equation}
+
+Inserting \ref{eq:wProduct} into \ref{eq:waveEquationFin}
+
+\begin{equation}
+\frac{\partial ^2ZT}{\partial t^2} - c^{*2} \frac{\partial ^2ZT}{\partial z^2} = 0
+\label{eq:waveEquationSub}
+\end{equation}
+
+Dividing through by $ZT$
+
+\begin{equation}
+\frac{1}{c^{*2}T}\frac{\partial ^2T}{\partial t^2} =  \frac{1}{Z}\frac{\partial ^2Z}{\partial z^2}
+\label{eq:waveEquationDiv}
+\end{equation}
+
+Since $Z$ and $T$ are independent, this can only be true if each term is equal to some constant
+
+\begin{equation}
+\frac{1}{c^{*2}T}\frac{\partial ^2T}{\partial t^2} =  \frac{1}{Z}\frac{\partial ^2Z}{\partial z^2} = -\lambda ^2
+\label{eq:waveEquationConst}
+\end{equation}
+
+Then two ordinary differential equations are obtained
+
+\begin{equation}
+T''(t) + \lambda^ 2 c^{*2}T(t) = 0
+\label{eq:tEq}
+\end{equation}
+
+\begin{equation}
+Z''(z) + \lambda ^2 Z(z) = 0
+\end{equation}
+
+The solution for $Z(z)$ is
+
+\begin{equation}
+z(z) = Acos(\lambda z) + Dsin(\lambda z)
+\end{equation}
+
+Letting 
+
+\begin{equation}
+\lambda c^{*2}  = -\omega ^2
+\label{eq:omega}
+\end{equation}
+
+and inserting \ref{eq:omega} in to \ref{eq:tEq} the solution for 
 
 \section{Piezoelectric transducers}
 
@@ -228,63 +284,84 @@ Similarly, for the interface at $z = (L + l)$
 
 In this section a crack located at an arbitrary position is introduced into the system modeled in Section \ref{sec:rodWithTrans} and is shown in Figure \ref{fig:rodTransCrack}. The crack can be modeled as another interface boundary within the system as we saw previously. If a stress wave is played out from one of these transducers, say transducer A, then it will travel through the rod and refracts upon reaching the crack location due to a change in the medium. The crack can then be accounted for as a change in the material density and elastic coefficient from $\rho ^*$ to $\rho ^c$ and from $C^*_{33}$ to $C^c_{33}$ respectively. Again, let the stress and strain at the crack interface be continuous. As seen before we will have a reflection coefficient and a transmission coefficient which are given by
 
- \begin{equation}
- \boldsymbol{\overline{R}} = \frac{C^*_{33} - C^c_{33}}{C^*_{33} + C^c_{33}}
- \end{equation}
- 
-  \begin{equation}
-  \boldsymbol{\overline{T}} = \frac{2C^*_{33}}{C^*_{33} + C^c_{33}}
-  \end{equation}
+\begin{equation}
+\boldsymbol{\overline{R}} = \frac{C^*_{33} - C^c_{33}}{C^*_{33} + C^c_{33}}
+\end{equation}
+
+\begin{equation}
+\boldsymbol{\overline{T}} = \frac{2C^*_{33}}{C^*_{33} + C^c_{33}}
+\end{equation}
+
+
+\nomenclature{$\overline{R}$}{Reflection coefficient at $z = l_c$}
+\nomenclature{$\overline{T}$}{Transmission coefficient at $z = l_c$}
+\nomenclature{$\rho ^c$}{Density of the crack}
+\nomenclature{$C^c_{33}$}{Elastic coefficient of the crack in the z direction}
+
+\section{One Dimensional Time Reversal Focusing at a Crack}
+Considered here is the time reversal playback of the system modeled thus far. First there is an interrogatory phase in which transducer A plays out a stress wave which will propagate along the rod towards transducer B on the opposite end. When the wave reaches the crack location it will refract causing part of its energy to be transmitted and part to be reflected and is described by the coefficients shown in Section \ref{sec:rodTransCrack}. The strain caused by the wave reflected portion returning to the transducer A is
+
+\begin{equation}
+\frac{\partial w_{cr}}{\partial z} = \overline{\boldsymbol{R}}\frac{\partial w_t}{\partial z}
+\label{eq:reflStrain}
+\end{equation}
+
+For the reflected portion of the wave, its strain will be
   
-  
-  \nomenclature{$\overline{R}$}{Reflection coefficient at $z = l_c$}
-  \nomenclature{$\overline{T}$}{Transmission coefficient at $z = l_c$}
-  \nomenclature{$\rho ^c$}{Density of the crack}
-  \nomenclature{$C^c_{33}$}{Elastic coefficient of the crack in the z direction}
-  
-  \section{One Dimensional Time Reversal Focusing at a Crack}
-  Considered here is the time reversal playback of the system modeled thus far. First there is an interrogatory phase in which transducer A plays out a stress wave which will propagate along the rod towards transducer B on the opposite end. The strain resulting from this stress wave is taken as
-  
-  \begin{equation}
-  \frac{\partial w}{\partial z}
-  \end{equation}
-  
-  \nomenclature{$\frac{\partial w}{\partial z}$}{The strain resulting from the stress wave that is played by transducer A during the initial phase}
-  
-  When the wave reaches the crack location it will refract causing part of its energy to be transmitted and part to be reflected and is described by the coefficients shown in Section \ref{sec:rodTransCrack}. The strain caused by the wave reflected portion returning to the transducer A is
-  
-  \begin{equation}
-  \frac{\partial w_{cr}}{\partial z} = \overline{\boldsymbol{R}}\frac{\partial w_t}{\partial z}
-  \label{eq:reflStrain}
-  \end{equation}
-  
-  For the reflected portion of the wave, its strain will be
-  
-    \begin{equation}
-    \frac{\partial w_{ct}}{\partial z} = \overline{\boldsymbol{T}}\frac{\partial w_t}{\partial z}
-    \label{eq:tranStrain}
-    \end{equation}
-    
-    In both \ref{eq:reflStrain} and \ref{eq:tranStrain}
-    
-    \begin{equation}
-    \frac{\partial w_t}{\partial z} = \boldsymbol{T} \frac{\partial w}{\partial z}
-    \end{equation}
-    
-    \nomenclature{$\frac{\partial w_{ct}}{\partial z}$}{Strain caused by wave portion reflecting to transducer A}
-    
-    \nomenclature{$\frac{\partial w_{cr}}{\partial z}$}{Strain caused by wave portion transmitting to transducer B}
-    
-    This will create a voltage at transducer A which is found in the frequency domain as
-    
-    \begin{equation}
-    V^+_a(i\omega) = -\frac{d_{33} \pi a^2}{2 s^E_{33} C_c} \frac{\partial w_{cr}}{\partial z} (i\omega)
-    \end{equation}
-    
-    and at transducer B
-    
-    \begin{equation}
-    V^+_t(i\omega) = \frac{d_{33} \pi a^2}{2 s^E_{33} C_c} \boldsymbol{\hat{T}}\frac{\partial w_{ct}}{\partial z} (i\omega)
-    \end{equation}
-    
-    
+\begin{equation}
+\frac{\partial w_{ct}}{\partial z} = \overline{\boldsymbol{T}}\frac{\partial w_t}{\partial z}
+\label{eq:tranStrain}
+\end{equation}
+
+In both \ref{eq:reflStrain} and \ref{eq:tranStrain}
+
+\begin{equation}
+\frac{\partial w_t}{\partial z} = \boldsymbol{T} \frac{\partial w}{\partial z}
+\end{equation}
+
+\nomenclature{$\frac{\partial w_{ct}}{\partial z}$}{Strain caused by wave portion reflecting to transducer A}
+
+\nomenclature{$\frac{\partial w_{cr}}{\partial z}$}{Strain caused by wave portion transmitting to transducer B}
+
+This will create a voltage at transducer A which is found in the frequency domain as
+
+\begin{equation}
+V^+_a(i\omega) = -\frac{d_{33} \pi a^2}{2 s^E_{33} C_c} \frac{\partial w_{cr}}{\partial z} (i\omega)
+\end{equation}
+
+and at transducer B
+
+\begin{equation}
+V^+_b(i\omega) = \frac{d_{33} \pi a^2}{2 s^E_{33} C_c} \boldsymbol{\hat{T}}\frac{\partial w_{ct}}{\partial z} (i\omega)
+\end{equation}
+
+\nomenclature{$V^+_a(i\omega)$}{Voltage produced by the wave at transducer A}
+
+\nomenclature{$V^+_b(i\omega)$}{Voltage produced by the wave at transducer B}
+
+These voltages are recorded by each of the transducers. The reversal of these recorded voltages is just the complex conjugate for each signal such that the replayed voltage by each transducer will be
+
+\begin{equation}
+V^+_a{R}(i\omega) = V^+_a*(i\omega)
+\end{equation} 
+
+and
+
+\begin{equation}
+V^+_b{R}(i\omega) = V^+_b*(i\omega)
+\end{equation} 
+
+\nomenclature{$V^+_a(i\omega)$}{Reversed signal that is played back by Transducer A}
+
+\nomenclature{$V^+_b(i\omega)$}{Reversed signal that is played back by Transducer B}
+
+In addition to playing back the reversed signals, each transducer must also play back an idle period to account for the wave propagation time and the likely possibility that the crack is located closer to one transducer than the other. This information is inferred from the signal recorded and the appropriate zero period is added to the transducers. If the reversed signals are then played back with each the necessary idle periods then the waves will reach the defect at the same instant where they constructively interfere. The combined strain produced at the defect in the time domain form is found to be
+
+\begin{equation}
+\frac{\partial w_c}{\partial z}(l_c, t) = -\frac{2s^E_{33}\boldsymbol{T}}{d_{33} \pi a^2 R_0}V_0\delta (t) (\frac{\boldsymbol{\hat{T}}M \boldsymbol{T}}{R_0 C_c})(\overline{\boldsymbol{R}} (-2 \nu l_c) + \overline{\boldsymbol{T}} \exp(-2 \nu l_T) \times \exp [-\frac{1}{R_0 C_c} (t - \frac{3l_c}{c^*} - \frac{2l}{c})])
+\end{equation}
+
+Where $\nu$ is a spatial dissipation factor and $l_T$ is the distance from the crack to transducer B.
+
+\nomenclature{$\nu$}{Spatial dissipation factor}
+\nomenclature{$l_T$}{Distance from the crack to transducer B}

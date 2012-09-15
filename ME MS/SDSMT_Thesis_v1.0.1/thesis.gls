@@ -12,12 +12,14 @@
 		\nompageref{15}
   \item [{$\epsilon ^T_{33}$}]\begingroup PZT permittivity constant for the z direction\nomeqref {2.17}
 		\nompageref{13}
-  \item [{$\frac{\partial w_{cr}}{\partial z}$}]\begingroup Strain caused by wave portion transmitting to transducer B\nomeqref {2.30}
-		\nompageref{17}
-  \item [{$\frac{\partial w_{ct}}{\partial z}$}]\begingroup Strain caused by wave portion reflecting to transducer A\nomeqref {2.30}
-		\nompageref{17}
-  \item [{$\frac{\partial w}{\partial z}$}]\begingroup The strain resulting from the stress wave that is played by transducer A during the initial phase\nomeqref {2.27}
+  \item [{$\frac{\partial w_{cr}}{\partial z}$}]\begingroup Strain caused by wave portion transmitting to transducer B\nomeqref {2.29}
 		\nompageref{16}
+  \item [{$\frac{\partial w_{ct}}{\partial z}$}]\begingroup Strain caused by wave portion reflecting to transducer A\nomeqref {2.29}
+		\nompageref{16}
+  \item [{$\frac{\partial w}{\partial z}$}]\begingroup The strain resulting from the stress wave that is played by transducer A during the initial phase\nomeqref {2.7}
+		\nompageref{12}
+  \item [{$\nu$}]\begingroup Spatial dissipation factor\nomeqref {2.34}
+		\nompageref{17}
   \item [{$\overline{R}$}]\begingroup Reflection coefficient at $z = l_c$\nomeqref {2.26}
 		\nompageref{16}
   \item [{$\overline{T}$}]\begingroup Transmission coefficient at $z = l_c$\nomeqref {2.26}
@@ -52,12 +54,22 @@
 		\nompageref{13}
   \item [{$l$}]\begingroup Transducer length\nomeqref {2.18}
 		\nompageref{14}
+  \item [{$l_T$}]\begingroup Distance from the crack to transducer B\nomeqref {2.34}
+		\nompageref{17}
   \item [{$P$}]\begingroup Axial pressure applied to rod end\nomeqref {2.1}
 		\nompageref{11}
   \item [{$S_{33}$}]\begingroup Strain in the z direction\nomeqref {2.6}
 		\nompageref{12}
   \item [{$T_3$}]\begingroup Stress in the z direction\nomeqref {2.1}
 		\nompageref{11}
+  \item [{$V^+_a(i\omega)$}]\begingroup Reversed signal that is played back by Transducer A\nomeqref {2.33}
+		\nompageref{17}
+  \item [{$V^+_a(i\omega)$}]\begingroup Voltage produced by the wave at transducer A\nomeqref {2.31}
+		\nompageref{17}
+  \item [{$V^+_b(i\omega)$}]\begingroup Reversed signal that is played back by Transducer B\nomeqref {2.33}
+		\nompageref{17}
+  \item [{$V^+_b(i\omega)$}]\begingroup Voltage produced by the wave at transducer B\nomeqref {2.31}
+		\nompageref{17}
   \item [{$w$}]\begingroup Displacement of the rod\nomeqref {2.2}
 		\nompageref{11}
 

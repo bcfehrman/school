@@ -11,54 +11,54 @@ I'm skipping whatever remains of this entry
 Warning--entry type for "Close2010" isn't style-file defined
 --line 93 of file thesis.bib
 Warning--entry type for "NASAOD2012" isn't style-file defined
---line 332 of file thesis.bib
+--line 342 of file thesis.bib
 Warning--entry type for "NASAHVIT2012" isn't style-file defined
---line 341 of file thesis.bib
+--line 351 of file thesis.bib
 Warning--entry type for "Ultrasound2006" isn't style-file defined
---line 455 of file thesis.bib
+--line 465 of file thesis.bib
 Warning--empty booktitle in Luo2009
 Warning--empty year in Luo2009
 Warning--empty booktitle in Caruso2009
 Warning--empty year in Caruso2009
-You've used 55 entries,
+You've used 56 entries,
             1791 wiz_defined-function locations,
-            743 strings with 11537 characters,
-and the built_in function-call counts, 8986 in all, are:
-= -- 714
-> -- 574
+            749 strings with 11691 characters,
+and the built_in function-call counts, 9126 in all, are:
+= -- 726
+> -- 578
 < -- 0
-+ -- 214
-- -- 159
-* -- 483
-:= -- 1657
-add.period$ -- 174
-call.type$ -- 55
-change.case$ -- 54
++ -- 216
+- -- 160
+* -- 492
+:= -- 1682
+add.period$ -- 177
+call.type$ -- 56
+change.case$ -- 55
 chr.to.int$ -- 0
-cite$ -- 59
-duplicate$ -- 382
-empty$ -- 811
-format.name$ -- 159
-if$ -- 1905
+cite$ -- 60
+duplicate$ -- 390
+empty$ -- 826
+format.name$ -- 160
+if$ -- 1935
 int.to.chr$ -- 0
-int.to.str$ -- 55
-missing$ -- 32
-newline$ -- 287
-num.names$ -- 55
-pop$ -- 127
+int.to.str$ -- 56
+missing$ -- 33
+newline$ -- 292
+num.names$ -- 56
+pop$ -- 128
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 144
+skip$ -- 148
 stack$ -- 0
 substring$ -- 147
-swap$ -- 39
+swap$ -- 40
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 4
-while$ -- 67
-width$ -- 57
-write$ -- 571
+while$ -- 68
+width$ -- 58
+write$ -- 582
 (There was 1 error message)

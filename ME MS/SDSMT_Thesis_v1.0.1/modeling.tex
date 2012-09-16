@@ -26,7 +26,7 @@ T_3 = \frac{P}{A}
 
 \begin{figure}[ht!]
 \centering
-\includegraphics[width=0.8\textwidth]{eps_pics/diffElementRod}
+\includegraphics[width=0.6\textwidth]{eps_pics/diffElementRod}
 \caption{Differential element showing the stresses acting on the rod.
 	 \label{fig:diffElementRod}} 
 \end{figure}
@@ -104,7 +104,7 @@ With $c^*$ being the velocity of the wave propagation and is defined as,
 c^* = \sqrt{\frac{C^*_{33}}{\rho^*}}
 \end{equation}
 
-For the fixed-fixed unforced case, the solution can be found by a separation of variables approach. Let 
+For the fixed-fixed unforced case, if we assume that $w(z,t)$ is a linear function then the solution can be found by a separation of variables approach. Let 
 
 \begin{equation}
 w(z,t) = Z(z)T(t)
@@ -146,21 +146,53 @@ Z''(z) + \lambda ^2 Z(z) = 0
 The solution for $Z(z)$ is
 
 \begin{equation}
-z(z) = Acos(\lambda z) + Dsin(\lambda z)
+Z(z) = A cos(\lambda z) + B sin(\lambda z)
+\label{eq:zCoefs}
 \end{equation}
 
-Letting 
+Inserting the boundary conditions $Z(0) = 0$ and $Z(L) =0$ \ref{eq:zCoefs} reduces to
 
 \begin{equation}
-\lambda c^{*2}  = -\omega ^2
+Z(z) = B_n sin\left(\frac{n \pi z}{L} \right)
+\label{eq:zCoef}
+\end{equation} 
+
+With 
+
+\begin{equation}
+\lambda _n = \frac{n \pi}{L}
+\end{equation}
+
+Now letting
+
+\begin{equation}
+\lambda _n c^{*2}  = -\omega _n ^2
 \label{eq:omega}
 \end{equation}
 
-and inserting \ref{eq:omega} in to \ref{eq:tEq} the solution for 
+and inserting \ref{eq:omega} in to \ref{eq:tEq} and applying a zero disturbance initial condition $\dot{T}(0) = 0$ the solution for $T(t)$ is found to be
+
+\begin{equation}
+T(t) = C_n cos(\omega _n t)
+\label{eq:tCoef}
+\end{equation}
+
+Combining \ref{eq:zCoef} and \ref{eq:tCoef} and summing to infinity the solution for $w(z,t)$ is found such that
+
+\begin{equation}
+w(z,t) = \sum\limits_{n=1}^{\infty} A_n cos(\omega _n t) sin( \lambda _n z)
+\end{equation}
+
+Applying the principles of orthogonality
+
+\begin{equation}
+A_n = \frac{2}{L} \int\limits_{0}^{L} w(z, 0) sin\left( \frac{\lambda _n z}{L} \right) dz
+\end{equation}
+
 
 \section{Piezoelectric transducers}
 
-This section describes the governing equations for $d_{33}$ piezoelectric transducers that are placed on each end of a rod. The following work is based on derivations by Dr. Korde.
+This section describes the governing equations for $d_{33}$ piezoelectric transducers that are placed on each end of a rod. The following work is based on derivations by Dr. Korde \cite{Fehrman2012}.
 
 The constitutive equations for the transducers are:
 
@@ -185,15 +217,15 @@ s^E_{33} = \frac{1}{C_{33}}
 \end{equation}
 
 \begin{equation}
-\overline{C_{33}} = \frac{1}{s^E_{33}(1 - \frac{d^2_{33}}{s^E_{33}\epsilon ^T_{33}})}
+\overline{C_{33}} = \frac{1}{s^E_{33}\left( 1 - \frac{d^2_{33}}{s^E_{33}\epsilon ^T_{33}}\right)}
 \end{equation}
 
 \begin{equation}
-\overline{d_{33}} = -\frac{d_{33} / \epsilon ^T_{33}}{s^E_{33}(1 - \frac{d^2_{33}}{s^E_{33}\epsilon ^T_{33}})}
+\overline{d_{33}} = -\frac{d_{33} / \epsilon ^T_{33}}{s^E_{33}\left(1 - \frac{d^2_{33}}{s^E_{33}\epsilon ^T_{33}}\right)}
 \end{equation}
 
 \begin{equation}
-\overline{\epsilon ^T_{33}} = -\frac{\epsilon ^T_{33}}{s^E_{33}(1 - \frac{d^2_{33}}{s^E_{33}\epsilon ^T_{33}})}
+\overline{\epsilon ^T_{33}} = -\frac{\epsilon ^T_{33}}{s^E_{33}\left(1 - \frac{d^2_{33}}{s^E_{33}\epsilon ^T_{33}}\right)}
 \end{equation}
 
 \nomenclature{$C_{33}$}{PZT elastic constant in the z direction}
@@ -252,7 +284,7 @@ For the rod domain, $l < z \le L$, we just apply equation \ref{eq:waveEquationFi
 \end{equation}
 
 \begin{equation}
-\boldsymbol{T} = \frac{2(\overline{C_{33}} + \frac{\overline{d_{33}}d_{33}}{2s^E_{33}})}{\overline{C_{33}} + \frac{\overline{d_{33}}d_{33}}{2s^E_{33}} + C^*_{33}}
+\boldsymbol{T} = \frac{2\left(\overline{C_{33}} + \frac{\overline{d_{33}}d_{33}}{2s^E_{33}}\right)}{\overline{C_{33}} + \frac{\overline{d_{33}}d_{33}}{2s^E_{33}} + C^*_{33}}
 \end{equation}
 
 \nomenclature{$\boldsymbol{R}$}{Reflection coefficient at $z = l$}
@@ -306,7 +338,7 @@ Considered here is the time reversal playback of the system modeled thus far. Fi
 \label{eq:reflStrain}
 \end{equation}
 
-For the reflected portion of the wave, its strain will be
+For the transmitted portion of the wave, its strain will be
   
 \begin{equation}
 \frac{\partial w_{ct}}{\partial z} = \overline{\boldsymbol{T}}\frac{\partial w_t}{\partial z}
@@ -355,13 +387,98 @@ V^+_b{R}(i\omega) = V^+_b*(i\omega)
 
 \nomenclature{$V^+_b(i\omega)$}{Reversed signal that is played back by Transducer B}
 
-In addition to playing back the reversed signals, each transducer must also play back an idle period to account for the wave propagation time and the likely possibility that the crack is located closer to one transducer than the other. This information is inferred from the signal recorded and the appropriate zero period is added to the transducers. If the reversed signals are then played back with each the necessary idle periods then the waves will reach the defect at the same instant where they constructively interfere. The combined strain produced at the defect in the time domain form is found to be
+In addition to playing back the reversed signals, each transducer must also play back an idle period to account for the wave propagation time and the likely possibility that the crack is located closer to one transducer than the other. This information is inferred from the signal recorded and the appropriate zero period is added to the transducers. If the reversed signals are played back by each transducer with the necessary idle periods then the waves reach the defect at the same instant where they constructively interfere. The combined strain produced at the defect in the time domain form is found to be
 
 \begin{equation}
-\frac{\partial w_c}{\partial z}(l_c, t) = -\frac{2s^E_{33}\boldsymbol{T}}{d_{33} \pi a^2 R_0}V_0\delta (t) (\frac{\boldsymbol{\hat{T}}M \boldsymbol{T}}{R_0 C_c})(\overline{\boldsymbol{R}} (-2 \nu l_c) + \overline{\boldsymbol{T}} \exp(-2 \nu l_T) \times \exp [-\frac{1}{R_0 C_c} (t - \frac{3l_c}{c^*} - \frac{2l}{c})])
+\begin{split}
+\frac{\partial w_c}{\partial z}(l_c, t) = &-\frac{2s^E_{33}\boldsymbol{T}}{d_{33} \pi a^2 R_0}V_0\delta (t) \left(\frac{\boldsymbol{\hat{T}}M \boldsymbol{T}}{R_0 C_c}\right) \times \\ &\left(\overline{\boldsymbol{R}} (-2 \nu l_c) + \overline{\boldsymbol{T}} \exp(-2 \nu l_T) \times \exp \left[-\frac{1}{R_0 C_c} \left(t - \frac{3l_c}{c^*} - \frac{2l}{c}\right)\right]\right)
+\end{split}
 \end{equation}
 
 Where $\nu$ is a spatial dissipation factor and $l_T$ is the distance from the crack to transducer B.
 
 \nomenclature{$\nu$}{Spatial dissipation factor}
 \nomenclature{$l_T$}{Distance from the crack to transducer B}
+\nomenclature{$\frac{\partial w_c}{\partial z}(l_c, t)$}{Focused wave response at the crack location due to time reversal focusing}
+
+Through the use of Green functions it is found that the amplification of the focusing at the defect will increase if the time reversal is applied in an iterative fashion such that after each transducer replays a time reversed signal it records the new response and plays that record back in a time reversed fashion. This amplification will continue until it becomes limited by material dissipation at which point the algorithm has converged. Because the rod is of finite length there will be natural vibrations produced when the rod is excited. However, it is argued that if a sufficient delay time is introduced between successive iterations then natural vibrations of the rod die down while the amplification at the crack location increases.
+
+\section{Time Reversal Focusing in Two Dimensions}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.6\textwidth]{eps_pics/2dTr.eps}
+\caption{Concept diagram of a two dimensional time reversal setup in which transducers are located around the boundary of a circular plate. A crack exists on the plate and is the point at which the transducers will focus acoustic energy.
+	 \label{fig:2dTr}} 
+\end{figure}
+
+Here a brief overview is given of focusing acoustic energy in two dimensions using the time reversal method and is drawn from Fink \cite{Fink1992}. Figure \ref{fig:2dTr} depicts a scenario in which transducers are located around the boundary of a plate and a defect is located at an arbitrary position on the plate. The method used to focus acoustic energy at the crack is a natural extension of the time reversal method used for the rod. The equation of motion for the wave propagation is the similar to \ref{eq:waveEquationFin} except we now introduce the Laplacian to account for the multiple spatial dimensions which gives
+
+\begin{equation}
+\frac{\partial ^2w}{\partial t^2} - c_p^{2} \nabla ^2 w(\vec{r},t) = 0
+\label{eq:waveEquation2s}
+\end{equation}
+
+Where $c_p$ is the speed of sound through the plate material and $\vec{r}$ is the position of the acoustic pressure field.
+
+\nomenclature{$c_p$}{The speed of sound through the plate material.}
+
+\nomenclature{$vec_r$}{Position of the acoustic pressure field}
+
+\nomenclature{$\nabla ^2$}{Laplacian operator}
+
+As before, a transducer sends out an initial pulse. Let the field produced in $\vec{r}$ at time $t$ caused by a pulse emitted at time $t_0$ by a source located at $\vec{r}_0$ be represented by a Green function
+\begin{equation}
+G(\vec{r}_0, t_0|\vec{r},t)
+\end{equation}
+
+\nomenclature{ $\vec{r}_0$}{Location of source an emitting acoustic pulse}
+\nomenclature{$G(\vec{r}_0, t_0|\vec{r},t)$}{Green function that represents the field produced in $\vec{r}$ at time $t$ caused by a pulse emitted at time $t_0$ by a source located at $\vec{r}_0$}
+
+Because of the reciprocity theorem,
+
+\begin{equation}
+G(\vec{r}_0, t_0|\vec{r},t) = G(\vec{r}, t_0|\vec{r}_0,t)
+\end{equation}
+
+Which means that if $\vec{r}$ replays the pulse it feels due to $\vec{r}_0$ then $\vec{r}_0$ will experience that same excitation. Let the integral over the transducer surface $S_i$ be
+
+\begin{equation}
+h_i(\vec{r}_0) = \int\limits_{S_i}^{}G(\vec{r}_0, t_0|\vec{r},t)dr = \int\limits_{S_i}^{ }G(\vec{r}, t_0|\vec{r}_0,t)dr
+\end{equation}
+
+\nomenclature{$h_i(\vec{r}_0)$}{Integral of the transducer surface $S_i$}
+
+The function relating pressure to voltage for the transducers is written as
+
+\begin{equation}
+h_i^{ac}(t)
+\end{equation}
+
+\nomenclature{$h_i^{ac}(t)$}{Function which relates pressure to voltage for the transducers}
+
+After the wave sent by a transducer reaches the defect in the plate, it will refract and the crack will act as an acoustic source located at $\vec{r}_0$. The voltage recorded by each transducer is seen as the convolution of
+
+\begin{equation}
+h_i^{ac}(t) \ast h_i(\vec{r}_0, t)
+\end{equation}
+
+These signals are time reversed for each transducer such that the replayed signals are
+
+\begin{equation}
+h_i^{ac}(T - t) \ast h_i(\vec{r}_0,T- t)
+\end{equation}
+
+The response at the crack due to one transducer is the convolution of the replayed signal and the original pulse emitted from the crack
+
+\begin{equation}
+h_i^{ac}(T - t) \ast h_i(\vec{r}_0,T- t) \ast h_i(\vec{r}_0, t) \ast h_i^{ac}(t)
+\label{{eq:singlTrans2D}}
+\end{equation}
+
+The contribution due to all of the transducer is simply the sum over $i$ of the individual contributions
+
+\begin{equation}
+\sum\limits_{i}^{}h_i^{ac}(T - t) \ast h_i(\vec{r}_0,T- t) \ast h_i(\vec{r}_0, t) \ast h_i^{ac}(t)
+\label{{eq:singlTrans2D}}
+\end{equation}

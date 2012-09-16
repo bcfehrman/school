@@ -21,7 +21,8 @@
 \usepackage{nomencl}
  \usepackage{subfigure}% subcaptions for subfigures
  \usepackage{subfigmat}% matrices of similar subfigures, aka small mulitples
- \usepackage{setspace}
+\usepackage[nodisplayskipstretch]{setspace}
+
 
 \author{Brian Fehrman}
 \title{Experiments on Time Reversal Focusing of Acoustic Energy at a Crack Location in One Dimension}
@@ -29,11 +30,14 @@
 
 \setlength\topmargin{-0.5in}
 \setlength\oddsidemargin{0.45in}
-
+\linespread{2}
+\usepackage{titlesec}
+%\setlength\abovedisplayskip{0pt}
 \makeglossary
 
 \begin{document}
-
+\titlespacing{\chapter}{0pt}{-5pt}{-10pt}
+\titlespacing{\section}{0pt}{0pt}{0pt}
 
 \maketitle
 

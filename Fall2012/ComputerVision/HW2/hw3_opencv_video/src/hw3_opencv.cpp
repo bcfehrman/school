@@ -26,7 +26,7 @@ int main( int argc, char *argv[])
 	int numFrames = 6;
 	int rankStep = 5;
 	string frameNames[numFrames];
-        VideoCapture cap(0); //open the default camera
+        VideoCapture cap(1); //open the default camera
 	Mat frame_lower_rank[numFrames];
 	ostringstream convert;
 	int currRank = rankStep;
@@ -56,7 +56,6 @@ int main( int argc, char *argv[])
 
 	cap.set(CV_CAP_PROP_FRAME_WIDTH, frameWidth);
 	cap.set(CV_CAP_PROP_FRAME_HEIGHT, frameHeight);
-
 	namedWindow("Non SVD", WINDOW_SIZE_CHOICE);
 
 	for(;;)
@@ -74,18 +73,16 @@ int main( int argc, char *argv[])
 		imshow("Non SVD", frame_bgr);
 		cvMoveWindow("Non SVD", 900, 0);
 
-	//	cout << frame_bgr.rows << " " << frame_bgr.	
-		
-	//	reduced_frame_bgr = reduceFrameResolution(frame_bgr, 0.9f);
-
-		//Perform the SVD that gives the U, W, Vt (or U, S, Vt) except W is just a vector of the singular values
+		//Perform the SVD that gives the U, W, Vt (or U, S, Vt) 
+		//except W is just a vector of the singular values
 		SVD svd(frame_bgr);
 		
 		currRank = rankStep;
 		
 		for(i = 0; i < numFrames; i++)
 		{
-			//Reconstruct the iamge, the W vector is converted into a diagonal matrix so that it plays nicely, might be able to make that better
+			//Reconstruct the iamge, the W vector is converted into a diagonal 
+			//matrix so that it plays nicely, might be able to make that better
 			frame_lower_rank[i] = svd.u(Range::all(), Range(0,currRank)) * 
 				Mat::diag(svd.w)(Range(0,currRank),Range(0,currRank)) *  
 				svd.vt(Range(0,currRank), Range::all());
@@ -93,7 +90,6 @@ int main( int argc, char *argv[])
 			currRank += rankStep;
 		}
 
-		//namedWindow("Gray window", CV_WINDOW_AUTOSIZE);
 		for(i = 0; i < numFrames; i++)
 		{
 			imshow(frameNames[i], frame_lower_rank[i]);
@@ -102,7 +98,7 @@ int main( int argc, char *argv[])
 
 		end = clock();
 		timeDiff = (double)(end - begin);
-	//	cout << 1.0 / (timeDiff / CLOCKS_PER_SEC ) << endl;
+		cout << 1.0 / (timeDiff / CLOCKS_PER_SEC ) << endl;
 		if(waitKey(30) >= 0) break;
 	}
 

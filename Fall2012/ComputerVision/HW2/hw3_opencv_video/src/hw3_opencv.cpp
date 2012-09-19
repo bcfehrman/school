@@ -100,7 +100,7 @@ int main( int argc, char *argv[])
 	//can't handle the stress =)
 	cap.set(CV_CAP_PROP_FRAME_WIDTH, frame_width);
 	cap.set(CV_CAP_PROP_FRAME_HEIGHT, frame_height);
-	
+		
 	//Create the window for the original gray scale image
 	//Move the window so it hopefully won't overlap the other
 	//windows
@@ -117,7 +117,7 @@ int main( int argc, char *argv[])
 		  begin = clock();
 		*/
 		
-		Create new bgr matrix and fill it with the
+		//Create new bgr matrix and fill it with the
 		//current frame from the video camera
 		Mat frame_bgr;
 		cap >> frame_bgr;

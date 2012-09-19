@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=latex 2012.8.31)  16 SEP 2012 13:38
+This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=latex 2012.8.31)  19 SEP 2012 11:05
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -676,25 +676,21 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 
 [28]
 Chapter 3.
-
+(./experiments.tex
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 29
  []
 
 [29
 
-]
-Chapter 4.
-
+])
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 30
  []
 
-[30
-
-]
-Chapter 5.
-
+[30]
+Chapter 4.
+(./results.tex)
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 31
  []
@@ -702,13 +698,22 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [31
 
 ]
-Chapter 6.
-(./thesis.bbl
+Chapter 5.
+(./recommended_work.tex)
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 32
  []
 
 [32
+
+]
+Chapter 6.
+(./conclusion.tex) (./thesis.bbl
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 33
+ []
+
+[33
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 4--10
@@ -734,17 +739,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--23
 
 
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 33
- []
-
-[33
-
-]
-Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 34
  []
 
-[34]
+[34
+
+]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 35
  []
@@ -774,23 +774,28 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 40
  []
 
-[40])
+[40]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 41
  []
 
-[41] (./thesis.aux)
+[41])
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 42
+ []
+
+[42] (./thesis.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 5590 strings out of 493500
- 73562 string characters out of 3143858
+ 5602 strings out of 493500
+ 73734 string characters out of 3143858
  163108 words of memory out of 3000000
  8738 multiletter control sequences out of 15000+200000
  13712 words of font info for 51 fonts, out of 3000000 for 9000
  953 hyphenation exceptions out of 8191
  37i,22n,43p,2496b,426s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on thesis.dvi (49 pages, 93760 bytes).
+Output written on thesis.dvi (50 pages, 95600 bytes).

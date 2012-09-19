@@ -45,7 +45,7 @@ struct xy_pos
 int main( int argc, char *argv[])
 {	
 	clock_t begin;
-    VideoCapture cap(0); //open the default camera
+    VideoCapture cap(1); //open the default camera
 	ostringstream convert;
 	clock_t end;
 	int curr_rank = 0;
@@ -100,7 +100,7 @@ int main( int argc, char *argv[])
 	//can't handle the stress =)
 	cap.set(CV_CAP_PROP_FRAME_WIDTH, frame_width);
 	cap.set(CV_CAP_PROP_FRAME_HEIGHT, frame_height);
-		
+	cap.get(CV_CAP_PROP_FPS);
 	//Create the window for the original gray scale image
 	//Move the window so it hopefully won't overlap the other
 	//windows

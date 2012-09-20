@@ -1,0 +1,21 @@
+This is BibTeX, Version 0.99dThe top-level auxiliary file: thesis.aux
+The style file: unsrt.bst
+Database file #1: thesis.bib
+I was expecting a `,' or a `}'---line 63 of file thesis.bib
+ : 
+ : @UNPUBLISHED{Burattini2009,
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
+Warning--entry type for "Close2010" isn't style-file defined
+--line 83 of file thesis.bib
+Warning--entry type for "NASAOD2012" isn't style-file defined
+--line 313 of file thesis.bib
+Warning--entry type for "NASAHVIT2012" isn't style-file defined
+--line 322 of file thesis.bib
+Warning--entry type for "Ultrasound2006" isn't style-file defined
+--line 436 of file thesis.bib
+Warning--empty booktitle in Luo2009
+Warning--empty year in Luo2009
+Warning--empty booktitle in Caruso2009
+Warning--empty year in Caruso2009
+(There was 1 error message)

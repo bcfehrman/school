@@ -1,0 +1,16 @@
+\contentsline {chapter}{List of Figures}{iv}
+\contentsline {chapter}{\numberline {1}Introduction}{1}
+\contentsline {section}{\numberline {1.1}Motivation}{1}
+\contentsline {section}{\numberline {1.2}Self-Healing}{2}
+\contentsline {section}{\numberline {1.3}Accelerating the Self-Healing Process}{3}
+\contentsline {section}{\numberline {1.4}Implementation}{5}
+\contentsline {subsection}{\numberline {1.4.1}Damage Sensing}{5}
+\contentsline {subsection}{\numberline {1.4.2}Time Reversal Focusing}{6}
+\contentsline {section}{\numberline {1.5}Objectives}{8}
+\contentsline {chapter}{\numberline {2}Modeling}{10}
+\contentsline {section}{\numberline {2.1}One Dimensional Wave Equation}{10}
+\contentsline {chapter}{\numberline {3}Experiments}{12}
+\contentsline {chapter}{\numberline {4}Results}{13}
+\contentsline {chapter}{\numberline {5}Recommended Future Work}{14}
+\contentsline {chapter}{\numberline {6}Conclusion}{15}
+\contentsline {chapter}{Bibliography}{16}

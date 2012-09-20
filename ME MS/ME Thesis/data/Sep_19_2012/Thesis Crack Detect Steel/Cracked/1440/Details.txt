@@ -1,0 +1,5 @@
+Steel rod of length ~580mmer_Version	2
+5 consecutive runs are all in this folder.
+
+The shorter rod section was about 190mm, and the signal was sent from the long side
+	

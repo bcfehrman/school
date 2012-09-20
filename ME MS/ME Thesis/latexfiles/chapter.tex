@@ -1,0 +1,24 @@
+
+\section{An Example Section}
+This is an example section.  Section \ref{subfigure}
+has a figure.
+
+\subsection{Figure Example}
+\label{subfigure}
+See figure \ref{ship} for a figure.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.8\textwidth]{ship.jpg}
+\caption{A sample figure
+	 \label{ship}} 
+\end{figure}
+
+\subsection{Cite Example}
+Do citations as outlined in \cite{bibref}.
+
+Here are some refs \cite{bishop} and more refs \cite{tanev:2004:ALR,aarts:1989:sa}.
+
+\section{Building the document}
+
+Open a shell (terminal) and cd into the directory containing the thesis files.  The execute a 'make' and the thesis will build (assuming no errors).

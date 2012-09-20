@@ -25,7 +25,7 @@ figure_count = figure_count + 1;
 %the length of the initial wave to this and that will be our total wave
 %signal length for graphing.
 
-speed_sound =700;
+speed_sound =740;
 l_rod = .148;
 sample_speed = 1.35e-6;
 travel_time = l_rod / speed_sound;
@@ -43,7 +43,7 @@ eps0 = 8.854e-12; eps33 = 450*eps0; d33 = 152.0e-12; c33 = 11.3e10; c33st = 10.8
 R0 = 1e2; RL = R0;
 rho = 7.6e3; rhost = 1.1e3; a = 12.25e-3; l = 10e-3; L = 580e-3; 
 % Steel rod
-rhost = 1.1e3;c33st = 40e9; a = 19.05e-3; L = 0.6096;
+rhost = 0.85456e3;c33st = 468.121e7; a = 19.05e-3; L = 0.6096;
 a = 12.7e-3; l = 12e-3; L = 148e-3;
 lc = L; lT = 310e-3;
 %
@@ -113,7 +113,7 @@ for k = 1:N;
 end
 %
 Pamp = (d33*area*RL)/(2*s33);
-amp = 1.0e-1; %scaling for transducer
+amp = 1; %scaling for transducer
 vlongchirp1 = Pamp*amp*chirprevcrack;
 vlongchirp2 = Pamp*amp*chirprevcrack * 1.2;
 

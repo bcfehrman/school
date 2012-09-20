@@ -304,4 +304,20 @@ B.~C. Fehrman and U.~A. Korde.
 \newblock Submitted for review to Journal of Intelligent Material Systems and
   Structures, 2012.
 
+\bibitem{Kolsky1963}
+H.~Kolsky.
+\newblock {\em Stress Waves in Solids}.
+\newblock Dover Publications, 1963.
+
+\bibitem{Brown2008}
+James~Ward Brown and Ruel~V. Churchill.
+\newblock {\em Fourier Series and Boundary Value Problems}.
+\newblock Tata McGraw-Hill, 7th edition, 2008.
+
+\bibitem{Fink1992}
+M.~Fink.
+\newblock Time-reversal of ultrasonic fields--part i: Basic principles.
+\newblock {\em IEEE Transactions on Ultrasonics, Ferrorelectrics, and Frequency
+  Control}, 39(5), September 1992.
+
 \end{thebibliography}

@@ -1,9 +1,9 @@
-% This is the main thesis tex file. It will assemble the separate source
-% files into a document. It is intended to be built by the supplied Makefile.
-% Author: Anthony Gervasi
+%  This is the main thesis tex file.  It will assemble the separate source
+%  files into a document.  It is intended to be built by the supplied Makefile.
+%  Author:  Anthony Gervasi
 %
-% Usage: type 'make' in the command shell
-% Requirements: Tex installed, Linux/Unix environment
+%  Usage:  type 'make' in the command shell
+%  Requirements:  Tex installed, Linux/Unix environment
 
 
 \documentclass[13pt]{ucthesis}
@@ -44,12 +44,12 @@
 %nomenclature section here
 %to generate nomenclature section
 %run latex
-%type in makeindex <filename>.glo -s nomencl.ist -o {filename}.gls %*******left out the -o the first few times.
+%type in makeindex <filename>.glo -s nomencl.ist -o {filename}.gls     %*******left out the -o the first few times.
 %run latex again
 
 \begin{frontmatter}
 \begin{abstract}
-\input{abstract.tex} % You may enter in the file or directly here.
+\input{abstract.tex}  % You may enter in the file or directly here.
 \end{abstract}
 \printglossary
 \tableofcontents
@@ -60,7 +60,7 @@
 
 
 % You will need to add chapter and input lines for your own work.
-% The following give some examples:
+%  The following give some examples:
 
 \chapter{Introduction}\label{ch:Introduction}
 \input{introduction.tex} % You may enter in the file or directly here.
@@ -84,3 +84,4 @@
 \bibliography{thesis}
 
 \end{document}
+

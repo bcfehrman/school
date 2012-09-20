@@ -1,16 +1,23 @@
-\contentsline {chapter}{List of Figures}{iv}
+\contentsline {chapter}{List of Figures}{vi}
 \contentsline {chapter}{\numberline {1}Introduction}{1}
-\contentsline {section}{\numberline {1.1}Motivation}{1}
-\contentsline {section}{\numberline {1.2}Self-Healing}{2}
-\contentsline {section}{\numberline {1.3}Accelerating the Self-Healing Process}{3}
-\contentsline {section}{\numberline {1.4}Implementation}{5}
-\contentsline {subsection}{\numberline {1.4.1}Damage Sensing}{5}
-\contentsline {subsection}{\numberline {1.4.2}Time Reversal Focusing}{6}
-\contentsline {section}{\numberline {1.5}Objectives}{8}
-\contentsline {chapter}{\numberline {2}Modeling}{10}
-\contentsline {section}{\numberline {2.1}One Dimensional Wave Equation}{10}
-\contentsline {chapter}{\numberline {3}Experiments}{12}
-\contentsline {chapter}{\numberline {4}Results}{13}
-\contentsline {chapter}{\numberline {5}Recommended Future Work}{14}
-\contentsline {chapter}{\numberline {6}Conclusion}{15}
-\contentsline {chapter}{Bibliography}{16}
+\contentsline {section}{\numberline {1.1}Self-Healing}{3}
+\contentsline {section}{\numberline {1.2}Accelerating the Self-Healing Process}{5}
+\contentsline {section}{\numberline {1.3}Implementation}{6}
+\contentsline {subsection}{\numberline {1.3.1}Damage Sensing}{6}
+\contentsline {subsection}{\numberline {1.3.2}Time Reversal Focusing}{7}
+\contentsline {section}{\numberline {1.4}Objectives}{10}
+\contentsline {chapter}{\numberline {2}Modeling}{13}
+\contentsline {section}{\numberline {2.1}One Dimensional Wave Equation}{13}
+\contentsline {section}{\numberline {2.2}Piezoelectric transducers}{18}
+\contentsline {section}{\numberline {2.3}Rod with Transducers}{20}
+\contentsline {section}{\numberline {2.4}Cracked Rod with Transducers}{22}
+\contentsline {section}{\numberline {2.5}One Dimensional Time Reversal Focusing at a Crack}{23}
+\contentsline {section}{\numberline {2.6}Time Reversal Focusing in Two Dimensions}{25}
+\contentsline {chapter}{\numberline {3}Experiments}{29}
+\contentsline {section}{\numberline {3.1}Hardware and Software}{29}
+\contentsline {section}{\numberline {3.2}Crack Detection Tests}{30}
+\contentsline {section}{\numberline {3.3}Time Reversal Tests}{41}
+\contentsline {chapter}{\numberline {4}Results}{48}
+\contentsline {chapter}{\numberline {5}Recommended Future Work}{49}
+\contentsline {chapter}{\numberline {6}Conclusion}{50}
+\contentsline {chapter}{Bibliography}{51}

@@ -1,0 +1,37 @@
+Everything should be self contained in the Prog1 folder.
+The executable is in bin, source code in src, data files in data,
+and build files in build. 
+
+Run the executable from the Prog1 directory (vs inside the source).
+If you don't run from the Prog1 directory then make sure
+to pass in the correct path to the data file as a program
+argument.
+
+Example from Prog1 directory using data file in default location:
+
+	./bin/prog1
+
+Example from Prog1/bin directory
+
+	./prog1 ../data/prog1_data.txt
+
+If you need to rebuild the source then from inside
+the Prog1 directory you should be able to just call
+
+	make clean
+	make all
+
+If your c++ files are elsewhere besides /usr/include and /usr/lib
+then you will need to edit the Makefile accordingly.
+
+The program will output the xy position and theta pose data
+to the screen and to a file that should be in the same directory
+as the input file (data folder by defaulta) and with the same name 
+except with _out.txt at the end of it.
+
+I created a simple Matlab script (plot_prog1.m) to read in the output 
+data from the output file, plot it, then save it to and eps file format.
+I don't haven't figured out yet how to do a directed plot in Matlab
+but since we know the starting and end position you can trace the path
+of the robot by looking at the graph. The Matlab script is in the src 
+folder and it outputs the plot to the data folder.

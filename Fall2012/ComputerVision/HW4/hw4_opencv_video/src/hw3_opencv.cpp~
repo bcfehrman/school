@@ -27,7 +27,7 @@ used, the step size for the ranks, and the overall number of ranks.
 #include <sstream>
 
 /**** Defines ****/
-#define WINDOW_SIZE_CHOICE CV_WINDOW_NORMAL
+#define WINDOW_SIZE_CHOICE CV_WINDOW_AUTOSIZE
 
 /**** Using Statements ****/
 using namespace cv;
@@ -45,7 +45,7 @@ struct xy_pos
 int main( int argc, char *argv[])
 {	
 	clock_t begin;
-	VideoCapture cap("vid/meFrontyard.webm"); //open the default camera
+	VideoCapture cap("vid/lighterFrontyard.webm"); //open the default camera
 	ostringstream convert;
 	clock_t end;
 	int curr_rank = 0;
@@ -102,16 +102,16 @@ int main( int argc, char *argv[])
 		flip(frame_bgr, frame_bgr, 1);
 		
 		transpose(frame_bgr, frame_bgr);
-		flip(frame_bgr, frame_bgr, 1);
+		//flip(frame_bgr, frame_bgr, 1);
 		
 		//Convert to gray scale
-		cvtColor(frame_bgr, frame_bgr, CV_BGR2GRAY);
+		//cvtColor(frame_bgr, frame_bgr, CV_BGR2GRAY);
 		
 		//cvtColor(frame_bgr, frame_bgr, CV_GRAY2BGR);
 		
 		//Perform the SVD that gives the U, W, Vt (or U, S, Vt) 
 		//except W is just a vector of the singular values
-		SVD svd(frame_bgr);	
+		//SVD svd(frame_bgr);	
 		
 		//Show the unmodified gray scale image
 		imshow("Corrected", frame_bgr);

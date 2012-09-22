@@ -45,7 +45,7 @@ struct xy_pos
 int main( int argc, char *argv[])
 {	
 	clock_t begin;
-	VideoCapture cap("vid/meFrontyard.webm"); //open the default camera
+	VideoCapture cap("vid/lighterFrontyard.webm"); //open the default camera
 	ostringstream convert;
 	clock_t end;
 	int curr_rank = 0;
@@ -102,7 +102,7 @@ int main( int argc, char *argv[])
 		flip(frame_bgr, frame_bgr, 1);
 		
 		transpose(frame_bgr, frame_bgr);
-		flip(frame_bgr, frame_bgr, 1);
+		//flip(frame_bgr, frame_bgr, 1);
 		
 		//Convert to gray scale
 		//cvtColor(frame_bgr, frame_bgr, CV_BGR2GRAY);

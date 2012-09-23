@@ -3,10 +3,10 @@ CPP = g++
 
 OBJDIR = build
 SRCDIR = src
-INCDIR = /usr/include
-LIBDIR = /usr/lib
+INCDIR = /usr/local/include
+LIBDIR = /usr/local/lib
 BINDIR = bin
-EXEC = hw3_opencv
+EXEC = hw4_opencv
 
 CFLAGS = -Wall -I$(INCDIR) -g
 LFLAGS = -L$(LIBDIR) -lgsl -lm -lopencv_highgui -lopencv_core -lopencv_imgproc

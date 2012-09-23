@@ -27,7 +27,7 @@ used, the step size for the ranks, and the overall number of ranks.
 #include <sstream>
 
 /**** Defines ****/
-#define WINDOW_SIZE_CHOICE CV_WINDOW_AUTOSIZE
+#define WINDOW_SIZE_CHOICE CV_WINDOW_NORMAL
 
 /**** Using Statements ****/
 using namespace cv;
@@ -45,83 +45,108 @@ struct xy_pos
 int main( int argc, char *argv[])
 {	
 	clock_t begin;
-	VideoCapture cap("vid/lighterFrontyard.webm"); //open the default camera
-	ostringstream convert;
+	VideoCapture cap;
+	int curr_frame = 1;
 	clock_t end;
-	int curr_rank = 0;
-	int frame_height = 120;
-	int frame_width = 160;
-	int num_frames = 1;
-	Mat frame_lower_rank[num_frames];
-	string frame_names[num_frames];
+	string filename_in = "vid/lighterFrontyard_low.webm";
+	string filename_out_rot = "vid/vid_out_rotated.avi";
+	string filename_out_rank = "vid/vid_out_lowrank.avi";
+	int curr_rank = 5;
 	int i = 0;
-	int rank_step = 5;
-	string start_name = "Rank ";
+	int num_frames = 0;
+	VideoWriter out_rot, out_rank;
+	Size frame_size;
 	double time_diff = 0;
 	xy_pos window_pos;
+	
+	if(argc > 1)
+	  filename_in = argv[1];
+	
+	cap.open(filename_in); //open the default camera
 
 	//Check to see if the camera opened
 	if(!cap.isOpened())
-		return -1;
+	{
+	  cout << "Could not open: " << filename_in << endl;
+	  return -1;
+	}
+	
+	Mat frame_bgr;
+	cap >> frame_bgr;
+	curr_frame++;
+	frame_size = frame_bgr.size();
 
-	//Set the capture frame width and height. I set these
-	//fairly small on my super weak laptop since it just
-	//can't handle the stress =)
-	//cap.set(CV_CAP_PROP_FRAME_WIDTH, frame_width);
-	//cap.set(CV_CAP_PROP_FRAME_HEIGHT, frame_height);
-	//Create the window for the original gray scale image
-	//Move the window so it hopefully won't overlap the other
-	//windows
+	out_rank.open(filename_out_rank, CV_FOURCC('D','I','V','X'), 14, frame_size, true);
+	out_rot.open(filename_out_rot, CV_FOURCC('D','I','V','X'), 14, frame_size, true);
+
 	namedWindow("Corrected", WINDOW_SIZE_CHOICE);
 	cvMoveWindow("Corrected", 900, 0);
 	
+	namedWindow("Low Rank", WINDOW_SIZE_CHOICE);
+	cvMoveWindow("Low Rank", 400, 0);
+	
 	namedWindow("Uncorrected", WINDOW_SIZE_CHOICE);
 	cvMoveWindow("Uncorrected", 0, 0);
-
+	
 	for(;;)
 	{
 		/*Uncomment the commented code in this loop 
 		  to get FPS timing output. Will add this as 
 		  an input option
-		
-		  //Start clock for FPS timing
-		  begin = clock();
 		*/
+		
+		//Start clock for FPS timing
+		//begin = clock();
+		
+		//do
+		//{
+		 //end = clock(); 
+		//}while(((double) (end - begin) / CLOCKS_PER_SEC) < 1/30.0);
 		
 		//Create new bgr matrix and fill it with the
 		//current frame from the video camera
 		Mat frame_bgr;
 		cap >> frame_bgr;
-	
-		//Convert the frame to be 32bit floating
-		frame_bgr.convertTo(frame_bgr, CV_32F, 1/255.0);	
+		
+		if(frame_bgr.empty())
+		  break;
 		
 		imshow("Uncorrected", frame_bgr);
 		
 		transpose(frame_bgr, frame_bgr);
-		flip(frame_bgr, frame_bgr, 1);
-		
+		flip(frame_bgr, frame_bgr, 1);		
 		transpose(frame_bgr, frame_bgr);
-		//flip(frame_bgr, frame_bgr, 1);
+
+		//Show the corrected image
+		imshow("Corrected", frame_bgr);
+		
+		out_rot << frame_bgr;
+		
+		//Convert the frame to be 32bit floating
+		frame_bgr.convertTo(frame_bgr, CV_32F, 1/255.0);	
 		
 		//Convert to gray scale
-		//cvtColor(frame_bgr, frame_bgr, CV_BGR2GRAY);
-		
-		//cvtColor(frame_bgr, frame_bgr, CV_GRAY2BGR);
+		cvtColor(frame_bgr, frame_bgr, CV_BGR2GRAY);
 		
 		//Perform the SVD that gives the U, W, Vt (or U, S, Vt) 
 		//except W is just a vector of the singular values
-		//SVD svd(frame_bgr);	
+		SVD svd(frame_bgr);	
 		
-		//Show the unmodified gray scale image
-		imshow("Corrected", frame_bgr);
+		frame_bgr = svd.u(Range::all(), Range(0,curr_rank)) * 
+				Mat::diag(svd.w)(Range(0,curr_rank),Range(0,curr_rank)) *  
+				svd.vt(Range(0,curr_rank), Range::all());
+		
+		imshow("Low Rank", frame_bgr);
+		
+		frame_bgr.convertTo(frame_bgr, CV_8U, 255.0);
+		
+		out_rank << frame_bgr;
 
-		/*Timing code
-		end = clock();
-		timeDiff = (double)(end - begin);
-		cout << 1.0 / (timeDiff / CLOCKS_PER_SEC ) << endl;
-		*/
+		//Timing code
 		
+		//end = clock();
+		//time_diff = (double)(end - begin);
+		//cout << 1.0 / (time_diff / CLOCKS_PER_SEC ) << endl;
 		//Will exit if a window is in focus an a key is pressed
 		if(waitKey(30) >= 0) break;
 	}

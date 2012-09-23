@@ -1,0 +1,33 @@
+CC = gcc
+CPP = g++
+
+OBJDIR = build
+SRCDIR = src
+INCDIR = /usr/local/include
+LIBDIR = /usr/local/lib
+BINDIR = bin
+EXEC = hw3_opencv
+
+CFLAGS = -Wall -I$(INCDIR) -g
+LFLAGS = -L$(LIBDIR) -lgsl -lm -lopencv_highgui -lopencv_core -lopencv_imgproc
+
+
+all: $(BINDIR)/$(EXEC)
+
+$(OBJDIR)/$(EXEC).o: $(SRCDIR)/$(EXEC).cpp | $(OBJDIR)
+	$(CPP) $(CFLAGS) -c -o $@ $^
+
+$(BINDIR)/$(EXEC): $(OBJDIR)/$(EXEC).o | $(BINDIR)
+	$(CPP) $(LFLAGS) -o $@ $^
+
+$(OBJDIR):
+	mkdir $(OBJDIR)
+
+$(BINDIR):
+	mkdir $(BINDIR)
+
+valgrind: $(BINDIR)/$(EXEC)
+	valgrind --leak-check=full --show-reachable=yes $(BINDIR)/$(EXEC)
+
+clean:
+	rm -rf $(OBJDIR) $(BINDIR)

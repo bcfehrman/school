@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=latex 2012.8.31)  20 SEP 2012 13:52
+This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=latex 2012.8.31)  25 SEP 2012 13:51
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -461,18 +461,23 @@ Overfull \hbox (26.80707pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 iv
  []
 
-[4] (./thesis.toc)
-\tf@toc=\write4
-\openout4 = `thesis.toc'.
-
-
+[4] (./thesis.toc
 Overfull \hbox (23.54321pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 v
  []
 
 [5
 
-] (./thesis.lof
+])
+\tf@toc=\write4
+\openout4 = `thesis.toc'.
+
+
+Overfull \hbox (26.80707pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 vi
+ []
+
+[6] (./thesis.lof
 Overfull \hbox (65.53462pt too wide) in paragraph at lines 2--2
  \OT1/cmr/m/n/12 imagesource:[http://orbitaldebris.jsc.nasa.gov/photogallery/be
 ehives/GEO640.jpg] 
@@ -484,27 +489,32 @@ Underfull \hbox (badness 10000) in paragraph at lines 2--2
  []
 
 
-Overfull \hbox (26.80707pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 vi
- []
-
-[6
-
-]
 Overfull \hbox (30.07092pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 vii
  []
 
-[7])
-\tf@lof=\write5
-\openout5 = `thesis.lof'.
+[7
 
-
+]
 Overfull \hbox (33.33478pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 viii
  []
 
 [8]
+Overfull \hbox (26.80707pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 ix
+ []
+
+[9])
+\tf@lof=\write5
+\openout5 = `thesis.lof'.
+
+
+Overfull \hbox (23.54321pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 x
+ []
+
+[10]
 Chapter 1.
 (./introduction.tex
 Overfull \hbox (23.21683pt too wide) has occurred while \output is active
@@ -826,7 +836,7 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 File: eps_pics/ch0Read.eps Graphic file (type eps)
  <eps_pics/ch0Read.eps>
 File: eps_pics/ch1Read.eps Graphic file (type eps)
- <eps_pics/ch1Read.eps>)
+ <eps_pics/ch1Read.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 46
  []
@@ -837,31 +847,166 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
  []
 
 [47]
-Chapter 4.
-(./results.tex)
+File: eps_pics/ch0RMS.eps Graphic file (type eps)
+ <eps_pics/ch0RMS.eps>
+File: eps_pics/ch1RMS.eps Graphic file (type eps)
+ <eps_pics/ch1RMS.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 48
  []
 
-[48
-
-]
-Chapter 5.
-(./recommended_work.tex)
+[48]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 49
  []
 
-[49
+[49]
+File: eps_pics/ch0Chosen.eps Graphic file (type eps)
+ <eps_pics/ch0Chosen.eps>
+File: eps_pics/ch1Chosen.eps Graphic file (type eps)
+ <eps_pics/ch1Chosen.eps>
+File: eps_pics/ch0Scaled.eps Graphic file (type eps)
+
+<eps_pics/ch0Scaled.eps>
+File: eps_pics/ch1Scaled.eps Graphic file (type eps)
+ <eps_pics/ch1Scaled.eps>
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 50
+ []
+
+[50]
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 51
+ []
+
+[51]
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 52
+ []
+
+[52]
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 53
+ []
+
+[53]
+File: eps_pics/newFlow.eps Graphic file (type eps)
+ <eps_pics/newFlow.eps>
+
+LaTeX Warning: Float too large for page by 59.58138pt on input line 281.
+
+)
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 54
+ []
+
+[54]
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 55
+ []
+
+[55]
+Chapter 4.
+(./results.tex
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 56
+ []
+
+[56
+
+]
+File: eps_pics/steelUncracked.eps Graphic file (type eps)
+ <eps_pics/steelUncracked.eps>
+File: eps_pics/steelCracked.eps Graphic file (type eps)
+ <eps_pics/steelCracked.eps>
+File: eps_pics/steelDifferences.eps Graphic file (type eps)
+
+<eps_pics/steelDifferences.eps>
+File: eps_pics/nylonUncracked.eps Graphic file (type eps)
+ <eps_pics/nylonUncracked.eps>
+File: eps_pics/nylonCracked.eps Graphic file (type eps)
+
+<eps_pics/nylonCracked.eps>
+File: eps_pics/nylonDifferences.eps Graphic file (type eps)
+ <eps_pics/nylonDifferences.eps>
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 57
+ []
+
+[57]
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 58
+ []
+
+[58]
+File: eps_pics/steel-1-2_Iter_th_exp.eps Graphic file (type eps)
+ <eps_pics/steel-1-2_Iter_th_exp.eps>
+File: eps_pics/steel-1-3_Iter_th_exp.eps Graphic file (type eps)
+ <eps_pics/steel-1-3_Iter_th_exp.eps>
+File: eps_pics/steel-2-3_Iter_th_exp.eps Graphic file (type eps)
+
+<eps_pics/steel-2-3_Iter_th_exp.eps>
+
+LaTeX Warning: Float too large for page by 132.11848pt on input line 76.
+
+
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 59
+ []
+
+[59]
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 60
+ []
+
+[60]
+File: eps_pics/nylon-2-3_Iter_th_exp.eps Graphic file (type eps)
+ <eps_pics/nylon-2-3_Iter_th_exp.eps>
+File: eps_pics/nylon-2-4_Iter_th_exp.eps Graphic file (type eps)
+ <eps_pics/nylon-2-4_Iter_th_exp.eps>
+File: eps_pics/nylon-3-4_Iter_th_exp.eps Graphic file (type eps)
+
+<eps_pics/nylon-3-4_Iter_th_exp.eps>
+
+LaTeX Warning: Float too large for page by 117.61848pt on input line 96.
+
+
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 61
+ []
+
+[61]
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 62
+ []
+
+[62]
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 63
+ []
+
+[63])
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 64
+ []
+
+[64]
+Chapter 5.
+(./recommended_work.tex)
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 65
+ []
+
+[65
 
 ]
 Chapter 6.
 (./conclusion.tex) (./thesis.bbl
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 50
+[] \OT1/cmr/m/n/12 66
  []
 
-[50
+[66
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 4--10
@@ -887,63 +1032,63 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--23
 
 
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 51
+[] \OT1/cmr/m/n/12 67
  []
 
-[51
+[67
 
 ]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 52
+[] \OT1/cmr/m/n/12 68
  []
 
-[52]
+[68]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 53
+[] \OT1/cmr/m/n/12 69
  []
 
-[53]
+[69]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 54
+[] \OT1/cmr/m/n/12 70
  []
 
-[54]
+[70]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 55
+[] \OT1/cmr/m/n/12 71
  []
 
-[55]
+[71]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 56
+[] \OT1/cmr/m/n/12 72
  []
 
-[56]
+[72]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 57
+[] \OT1/cmr/m/n/12 73
  []
 
-[57]
+[73]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 58
+[] \OT1/cmr/m/n/12 74
  []
 
-[58])
+[74])
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 59
+[] \OT1/cmr/m/n/12 75
  []
 
-[59] (./thesis.aux)
+[75] (./thesis.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 5668 strings out of 493500
- 75016 string characters out of 3143858
- 164108 words of memory out of 3000000
- 8780 multiletter control sequences out of 15000+200000
+ 5716 strings out of 493500
+ 76055 string characters out of 3143858
+ 165108 words of memory out of 3000000
+ 8809 multiletter control sequences out of 15000+200000
  13712 words of font info for 51 fonts, out of 3000000 for 9000
  953 hyphenation exceptions out of 8191
  37i,22n,43p,2496b,428s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on thesis.dvi (68 pages, 135432 bytes).
+Output written on thesis.dvi (86 pages, 169520 bytes).

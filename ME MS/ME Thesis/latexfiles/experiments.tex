@@ -189,7 +189,9 @@ The next step was to perform acoustic focusing at a crack located at an a priori
 }
 \end{figure}
 
-The first part of the time reversal algorithm is the interrogatory phase. As with the crack detection tests, the host program generated an initial multi-tone wave that was to be played out by PZT A (although the algorithm was indifferent to which PZT plays the initial signal). Before playing out the wave the FPGA zeroed its output values and waited the specified period ($200ms$ here). PZT A sent the wave and simultaneously began recording data. Both the defect PZT and PZT B began also began recording data as the wave was being played by PZT A. The signal propagated through the rod and towards PZT B. On its way to PZT B the wave struck the defect PZT. Upon impacting the defect PZT, the wave was split into multiple components part of which were reflected back towards PZT A and part which continued transmission towards PZT B. The reflected component struck PZT A where it was recorded. The transmitted component reached PZT B where it was also recorded. The components again split upon impacting the boundaries which caused more reflection and transmission components and were also recorded by PZT A and PZT B (Figure \ref{fig:initialPhaseRead}). The recording continued until the desired number of samples for the iteration was reached (2000 samples was chosen here based upon experimental observations).
+\subsection{Interrogatory Phase}
+
+The first part of the time reversal algorithm is the interrogatory phase. As with the crack detection tests, the host program generated an initial multi-tone wave that was to be played out by PZT A (although the algorithm was indifferent to which PZT plays the initial signal). Before playing out the wave the FPGA zeroed its output values and waited the specified period ($200ms$ here). PZT A sent the wave and simultaneously began recording data. Both the defect PZT and PZT B began also began recording data as the wave was being played by PZT A. The signal propagated through the rod and towards PZT B. On its way to PZT B the wave struck the defect PZT. Upon impacting the defect PZT, the wave was split into multiple components part of which were reflected back towards PZT A and part which continued transmission towards PZT B. The reflected component struck PZT A where it was recorded. The transmitted component reached PZT B where it was also recorded. The components again split upon impacting the boundaries which caused more reflection and transmission components and were also recorded by PZT A and PZT B (Figure \ref{fig:initialPhaseRead}). The recording continued until the desired number of samples for the iteration was reached (2000 samples was chosen here based upon experimental observations). The peak to peak amplitude at the defect PZT was recorded so that it could be compared with the response seen in future iterations.
 
 
 \begin{figure}
@@ -206,4 +208,74 @@ The first part of the time reversal algorithm is the interrogatory phase. As wit
 (a) The response recorded at PZT A (sending PZT) during the interrogatory phase. These tests were carried out using steel rods which were $437 \times 10^{-3} m$ and $428 \times 10^{-3} m$ in length. It is seen that the initial wave played out by PZT A is included in the signal recorded by PZT A and is of substantially higher amplitude than the rest of the data recorded. This was one big difficulty with performing in one dimension. To make the algorithm work, it was necessary to zero out the section of the signal which contained the original wave and also to bypass ringing left over from the PZT playing the wave;
 (b) The response recorded at PZT B (opposite end) during the initial iteration.
 }
+\end{figure}
+
+\subsection{Selection Phase}
+
+The next step in the time reversal algorithm is the selection phase. During the selection phase it is determined which portion of each recorded signal should be reversed and played back. Typically for multi-dimensional time reversal the setup allows for the entire recorded signals to be used during playback. With one dimensional time reversal, however, it is important that only a portion of this signal be sent back. This becomes more apparent in the iterative time reversal case which is discussed later. For the signal read by PZT A, the window extracted contained the occurrence of the first reflection component of the initial wave. With PZT B it was the window containing the occurrence of the first transmitted component of the initial wave. To extract the signal portions to reverse the data recorded by each PZT during the interrogatory phase were transferred from the FPGA to the host computer and then processed. A windowed root mean square (RMS) was performed on the signal read by PZT A. The window size used was 40 data points and was based upon the initial wave size of 40 data points. A single value was computed for each RMS window which corresponded to the energy concentration found in the signal during that sampling window. The collection of RMS values were stored in an array. When plotted, this array is seen to essentially draw a line around the wave groupings found within the signal for PZT A. The local maximums in the RMS plot correspond to the occurrence of high energy stress-waves at PZT A. Since PZT A played out the initial signal it was required to zero out the first part of its recorded signal so that the PZT vibrations from the wave being played did not overshadow the rest of the data. The zero period was specified at program start up and was chosen to be 100 points which was a little more than twice the length of the original wave played. After zeroing out the beginning of the signal the first local maximum in the signal was indicative of the first reflection component arriving at PZT A (Figure \ref{fig:windowedRMS}). The window centered on this peak was extracted for reversal. A window was extracted from PZT B's signal using the same algorithm.
+
+
+\begin{figure}
+\begin{subfigmatrix}{2}
+\subfigure[PZT A Windowed RMS]
+{\includegraphics[width=0.6\textwidth]{eps_pics/ch0RMS}}
+\subfigure[PZT B Windowed RMS]
+{\includegraphics[width=0.6\textwidth]{eps_pics/ch1RMS}}
+\end{subfigmatrix}
+
+  \caption[all]
+%>>>> use \label inside caption to get Fig. number with \ref{}
+  { \label{fig:windowedRMS}
+(a) Windowed RMS of PZT A's signal using a window length of 40 data points. Since PZT A played a signal while recording, the first 100 points were zeroed so that the rest of the data could be seen. The largest point for this test was found to be around the 144th data point and marked the start of the window that was extracted and played back by PZT A;
+(b) Windowed RMS of PZT B's signal which had the largest peak occur around the 136th data point.
+}
+\end{figure}
+
+The window extracted from PZT A's signal was 60 data points in length and was based upon the original wave size of 40 points which left room for error in terms of the wave's location in the signal. The extracted length also had to be small enough so that it did not include any responses not produced by the initial reflection component. This extracted window was centered on zero, scaled to be maximum amplitude, and then time reversed so that last data point became the first and vice-versa. The same procedure was follow for the window extracted from PZT B's signal (Figure \ref{fig:chosenSignals}).
+
+\begin{figure}
+\begin{subfigmatrix}{2}
+\subfigure[PZT A Selected Window]
+{\includegraphics[width=0.6\textwidth]{eps_pics/ch0Chosen}}
+\subfigure[PZT B Selected Window]
+{\includegraphics[width=0.6\textwidth]{eps_pics/ch1Chosen}}
+\end{subfigmatrix}
+
+  \caption[all]
+%>>>> use \label inside caption to get Fig. number with \ref{}
+  { \label{fig:chosenSignals}
+(a) Window of PZT A's signal that was chosen for playback and is based upon the maximum peak found in the windowed RMS graph for the signal read by PZT A;
+(b) Window of PZT B's signal that was chosen for playback and used the same selection algorithm that selected PZT A's playback window.
+}
+\end{figure}
+
+Once the windows were selected and processed for playback it was necessary to determine which window occurred first in terms of the global time domain. This step is needed because no a priori knowledge of the rods' length is assumed and a zero period must be played out by one of the PZTs during playback. The zero period played by one of the transducers is what allowed for the signals played back by each PZT to arrive at the crack simultaneously. In this sample test it was found that PZT B had the first wave occurrence at the 136th data point whereas PZT A's occurred at the 144th data point.  The zero period was chosen to be the difference in arrival times (here, 144 - 136 = 8) and this period was inserted at the beginning of PZT B's signal. In order to have consistent playback signal lengths an equal zero period was appended to PZT A' playback signal (Figure \ref{fig:scaledSignals}).
+
+\begin{figure}
+\begin{subfigmatrix}{2}
+\subfigure[PZT A Selected Window]
+{\includegraphics[width=0.6\textwidth]{eps_pics/ch0Scaled}}
+\subfigure[PZT B Selected Window]
+{\includegraphics[width=0.6\textwidth]{eps_pics/ch1Scaled}}
+\end{subfigmatrix}
+
+  \caption[all]
+%>>>> use \label inside caption to get Fig. number with \ref{}
+  { \label{fig:scaledSignals}
+(a) Window played back by PZT A during the time reversal phase which has been centered on zero, scaled to max amplitude, and time reversed;
+(b) Window played back by PZT B during the time reversal phase which has also been centered on zero, scaled, and time reversed. A zero period was inserted at the beginning of PZT B's playback window in order for the signals played by each PZT to arrive at the defect at the same instant. This zero period was needed because the crack was closer to PZT B than PZT A and was a priori unknown but was inferred from the data recorded.
+}
+\end{figure}
+
+\subsection{Time Reversal Focusing Phase}
+After selecting and processing the windows for playback it was time for the time reversal focusing phase. The processed windows were transferred from the host program to the FPGA program. Before playing back the signals the FPGA waited for a period of $200ms$ to allow for the ringing in the rod to decay. Following the idle period both PZT A and PZT B played their respective windows. These waves traveled through the through the rod and simultaneously reached the defect PZT. Upon reaching the defect the wave energies combined and a focusing occurred at that location. The peak to peak amplitude at the defect PZT was recorded and compared to the initial iteration.
+
+\subsection{Iterative Time Reversal}
+The time reversal process was performed in an iterative fashion. The iterative algorithm was identical to the previously described time reversal algorithm up through the Time Reversal Focusing Phase. The extension was that during the time reversal phase, PZT A and PZT B began recording data as soon as they started playing their signals. Windows were again extracted from each signal for playback. This time, however, it was not necessary to perform the windowed RMS on each signal in order to determine which window to extract. The extraction point information from the first selection phase was used to extract a playback window from each signal. As mentioned previously, the iterative time reversal algorithm is where it is important that we play back only a selected portion of the signal and not the entire signal since the PZTs must record information on the same iteration in which they send signals. If the playback signals were to be arbitrarily long then any new information would be overshadowed by the playing out of the signal. These extracted windows were again centered on zero, scaled to max amplitude, time reversed, and the necessary zero periods were inserted. The same time reversal focusing phase was performed as described before with the FPGA idling for $200ms$ before playing out the signals in order to let the rod ringing decay. The entire algorithm was then repeated with new information being recorded by each PZT, being processed, and then being played back. With each playback a better focusing is achieved at the defect site. This process continued for 150 iterations which was found to be the point at which little change was seen in the response at the defect PZT. The flow chart for the iterative time reversal algorithm is shown in Figure \ref{fig:newFlow}.
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=1.0\textwidth]{eps_pics/newFlow}
+\caption{Logic flow diagram for the time iterative time reversal algorithm.
+ 	 \label{fig:newFlow}} 
 \end{figure}

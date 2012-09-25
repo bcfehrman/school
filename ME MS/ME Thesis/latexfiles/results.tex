@@ -1,0 +1,103 @@
+%Results
+
+In this chapter the results from each of the experiments are detailed. The experimental results for the single iteration time reversal algorithm are compared with the theoretical results from the model described earlier. The crack detection and iterative focusing results are also examined.
+
+\section{Crack Detection Results}
+The crack detection experiments were to prove that the program could detect when damage occurred within a rod. Signals were sent from PZT A and propagated through the rod where they were recorded on the other end by PZT B. The first set of tests were performed using the steel rods. The graphs of the undamaged and damaged rod tests are shown in Figure \ref{fig:steelCrackResults}. It is seen that the wave recorded by PZT B during the damaged rod tests is substantially smaller in amplitude than the wave that is recorded in the undamaged rod tests. The tests were run five times for both the undamaged and damaged samples. The signal recorded for the first test for the undamaged rod was taken to be the initial rod state. The remaining nine test signals were then compared to this first signal to determine the change in signal which was taken as the sum of squared differences between the signals being compared. The results from each comparison are shown in Figure \ref{fig:steelDifferences} where the damaged rod is introduced on the 6th iteration. It is seen that there is a very large jump in the computed signal difference when the damaged rod signal data is introduced. 
+
+\begin{figure}
+\begin{subfigmatrix}{2}
+\subfigure[PZT B Signal Undamaged Steel Rod]
+{\includegraphics[width=0.6\textwidth]{eps_pics/steelUncracked}}
+\subfigure[PZT B Signal Damaged Steel Rod]
+{\includegraphics[width=0.6\textwidth]{eps_pics/steelCracked}}
+\end{subfigmatrix}
+
+  \caption[all]
+%>>>> use \label inside caption to get Fig. number with \ref{}
+  { \label{fig:steelCrackResults}
+(a) Signal recorded at PZT B with an undamaged steel rod;
+(b) Signal recorded at PZT B when using the damaged nylon rod which was represented by using two rod segments whose combined length was equal to that of the undamaged rod.
+}
+\end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.6\textwidth]{eps_pics/steelDifferences}
+\caption{Sum of squared differences computer for each iteration of the steel rod crack detection tests. The damaged rod was introduced on the 6th iteration and this is clearly seen in the graph data.
+ 	 \label{fig:steelDifferences}} 
+\end{figure}
+
+The same tests were performed using nylon rods. Figure \ref{fig:nylonCrackResults} shows the graphs for both the undamaged and damaged nylon rod crack detection tests. As with the steel rods, a large change in amplitude is seen from the undamaged to the damaged signals. Figure \ref{fig:nylonDifferences} shows the sum of squared differences for each iteration of the nylon rod tests with the damaged rod again being introduced on the 6th iteration. Just as with the steel rods a large jump in the graph is seen when the damaged rod is introduced.
+
+\begin{figure}
+\begin{subfigmatrix}{2}
+\subfigure[PZT B Signal Undamaged Nylon Rod]
+{\includegraphics[width=0.6\textwidth]{eps_pics/nylonUncracked}}
+\subfigure[PZT B Signal Damaged Nylon Rod]
+{\includegraphics[width=0.6\textwidth]{eps_pics/nylonCracked}}
+\end{subfigmatrix}
+
+  \caption[all]
+%>>>> use \label inside caption to get Fig. number with \ref{}
+  { \label{fig:nylonCrackResults}
+(a) Signal recorded at PZT B with an undamaged nylon rod;
+(b) Signal recorded at PZT B when using the damaged nylon rod which was represented by using two rod segments whose combined length was equal to that of the undamaged rod.
+}
+\end{figure}
+
+\begin{figure}[ht!]
+\centering
+\includegraphics[width=0.6\textwidth]{eps_pics/nylonDifferences}
+\caption{Sum of squared differences computer for each iteration of the nylon rod crack detection tests. The damaged rod was introduced on the 6th iteration and, as with the steel rod tests, this is clearly seen in the graph data.
+ 	 \label{fig:nylonDifferences}} 
+\end{figure}
+
+\section{Single Iteration Time Reversal Results}
+
+\subsection{Steel Rods}
+Theoretical calculations were carried out for the first iteration of the one dimensional time reversal focusing algorithm using the equations described in the modeling section of this thesis. Time reversal focusing was desired to be at the 'defect' PZT with a multi-tone signal over the frequency range of $100$ - $130kHz$. The calculations were carried out assuming that there was zero dissipation. Figure \ref{fig:steelThExp} shows the theoretical and experimental results together for each of the three steel rod combinations that were tested. A reasonable match between the results is seen but differences arise due to the calculations not accounting for dispersion or dissipation. The amplitude of the experimental waves are seen to have lower amplitude and an altered shape from the waves seen in the theoretical results. The wave recorded in the time reversal phase was seen to be larger than the response recorded in the interrogatory phase and was the desired result as this implied a focusing of the energy from each wave at the defect location.
+
+ \begin{figure}
+\begin{subfigmatrix}{3}
+\subfigure[Theory vs Experiment, 579mm and 437mm steel rods]
+{\includegraphics[width=0.6\textwidth]{eps_pics/steel-1-2_Iter_th_exp.eps}}
+\subfigure[Theory vs Experiment, 579mm and 428mm steel rods]
+{\includegraphics[width=0.6\textwidth]{eps_pics/steel-1-3_Iter_th_exp.eps}}
+\subfigure[Theory vs Experiment, 437mm and 428mm steel rods]
+{\includegraphics[width=0.6\textwidth]{eps_pics/steel-2-3_Iter_th_exp.eps}}
+\end{subfigmatrix}
+
+   \caption[all]
+%>>>> use \label inside caption to get Fig. number with \ref{}
+   { \label{fig:steelThExp}
+The results of the theoretical calculations and experimental test for the three steel rod tests. A reasonable match is seen between the theory and experiment with respect to wave amplitude and phase. The difference between theory and experiment could be because dissipation and dispersion were not accounted for in the calculations.
+ }
+ \end{figure}
+ 
+ \subsection{Nylon Rods}
+ Calculations were also carried out for the nylon rods which was also based upon the models seen previously in this paper. The calculations for the nylon rods also ignored dispersion and dissipation. As with the steel rods, these theoretical results were compared with the experimental results. A worse match is seen in these experiments and is perhaps due to greater dispersion and dissipation within the nylon rods than seen in the steel rods. The overall result was still good though because the wave in the time reversal phase is again seen to be larger than the wave recorded in the interrogatory phase. This increase in amplitude shows that focusing occurred with the nylon rod tests.
+ 
+ \begin{figure}
+\begin{subfigmatrix}{3}
+\subfigure[Theory vs Experiment, 148mm and 105mm nylon rods]
+{\includegraphics[width=0.6\textwidth]{eps_pics/nylon-2-3_Iter_th_exp.eps}}
+\subfigure[Theory vs Experiment, 148mm and 75mm nylon rods]
+{\includegraphics[width=0.6\textwidth]{eps_pics/nylon-2-4_Iter_th_exp.eps}}
+\subfigure[Theory vs Experiment, 105mm and 75mm nylon rods]
+{\includegraphics[width=0.6\textwidth]{eps_pics/nylon-3-4_Iter_th_exp.eps}}
+\end{subfigmatrix}
+
+   \caption[all]
+%>>>> use \label inside caption to get Fig. number with \ref{}
+   { \label{nylonThExp}
+The results of the theoretical calculations and experimental test for the three nylon rod tests. Similar to what was seen in the steel rod results (although worse),  there was a decent match between theory and experiment. The differences could be accounted for by a lack of dispersion and dissipation in the predicted records.
+ }
+ \end{figure}
+ 
+ \section{Iterative Time Reversal Results}
+ The time reversal algorithm was applied iteratively in both the steel and nylon rod tests. The goal of the iterative reversal was to see an increase in the response amplitude at the defect with each iteration. For each iteration the amplitude gain at the defect was recorded and used to determine the overall effectiveness of applying the time  reversal algorithm in an iterative fashion. The gain was determined by comparing the max peak to peak amplitude recorded at the defect on each iteration with the max response recorded on the first iteration. The max peak to peak amplitude was taken to be $|max(DefectVoltage) - min(DefectVOltage)|$. The gain was then computed as $CurrentMax / InitialMax$ and this was plotted for each time reversal iteration. 
+ 
+ \subsection{Steel Rods}
+ For the steel rod tests it was seen that the amplitude of the gain increased rapidly in the beginning of the experiments as the algorithm found a better and better signal with each iteration for the PZTs to playback. The gain began to level off as the number of iterations increased.
+ 

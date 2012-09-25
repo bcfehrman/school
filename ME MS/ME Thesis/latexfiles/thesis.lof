@@ -43,6 +43,32 @@
 \contentsline {figure}{\numberline {3.18}{\ignorespaces all}}{47}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Response recorded at PZT A in the interrogatory phase}}}{47}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Response recorded at PZT B in the interrogatory phase}}}{47}
+\contentsline {figure}{\numberline {3.19}{\ignorespaces all}}{49}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {PZT A Windowed RMS}}}{49}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {PZT B Windowed RMS}}}{49}
+\contentsline {figure}{\numberline {3.20}{\ignorespaces all}}{51}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {PZT A Selected Window}}}{51}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {PZT B Selected Window}}}{51}
+\contentsline {figure}{\numberline {3.21}{\ignorespaces all}}{52}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {PZT A Selected Window}}}{52}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {PZT B Selected Window}}}{52}
+\contentsline {figure}{\numberline {3.22}{\ignorespaces Logic flow diagram for the time iterative time reversal algorithm. }}{55}
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces all}}{58}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {PZT B Signal Undamaged Steel Rod}}}{58}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {PZT B Signal Damaged Steel Rod}}}{58}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Sum of squared differences computer for each iteration of the steel rod crack detection tests. The damaged rod was introduced on the 6th iteration and this is clearly seen in the graph data. }}{59}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces all}}{60}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {PZT B Signal Undamaged Nylon Rod}}}{60}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {PZT B Signal Damaged Nylon Rod}}}{60}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Sum of squared differences computer for each iteration of the nylon rod crack detection tests. The damaged rod was introduced on the 6th iteration and, as with the steel rod tests, this is clearly seen in the graph data. }}{61}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces all}}{62}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Theory vs Experiment, 579mm and 437mm steel rods}}}{62}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Theory vs Experiment, 579mm and 428mm steel rods}}}{62}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Theory vs Experiment, 437mm and 428mm steel rods}}}{62}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces all}}{63}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Theory vs Experiment, 148mm and 105mm nylon rods}}}{63}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Theory vs Experiment, 148mm and 75mm nylon rods}}}{63}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Theory vs Experiment, 105mm and 75mm nylon rods}}}{63}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

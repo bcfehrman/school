@@ -1,4 +1,4 @@
-\contentsline {chapter}{List of Figures}{vi}
+\contentsline {chapter}{List of Figures}{vii}
 \contentsline {chapter}{\numberline {1}Introduction}{1}
 \contentsline {section}{\numberline {1.1}Self-Healing}{3}
 \contentsline {section}{\numberline {1.2}Accelerating the Self-Healing Process}{5}
@@ -17,7 +17,17 @@
 \contentsline {section}{\numberline {3.1}Hardware and Software}{29}
 \contentsline {section}{\numberline {3.2}Crack Detection Tests}{30}
 \contentsline {section}{\numberline {3.3}Time Reversal Tests}{41}
-\contentsline {chapter}{\numberline {4}Results}{48}
-\contentsline {chapter}{\numberline {5}Recommended Future Work}{49}
-\contentsline {chapter}{\numberline {6}Conclusion}{50}
-\contentsline {chapter}{Bibliography}{51}
+\contentsline {subsection}{\numberline {3.3.1}Interrogatory Phase}{43}
+\contentsline {subsection}{\numberline {3.3.2}Selection Phase}{46}
+\contentsline {subsection}{\numberline {3.3.3}Time Reversal Focusing Phase}{50}
+\contentsline {subsection}{\numberline {3.3.4}Iterative Time Reversal}{53}
+\contentsline {chapter}{\numberline {4}Results}{56}
+\contentsline {section}{\numberline {4.1}Crack Detection Results}{56}
+\contentsline {section}{\numberline {4.2}Single Iteration Time Reversal Results}{57}
+\contentsline {subsection}{\numberline {4.2.1}Steel Rods}{57}
+\contentsline {subsection}{\numberline {4.2.2}Nylon Rods}{59}
+\contentsline {section}{\numberline {4.3}Iterative Time Reversal Results}{61}
+\contentsline {subsection}{\numberline {4.3.1}Steel Rods}{64}
+\contentsline {chapter}{\numberline {5}Recommended Future Work}{65}
+\contentsline {chapter}{\numberline {6}Conclusion}{66}
+\contentsline {chapter}{Bibliography}{67}

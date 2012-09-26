@@ -8,23 +8,23 @@
 \glossaryentry{a$S_{33}$@[{$S_{33}$}]\begingroup Strain in the z direction\nomeqref {2.6}|nompageref}{15}
 \glossaryentry{a$\frac{\partial w}{\partial z}$@[{$\frac{\partial w}{\partial z}$}]\begingroup The strain resulting from the stress wave that is played by transducer A during the initial phase\nomeqref {2.7}|nompageref}{15}
 \glossaryentry{a$c^*$@[{$c^*$}]\begingroup Velocity of wave propagation through the rod\nomeqref {2.10}|nompageref}{16}
-\glossaryentry{a$D_3$@[{$D_3$}]\begingroup Electric displacement in the z direction\nomeqref {2.26}|nompageref}{19}
-\glossaryentry{a$E_3$@[{$E_3$}]\begingroup Electric field intensity in the z direction\nomeqref {2.26}|nompageref}{19}
-\glossaryentry{a$d_{33}$@[{$d_{33}$}]\begingroup Strain constant relating the strain and field intensity in the z direction\nomeqref {2.26}|nompageref}{19}
+\glossaryentry{a$D_3$@[{$D_3$}]\begingroup Electric displacement in the z direction\nomeqref {2.26}|nompageref}{18}
+\glossaryentry{a$E_3$@[{$E_3$}]\begingroup Electric field intensity in the z direction\nomeqref {2.26}|nompageref}{18}
+\glossaryentry{a$d_{33}$@[{$d_{33}$}]\begingroup Strain constant relating the strain and field intensity in the z direction\nomeqref {2.26}|nompageref}{18}
 \glossaryentry{a$C_{33}$@[{$C_{33}$}]\begingroup PZT elastic constant in the z direction\nomeqref {2.30}|nompageref}{19}
 \glossaryentry{a$\epsilon ^T_{33}$@[{$\epsilon ^T_{33}$}]\begingroup PZT permittivity constant for the z direction\nomeqref {2.30}|nompageref}{19}
 \glossaryentry{a$C_c$@[{$C_c$}]\begingroup Equivalent capacitance for the transducers\nomeqref {2.30}|nompageref}{19}
-\glossaryentry{a$a$@[{$a$}]\begingroup Transducer cross sectional area\nomeqref {2.31}|nompageref}{19}
-\glossaryentry{a$l$@[{$l$}]\begingroup Transducer length\nomeqref {2.31}|nompageref}{19}
-\glossaryentry{a$\rho$@[{$\rho$}]\begingroup Density of the transducer material\nomeqref {2.32}|nompageref}{21}
+\glossaryentry{a$a$@[{$a$}]\begingroup Transducer cross sectional area\nomeqref {2.31}|nompageref}{20}
+\glossaryentry{a$l$@[{$l$}]\begingroup Transducer length\nomeqref {2.31}|nompageref}{20}
+\glossaryentry{a$\rho$@[{$\rho$}]\begingroup Density of the transducer material\nomeqref {2.32}|nompageref}{20}
 \glossaryentry{a$\boldsymbol{R}$@[{$\boldsymbol{R}$}]\begingroup Reflection coefficient at $z = l$\nomeqref {2.35}|nompageref}{21}
 \glossaryentry{a$\boldsymbol{T}$@[{$\boldsymbol{T}$}]\begingroup Transmission coefficient at $z = l$\nomeqref {2.35}|nompageref}{21}
-\glossaryentry{a$\boldsymbol{\hat{R}}$@[{$\boldsymbol{\hat{R}}$}]\begingroup Reflection coefficient at $z = (L+ l)$\nomeqref {2.37}|nompageref}{22}
-\glossaryentry{a$\boldsymbol{\hat{T}}$@[{$\boldsymbol{\hat{T}}$}]\begingroup Transmission coefficient at $z = (L = l)$\nomeqref {2.37}|nompageref}{22}
-\glossaryentry{a$\overline{R}$@[{$\overline{R}$}]\begingroup Reflection coefficient at $z = l_c$\nomeqref {2.39}|nompageref}{23}
-\glossaryentry{a$\overline{T}$@[{$\overline{T}$}]\begingroup Transmission coefficient at $z = l_c$\nomeqref {2.39}|nompageref}{23}
-\glossaryentry{a$\rho ^c$@[{$\rho ^c$}]\begingroup Density of the crack\nomeqref {2.39}|nompageref}{23}
-\glossaryentry{a$C^c_{33}$@[{$C^c_{33}$}]\begingroup Elastic coefficient of the crack in the z direction\nomeqref {2.39}|nompageref}{23}
+\glossaryentry{a$\boldsymbol{\hat{R}}$@[{$\boldsymbol{\hat{R}}$}]\begingroup Reflection coefficient at $z = (L+ l)$\nomeqref {2.37}|nompageref}{21}
+\glossaryentry{a$\boldsymbol{\hat{T}}$@[{$\boldsymbol{\hat{T}}$}]\begingroup Transmission coefficient at $z = (L = l)$\nomeqref {2.37}|nompageref}{21}
+\glossaryentry{a$\overline{R}$@[{$\overline{R}$}]\begingroup Reflection coefficient at $z = l_c$\nomeqref {2.39}|nompageref}{22}
+\glossaryentry{a$\overline{T}$@[{$\overline{T}$}]\begingroup Transmission coefficient at $z = l_c$\nomeqref {2.39}|nompageref}{22}
+\glossaryentry{a$\rho ^c$@[{$\rho ^c$}]\begingroup Density of the crack\nomeqref {2.39}|nompageref}{22}
+\glossaryentry{a$C^c_{33}$@[{$C^c_{33}$}]\begingroup Elastic coefficient of the crack in the z direction\nomeqref {2.39}|nompageref}{22}
 \glossaryentry{a$\frac{\partial w_{ct}}{\partial z}$@[{$\frac{\partial w_{ct}}{\partial z}$}]\begingroup Strain caused by wave portion reflecting to transducer A\nomeqref {2.42}|nompageref}{23}
 \glossaryentry{a$\frac{\partial w_{cr}}{\partial z}$@[{$\frac{\partial w_{cr}}{\partial z}$}]\begingroup Strain caused by wave portion transmitting to transducer B\nomeqref {2.42}|nompageref}{23}
 \glossaryentry{a$V^+_a(i\omega)$@[{$V^+_a(i\omega)$}]\begingroup Voltage produced by the wave at transducer A\nomeqref {2.44}|nompageref}{24}

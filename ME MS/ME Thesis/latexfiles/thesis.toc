@@ -25,10 +25,11 @@
 \contentsline {section}{\numberline {4.1}Diode Damping Circuit}{56}
 \contentsline {section}{\numberline {4.2}Crack Detection Results}{58}
 \contentsline {section}{\numberline {4.3}Single Iteration Time Reversal Results}{60}
-\contentsline {subsection}{\numberline {4.3.1}Steel Rods}{60}
-\contentsline {subsection}{\numberline {4.3.2}Nylon Rods}{62}
-\contentsline {section}{\numberline {4.4}Iterative Time Reversal Results}{63}
-\contentsline {subsection}{\numberline {4.4.1}Steel Rods}{63}
-\contentsline {chapter}{\numberline {5}Recommended Future Work}{66}
-\contentsline {chapter}{\numberline {6}Conclusion}{67}
-\contentsline {chapter}{Bibliography}{68}
+\contentsline {subsection}{\numberline {4.3.1}Steel Rods Single Iteration Results}{60}
+\contentsline {subsection}{\numberline {4.3.2}Nylon Rods Single Iteration Results}{63}
+\contentsline {section}{\numberline {4.4}Iterative Time Reversal Results}{64}
+\contentsline {subsection}{\numberline {4.4.1}Steel Rods Multiple Iteration Results}{66}
+\contentsline {subsection}{\numberline {4.4.2}Nylon Rods Multiple Iteration Results}{67}
+\contentsline {chapter}{\numberline {5}Recommended Future Work}{77}
+\contentsline {chapter}{\numberline {6}Conclusion}{78}
+\contentsline {chapter}{Bibliography}{79}

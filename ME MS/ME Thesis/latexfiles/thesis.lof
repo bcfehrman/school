@@ -8,7 +8,7 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Diagram for deriving the one dimensional wave equation given an axial pressure applied to one end of the material with uniform density and cross-sectional area. }}{14}
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Differential element showing the stresses acting on the rod. }}{14}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Equivalent circuit diagram for the piezoelectric transducers. }}{20}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Equivalent circuit diagram for the piezoelectric transducers. }}{19}
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Diagram of a rod with $d_{33}$ piezoelectric transducers placed on each end. }}{20}
 \contentsline {figure}{\numberline {2.5}{\ignorespaces Diagram of a rod with $d_{33}$ piezoelectric transducers placed on each end and a crack located at an arbitrary location within the system, with $l_c$ being the distance of the crack from the origin and is not known a prior. }}{22}
 \contentsline {figure}{\numberline {2.6}{\ignorespaces Concept diagram of a two dimensional time reversal setup in which transducers are located around the boundary of a circular plate. A crack exists on the plate and is the point at which the transducers will focus acoustic energy. }}{26}
@@ -22,7 +22,7 @@
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Left side compression mechanism}}}{35}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Right side compression mechanism }}}{35}
 \contentsline {figure}{\numberline {3.7}{\ignorespaces Steel rod with PZTs affixed to each end using accelerometer putty. The system is in compression using the custom mechanism and is seen on the optics table. The PZT on the left is referred to as PZT A and the right PZT is referred to as PZT B. }}{36}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Simple terminal block that was used for handling the connections among the various data acquisition wires. Also contained on the terminal block is a diode circuit between the amplifier output and the analog read in line for each PZT. }}{37}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Simple terminal block that was used for handling the connections among the various data acquisition wires. Also contained on the terminal block is a diode circuit between the amplifier output and the analog read in line for each PZT. }}{36}
 \contentsline {figure}{\numberline {3.9}{\ignorespaces Diode circuit that is placed between the amplifier output and analog read in lines for each PZT. This circuit snuffs out the noise produced by the amplifiers at the expense of a slight reduction in voltage output to the PZTs. }}{37}
 \contentsline {figure}{\numberline {3.10}{\ignorespaces Mutli-tone wave that was played out by PZT A. The wave was created by concatenating single period sinusoidal waves of different frequency. The wave in the middle is $130kHz$, the waves next to it are $115kHz$, and the outside waves are $100kHz$. It was found that this multi-tone wave caused a better response in the material versus using a single frequency. }}{38}
 \contentsline {figure}{\numberline {3.11}{\ignorespaces Undamaged rod that has been cut in to two pieces of random length. This pieces are then pushed together (end to end) to represent a rod with a crack location. }}{39}
@@ -65,13 +65,35 @@
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {PZT B Signal Undamaged Nylon Rod}}}{61}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {PZT B Signal Damaged Nylon Rod}}}{61}
 \contentsline {figure}{\numberline {4.5}{\ignorespaces Sum of squared differences computer for each iteration of the nylon rod crack detection tests. The damaged rod was introduced on the 6th iteration and, as with the steel rod tests, this is clearly seen in the graph data. }}{62}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces The results of the theoretical calculations and experimental test for the three steel rod tests. A reasonable match is seen between the theory and experiment with respect to wave amplitude and phase. The difference between theory and experiment could be because dissipation and dispersion were not accounted for in the calculations. }}{64}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Theory vs Experiment, 579mm and 437mm steel rods}}}{64}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Theory vs Experiment, 579mm and 428mm steel rods}}}{64}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Theory vs Experiment, 437mm and 428mm steel rods}}}{64}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces The results of the theoretical calculations and experimental test for the three nylon rod tests. Similar to what was seen in the steel rod results (although worse), there was a decent match between theory and experiment. The differences could be accounted for by a lack of dispersion and dissipation in the predicted records. }}{65}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Theory vs Experiment, 148mm and 105mm nylon rods}}}{65}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Theory vs Experiment, 148mm and 75mm nylon rods}}}{65}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Theory vs Experiment, 105mm and 75mm nylon rods}}}{65}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Theory vs Experiment, 579mm and 437mm steel rods }}{62}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Theory vs Experiment, 579mm and 428mm steel rods }}{63}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces Theory vs Experiment, 437mm and 428mm steel rods }}{63}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Theory vs Experiment, 148mm and 105mm nylon rods }}{64}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Theory vs Experiment, 148mm and 75mm nylon rods }}{65}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Theory vs Experiment, 105mm and 75mm nylon rods }}{65}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Amplitude gain at the defect on each iteration for the 579mm and 437mm steel rod iterative time reversal test with a final gain of a little over 2. The gain did not appear to completely level out, but it slowly oscillated right around 2. }}{67}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Defect amplitude gain on each iteration for the 579mm and 428mm steel rod iterative time reversal test with a final gain of a little over 2.5. }}{67}
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Defect amplitude gain on each iteration for the 437mm and 428mm steel rod iterative time reversal test with a final gain of about 3. }}{68}
+\contentsline {figure}{\numberline {4.15}{\ignorespaces }}{69}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Defect Response Initial Iteration, 579mm and 437mm steel rods}}}{69}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Defect Response 150th Iteration, 579mm and 437mm steel rods}}}{69}
+\contentsline {figure}{\numberline {4.16}{\ignorespaces }}{70}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Defect Response Initial Iteration, 579mm and 428mm steel rods}}}{70}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Defect Response 150th Iteration, 579mm and 428mm steel rods}}}{70}
+\contentsline {figure}{\numberline {4.17}{\ignorespaces }}{71}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Defect Response Initial Iteration, 437mm and 428mm steel rods}}}{71}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Defect Response 150th Iteration, 437mm and 428mm steel rods}}}{71}
+\contentsline {figure}{\numberline {4.18}{\ignorespaces Defect amplitude gain that was achieved at the defect for each iteration of the time reversal algorithm for the $148mm$ and $105mm$ nylon rods. The gain leveled out around 3. }}{72}
+\contentsline {figure}{\numberline {4.19}{\ignorespaces Defect amplitude gain that was achieved at the defect for each iteration of the time reversal algorithm for the $148mm$ and $75mm$ nylon rods. The final gain of a little over 3 was reached by about the 25th iteration as seen in other tests. }}{72}
+\contentsline {figure}{\numberline {4.20}{\ignorespaces Defect amplitude gain that was achieved at the defect for each iteration of the time reversal algorithm for the $105mm$ and $75mm$ nylon rods. The final gain seen was about 2.75. This test was a good example of the final gain being lower than the max gain that was seen and suggests that the algorithm could be further improved. }}{73}
+\contentsline {figure}{\numberline {4.21}{\ignorespaces a) First wave seen at the defect on the initial iteration for the 148mm and 105mm nylon rod test.; b) Wave recorded at the defect after 150 iterations. The final wave more than tripled in amplitude from the first wave. }}{74}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Defect Response Initial Iteration, 148mm and 105mm nylon rods}}}{74}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Defect Response 150th Iteration, 148mm and 105mm nylon rods}}}{74}
+\contentsline {figure}{\numberline {4.22}{\ignorespaces a) First wave seen at the defect on the initial iteration for the 148mm and 75mm nylon rod test.; b) Wave recorded at the defect after 150 iterations. Again, the response seen at the defect has tripled. }}{75}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Defect Response Initial Iteration, 148mm and 75mm nylon rods}}}{75}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Defect Response 150th Iteration, 148mm and 75mm nylon rods}}}{75}
+\contentsline {figure}{\numberline {4.23}{\ignorespaces a) First wave seen at the defect on the initial iteration for the 105mm and 75mm nylon rod test.; b) Wave recorded at the defect after 150 iterations. }}{76}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Defect Response Initial Iteration, 105mm and 75mm nylon rods}}}{76}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Defect Response 150th Iteration, 105mm and 75mm nylon rods}}}{76}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

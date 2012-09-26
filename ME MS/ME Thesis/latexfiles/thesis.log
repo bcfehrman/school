@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=latex 2012.8.31)  25 SEP 2012 17:54
+This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=latex 2012.8.31)  26 SEP 2012 14:47
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -380,20 +380,72 @@ Package: subfigmat 1999/02/27 v1.0 Subfigure Matrix Package
 \sfmcolsep=\skip63
 \c@sfm@count=\count135
 )
+(/usr/share/texlive/texmf-dist/tex/latex/floatrow/floatrow.sty
+Package: floatrow 2008/08/02 v0.3b floatrow: float package extension
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2012/01/12 v1.4b caption3 kernel (AR)
+\captionmargin=\dimen143
+\captionmargin@=\dimen144
+\captionwidth=\dimen145
+\caption@indent=\dimen146
+\caption@parindent=\dimen147
+\caption@hangindent=\dimen148
+\abovecaptionskip=\skip64
+\belowcaptionskip=\skip65
+Package caption Info: Unknown document class (or package),
+(caption)             standard defaults will be used.
+)
+\c@float@type=\count136
+\float@exts=\toks24
+\float@box=\box32
+\@floatcapt=\box33
+Package floatrow Info: Modified float package code loaded on input line 455.
+Package floatrow Info: Modified rotfloat package code loaded on input line 473.
+
+\FR@everyfloat=\toks25
+\flrow@foot=\insert233
+\FB@wd=\dimen149
+\FBo@wd=\dimen150
+\FBc@wd=\dimen151
+\FBo@ht=\skip66
+\FBc@ht=\skip67
+\FBf@ht=\skip68
+\FBo@max=\skip69
+\FBc@max=\skip70
+\FBf@max=\skip71
+\c@FBl@b=\count137
+\floatbox@depth=\count138
+\c@FRobj=\count139
+\c@FRsobj=\count140
+\Xhsize=\skip72
+\sXhsize=\skip73
+\Zhsize=\skip74
+\sZhsize=\skip75
+\flrow@rowbox=\box34
+\FR@Zunitlength=\dimen152
+\c@FBcnt=\count141
+\FPOScnt=\count142
+\LTleft=\skip76
+\LTright=\skip77
+\LTleft=\skip78
+\LTright=\skip79
+\flrow@types=\toks26
+)
 (/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
 )
 (/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2011/12/15 v2.10.0 Sectioning titles
-\ttl@box=\box32
-\beforetitleunit=\skip64
-\aftertitleunit=\skip65
-\ttl@plus=\dimen143
-\ttl@minus=\dimen144
-\ttl@toksa=\toks24
-\titlewidth=\dimen145
-\titlewidthlast=\dimen146
-\titlewidthfirst=\dimen147
+\ttl@box=\box35
+\beforetitleunit=\skip80
+\aftertitleunit=\skip81
+\ttl@plus=\dimen153
+\ttl@minus=\dimen154
+\ttl@toksa=\toks27
+\titlewidth=\dimen155
+\titlewidthlast=\dimen156
+\titlewidthfirst=\dimen157
 )
 \@glossaryfile=\write3
 \openout3 = `thesis.glo'.
@@ -411,18 +463,20 @@ LaTeX Warning: Label `{eq:singlTrans2D}' multiply defined.
 )
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
  [1
 
 ] (./abstract.tex)
@@ -510,16 +564,21 @@ Overfull \hbox (23.54321pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 x
  []
 
-[10])
-\tf@lof=\write5
-\openout5 = `thesis.lof'.
-
-
+[10]
 Overfull \hbox (26.80707pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 xi
  []
 
-[11]
+[11])
+\tf@lof=\write5
+\openout5 = `thesis.lof'.
+
+
+Overfull \hbox (30.07092pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 xii
+ []
+
+[12]
 Chapter 1.
 (./introduction.tex
 Overfull \hbox (23.21683pt too wide) has occurred while \output is active
@@ -651,13 +710,13 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
  []
 
 [20]
+File: eps_pics/rodTransCrack.eps Graphic file (type eps)
+ <eps_pics/rodTransCrack.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 21
  []
 
 [21]
-File: eps_pics/rodTransCrack.eps Graphic file (type eps)
- <eps_pics/rodTransCrack.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 22
  []
@@ -761,18 +820,25 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
  []
 
 [35]
+
+LaTeX Warning: Text page 36 contains only floats.
+
+
+Overfull \vbox (3.19797pt too high) has occurred while \output is active []
+
+
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 36
  []
 
 [36]
+File: eps_pics/initialWave.eps Graphic file (type eps)
+ <eps_pics/initialWave.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 37
  []
 
 [37]
-File: eps_pics/initialWave.eps Graphic file (type eps)
- <eps_pics/initialWave.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 38
  []
@@ -787,6 +853,11 @@ File: eps_pics/steelCrackClose.eps Graphic file (type eps)
 <eps_pics/steelCrackClose.eps>
 File: eps_pics/nylonUncrackedFull.eps Graphic file (type eps)
  <eps_pics/nylonUncrackedFull.eps>
+File: eps_pics/nylonCrackFull.eps Graphic file (type eps)
+
+<eps_pics/nylonCrackFull.eps>
+File: eps_pics/nylonCrackClose.eps Graphic file (type eps)
+ <eps_pics/nylonCrackClose.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 39
  []
@@ -797,10 +868,6 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
  []
 
 [40]
-File: eps_pics/nylonCrackFull.eps Graphic file (type eps)
- <eps_pics/nylonCrackFull.eps>
-File: eps_pics/nylonCrackClose.eps Graphic file (type eps)
- <eps_pics/nylonCrackClose.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 41
  []
@@ -898,7 +965,7 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 File: eps_pics/newFlow.eps Graphic file (type eps)
  <eps_pics/newFlow.eps>
 
-LaTeX Warning: Float too large for page by 59.58138pt on input line 281.
+LaTeX Warning: Float too large for page by 57.08138pt on input line 281.
 
 )
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
@@ -958,42 +1025,34 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
  []
 
 [60]
+File: eps_pics/steel-1-2_Iter_th_exp.eps Graphic file (type eps)
+ <eps_pics/steel-1-2_Iter_th_exp.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 61
  []
 
 [61]
-File: eps_pics/steel-1-2_Iter_th_exp.eps Graphic file (type eps)
- <eps_pics/steel-1-2_Iter_th_exp.eps>
 File: eps_pics/steel-1-3_Iter_th_exp.eps Graphic file (type eps)
  <eps_pics/steel-1-3_Iter_th_exp.eps>
 File: eps_pics/steel-2-3_Iter_th_exp.eps Graphic file (type eps)
-
-<eps_pics/steel-2-3_Iter_th_exp.eps>
-
-LaTeX Warning: Float too large for page by 132.11848pt on input line 95.
-
-File: eps_pics/nylon-2-3_Iter_th_exp.eps Graphic file (type eps)
-<eps_pics/nylon-2-3_Iter_th_exp.eps>
-File: eps_pics/nylon-2-4_Iter_th_exp.eps Graphic file (type eps)
- <eps_pics/nylon-2-4_Iter_th_exp.eps>
-File: eps_pics/nylon-3-4_Iter_th_exp.eps Graphic file (type eps)
-
-<eps_pics/nylon-3-4_Iter_th_exp.eps>
-
-LaTeX Warning: Float too large for page by 117.61848pt on input line 115.
-
-
+ <eps_pics/steel-2-3_Iter_th_exp.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 62
  []
 
-[62])
+[62]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 63
  []
 
 [63]
+File: eps_pics/nylon-2-3_Iter_th_exp.eps Graphic file (type eps)
+ <eps_pics/nylon-2-3_Iter_th_exp.eps>
+File: eps_pics/nylon-2-4_Iter_th_exp.eps Graphic file (type eps)
+ <eps_pics/nylon-2-4_Iter_th_exp.eps>
+File: eps_pics/nylon-3-4_Iter_th_exp.eps Graphic file (type eps)
+
+<eps_pics/nylon-3-4_Iter_th_exp.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 64
  []
@@ -1004,53 +1063,76 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
  []
 
 [65]
-Chapter 5.
-(./recommended_work.tex)
+File: eps_pics/steel-1-2_iterationVsGain.eps Graphic file (type eps)
+ <eps_pics/steel-1-2_iterationVsGain.eps>
+File: eps_pics/steel-1-3_iterationVsGain.eps Graphic file (type eps)
+
+<eps_pics/steel-1-3_iterationVsGain.eps>
+File: eps_pics/steel-2-3_iterationVsGain.eps Graphic file (type eps)
+
+<eps_pics/steel-2-3_iterationVsGain.eps>
+File: eps_pics/steel-1-2_Initial.eps Graphic file (type eps)
+ <eps_pics/steel-1-2_Initial.eps>
+File: eps_pics/steel-1-2_Final.eps Graphic file (type eps)
+
+<eps_pics/steel-1-2_Final.eps>
+File: eps_pics/steel-1-3_Initial.eps Graphic file (type eps)
+ <eps_pics/steel-1-3_Initial.eps>
+File: eps_pics/steel-1-3_Final.eps Graphic file (type eps)
+
+<eps_pics/steel-1-3_Final.eps>
+File: eps_pics/steel-2-3_Initial.eps Graphic file (type eps)
+ <eps_pics/steel-2-3_Initial.eps>
+File: eps_pics/steel-2-3_Final.eps Graphic file (type eps)
+
+<eps_pics/steel-2-3_Final.eps>
+
+LaTeX Warning: Reference `fig:nylonExp1' on page 66 undefined on input line 202
+.
+
+
+LaTeX Warning: Reference `fig:nylonExp3' on page 66 undefined on input line 202
+.
+
+
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 66
  []
 
-[66
-
-]
-Chapter 6.
-(./conclusion.tex) (./thesis.bbl
+[66]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 67
  []
 
-[67
+[67]
+File: eps_pics/nylon-2-3_iterationVsGain.eps Graphic file (type eps)
+ <eps_pics/nylon-2-3_iterationVsGain.eps>
+File: eps_pics/nylon-2-4_iterationVsGain.eps Graphic file (type eps)
 
-]
-Underfull \hbox (badness 10000) in paragraph at lines 4--10
-[][]\OT1/cmr/m/n/12 Sigrid Close.  Shoot-ing Stars Can Shoot Down Satel-lites.
- []
+<eps_pics/nylon-2-4_iterationVsGain.eps>
+File: eps_pics/nylon-3-4_iterationVsGain.eps Graphic file (type eps)
 
+<eps_pics/nylon-3-4_iterationVsGain.eps>
+File: eps_pics/nylon-2-3_Initial.eps Graphic file (type eps)
+ <eps_pics/nylon-2-3_Initial.eps>
+File: eps_pics/nylon-2-3_Final.eps Graphic file (type eps)
 
-Underfull \hbox (badness 10000) in paragraph at lines 4--10
-\OT1/cmr/m/n/12 http://spectrum.ieee.org/aerospace/satellites/shooting-stars-ca
-n-shoot-down-
- []
+<eps_pics/nylon-2-3_Final.eps>
+File: eps_pics/nylon-2-4_Initial.eps Graphic file (type eps)
+ <eps_pics/nylon-2-4_Initial.eps>
+File: eps_pics/nylon-2-4_Final.eps Graphic file (type eps)
 
+<eps_pics/nylon-2-4_Final.eps>
+File: eps_pics/nylon-3-4_Initial.eps Graphic file (type eps)
+ <eps_pics/nylon-3-4_Initial.eps>
+File: eps_pics/nylon-3-4_Final.eps Graphic file (type eps)
 
-Overfull \hbox (71.90375pt too wide) in paragraph at lines 12--17
-[][]\OT1/cmr/m/n/12 NASA.  Or-bital De-bris.  http://www.nasa.gov/mission[]page
-s/station/news/orbital[]debris.html,
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 19--23
-[][]\OT1/cmr/m/n/12 NASA.  Hy-per-ve-loc-ity Im-pact Tech-nol-ogy.
- []
-
-
+<eps_pics/nylon-3-4_Final.eps>)
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 68
  []
 
-[68
-
-]
+[68]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 69
  []
@@ -1085,23 +1167,113 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 75
  []
 
-[75])
+[75]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 76
  []
 
-[76] (./thesis.aux)
+[76]
+Chapter 5.
+(./recommended_work.tex)
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 77
+ []
+
+[77
+
+]
+Chapter 6.
+(./conclusion.tex) (./thesis.bbl
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 78
+ []
+
+[78
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 4--10
+[][]\OT1/cmr/m/n/12 Sigrid Close.  Shoot-ing Stars Can Shoot Down Satel-lites.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 4--10
+\OT1/cmr/m/n/12 http://spectrum.ieee.org/aerospace/satellites/shooting-stars-ca
+n-shoot-down-
+ []
+
+
+Overfull \hbox (71.90375pt too wide) in paragraph at lines 12--17
+[][]\OT1/cmr/m/n/12 NASA.  Or-bital De-bris.  http://www.nasa.gov/mission[]page
+s/station/news/orbital[]debris.html,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 19--23
+[][]\OT1/cmr/m/n/12 NASA.  Hy-per-ve-loc-ity Im-pact Tech-nol-ogy.
+ []
+
+
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 79
+ []
+
+[79
+
+]
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 80
+ []
+
+[80]
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 81
+ []
+
+[81]
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 82
+ []
+
+[82]
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 83
+ []
+
+[83]
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 84
+ []
+
+[84]
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 85
+ []
+
+[85]
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 86
+ []
+
+[86])
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 87
+ []
+
+[87] (./thesis.aux)
+
+LaTeX Warning: There were undefined references.
+
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 5721 strings out of 493500
- 76154 string characters out of 3143858
- 165108 words of memory out of 3000000
- 8812 multiletter control sequences out of 15000+200000
+ 6861 strings out of 493500
+ 95442 string characters out of 3143858
+ 187006 words of memory out of 3000000
+ 9925 multiletter control sequences out of 15000+200000
  13712 words of font info for 51 fonts, out of 3000000 for 9000
  953 hyphenation exceptions out of 8191
- 37i,22n,43p,2496b,428s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 54i,22n,92p,2496b,544s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on thesis.dvi (88 pages, 177068 bytes).
+Output written on thesis.dvi (100 pages, 197808 bytes).

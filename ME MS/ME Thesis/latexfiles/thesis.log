@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=latex 2012.8.31)  25 SEP 2012 13:51
+This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=latex 2012.8.31)  25 SEP 2012 17:54
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -505,16 +505,21 @@ Overfull \hbox (26.80707pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 ix
  []
 
-[9])
-\tf@lof=\write5
-\openout5 = `thesis.lof'.
-
-
+[9]
 Overfull \hbox (23.54321pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 x
  []
 
-[10]
+[10])
+\tf@lof=\write5
+\openout5 = `thesis.lof'.
+
+
+Overfull \hbox (26.80707pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 xi
+ []
+
+[11]
 Chapter 1.
 (./introduction.tex
 Overfull \hbox (23.21683pt too wide) has occurred while \output is active
@@ -915,6 +920,15 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [56
 
 ]
+File: eps_pics/noCircuit.eps Graphic file (type eps)
+ <eps_pics/noCircuit.eps>
+File: eps_pics/withCircuit.eps Graphic file (type eps)
+ <eps_pics/withCircuit.eps>
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 57
+ []
+
+[57]
 File: eps_pics/steelUncracked.eps Graphic file (type eps)
  <eps_pics/steelUncracked.eps>
 File: eps_pics/steelCracked.eps Graphic file (type eps)
@@ -927,29 +941,13 @@ File: eps_pics/nylonUncracked.eps Graphic file (type eps)
 File: eps_pics/nylonCracked.eps Graphic file (type eps)
 
 <eps_pics/nylonCracked.eps>
-File: eps_pics/nylonDifferences.eps Graphic file (type eps)
- <eps_pics/nylonDifferences.eps>
-Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 57
- []
-
-[57]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 58
  []
 
 [58]
-File: eps_pics/steel-1-2_Iter_th_exp.eps Graphic file (type eps)
- <eps_pics/steel-1-2_Iter_th_exp.eps>
-File: eps_pics/steel-1-3_Iter_th_exp.eps Graphic file (type eps)
- <eps_pics/steel-1-3_Iter_th_exp.eps>
-File: eps_pics/steel-2-3_Iter_th_exp.eps Graphic file (type eps)
-
-<eps_pics/steel-2-3_Iter_th_exp.eps>
-
-LaTeX Warning: Float too large for page by 132.11848pt on input line 76.
-
-
+File: eps_pics/nylonDifferences.eps Graphic file (type eps)
+ <eps_pics/nylonDifferences.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 59
  []
@@ -960,53 +958,68 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
  []
 
 [60]
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 61
+ []
+
+[61]
+File: eps_pics/steel-1-2_Iter_th_exp.eps Graphic file (type eps)
+ <eps_pics/steel-1-2_Iter_th_exp.eps>
+File: eps_pics/steel-1-3_Iter_th_exp.eps Graphic file (type eps)
+ <eps_pics/steel-1-3_Iter_th_exp.eps>
+File: eps_pics/steel-2-3_Iter_th_exp.eps Graphic file (type eps)
+
+<eps_pics/steel-2-3_Iter_th_exp.eps>
+
+LaTeX Warning: Float too large for page by 132.11848pt on input line 95.
+
 File: eps_pics/nylon-2-3_Iter_th_exp.eps Graphic file (type eps)
- <eps_pics/nylon-2-3_Iter_th_exp.eps>
+<eps_pics/nylon-2-3_Iter_th_exp.eps>
 File: eps_pics/nylon-2-4_Iter_th_exp.eps Graphic file (type eps)
  <eps_pics/nylon-2-4_Iter_th_exp.eps>
 File: eps_pics/nylon-3-4_Iter_th_exp.eps Graphic file (type eps)
 
 <eps_pics/nylon-3-4_Iter_th_exp.eps>
 
-LaTeX Warning: Float too large for page by 117.61848pt on input line 96.
+LaTeX Warning: Float too large for page by 117.61848pt on input line 115.
 
 
-Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 61
- []
-
-[61]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 62
  []
 
-[62]
+[62])
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 63
  []
 
-[63])
+[63]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 64
  []
 
 [64]
-Chapter 5.
-(./recommended_work.tex)
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 65
  []
 
-[65
-
-]
-Chapter 6.
-(./conclusion.tex) (./thesis.bbl
+[65]
+Chapter 5.
+(./recommended_work.tex)
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 66
  []
 
 [66
+
+]
+Chapter 6.
+(./conclusion.tex) (./thesis.bbl
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 67
+ []
+
+[67
 
 ]
 Underfull \hbox (badness 10000) in paragraph at lines 4--10
@@ -1032,17 +1045,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--23
 
 
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 67
- []
-
-[67
-
-]
-Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 68
  []
 
-[68]
+[68
+
+]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 69
  []
@@ -1072,23 +1080,28 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 74
  []
 
-[74])
+[74]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 75
  []
 
-[75] (./thesis.aux)
+[75])
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 76
+ []
+
+[76] (./thesis.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 5716 strings out of 493500
- 76055 string characters out of 3143858
+ 5721 strings out of 493500
+ 76154 string characters out of 3143858
  165108 words of memory out of 3000000
- 8809 multiletter control sequences out of 15000+200000
+ 8812 multiletter control sequences out of 15000+200000
  13712 words of font info for 51 fonts, out of 3000000 for 9000
  953 hyphenation exceptions out of 8191
  37i,22n,43p,2496b,428s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on thesis.dvi (86 pages, 169520 bytes).
+Output written on thesis.dvi (88 pages, 177068 bytes).

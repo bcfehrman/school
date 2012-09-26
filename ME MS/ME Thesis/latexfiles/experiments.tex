@@ -54,7 +54,7 @@ The setup used for the crack detection involved the use of both nylon and steel 
 {\includegraphics[width=0.7\textwidth]{eps_pics/rsCompression}}
 \end{subfigmatrix}
 
-   \caption[all]
+   \caption
 %>>>> use \label inside caption to get Fig. number with \ref{}
    { \label{fig:compression}
 (a) The left side compression mechanism. The middle bolt was used to adjust the compression in the system by using it to move the aluminum block back and forth;
@@ -111,7 +111,7 @@ After the wave was generated it was transferred to the FPGA program which then z
 {\includegraphics[width=0.6\textwidth]{eps_pics/steelCrackClose}}
 \end{subfigmatrix}
 
-   \caption[all]
+   \caption
 %>>>> use \label inside caption to get Fig. number with \ref{}
    { \label{fig:steelCrack}
 (a) Full view of the two steel rod pieces that are pressed together to represent a rod with a defect location.;
@@ -139,7 +139,7 @@ These exact same tests were then carried out for a nylon rod. The nylon rod was 
 {\includegraphics[width=0.6\textwidth]{eps_pics/nylonCrackClose.eps}}
 \end{subfigmatrix}
 
-   \caption[all]
+   \caption
 %>>>> use \label inside caption to get Fig. number with \ref{}
    { \label{fig:nylonCrack}
 (a) Full view of the two nylon rod pieces that are pressed together to represent a rod with a defect location.;
@@ -165,7 +165,7 @@ The next step was to perform acoustic focusing at a crack located at an a priori
 {\includegraphics[width=0.6\textwidth]{eps_pics/steelSetupClose}}
 \end{subfigmatrix}
 
-   \caption[all]
+   \caption
 %>>>> use \label inside caption to get Fig. number with \ref{}
    { \label{fig:steelTR}
 (a) One set of steel rods that were used for testing;
@@ -181,7 +181,7 @@ The next step was to perform acoustic focusing at a crack located at an a priori
 {\includegraphics[width=0.6\textwidth]{eps_pics/nylonSetupClose}}
 \end{subfigmatrix}
 
-  \caption[all]
+  \caption
 %>>>> use \label inside caption to get Fig. number with \ref{}
   { \label{fig:nylonTR}
 (a) One set of nylon rods that were used for testing;
@@ -202,7 +202,7 @@ The first part of the time reversal algorithm is the interrogatory phase. As wit
 {\includegraphics[width=0.6\textwidth]{eps_pics/ch1Read}}
 \end{subfigmatrix}
 
-  \caption[all]
+  \caption
 %>>>> use \label inside caption to get Fig. number with \ref{}
   { \label{fig:initialPhaseRead}
 (a) The response recorded at PZT A (sending PZT) during the interrogatory phase. These tests were carried out using steel rods which were $437 \times 10^{-3} m$ and $428 \times 10^{-3} m$ in length. It is seen that the initial wave played out by PZT A is included in the signal recorded by PZT A and is of substantially higher amplitude than the rest of the data recorded. This was one big difficulty with performing in one dimension. To make the algorithm work, it was necessary to zero out the section of the signal which contained the original wave and also to bypass ringing left over from the PZT playing the wave;
@@ -223,7 +223,7 @@ The next step in the time reversal algorithm is the selection phase. During the 
 {\includegraphics[width=0.6\textwidth]{eps_pics/ch1RMS}}
 \end{subfigmatrix}
 
-  \caption[all]
+  \caption
 %>>>> use \label inside caption to get Fig. number with \ref{}
   { \label{fig:windowedRMS}
 (a) Windowed RMS of PZT A's signal using a window length of 40 data points. Since PZT A played a signal while recording, the first 100 points were zeroed so that the rest of the data could be seen. The largest point for this test was found to be around the 144th data point and marked the start of the window that was extracted and played back by PZT A;
@@ -241,7 +241,7 @@ The window extracted from PZT A's signal was 60 data points in length and was ba
 {\includegraphics[width=0.6\textwidth]{eps_pics/ch1Chosen}}
 \end{subfigmatrix}
 
-  \caption[all]
+  \caption
 %>>>> use \label inside caption to get Fig. number with \ref{}
   { \label{fig:chosenSignals}
 (a) Window of PZT A's signal that was chosen for playback and is based upon the maximum peak found in the windowed RMS graph for the signal read by PZT A;
@@ -259,7 +259,7 @@ Once the windows were selected and processed for playback it was necessary to de
 {\includegraphics[width=0.6\textwidth]{eps_pics/ch1Scaled}}
 \end{subfigmatrix}
 
-  \caption[all]
+  \caption
 %>>>> use \label inside caption to get Fig. number with \ref{}
   { \label{fig:scaledSignals}
 (a) Window played back by PZT A during the time reversal phase which has been centered on zero, scaled to max amplitude, and time reversed;

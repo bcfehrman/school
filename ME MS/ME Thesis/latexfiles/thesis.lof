@@ -18,7 +18,7 @@
 \contentsline {figure}{\numberline {3.3}{\ignorespaces Completed amplifier box containing four op-amp amplifier circuits with BNC input and output }}{32}
 \contentsline {figure}{\numberline {3.4}{\ignorespaces NI SCB-60 shielded input/output box that is used for interfacing electrical connections to the 7853R FPGA card. \newline source:www.ni.com }}{33}
 \contentsline {figure}{\numberline {3.5}{\ignorespaces Diagram which shows the communication hierarchy among the different hardware pieces that were used for testing. The communication between the PC and FPGA card was performed using a MXI cable. The acquisition cables interfaced to the FPGA through an NI shielded I/O box and cable. Any other connections were made using normal insulated copper wire. }}{33}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces all}}{35}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces (a) The left side compression mechanism. The middle bolt was used to adjust the compression in the system by using it to move the aluminum block back and forth; (b) Right side compression mechanism. This had two nuts to adjust the aluminum bar's positions so it could accommodate different rod sizes. }}{35}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Left side compression mechanism}}}{35}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Right side compression mechanism }}}{35}
 \contentsline {figure}{\numberline {3.7}{\ignorespaces Steel rod with PZTs affixed to each end using accelerometer putty. The system is in compression using the custom mechanism and is seen on the optics table. The PZT on the left is referred to as PZT A and the right PZT is referred to as PZT B. }}{36}
@@ -26,49 +26,52 @@
 \contentsline {figure}{\numberline {3.9}{\ignorespaces Diode circuit that is placed between the amplifier output and analog read in lines for each PZT. This circuit snuffs out the noise produced by the amplifiers at the expense of a slight reduction in voltage output to the PZTs. }}{37}
 \contentsline {figure}{\numberline {3.10}{\ignorespaces Mutli-tone wave that was played out by PZT A. The wave was created by concatenating single period sinusoidal waves of different frequency. The wave in the middle is $130kHz$, the waves next to it are $115kHz$, and the outside waves are $100kHz$. It was found that this multi-tone wave caused a better response in the material versus using a single frequency. }}{38}
 \contentsline {figure}{\numberline {3.11}{\ignorespaces Undamaged rod that has been cut in to two pieces of random length. This pieces are then pushed together (end to end) to represent a rod with a crack location. }}{39}
-\contentsline {figure}{\numberline {3.12}{\ignorespaces all}}{40}
+\contentsline {figure}{\numberline {3.12}{\ignorespaces (a) Full view of the two steel rod pieces that are pressed together to represent a rod with a defect location.; (b) Close up view of the defect location in the steel rod system which should cause a noticeable change in the response at PZT B. }}{40}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Full view of steel 'damaged rod' tests}}}{40}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Close up of the defect location }}}{40}
 \contentsline {figure}{\numberline {3.13}{\ignorespaces Undamaged nylon rod that is setup for testing. A PZT was affixed to each rod end using accelerometer putty and placed into compression using the custom mechanism. }}{41}
-\contentsline {figure}{\numberline {3.14}{\ignorespaces all}}{42}
+\contentsline {figure}{\numberline {3.14}{\ignorespaces (a) Full view of the two nylon rod pieces that are pressed together to represent a rod with a defect location.; (b) Close up view of the defect location in the nylon rod system which should cause a noticeable change in the response at PZT B. }}{42}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Full view of nylon 'damaged rod' tests}}}{42}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Close up of the defect location }}}{42}
 \contentsline {figure}{\numberline {3.15}{\ignorespaces Schematic view of the time reversal setup. The PZTs had a length of \nobreakspace {}$12.0 \times 10^{-3}m$. The middle PZT is referred to as the defect PZT. The two rod sections used in the tests were of different length and for generality this is just noted as 'longer' and 'shorter' section in the diagram. For the steel rods, the three lengths used were $579.0 \times 10^{-3} m$, $437.0 \times 10^{-3} m$, and $428.0 \times 10^{-3} m$ which gave a total of three combinations ($579.0 \times 10^{-3} m$ and $437.0 \times 10^{-3} m$, $579.0 \times 10^{-3} m$ and $428.0 \times 10^{-3} m$), $437.0 \times 10^{-3} m$ and $528.0 \times 10^{-3} m$). The lengths of the nylon rods used were $148.0 \times 10^{-3} m$, $105.0 \times 10^{-3} m$, and $75.0 \times 10^{-3} m$. The lengths were chosen at random and were unknown to the program during testing. }}{43}
-\contentsline {figure}{\numberline {3.16}{\ignorespaces all}}{44}
+\contentsline {figure}{\numberline {3.16}{\ignorespaces (a) One set of steel rods that were used for testing; (b) Closer view of the left side steel rod (shorter rod) section. The PZT on the right in (b) was the defect PZT and the PZT on the left in (b) was PZT B (not shown is PZT A). }}{44}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Full view of steel rod time reversal tests}}}{44}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Close up of steel rod time reversal tests}}}{44}
-\contentsline {figure}{\numberline {3.17}{\ignorespaces all}}{45}
+\contentsline {figure}{\numberline {3.17}{\ignorespaces (a) One set of nylon rods that were used for testing; (b) Closer view of the right side steel rod (shorter rod) section. The PZT on the left in (b) was the defect PZT and the PZT on the right in (b) was PZT A (not shown is PZT B). }}{45}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Full view of steel rod time reversal tests}}}{45}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Close up of steel rod time reversal tests}}}{45}
-\contentsline {figure}{\numberline {3.18}{\ignorespaces all}}{47}
+\contentsline {figure}{\numberline {3.18}{\ignorespaces (a) The response recorded at PZT A (sending PZT) during the interrogatory phase. These tests were carried out using steel rods which were $437 \times 10^{-3} m$ and $428 \times 10^{-3} m$ in length. It is seen that the initial wave played out by PZT A is included in the signal recorded by PZT A and is of substantially higher amplitude than the rest of the data recorded. This was one big difficulty with performing in one dimension. To make the algorithm work, it was necessary to zero out the section of the signal which contained the original wave and also to bypass ringing left over from the PZT playing the wave; (b) The response recorded at PZT B (opposite end) during the initial iteration. }}{47}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Response recorded at PZT A in the interrogatory phase}}}{47}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Response recorded at PZT B in the interrogatory phase}}}{47}
-\contentsline {figure}{\numberline {3.19}{\ignorespaces all}}{49}
+\contentsline {figure}{\numberline {3.19}{\ignorespaces (a) Windowed RMS of PZT A's signal using a window length of 40 data points. Since PZT A played a signal while recording, the first 100 points were zeroed so that the rest of the data could be seen. The largest point for this test was found to be around the 144th data point and marked the start of the window that was extracted and played back by PZT A; (b) Windowed RMS of PZT B's signal which had the largest peak occur around the 136th data point. }}{49}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {PZT A Windowed RMS}}}{49}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {PZT B Windowed RMS}}}{49}
-\contentsline {figure}{\numberline {3.20}{\ignorespaces all}}{51}
+\contentsline {figure}{\numberline {3.20}{\ignorespaces (a) Window of PZT A's signal that was chosen for playback and is based upon the maximum peak found in the windowed RMS graph for the signal read by PZT A; (b) Window of PZT B's signal that was chosen for playback and used the same selection algorithm that selected PZT A's playback window. }}{51}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {PZT A Selected Window}}}{51}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {PZT B Selected Window}}}{51}
-\contentsline {figure}{\numberline {3.21}{\ignorespaces all}}{52}
+\contentsline {figure}{\numberline {3.21}{\ignorespaces (a) Window played back by PZT A during the time reversal phase which has been centered on zero, scaled to max amplitude, and time reversed; (b) Window played back by PZT B during the time reversal phase which has also been centered on zero, scaled, and time reversed. A zero period was inserted at the beginning of PZT B's playback window in order for the signals played by each PZT to arrive at the defect at the same instant. This zero period was needed because the crack was closer to PZT B than PZT A and was a priori unknown but was inferred from the data recorded. }}{52}
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {PZT A Selected Window}}}{52}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {PZT B Selected Window}}}{52}
 \contentsline {figure}{\numberline {3.22}{\ignorespaces Logic flow diagram for the time iterative time reversal algorithm. }}{55}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces all}}{58}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {PZT B Signal Undamaged Steel Rod}}}{58}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {PZT B Signal Damaged Steel Rod}}}{58}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Sum of squared differences computer for each iteration of the steel rod crack detection tests. The damaged rod was introduced on the 6th iteration and this is clearly seen in the graph data. }}{59}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces all}}{60}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {PZT B Signal Undamaged Nylon Rod}}}{60}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {PZT B Signal Damaged Nylon Rod}}}{60}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Sum of squared differences computer for each iteration of the nylon rod crack detection tests. The damaged rod was introduced on the 6th iteration and, as with the steel rod tests, this is clearly seen in the graph data. }}{61}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces all}}{62}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Theory vs Experiment, 579mm and 437mm steel rods}}}{62}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Theory vs Experiment, 579mm and 428mm steel rods}}}{62}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Theory vs Experiment, 437mm and 428mm steel rods}}}{62}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces all}}{63}
-\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Theory vs Experiment, 148mm and 105mm nylon rods}}}{63}
-\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Theory vs Experiment, 148mm and 75mm nylon rods}}}{63}
-\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Theory vs Experiment, 105mm and 75mm nylon rods}}}{63}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces (a) Signal recorded at PZT B when the diode circuit is not being used; (b) Signal recorded at PZT B when the diode circuit is in place. It is seen that there is a large difference between the signals in (a) and (b). The wave seen in (b) is still present in (a) but is largely overshadowed by the amplifier noise. }}{57}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Signal recorded by PZT B without the diode circuit}}}{57}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Signal recorded by PZT B with the diode circuit}}}{57}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces (a) Signal recorded at PZT B with an undamaged steel rod; (b) Signal recorded at PZT B when using the damaged nylon rod which was represented by using two rod segments whose combined length was equal to that of the undamaged rod. }}{59}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {PZT B Signal Undamaged Steel Rod}}}{59}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {PZT B Signal Damaged Steel Rod}}}{59}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Sum of squared differences computer for each iteration of the steel rod crack detection tests. The damaged rod was introduced on the 6th iteration and this is clearly seen in the graph data. }}{60}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces (a) Signal recorded at PZT B with an undamaged nylon rod; (b) Signal recorded at PZT B when using the damaged nylon rod which was represented by using two rod segments whose combined length was equal to that of the undamaged rod. }}{61}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {PZT B Signal Undamaged Nylon Rod}}}{61}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {PZT B Signal Damaged Nylon Rod}}}{61}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Sum of squared differences computer for each iteration of the nylon rod crack detection tests. The damaged rod was introduced on the 6th iteration and, as with the steel rod tests, this is clearly seen in the graph data. }}{62}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces The results of the theoretical calculations and experimental test for the three steel rod tests. A reasonable match is seen between the theory and experiment with respect to wave amplitude and phase. The difference between theory and experiment could be because dissipation and dispersion were not accounted for in the calculations. }}{64}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Theory vs Experiment, 579mm and 437mm steel rods}}}{64}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Theory vs Experiment, 579mm and 428mm steel rods}}}{64}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Theory vs Experiment, 437mm and 428mm steel rods}}}{64}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces The results of the theoretical calculations and experimental test for the three nylon rod tests. Similar to what was seen in the steel rod results (although worse), there was a decent match between theory and experiment. The differences could be accounted for by a lack of dispersion and dissipation in the predicted records. }}{65}
+\contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Theory vs Experiment, 148mm and 105mm nylon rods}}}{65}
+\contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Theory vs Experiment, 148mm and 75mm nylon rods}}}{65}
+\contentsline {subfigure}{\numberline {(c)}{\ignorespaces {Theory vs Experiment, 105mm and 75mm nylon rods}}}{65}
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -22,12 +22,13 @@
 \contentsline {subsection}{\numberline {3.3.3}Time Reversal Focusing Phase}{50}
 \contentsline {subsection}{\numberline {3.3.4}Iterative Time Reversal}{53}
 \contentsline {chapter}{\numberline {4}Results}{56}
-\contentsline {section}{\numberline {4.1}Crack Detection Results}{56}
-\contentsline {section}{\numberline {4.2}Single Iteration Time Reversal Results}{57}
-\contentsline {subsection}{\numberline {4.2.1}Steel Rods}{57}
-\contentsline {subsection}{\numberline {4.2.2}Nylon Rods}{59}
-\contentsline {section}{\numberline {4.3}Iterative Time Reversal Results}{61}
-\contentsline {subsection}{\numberline {4.3.1}Steel Rods}{64}
-\contentsline {chapter}{\numberline {5}Recommended Future Work}{65}
-\contentsline {chapter}{\numberline {6}Conclusion}{66}
-\contentsline {chapter}{Bibliography}{67}
+\contentsline {section}{\numberline {4.1}Diode Damping Circuit}{56}
+\contentsline {section}{\numberline {4.2}Crack Detection Results}{58}
+\contentsline {section}{\numberline {4.3}Single Iteration Time Reversal Results}{60}
+\contentsline {subsection}{\numberline {4.3.1}Steel Rods}{60}
+\contentsline {subsection}{\numberline {4.3.2}Nylon Rods}{62}
+\contentsline {section}{\numberline {4.4}Iterative Time Reversal Results}{63}
+\contentsline {subsection}{\numberline {4.4.1}Steel Rods}{63}
+\contentsline {chapter}{\numberline {5}Recommended Future Work}{66}
+\contentsline {chapter}{\numberline {6}Conclusion}{67}
+\contentsline {chapter}{Bibliography}{68}

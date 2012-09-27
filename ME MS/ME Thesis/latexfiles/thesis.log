@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=latex 2012.8.31)  26 SEP 2012 21:12
+This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=latex 2012.8.31)  26 SEP 2012 22:11
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -960,7 +960,11 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 
 [55]
 File: eps_pics/newFlow.eps Graphic file (type eps)
- <eps_pics/newFlow.eps>)
+ <eps_pics/newFlow.eps>
+
+LaTeX Warning: Float too large for page by 25.1339pt on input line 281.
+
+)
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 56
  []
@@ -996,18 +1000,18 @@ File: eps_pics/steelCracked.eps Graphic file (type eps)
 File: eps_pics/steelDifferences.eps Graphic file (type eps)
 
 <eps_pics/steelDifferences.eps>
-File: eps_pics/nylonUncracked.eps Graphic file (type eps)
- <eps_pics/nylonUncracked.eps>
-File: eps_pics/nylonCracked.eps Graphic file (type eps)
-
-<eps_pics/nylonCracked.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 60
  []
 
 [60]
+File: eps_pics/nylonUncracked.eps Graphic file (type eps)
+ <eps_pics/nylonUncracked.eps>
+File: eps_pics/nylonCracked.eps Graphic file (type eps)
+ <eps_pics/nylonCracked.eps>
 File: eps_pics/nylonDifferences.eps Graphic file (type eps)
- <eps_pics/nylonDifferences.eps>
+
+<eps_pics/nylonDifferences.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 61
  []
@@ -1249,4 +1253,4 @@ Here is how much of TeX's memory you used:
  953 hyphenation exceptions out of 8191
  54i,22n,92p,2472b,544s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on thesis.dvi (102 pages, 207380 bytes).
+Output written on thesis.dvi (102 pages, 207624 bytes).

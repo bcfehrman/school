@@ -25,7 +25,7 @@ figure_count = figure_count + 1;
 %the length of the initial wave to this and that will be our total wave
 %signal length for graphing.
 
-speed_sound =1100;
+speed_sound =740;
 l_rod = .148;
 sample_speed = 1.35e-6;
 travel_time = l_rod / speed_sound;

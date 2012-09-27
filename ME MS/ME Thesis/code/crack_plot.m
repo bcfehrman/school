@@ -1,6 +1,8 @@
 function []= crack_plot(foldernameUncracked, foldernameCracked)
 
+font_s = 15;
 
+time_step = 54/40000000;
 
 for(i = 0:4)
 filename = strcat(foldernameUncracked,  num2str(i), '_Signals', '.lvm');
@@ -31,31 +33,33 @@ figure(1)
 plot(difference)
 
 axis tight
-xlabel('Iteration Number', 'FontSize', 13)
-ylabel('Sum of Squared Differences', 'FontSize', 13)
-set(gca, 'FontSize', 13)
-title({'Sum of Squared Differences from First Iteration','to Successive Iterations with the defect introduced', 'on the 6th iteration for the steel rod'}, 'FontSize', 13)
+xlabel('Iteration Number', 'FontSize', font_s, 'FontWeight', 'bold')
+ylabel('Sum of Squared Differences', 'FontSize', font_s, 'FontWeight', 'bold')
+set(gca, 'FontSize', font_s, 'FontWeight', 'bold')
+title({'Sum of Squared Differences from First Iteration','to Successive Iterations with the defect introduced', 'on the 6th iteration for the steel rod'}, 'FontSize', font_s, 'FontWeight', 'bold')
 print('-depsc', 'steelDifferences');
 
 uncrackedAvg = sum(uncracked) / 5;
 crackedAvg = sum(cracked) / 5;
 
+t = 0:time_step:time_step * length(uncrackedAvg) - time_step;
+
 figure(2)
-plot(uncrackedAvg(1,:,2))
+plot(t,uncrackedAvg(1,:,2))
 
 axis tight
-xlabel('Time (Seconds)', 'FontSize', 13)
-ylabel('Amplitude (Volts)', 'FontSize', 13)
-set(gca, 'FontSize', 13)
-title({'Averaged undamaged steel rod signal response'}, 'FontSize', 13)
+xlabel('Time (Seconds)', 'FontSize', font_s, 'FontWeight', 'bold')
+ylabel('Amplitude (Volts)', 'FontSize', font_s, 'FontWeight', 'bold')
+set(gca, 'FontSize', font_s, 'FontWeight', 'bold')
+title({'Averaged undamaged steel rod signal response'}, 'FontSize', font_s, 'FontWeight', 'bold')
 print('-depsc', 'steelUncracked');
 
 figure(3)
-plot(crackedAvg(1,:,2))
+plot(t,crackedAvg(1,:,2))
 
 axis tight
-xlabel('Time (Seconds)', 'FontSize', 13)
-ylabel('Amplitude (Volts)', 'FontSize', 13)
-set(gca, 'FontSize', 13)
-title({'Averaged cracked steel rod signal response'}, 'FontSize', 13)
+xlabel('Time (Seconds)', 'FontSize', font_s, 'FontWeight', 'bold')
+ylabel('Amplitude (Volts)', 'FontSize', font_s, 'FontWeight', 'bold')
+set(gca, 'FontSize', font_s, 'FontWeight', 'bold')
+title({'Averaged cracked steel rod signal response'}, 'FontSize', font_s, 'FontWeight', 'bold')
 print('-depsc', 'steelCracked');

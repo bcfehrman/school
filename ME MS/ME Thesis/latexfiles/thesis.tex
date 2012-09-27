@@ -24,6 +24,7 @@
  \usepackage{floatrow}
  \floatsetup[figure]{style=plain}
 \usepackage[nodisplayskipstretch]{setspace}
+\usepackage{mcode}
 
 
 \author{Brian Fehrman}
@@ -41,7 +42,7 @@
 \titlespacing{\chapter}{0pt}{-5pt}{-10pt}
 \titlespacing{\section}{0pt}{0pt}{0pt}
 
-\maketitle
+%\maketitle
 
 %nomenclature section here
 %to generate nomenclature section
@@ -84,6 +85,11 @@
 
 \bibliographystyle{unsrt}
 \bibliography{thesis}
+
+\setcounter{secnumdepth}{0}
+\chapter*{Code Appendix}
+\addcontentsline{toc}{chapter}{Code Appendix}
+\input{code_appendix.tex}
 
 \end{document}
 

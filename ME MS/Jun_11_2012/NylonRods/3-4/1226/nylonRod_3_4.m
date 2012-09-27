@@ -3,7 +3,8 @@ clear all
 
 wave = load('initialWave.lvm');
 basename = "nylon-3-4_"
-
+font_s = 15;
+font_w = 'bold'
 %Get the correct time array for plotting
 time_step = 54/40000000;
 
@@ -25,7 +26,7 @@ figure_count = figure_count + 1;
 %the length of the initial wave to this and that will be our total wave
 %signal length for graphing.
 
-speed_sound =700;
+speed_sound =740;
 l_rod = .105;
 sample_speed = 1.35e-6;
 travel_time = l_rod / speed_sound;
@@ -196,15 +197,15 @@ figure(figure_count)
 plot(t_theory, vlongchirp1,'-r','LineWidth',4, t_theory, defect(:, 1),'--b','LineWidth',4, t_theory2, vlongchirp2,'-r','LineWidth',4, t_theory2, defect(:, 2),'--b','LineWidth',4)
 axis tight
 %title({'Theoretical and Experimental Defect Responses Superimposed', 'Intial Phase and Time Reversal Phase {First Iteration}', '(actual time delay between phases not shown due to magnitude)'})
-xlabel('Time (Seconds)', 'FontSize', 13)
-ylabel('Amplitude (Volts)', 'FontSize', 13)
-set(gca, 'FontSize', 13)
+xlabel('Time (Seconds)', 'FontSize', font_s, 'FontWeight', font_w)
+ylabel('Amplitude (Volts)', 'FontSize', font_s, 'FontWeight', font_w)
+set(gca, 'FontSize', font_s, 'FontWeight', font_w)
 
 %legend('Theoretical Defect Response (Initial Phase)', 'Experimental Defect Response (Initial Phase)', 'Theoretical Defect Response (TR Phase (I1))', 'Experimental Defect Response (TR Phase (I1))')
-title('Defect response for 105mm and 75mm nylon rods', 'FontSize', 13)
-thisLegend = legend('Theoretical Defect Response', 'Experimental Defect Response','Location','NorthWest')
+title('Defect response for 105mm and 75mm nylon rods', 'FontSize', font_s, 'FontWeight', font_w)
+thisLegend = legend('Theoretical Defect Response', 'Experimental Defect Response','Location','SouthWest')
 figure_count = figure_count + 1;
-set(thisLegend, 'FontSize', 13')
+set(thisLegend, 'FontSize', font_s, 'FontWeight', font_w)
 
 print('-depsc',  strcat(basename, 'Iter_th_exp'));
 
@@ -216,15 +217,15 @@ figure(figure_count)
 plot(t, initial,'LineWidth',4)
 axis tight
 %title({'Theoretical and Experimental Defect Responses Superimposed', 'Intial Phase and Time Reversal Phase {First Iteration}', '(actual time delay between phases not shown due to magnitude)'})
-xlabel('Time (Seconds)', 'FontSize', 13)
-ylabel('Amplitude (Volts)', 'FontSize', 13)
-set(gca, 'FontSize', 13)
+xlabel('Time (Seconds)', 'FontSize', font_s, 'FontWeight', font_w)
+ylabel('Amplitude (Volts)', 'FontSize', font_s, 'FontWeight', font_w)
+set(gca, 'FontSize', font_s, 'FontWeight', font_w)
 
 %legend('Theoretical Defect Response (Initial Phase)', 'Experimental Defect Response (Initial Phase)', 'Theoretical Defect Response (TR Phase (I1))', 'Experimental Defect Response (TR Phase (I1))')
-title({'Response at defect PZT on initial iteration for the nylon rods', 'of length 105mm and 75mm'}, 'FontSize', 13)
+title({'Response at defect PZT on initial iteration for the nylon rods', 'of length 105mm and 75mm'}, 'FontSize', font_s, 'FontWeight', font_w)
 
 figure_count = figure_count + 1;
-set(thisLegend, 'FontSize', 13')
+set(thisLegend, 'FontSize', font_s, 'FontWeight', font_w)
 
 print('-depsc',  strcat(basename, 'Initial'));
 
@@ -234,15 +235,15 @@ figure(figure_count)
 plot(t, final,'LineWidth',4)
 axis tight
 %title({'Theoretical and Experimental Defect Responses Superimposed', 'Intial Phase and Time Reversal Phase {First Iteration}', '(actual time delay between phases not shown due to magnitude)'})
-xlabel('Time (Seconds)', 'FontSize', 13)
-ylabel('Amplitude (Volts)', 'FontSize', 13)
-set(gca, 'FontSize', 13)
+xlabel('Time (Seconds)', 'FontSize', font_s, 'FontWeight', font_w)
+ylabel('Amplitude (Volts)', 'FontSize', font_s, 'FontWeight', font_w)
+set(gca, 'FontSize', font_s, 'FontWeight', font_w)
 
 %legend('Theoretical Defect Response (Initial Phase)', 'Experimental Defect Response (Initial Phase)', 'Theoretical Defect Response (TR Phase (I1))', 'Experimental Defect Response (TR Phase (I1))')
-title({'Response at defect PZT on the 150th iteration for the nylon rods', 'of length 105mm and 75mm'}, 'FontSize', 13)
+title({'Response at defect PZT on the 150th iteration for the nylon rods', 'of length 105mm and 75mm'}, 'FontSize', font_s, 'FontWeight', font_w)
 
 figure_count = figure_count + 1;
-set(thisLegend, 'FontSize', 13')
+set(thisLegend, 'FontSize', font_s, 'FontWeight', font_w)
 
 print('-depsc',  strcat(basename, 'Final'));
 
@@ -252,14 +253,14 @@ figure(figure_count)
 plot(gain,'LineWidth',4)
 axis tight
 %title({'Theoretical and Experimental Defect Responses Superimposed', 'Intial Phase and Time Reversal Phase {First Iteration}', '(actual time delay between phases not shown due to magnitude)'})
-xlabel('Iteration Number', 'FontSize', 13)
-ylabel('Gain (currentAmp / initialAmp)', 'FontSize', 13)
-set(gca, 'FontSize', 13)
+xlabel('Iteration Number', 'FontSize', font_s, 'FontWeight', font_w)
+ylabel('Gain (currentAmp / initialAmp)', 'FontSize', font_s, 'FontWeight', font_w)
+set(gca, 'FontSize', font_s, 'FontWeight', font_w)
 
 %legend('Theoretical Defect Response (Initial Phase)', 'Experimental Defect Response (Initial Phase)', 'Theoretical Defect Response (TR Phase (I1))', 'Experimental Defect Response (TR Phase (I1))')
-title({'The amplitude gain of the response seen at the defect on each', 'iteration for the 105mm and 75mm nylon rods'}, 'FontSize', 13)
+title({'The amplitude gain of the response seen at the defect on each', 'iteration for the 105mm and 75mm nylon rods'}, 'FontSize', font_s, 'FontWeight', font_w)
 
 figure_count = figure_count + 1;
-set(thisLegend, 'FontSize', 13')
+set(thisLegend, 'FontSize', font_s, 'FontWeight', font_w)
 
 print('-depsc',  strcat(basename, 'iterationVsGain'));

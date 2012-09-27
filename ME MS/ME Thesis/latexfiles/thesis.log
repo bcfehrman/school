@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=latex 2012.8.31)  26 SEP 2012 14:47
+This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=latex 2012.8.31)  26 SEP 2012 21:12
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -456,11 +456,7 @@ Writing glossary file thesis.glo
 LaTeX Warning: Unused global option(s):
     [13pt].
 
-(./thesis.aux
-
-LaTeX Warning: Label `{eq:singlTrans2D}' multiply defined.
-
-)
+(./thesis.aux)
 \openout1 = `thesis.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
@@ -532,17 +528,6 @@ Overfull \hbox (26.80707pt too wide) has occurred while \output is active
  []
 
 [6] (./thesis.lof
-Overfull \hbox (65.53462pt too wide) in paragraph at lines 2--2
- \OT1/cmr/m/n/12 imagesource:[http://orbitaldebris.jsc.nasa.gov/photogallery/be
-ehives/GEO640.jpg] 
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 2--2
- [][]  
- []
-
-
 Overfull \hbox (30.07092pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 vii
  []
@@ -578,9 +563,7 @@ Overfull \hbox (30.07092pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 xii
  []
 
-[12]
-Chapter 1.
-(./introduction.tex
+[12] (./acknowledgments.tex)
 Overfull \hbox (23.21683pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 1
  []
@@ -588,20 +571,22 @@ Overfull \hbox (23.21683pt too wide) has occurred while \output is active
 [1
 
 ]
-File: eps_pics/orbitalDebris.eps Graphic file (type eps)
- <eps_pics/orbitalDebris.eps>
 Overfull \hbox (23.21683pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 2
  []
 
 [2]
+Chapter 1.
+(./introduction.tex
 Overfull \hbox (23.21683pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 3
  []
 
-[3]
-File: eps_pics/selfHealingMedium.eps Graphic file (type eps)
- <eps_pics/selfHealingMedium.eps>
+[3
+
+]
+File: eps_pics/orbitalDebris.eps Graphic file (type eps)
+ <eps_pics/orbitalDebris.eps>
 Overfull \hbox (23.21683pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 4
  []
@@ -612,15 +597,13 @@ Overfull \hbox (23.21683pt too wide) has occurred while \output is active
  []
 
 [5]
+File: eps_pics/selfHealingMedium.eps Graphic file (type eps)
+ <eps_pics/selfHealingMedium.eps>
 Overfull \hbox (23.21683pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 6
  []
 
 [6]
-File: eps_pics/sentNoCrack.eps Graphic file (type eps)
- <eps_pics/sentNoCrack.eps>
-File: eps_pics/sentCrack.eps Graphic file (type eps)
- <eps_pics/sentCrack.eps>
 Overfull \hbox (23.21683pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 7
  []
@@ -631,56 +614,60 @@ Overfull \hbox (23.21683pt too wide) has occurred while \output is active
  []
 
 [8]
-File: eps_pics/trDrawing.eps Graphic file (type eps)
- <eps_pics/trDrawing.eps>
+File: eps_pics/sentNoCrack.eps Graphic file (type eps)
+ <eps_pics/sentNoCrack.eps>
+File: eps_pics/sentCrack.eps Graphic file (type eps)
+ <eps_pics/sentCrack.eps>
 Overfull \hbox (23.21683pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 9
  []
 
 [9]
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 10
+ []
+
+[10]
+File: eps_pics/trDrawing.eps Graphic file (type eps)
+ <eps_pics/trDrawing.eps>
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 11
+ []
+
+[11]
 Underfull \hbox (badness 10000) in paragraph at lines 66--67
 
  []
 
 
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 10
- []
-
-[10]
-Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 11
- []
-
-[11])
-Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 12
  []
 
 [12]
-Chapter 2.
-(./modeling.tex
-File: eps_pics/deriveWaveRod.eps Graphic file (type eps)
- <eps_pics/deriveWaveRod.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 13
  []
 
-[13
-
-]
-File: eps_pics/diffElementRod.eps Graphic file (type eps)
- <eps_pics/diffElementRod.eps>
+[13])
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 14
  []
 
 [14]
+Chapter 2.
+(./modeling.tex
+File: eps_pics/deriveWaveRod.eps Graphic file (type eps)
+ <eps_pics/deriveWaveRod.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 15
  []
 
-[15]
+[15
+
+]
+File: eps_pics/diffElementRod.eps Graphic file (type eps)
+ <eps_pics/diffElementRod.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 16
  []
@@ -696,32 +683,32 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
  []
 
 [18]
-File: eps_pics/trans_circ.eps Graphic file (type eps)
- <eps_pics/trans_circ.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 19
  []
 
 [19]
-File: eps_pics/rodTrans.eps Graphic file (type eps)
- <eps_pics/rodTrans.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 20
  []
 
 [20]
-File: eps_pics/rodTransCrack.eps Graphic file (type eps)
- <eps_pics/rodTransCrack.eps>
+File: eps_pics/trans_circ.eps Graphic file (type eps)
+ <eps_pics/trans_circ.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 21
  []
 
 [21]
+File: eps_pics/rodTrans.eps Graphic file (type eps)
+ <eps_pics/rodTrans.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 22
  []
 
 [22]
+File: eps_pics/rodTransCrack.eps Graphic file (type eps)
+ <eps_pics/rodTransCrack.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 23
  []
@@ -732,8 +719,6 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
  []
 
 [24]
-File: eps_pics/2dTr.eps Graphic file (type eps)
- <eps_pics/2dTr.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 25
  []
@@ -744,23 +729,35 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
  []
 
 [26]
+File: eps_pics/2dTr.eps Graphic file (type eps)
+ <eps_pics/2dTr.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 27
  []
 
-[27])
+[27]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 28
  []
 
 [28]
-Chapter 3.
-(./experiments.tex
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 29
  []
 
-[29
+[29])
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 30
+ []
+
+[30]
+Chapter 3.
+(./experiments.tex
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 31
+ []
+
+[31
 
 ]
 File: eps_pics/fpgaCard.eps Graphic file (type eps)
@@ -775,29 +772,29 @@ File: eps_pics/ioBox.eps Graphic file (type eps)
 File: eps_pics/hardwareComm.eps Graphic file (type eps)
  <eps_pics/hardwareComm.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 30
- []
-
-[30]
-Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 31
- []
-
-[31]
-Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 32
  []
 
 [32]
-
-LaTeX Warning: Text page 33 contains only floats.
-
-
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 33
  []
 
 [33]
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 34
+ []
+
+[34]
+
+LaTeX Warning: Text page 35 contains only floats.
+
+
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 35
+ []
+
+[35]
 File: eps_pics/lsCompression.eps Graphic file (type eps)
  <eps_pics/lsCompression.eps>
 File: eps_pics/rsCompression.eps Graphic file (type eps)
@@ -811,39 +808,39 @@ File: eps_pics/diodeCircuit.eps Graphic file (type eps)
 
 <eps_pics/diodeCircuit.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 34
+[] \OT1/cmr/m/n/12 36
  []
 
-[34]
+[36]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 35
+[] \OT1/cmr/m/n/12 37
  []
 
-[35]
+[37]
 
-LaTeX Warning: Text page 36 contains only floats.
+LaTeX Warning: Text page 38 contains only floats.
 
 
 Overfull \vbox (3.19797pt too high) has occurred while \output is active []
 
 
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 36
- []
-
-[36]
-File: eps_pics/initialWave.eps Graphic file (type eps)
- <eps_pics/initialWave.eps>
-Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 37
- []
-
-[37]
-Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 38
  []
 
 [38]
+File: eps_pics/initialWave.eps Graphic file (type eps)
+ <eps_pics/initialWave.eps>
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 39
+ []
+
+[39]
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 40
+ []
+
+[40]
 File: eps_pics/steelPieces.eps Graphic file (type eps)
  <eps_pics/steelPieces.eps>
 File: eps_pics/steelCrackFull.eps Graphic file (type eps)
@@ -859,16 +856,6 @@ File: eps_pics/nylonCrackFull.eps Graphic file (type eps)
 File: eps_pics/nylonCrackClose.eps Graphic file (type eps)
  <eps_pics/nylonCrackClose.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 39
- []
-
-[39]
-Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 40
- []
-
-[40]
-Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 41
  []
 
@@ -878,6 +865,16 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
  []
 
 [42]
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 43
+ []
+
+[43]
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 44
+ []
+
+[44]
 File: eps_pics/tr_dimensions.eps Graphic file (type eps)
  <eps_pics/tr_dimensions.eps>
 File: eps_pics/steelSetupFull.eps Graphic file (type eps)
@@ -891,24 +888,10 @@ File: eps_pics/nylonSetupClose.eps Graphic file (type eps)
 
 <eps_pics/nylonSetupClose.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 43
- []
-
-[43]
-Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 44
- []
-
-[44]
-Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 45
  []
 
 [45]
-File: eps_pics/ch0Read.eps Graphic file (type eps)
- <eps_pics/ch0Read.eps>
-File: eps_pics/ch1Read.eps Graphic file (type eps)
- <eps_pics/ch1Read.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 46
  []
@@ -919,10 +902,10 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
  []
 
 [47]
-File: eps_pics/ch0RMS.eps Graphic file (type eps)
- <eps_pics/ch0RMS.eps>
-File: eps_pics/ch1RMS.eps Graphic file (type eps)
- <eps_pics/ch1RMS.eps>
+File: eps_pics/ch0Read.eps Graphic file (type eps)
+ <eps_pics/ch0Read.eps>
+File: eps_pics/ch1Read.eps Graphic file (type eps)
+ <eps_pics/ch1Read.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 48
  []
@@ -933,15 +916,10 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
  []
 
 [49]
-File: eps_pics/ch0Chosen.eps Graphic file (type eps)
- <eps_pics/ch0Chosen.eps>
-File: eps_pics/ch1Chosen.eps Graphic file (type eps)
- <eps_pics/ch1Chosen.eps>
-File: eps_pics/ch0Scaled.eps Graphic file (type eps)
-
-<eps_pics/ch0Scaled.eps>
-File: eps_pics/ch1Scaled.eps Graphic file (type eps)
- <eps_pics/ch1Scaled.eps>
+File: eps_pics/ch0RMS.eps Graphic file (type eps)
+ <eps_pics/ch0RMS.eps>
+File: eps_pics/ch1RMS.eps Graphic file (type eps)
+ <eps_pics/ch1RMS.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 50
  []
@@ -952,6 +930,15 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
  []
 
 [51]
+File: eps_pics/ch0Chosen.eps Graphic file (type eps)
+ <eps_pics/ch0Chosen.eps>
+File: eps_pics/ch1Chosen.eps Graphic file (type eps)
+ <eps_pics/ch1Chosen.eps>
+File: eps_pics/ch0Scaled.eps Graphic file (type eps)
+
+<eps_pics/ch0Scaled.eps>
+File: eps_pics/ch1Scaled.eps Graphic file (type eps)
+ <eps_pics/ch1Scaled.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 52
  []
@@ -962,12 +949,6 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
  []
 
 [53]
-File: eps_pics/newFlow.eps Graphic file (type eps)
- <eps_pics/newFlow.eps>
-
-LaTeX Warning: Float too large for page by 57.08138pt on input line 281.
-
-)
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 54
  []
@@ -978,13 +959,25 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
  []
 
 [55]
-Chapter 4.
-(./results.tex
+File: eps_pics/newFlow.eps Graphic file (type eps)
+ <eps_pics/newFlow.eps>)
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 56
  []
 
-[56
+[56]
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 57
+ []
+
+[57]
+Chapter 4.
+(./results.tex
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 58
+ []
+
+[58
 
 ]
 File: eps_pics/noCircuit.eps Graphic file (type eps)
@@ -992,10 +985,10 @@ File: eps_pics/noCircuit.eps Graphic file (type eps)
 File: eps_pics/withCircuit.eps Graphic file (type eps)
  <eps_pics/withCircuit.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 57
+[] \OT1/cmr/m/n/12 59
  []
 
-[57]
+[59]
 File: eps_pics/steelUncracked.eps Graphic file (type eps)
  <eps_pics/steelUncracked.eps>
 File: eps_pics/steelCracked.eps Graphic file (type eps)
@@ -1009,50 +1002,33 @@ File: eps_pics/nylonCracked.eps Graphic file (type eps)
 
 <eps_pics/nylonCracked.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 58
- []
-
-[58]
-File: eps_pics/nylonDifferences.eps Graphic file (type eps)
- <eps_pics/nylonDifferences.eps>
-Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 59
- []
-
-[59]
-Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 60
  []
 
 [60]
-File: eps_pics/steel-1-2_Iter_th_exp.eps Graphic file (type eps)
- <eps_pics/steel-1-2_Iter_th_exp.eps>
+File: eps_pics/nylonDifferences.eps Graphic file (type eps)
+ <eps_pics/nylonDifferences.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 61
  []
 
 [61]
-File: eps_pics/steel-1-3_Iter_th_exp.eps Graphic file (type eps)
- <eps_pics/steel-1-3_Iter_th_exp.eps>
-File: eps_pics/steel-2-3_Iter_th_exp.eps Graphic file (type eps)
- <eps_pics/steel-2-3_Iter_th_exp.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 62
  []
 
 [62]
+File: eps_pics/steel-1-2_Iter_th_exp.eps Graphic file (type eps)
+ <eps_pics/steel-1-2_Iter_th_exp.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 63
  []
 
 [63]
-File: eps_pics/nylon-2-3_Iter_th_exp.eps Graphic file (type eps)
- <eps_pics/nylon-2-3_Iter_th_exp.eps>
-File: eps_pics/nylon-2-4_Iter_th_exp.eps Graphic file (type eps)
- <eps_pics/nylon-2-4_Iter_th_exp.eps>
-File: eps_pics/nylon-3-4_Iter_th_exp.eps Graphic file (type eps)
-
-<eps_pics/nylon-3-4_Iter_th_exp.eps>
+File: eps_pics/steel-1-3_Iter_th_exp.eps Graphic file (type eps)
+ <eps_pics/steel-1-3_Iter_th_exp.eps>
+File: eps_pics/steel-2-3_Iter_th_exp.eps Graphic file (type eps)
+ <eps_pics/steel-2-3_Iter_th_exp.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 64
  []
@@ -1063,6 +1039,23 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
  []
 
 [65]
+File: eps_pics/nylon-2-3_Iter_th_exp.eps Graphic file (type eps)
+ <eps_pics/nylon-2-3_Iter_th_exp.eps>
+File: eps_pics/nylon-2-4_Iter_th_exp.eps Graphic file (type eps)
+ <eps_pics/nylon-2-4_Iter_th_exp.eps>
+File: eps_pics/nylon-3-4_Iter_th_exp.eps Graphic file (type eps)
+
+<eps_pics/nylon-3-4_Iter_th_exp.eps>
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 66
+ []
+
+[66]
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 67
+ []
+
+[67]
 File: eps_pics/steel-1-2_iterationVsGain.eps Graphic file (type eps)
  <eps_pics/steel-1-2_iterationVsGain.eps>
 File: eps_pics/steel-1-3_iterationVsGain.eps Graphic file (type eps)
@@ -1086,25 +1079,16 @@ File: eps_pics/steel-2-3_Initial.eps Graphic file (type eps)
 File: eps_pics/steel-2-3_Final.eps Graphic file (type eps)
 
 <eps_pics/steel-2-3_Final.eps>
-
-LaTeX Warning: Reference `fig:nylonExp1' on page 66 undefined on input line 202
-.
-
-
-LaTeX Warning: Reference `fig:nylonExp3' on page 66 undefined on input line 202
-.
-
-
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 66
+[] \OT1/cmr/m/n/12 68
  []
 
-[66]
+[68]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 67
+[] \OT1/cmr/m/n/12 69
  []
 
-[67]
+[69]
 File: eps_pics/nylon-2-3_iterationVsGain.eps Graphic file (type eps)
  <eps_pics/nylon-2-3_iterationVsGain.eps>
 File: eps_pics/nylon-2-4_iterationVsGain.eps Graphic file (type eps)
@@ -1128,16 +1112,6 @@ File: eps_pics/nylon-3-4_Initial.eps Graphic file (type eps)
 File: eps_pics/nylon-3-4_Final.eps Graphic file (type eps)
 
 <eps_pics/nylon-3-4_Final.eps>)
-Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 68
- []
-
-[68]
-Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 69
- []
-
-[69]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 70
  []
@@ -1173,24 +1147,30 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
  []
 
 [76]
-Chapter 5.
-(./recommended_work.tex)
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 77
  []
 
-[77
-
-]
-Chapter 6.
-(./conclusion.tex) (./thesis.bbl
+[77]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 78
  []
 
-[78
+[78]
+Chapter 5.
+(./conclusion.tex
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 79
+ []
 
-]
+[79
+
+]) (./thesis.bbl
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 80
+ []
+
+[80]
 Underfull \hbox (badness 10000) in paragraph at lines 4--10
 [][]\OT1/cmr/m/n/12 Sigrid Close.  Shoot-ing Stars Can Shoot Down Satel-lites.
  []
@@ -1214,22 +1194,12 @@ Underfull \hbox (badness 10000) in paragraph at lines 19--23
 
 
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 79
- []
-
-[79
-
-]
-Overfull \hbox (29.09177pt too wide) has occurred while \output is active
-[] \OT1/cmr/m/n/12 80
- []
-
-[80]
-Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 81
  []
 
-[81]
+[81
+
+]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 82
  []
@@ -1254,26 +1224,29 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 86
  []
 
-[86])
+[86]
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 87
  []
 
-[87] (./thesis.aux)
+[87]
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 88
+ []
 
-LaTeX Warning: There were undefined references.
+[88])
+Overfull \hbox (29.09177pt too wide) has occurred while \output is active
+[] \OT1/cmr/m/n/12 89
+ []
 
-
-LaTeX Warning: There were multiply-defined labels.
-
- ) 
+[89] (./thesis.aux) ) 
 Here is how much of TeX's memory you used:
- 6861 strings out of 493500
- 95442 string characters out of 3143858
- 187006 words of memory out of 3000000
- 9925 multiletter control sequences out of 15000+200000
- 13712 words of font info for 51 fonts, out of 3000000 for 9000
+ 6875 strings out of 493500
+ 95578 string characters out of 3143858
+ 188006 words of memory out of 3000000
+ 9936 multiletter control sequences out of 15000+200000
+ 15906 words of font info for 62 fonts, out of 3000000 for 9000
  953 hyphenation exceptions out of 8191
- 54i,22n,92p,2496b,544s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 54i,22n,92p,2472b,544s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on thesis.dvi (100 pages, 197808 bytes).
+Output written on thesis.dvi (102 pages, 207380 bytes).

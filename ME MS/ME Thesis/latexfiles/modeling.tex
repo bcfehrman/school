@@ -1,10 +1,10 @@
 % Modeling
-This chapter begins with the models and derivations for the case of one dimensional time reversal and is based upon work performed by Korde \cite{Fehrman2012}. Following that material will be a brief overview of two dimensional time reversal which is drawn from a number of published sources.
+This chapter begins with the models and derivations for the case of one dimensional time reversal and is based upon work performed by Korde \cite{Fehrman2012}. Following that material will be a brief overview of two dimensional time reversal which was drawn from a number of published sources.
 
 \section{One Dimensional Wave Equation}
 \label{sec:oneDWaveEquation}
 
-In this section the one dimensional wave equation for a linear elastic material with uniform density and cross-sectional area will be derived. The derivation is based on knowledge from numerous books such as Kolsky \cite{Kolsky1963} and Brown et. al. \cite{Brown2008}.
+In this section the one dimensional wave equation for a linear elastic material with uniform density and cross-sectional area is derived. The derivation is based on knowledge from numerous books such as Kolsky \cite{Kolsky1963} and Brown et. al. \cite{Brown2008}.
 
 \begin{figure}[ht!]
 \centering
@@ -76,7 +76,7 @@ S_{33} = \frac{dw}{dz}
 
 \nomenclature{$\frac{\partial w}{\partial z}$}{The strain resulting from the stress wave that is played by transducer A during the initial phase}
 
-Inserting \ref{eq:S_33} in to \ref{eq:T_3} we see that
+Inserting \ref{eq:S_33} in to \ref{eq:T_3} it is seen that
 
 \begin{equation}
 T_3 = C^*_{33}\frac{dw}{dz}
@@ -89,7 +89,7 @@ Putting \ref{eq:T_3fin} back in to \ref{eq:strainWave} and realizing that $w$ is
 C^*_{33}\frac{\partial ^2w}{\partial z^2} = \rho^* \frac{\partial ^2w}{\partial t^2}
 \end{equation}
 
-Dividing through by $\rho^*$ and moving the LHS term to the RHS, we arrive at
+Dividing through by $\rho^*$ and moving the LHS term to the RHS
 
 \begin{equation}
 \frac{\partial ^2w}{\partial t^2} - c^{*2} \frac{\partial ^2w}{\partial z^2} = 0
@@ -104,7 +104,7 @@ With $c^*$ being the velocity of the wave propagation and is defined as,
 c^* = \sqrt{\frac{C^*_{33}}{\rho^*}}
 \end{equation}
 
-For the fixed-fixed unforced case, if we assume that $w(z,t)$ is a linear function then the solution can be found by a separation of variables approach. Let 
+For the fixed-fixed unforced case, it is assumed that $w(z,t)$ is a linear function then the solution can be found by a separation of variables approach. Let 
 
 \begin{equation}
 w(z,t) = Z(z)T(t)
@@ -150,7 +150,7 @@ Z(z) = A cos(\lambda z) + B sin(\lambda z)
 \label{eq:zCoefs}
 \end{equation}
 
-Inserting the boundary conditions $Z(0) = 0$ and $Z(L) =0$ \ref{eq:zCoefs} reduces to
+Inserting the boundary conditions $Z(0) = 0$ and $Z(L) =0$ (\ref{eq:zCoefs}) reduces to
 
 \begin{equation}
 Z(z) = B_n sin\left(\frac{n \pi z}{L} \right)
@@ -192,7 +192,7 @@ A_n = \frac{2}{L} \int\limits_{0}^{L} w(z, 0) sin\left( \frac{\lambda _n z}{L} \
 
 \section{Piezoelectric transducers}
 
-This section describes the governing equations for $d_{33}$ piezoelectric transducers that are placed on each end of a rod. The following work is based on derivations by Dr. Korde \cite{Fehrman2012}.
+This section describes the governing equations for $d_{33}$ piezoelectric transducers that were placed on each end of a rod. The following work is based on derivations by Dr. Korde \cite{Fehrman2012}.
 
 The constitutive equations for the transducers are:
 
@@ -262,7 +262,7 @@ Where $a$ and $l$ are the transducer area and length respectively.
 	 \label{fig:rodTrans}} 
 \end{figure}
 
-Consider a rod with $d_{33}$ transducers affixed to each end as pictured in Figure \ref{fig:rodTrans}. We wish to model propagation of a wave through the system with the wave being sent by one of the transducers. The one-dimensional wave results from Section \ref{sec:oneDWaveEquation} can be applied here such that the equation of the motion for the wave propagating through the transducers is the same as through the rod but with a different density and elastic coefficient which will be denoted as $\rho$ and $C_{33}$ respectively. The wave velocity through the transducer is then described as
+Consider a rod with $d_{33}$ transducers affixed to each end as pictured in Figure \ref{fig:rodTrans}. It is desired to model propagation of a wave through the system with the wave being sent by one of the transducers. The one-dimensional wave results from Section \ref{sec:oneDWaveEquation} can be applied here such that the equation of the motion for the wave propagating through the transducers is the same as through the rod but with a different density and elastic coefficient which will be denoted as $\rho$ and $C_{33}$ respectively. The wave velocity through the transducer is then described as
 
 \begin{equation}
 c = \sqrt{\frac{C_{33}}{\rho}}
@@ -270,14 +270,14 @@ c = \sqrt{\frac{C_{33}}{\rho}}
 
 \nomenclature{$\rho$}{Density of the transducer material}
 
-So for $0 \le z \le l$ and $L < z \le (L+l)$ we have
+So for $0 \le z \le l$ and $L < z \le (L+l)$
 
 \begin{equation}
 \frac{\partial ^2w}{\partial t^2} - c^2 \frac{\partial ^2w}{\partial z^2} = 0
 \label{eq:transWaveEquationFin}
 \end{equation}
 
-For the rod domain, $l < z \le L$, we just apply equation \ref{eq:waveEquationFin}. Let the stress and deflection across the interfaces be continuous. When a wave encounters either of the interfaces it will experience refraction in which part of the wave will be reflected and part will be transmitted into the next medium. This phenomena can be accounted for by finding the reflection and transmission coefficients for each interface. For $z = l$ these coefficients are found to be
+For the rod domain, $l < z \le L$, apply equation \ref{eq:waveEquationFin}. Let the stress and deflection across the interfaces be continuous. When a wave encounters either of the interfaces it will experience refraction in which part of the wave will be reflected and part will be transmitted into the next medium. This phenomena can be accounted for by finding the reflection and transmission coefficients for each interface. For $z = l$ these coefficients are found to be
 
 \begin{equation}
 \boldsymbol{R} = \frac{\overline{C_{33}} + \frac{\overline{d_{33}}d_{33}}{2s^E_{33}} - C^*_{33}}{\overline{C_{33}} + \frac{\overline{d_{33}}d_{33}}{2s^E_{33}} + C^*_{33}}
@@ -301,7 +301,7 @@ Similarly, for the interface at $z = (L + l)$
 \end{equation}
 
 \nomenclature{$\boldsymbol{\hat{R}}$}{Reflection coefficient at $z = (L+ l)$}
-\nomenclature{$\boldsymbol{\hat{T}}$}{Transmission coefficient at $z = (L = l)$}
+\nomenclature{$\boldsymbol{\hat{T}}$}{Transmission coefficient at $z = (L + l)$}
 
 \section{Cracked Rod with Transducers}
 \label{sec:rodTransCrack}
@@ -314,7 +314,7 @@ Similarly, for the interface at $z = (L + l)$
 \end{figure}
 
 
-In this section a crack located at an arbitrary position is introduced into the system modeled in Section \ref{sec:rodWithTrans} and is shown in Figure \ref{fig:rodTransCrack}. The crack can be modeled as another interface boundary within the system as we saw previously. If a stress wave is played out from one of these transducers, say transducer A, then it will travel through the rod and refracts upon reaching the crack location due to a change in the medium. The crack can then be accounted for as a change in the material density and elastic coefficient from $\rho ^*$ to $\rho ^c$ and from $C^*_{33}$ to $C^c_{33}$ respectively. Again, let the stress and strain at the crack interface be continuous. As seen before we will have a reflection coefficient and a transmission coefficient which are given by
+In this section a crack located at an arbitrary position is introduced into the system modeled in Section \ref{sec:rodWithTrans} and is shown in Figure \ref{fig:rodTransCrack}. The crack can be modeled as another interface boundary within the system as seen previously. If a stress wave is played out from one of these transducers, say transducer A, then it will travel through the rod and refracts upon reaching the crack location due to a change in the medium. The crack can then be accounted for as a change in the material density and elastic coefficient from $\rho ^*$ to $\rho ^c$ and from $C^*_{33}$ to $C^c_{33}$ respectively. Again, let the stress and strain at the crack interface be continuous. As seen before there will be a reflection coefficient and a transmission coefficient which are given by
 
 \begin{equation}
 \boldsymbol{\overline{R}} = \frac{C^*_{33} - C^c_{33}}{C^*_{33} + C^c_{33}}
@@ -412,7 +412,7 @@ Through the use of Green functions it is found that the amplification of the foc
 	 \label{fig:2dTr}} 
 \end{figure}
 
-Here a brief overview is given of focusing acoustic energy in two dimensions using the time reversal method and is drawn from Fink \cite{Fink1992}. Figure \ref{fig:2dTr} depicts a scenario in which transducers are located around the boundary of a plate and a defect is located at an arbitrary position on the plate. The method used to focus acoustic energy at the crack is a natural extension of the time reversal method used for the rod. The equation of motion for the wave propagation is the similar to \ref{eq:waveEquationFin} except we now introduce the Laplacian to account for the multiple spatial dimensions which gives
+Here a brief overview is given of focusing acoustic energy in two dimensions using the time reversal method and is drawn from Fink \cite{Fink1992}. Figure \ref{fig:2dTr} depicts a scenario in which transducers are located around the boundary of a plate and a defect is located at an arbitrary position on the plate. The method used to focus acoustic energy at the crack is a natural extension of the time reversal method used for the rod. The equation of motion for the wave propagation is the similar to \ref{eq:waveEquationFin} except now the Laplacian is introduced to account for the multiple spatial dimensions which gives
 
 \begin{equation}
 \frac{\partial ^2w}{\partial t^2} - c_p^{2} \nabla ^2 w(\vec{r},t) = 0
@@ -423,7 +423,7 @@ Where $c_p$ is the speed of sound through the plate material and $\vec{r}$ is th
 
 \nomenclature{$c_p$}{The speed of sound through the plate material.}
 
-\nomenclature{$vec_r$}{Position of the acoustic pressure field}
+\nomenclature{$\vec{r}$}{Position of the acoustic pressure field}
 
 \nomenclature{$\nabla ^2$}{Laplacian operator}
 
@@ -432,7 +432,7 @@ As before, a transducer sends out an initial pulse. Let the field produced in $\
 G(\vec{r}_0, t_0|\vec{r},t)
 \end{equation}
 
-\nomenclature{ $\vec{r}_0$}{Location of source an emitting acoustic pulse}
+\nomenclature{ $\vec{r}_0$}{Location of source emitting an acoustic pulse}
 \nomenclature{$G(\vec{r}_0, t_0|\vec{r},t)$}{Green function that represents the field produced in $\vec{r}$ at time $t$ caused by a pulse emitted at time $t_0$ by a source located at $\vec{r}_0$}
 
 Because of the reciprocity theorem,
@@ -476,9 +476,9 @@ h_i^{ac}(T - t) \ast h_i(\vec{r}_0,T- t) \ast h_i(\vec{r}_0, t) \ast h_i^{ac}(t)
 \label{{eq:singlTrans2D}}
 \end{equation}
 
-The contribution due to all of the transducer is simply the sum over $i$ of the individual contributions
+The contribution due to all of the transducers is simply the sum over $i$ of the individual contributions
 
 \begin{equation}
 \sum\limits_{i}^{}h_i^{ac}(T - t) \ast h_i(\vec{r}_0,T- t) \ast h_i(\vec{r}_0, t) \ast h_i^{ac}(t)
-\label{{eq:singlTrans2D}}
+\label{{eq:allTrans2D}}
 \end{equation}

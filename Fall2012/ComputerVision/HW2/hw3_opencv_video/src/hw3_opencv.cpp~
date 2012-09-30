@@ -113,11 +113,11 @@ int main( int argc, char *argv[])
 	{
 		/*Uncomment the commented code in this loop 
 		  to get FPS timing output. Will add this as 
-		  an input option*/
+		  an input option
 		
 		//Start clock for FPS timing
 		begin = clock();
-		
+		*/
 		
 		//Create new bgr matrix and fill it with the
 		//current frame from the video camera
@@ -159,11 +159,11 @@ int main( int argc, char *argv[])
 		//Show the unmodified gray scale image
 		imshow("Non SVD", frame_bgr);
 
-		/*Timing code*/
+		/*Timing code
 		end = clock();
 		time_diff = (double)(end - begin);
 		cout << 1.0 / (time_diff / CLOCKS_PER_SEC ) << endl;
-
+		*/
 		
 		
 		//Will exit if a window is in focus an a key is pressed

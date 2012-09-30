@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=latex 2012.8.31)  27 SEP 2012 12:47
+This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=latex 2012.9.28)  28 SEP 2012 17:59
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -7,19 +7,19 @@ entering extended mode
 (./thesis.tex
 LaTeX2e <2011/06/27>
 Babel <v3.8m> and hyphenation patterns for english, dumylang, nohyphenation, po
-lish, russian, ukrainian, pinyin, finnish, swedish, french, coptic, croatian, l
+lish, ukrainian, russian, pinyin, finnish, swedish, french, coptic, croatian, l
 atin, assamese, bengali, gujarati, hindi, kannada, malayalam, marathi, oriya, p
 anjabi, tamil, telugu, ukenglish, usenglishmax, danish, german, ngerman, swissg
-erman, slovenian, afrikaans, uppersorbian, interlingua, galician, spanish, ital
-ian, ethiopic, sanskrit, greek, portuguese, irish, esperanto, ancientgreek, iby
-cus, basque, bokmal, nynorsk, icelandic, kurmanji, lithuanian, czech, estonian,
- serbian, serbianc, latvian, german-x-2012-05-30, ngerman-x-2012-05-30, romania
-n, friulan, welsh, indonesian, armenian, mongolian, mongolianlmc, farsi, turkis
-h, turkmen, romansh, bulgarian, hungarian, dutch, arabic, slovak, catalan, load
+erman, slovenian, uppersorbian, interlingua, galician, spanish, italian, ethiop
+ic, sanskrit, greek, portuguese, irish, esperanto, ancientgreek, ibycus, basque
+, bokmal, nynorsk, icelandic, kurmanji, lithuanian, czech, estonian, serbian, s
+erbianc, latvian, romanian, friulan, welsh, indonesian, armenian, mongolian, mo
+ngolianlmc, farsi, arabic, turkish, turkmen, afrikaans, romansh, bulgarian, hun
+garian, german-x-2012-05-30, ngerman-x-2012-05-30, dutch, slovak, catalan, load
 ed.
 (./ucthesis.cls
 Document Class: ucthesis 2004/12/19 v3.2 University of California Thesis Class
-(/usr/share/texlive/texmf-dist/tex/latex/ucthesis/uct12.clo)
+(./uct12.clo)
 \descriptionmargin=\dimen102
 \c@part=\count79
 \c@chapter=\count80
@@ -30,8 +30,7 @@ Document Class: ucthesis 2004/12/19 v3.2 University of California Thesis Class
 \c@subparagraph=\count85
 \c@figure=\count86
 \c@table=\count87
-)
-(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip10
 Package: url 2006/04/12  ver 3.3  Verb mode for urls, etc.
 )
@@ -272,56 +271,6 @@ Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 \f@ncyO@olf=\skip53
 \f@ncyO@orf=\skip54
 )
-(/usr/share/texlive/texmf-dist/tex/latex/auto-pst-pdf/auto-pst-pdf.sty
-Package: auto-pst-pdf 2009/04/26 v0.6 Wrapper for pst-pdf
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in PDF mode is not detected.
-)
-(/usr/share/texlive/texmf-dist/tex/latex/ifplatform/ifplatform.sty
-Package: ifplatform 2010/10/22 v0.4 Testing for the operating system
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
-)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
-Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
-)
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
-)
-Package pdftexcmds Info: LuaTeX not detected.
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode is ignored in DVI mode.
-)
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/catchfile.sty
-Package: catchfile 2011/03/01 v1.6 Catch the contents of a file (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-))
-
-Package ifplatform Warning: 
-    shell escape is disabled, so I can only detect \ifwindows.
-
-)
-\c@app@runs=\count129
- (/usr/share/texlive/texmf-dist/tex/latex/pst-pdf/pst-pdf.sty
-Package: pst-pdf 2008/10/09 v1.1v PS graphics for pdfLaTeX (RN,HjG)
-\c@pspicture=\count130
-Package pst-pdf Info: MODE: 9 (inactive mode) on input line 458.
-))
 (/usr/share/texlive/texmf-dist/tex/latex/cite/cite.sty
 LaTeX Info: Redefining \cite on input line 302.
 LaTeX Info: Redefining \nocite on input line 373.
@@ -363,10 +312,10 @@ Package subfigure Warning: Your document class has a bad definition
 \subfigbottomskip=\skip58
 \subfigcapmargin=\dimen142
 \subfiglabelskip=\skip59
-\c@subfigure=\count131
-\c@lofdepth=\count132
-\c@subtable=\count133
-\c@lotdepth=\count134
+\c@subfigure=\count129
+\c@lofdepth=\count130
+\c@subtable=\count131
+\c@lotdepth=\count132
 ****************************************
 * Local config file subfigure.cfg used *
 ****************************************
@@ -374,63 +323,11 @@ Package subfigure Warning: Your document class has a bad definition
 \subfig@top=\skip60
 \subfig@bottom=\skip61
 )
-(/usr/share/texlive/texmf-dist/tex/latex/subfigmat/subfigmat.sty
+(./subfigmat.sty
 Package: subfigmat 1999/02/27 v1.0 Subfigure Matrix Package
 \sfm@width=\skip62
 \sfmcolsep=\skip63
-\c@sfm@count=\count135
-)
-(/usr/share/texlive/texmf-dist/tex/latex/floatrow/floatrow.sty
-Package: floatrow 2008/08/02 v0.3b floatrow: float package extension
-
-(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2012/01/12 v1.4b caption3 kernel (AR)
-\captionmargin=\dimen143
-\captionmargin@=\dimen144
-\captionwidth=\dimen145
-\caption@indent=\dimen146
-\caption@parindent=\dimen147
-\caption@hangindent=\dimen148
-\abovecaptionskip=\skip64
-\belowcaptionskip=\skip65
-Package caption Info: Unknown document class (or package),
-(caption)             standard defaults will be used.
-)
-\c@float@type=\count136
-\float@exts=\toks24
-\float@box=\box32
-\@floatcapt=\box33
-Package floatrow Info: Modified float package code loaded on input line 455.
-Package floatrow Info: Modified rotfloat package code loaded on input line 473.
-
-\FR@everyfloat=\toks25
-\flrow@foot=\insert233
-\FB@wd=\dimen149
-\FBo@wd=\dimen150
-\FBc@wd=\dimen151
-\FBo@ht=\skip66
-\FBc@ht=\skip67
-\FBf@ht=\skip68
-\FBo@max=\skip69
-\FBc@max=\skip70
-\FBf@max=\skip71
-\c@FBl@b=\count137
-\floatbox@depth=\count138
-\c@FRobj=\count139
-\c@FRsobj=\count140
-\Xhsize=\skip72
-\sXhsize=\skip73
-\Zhsize=\skip74
-\sZhsize=\skip75
-\flrow@rowbox=\box34
-\FR@Zunitlength=\dimen152
-\c@FBcnt=\count141
-\FPOScnt=\count142
-\LTleft=\skip76
-\LTright=\skip77
-\LTleft=\skip78
-\LTright=\skip79
-\flrow@types=\toks26
+\c@sfm@count=\count133
 )
 (/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2011/12/19 v6.7a set line spacing
@@ -439,24 +336,26 @@ Package: setspace 2011/12/19 v6.7a set line spacing
 Package: mcode 2012/08/31 2.3
  - settings optimized for display (colour formating)
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count143
-\lst@gtempboxa=\box35
-\lst@token=\toks27
-\lst@length=\count144
-\lst@currlwidth=\dimen153
-\lst@column=\count145
-\lst@pos=\count146
-\lst@lostspace=\dimen154
-\lst@width=\dimen155
-\lst@newlines=\count147
-\lst@lineno=\count148
-\lst@maxwidth=\dimen156
+\lst@mode=\count134
+\lst@gtempboxa=\box32
+\lst@token=\toks24
+\lst@length=\count135
+\lst@currlwidth=\dimen143
+\lst@column=\count136
+\lst@pos=\count137
+\lst@lostspace=\dimen144
+\lst@width=\dimen145
+\lst@newlines=\count138
+\lst@lineno=\count139
+\abovecaptionskip=\skip64
+\belowcaptionskip=\skip65
+\lst@maxwidth=\dimen146
 
 (/usr/share/texlive/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2007/02/22 1.4 (Carsten Heinz)
-\c@lstnumber=\count149
-\lst@skipnumbers=\count150
-\lst@framebox=\box36
+\c@lstnumber=\count140
+\lst@skipnumbers=\count141
+\lst@framebox=\box33
 )
 (/usr/share/texlive/texmf-dist/tex/latex/listings/listings.cfg
 File: listings.cfg 2007/02/22 1.4 listings configuration
@@ -546,49 +445,43 @@ Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 340.
 ))
 (/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2011/12/15 v2.10.0 Sectioning titles
-\ttl@box=\box37
-\beforetitleunit=\skip80
-\aftertitleunit=\skip81
-\ttl@plus=\dimen157
-\ttl@minus=\dimen158
-\ttl@toksa=\toks28
-\titlewidth=\dimen159
-\titlewidthlast=\dimen160
-\titlewidthfirst=\dimen161
+\ttl@box=\box34
+\beforetitleunit=\skip66
+\aftertitleunit=\skip67
+\ttl@plus=\dimen147
+\ttl@minus=\dimen148
+\ttl@toksa=\toks25
+\titlewidth=\dimen149
+\titlewidthlast=\dimen150
+\titlewidthfirst=\dimen151
 )
 \@glossaryfile=\write3
 \openout3 = `thesis.glo'.
 
 
 Writing glossary file thesis.glo
-
-LaTeX Warning: Unused global option(s):
-    [13pt].
-
 (./thesis.aux)
 \openout1 = `thesis.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 41.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 41.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 40.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 40.
  (/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 41.
-Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: End \AtBeginDocument code.
-\c@lstlisting=\count151
+LaTeX Font Info:    ... okay on input line 40.
+\c@lstlisting=\count142
 
 (./abstract.tex)
 Overfull \hbox (20.60574pt too wide) has occurred while \output is active
@@ -824,13 +717,13 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
  []
 
 [22]
-File: eps_pics/rodTransCrack.eps Graphic file (type eps)
- <eps_pics/rodTransCrack.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 23
  []
 
 [23]
+File: eps_pics/rodTransCrack.eps Graphic file (type eps)
+ <eps_pics/rodTransCrack.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 24
  []
@@ -934,25 +827,18 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
  []
 
 [37]
-
-LaTeX Warning: Text page 38 contains only floats.
-
-
-Overfull \vbox (3.19797pt too high) has occurred while \output is active []
-
-
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 38
  []
 
 [38]
-File: eps_pics/initialWave.eps Graphic file (type eps)
- <eps_pics/initialWave.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 39
  []
 
 [39]
+File: eps_pics/initialWave.eps Graphic file (type eps)
+ <eps_pics/initialWave.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 40
  []
@@ -967,11 +853,6 @@ File: eps_pics/steelCrackClose.eps Graphic file (type eps)
 <eps_pics/steelCrackClose.eps>
 File: eps_pics/nylonUncrackedFull.eps Graphic file (type eps)
  <eps_pics/nylonUncrackedFull.eps>
-File: eps_pics/nylonCrackFull.eps Graphic file (type eps)
-
-<eps_pics/nylonCrackFull.eps>
-File: eps_pics/nylonCrackClose.eps Graphic file (type eps)
- <eps_pics/nylonCrackClose.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 41
  []
@@ -982,6 +863,10 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
  []
 
 [42]
+File: eps_pics/nylonCrackFull.eps Graphic file (type eps)
+ <eps_pics/nylonCrackFull.eps>
+File: eps_pics/nylonCrackClose.eps Graphic file (type eps)
+ <eps_pics/nylonCrackClose.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 43
  []
@@ -1079,7 +964,7 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 File: eps_pics/newFlow.eps Graphic file (type eps)
  <eps_pics/newFlow.eps>
 
-LaTeX Warning: Float too large for page by 25.1339pt on input line 281.
+LaTeX Warning: Float too large for page by 27.6339pt on input line 281.
 
 )
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
@@ -1139,17 +1024,18 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
  []
 
 [62]
-File: eps_pics/steel-1-2_Iter_th_exp.eps Graphic file (type eps)
- <eps_pics/steel-1-2_Iter_th_exp.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 63
  []
 
 [63]
+File: eps_pics/steel-1-2_Iter_th_exp.eps Graphic file (type eps)
+ <eps_pics/steel-1-2_Iter_th_exp.eps>
 File: eps_pics/steel-1-3_Iter_th_exp.eps Graphic file (type eps)
  <eps_pics/steel-1-3_Iter_th_exp.eps>
 File: eps_pics/steel-2-3_Iter_th_exp.eps Graphic file (type eps)
- <eps_pics/steel-2-3_Iter_th_exp.eps>
+
+<eps_pics/steel-2-3_Iter_th_exp.eps>
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 64
  []
@@ -1205,6 +1091,9 @@ Overfull \hbox (29.09177pt too wide) has occurred while \output is active
  []
 
 [68]
+Overfull \vbox (0.45743pt too high) has occurred while \output is active []
+
+
 Overfull \hbox (29.09177pt too wide) has occurred while \output is active
 [] \OT1/cmr/m/n/12 69
  []
@@ -1498,12 +1387,12 @@ Overfull \hbox (34.9667pt too wide) has occurred while \output is active
 
 [111] (./thesis.aux) ) 
 Here is how much of TeX's memory you used:
- 8819 strings out of 493500
- 123718 string characters out of 3143858
- 224229 words of memory out of 3000000
- 11841 multiletter control sequences out of 15000+200000
+ 7307 strings out of 493500
+ 98123 string characters out of 3143858
+ 199232 words of memory out of 3000000
+ 10376 multiletter control sequences out of 15000+200000
  16631 words of font info for 65 fonts, out of 3000000 for 9000
  953 hyphenation exceptions out of 8191
- 54i,22n,92p,2472b,1532s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 42i,22n,74p,2472b,1532s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on thesis.dvi (123 pages, 392464 bytes).
+Output written on thesis.dvi (123 pages, 388008 bytes).

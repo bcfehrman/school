@@ -8,7 +8,7 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Diagram for deriving the one dimensional wave equation given an axial pressure applied to one end of the material with uniform density and cross-sectional area. }}{16}
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Differential element showing the stresses acting on the rod. }}{16}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Equivalent circuit diagram for the piezoelectric transducers. }}{21}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Equivalent circuit diagram for the piezoelectric transducers. }}{22}
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Diagram of a rod with $d_{33}$ piezoelectric transducers placed on each end. }}{22}
 \contentsline {figure}{\numberline {2.5}{\ignorespaces Diagram of a rod with $d_{33}$ piezoelectric transducers placed on each end and a crack located at an arbitrary location within the system, with $l_c$ being the distance of the crack from the origin and is not known a prior. }}{24}
 \contentsline {figure}{\numberline {2.6}{\ignorespaces Concept diagram of a two dimensional time reversal setup in which transducers are located around the boundary of a circular plate. A crack exists on the plate and is the point at which the transducers will focus acoustic energy. }}{28}
@@ -22,7 +22,7 @@
 \contentsline {subfigure}{\numberline {(a)}{\ignorespaces {Left side compression mechanism}}}{37}
 \contentsline {subfigure}{\numberline {(b)}{\ignorespaces {Right side compression mechanism }}}{37}
 \contentsline {figure}{\numberline {3.7}{\ignorespaces Steel rod with PZTs affixed to each end using accelerometer putty. The system is in compression using the custom mechanism and is seen on the optics table. The PZT on the left is referred to as PZT A and the right PZT is referred to as PZT B. }}{38}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Simple terminal block that was used for handling the connections among the various data acquisition wires. Also contained on the terminal block is a diode circuit between the amplifier output and the analog read in line for each PZT. }}{38}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Simple terminal block that was used for handling the connections among the various data acquisition wires. Also contained on the terminal block is a diode circuit between the amplifier output and the analog read in line for each PZT. }}{39}
 \contentsline {figure}{\numberline {3.9}{\ignorespaces Diode circuit that was placed between the amplifier output and analog read in lines for each PZT. This circuit snuffed out the noise produced by the amplifiers at the expense of a slight reduction in voltage output to the PZTs. }}{39}
 \contentsline {figure}{\numberline {3.10}{\ignorespaces Mutli-tone wave that was played out by PZT A. The wave was created by concatenating single period sinusoidal waves of different frequency. The wave in the middle was $130 kHz$, the waves next to it were $115 kHz$, and the outside waves were $100 kHz$. It was found that this multi-tone wave caused a better response in the material versus using a single frequency. }}{40}
 \contentsline {figure}{\numberline {3.11}{\ignorespaces Undamaged rod that was cut in to two pieces of random length. The pieces were then pushed together (end to end) to represent a rod with a crack location. }}{41}

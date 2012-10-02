@@ -1,0 +1,25 @@
+\begin{thebibliography}{1}
+
+\bibitem{Rusu2012}
+Radu Rusu and Michaul Dixon, editors.
+\newblock {\em Point Cloud Library on CUDA}. GPU Technology Conference, 2012.
+
+\bibitem{PCL2012}
+PCL.
+\newblock Pcl introduction.
+\newblock www.pointclouds.org.
+\newblock Online: Accessed 10-1-2012.
+
+\bibitem{Aldoma2011}
+A.~Aldoma, M.~Vincze, N.~Blodow, D.~Gossow, S.~Gedikli, R.B. Rusu, and
+  G.~Bradski, editors.
+\newblock {\em CAD-model recognition and 6DOF pose estimation using 3D cues}.
+  IEEE Computer Vision Workshop, 2011.
+
+\bibitem{Aldoma2012}
+Aitor Aldoma, Federico Tombari, Radu~Bogdan Rusu, and Markus Vincze.
+\newblock Our-cvfh - orientied, unique, repeatable clustered viewpoint feature
+  histogram for object recognition and 6dof pose estimation.
+\newblock {\em Lecture Notes in Computer Science}, 7476:113--122, 2012.
+
+\end{thebibliography}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=latex 2012.9.28)  2 OCT 2012 03:49
+This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=latex 2012.9.28)  3 OCT 2012 09:40
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -248,11 +248,11 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (./sdsgc.tex) [3] (./bf_space_grant_2012.bbl) [4] (./bf_space_grant_2012.aux) )
  
 Here is how much of TeX's memory you used:
- 3005 strings out of 493500
- 39271 string characters out of 3143858
- 97639 words of memory out of 3000000
- 6255 multiletter control sequences out of 15000+200000
- 9535 words of font info for 36 fonts, out of 3000000 for 9000
+ 3007 strings out of 493500
+ 39295 string characters out of 3143858
+ 96639 words of memory out of 3000000
+ 6256 multiletter control sequences out of 15000+200000
+ 9882 words of font info for 37 fonts, out of 3000000 for 9000
  953 hyphenation exceptions out of 8191
  37i,6n,39p,1139b,199s stack positions out of 5000i,500n,10000p,200000b,50000s
-Output written on bf_space_grant_2012.dvi (4 pages, 11364 bytes).
+Output written on bf_space_grant_2012.dvi (4 pages, 11436 bytes).

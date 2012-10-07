@@ -50,9 +50,11 @@ int main( int argc, char *argv[])
 {	
 	clock_t begin;
 	VideoCapture cap;
+   VideoWriter blur, orig;
 	int curr_frame = 1;
 	clock_t end;
 	Size frame_size;
+   Size new_frame_size;
 	Mat gaussKernel;
 	double time_diff = 0;
 	xy_pos window_pos;
@@ -64,7 +66,6 @@ int main( int argc, char *argv[])
 	
 	if(argc > 2)
 		kernelSize = atoi(argv[2]);
-	
 	
 	cap.open(0); //open the default camera
 
@@ -84,8 +85,10 @@ int main( int argc, char *argv[])
 	cap >> frame_bgr;
 	curr_frame++;
 	frame_size = frame_bgr.size();
-
-	//out_rank.open(filename_out_rank, CV_FOURCC('X','V','I','D'), 14, frame_size, true);
+   new_frame_size.width = frame_size.width - (kernelSize / 2) * 2;
+   new_frame_size.height = frame_size.height- (kernelSize / 2) * 2;
+	blur.open("blur.avi", CV_FOURCC('X','V','I','D'), 14, new_frame_size, true);
+   orig.open("orig.avi", CV_FOURCC('X','V','I','D'), 14, frame_size, true);
 
 	namedWindow("Smoothed", WINDOW_SIZE_CHOICE);
 	cvMoveWindow("Smoothed", 900, 0);
@@ -112,11 +115,11 @@ int main( int argc, char *argv[])
 		//Create new bgr matrix and fill it with the
 		//current frame from the video camera
 		Mat frame_bgr;
+      CvMat* test = cvCreateMat(240,320, CV_32FC1);
 		cap >> frame_bgr;
 		
 		if(frame_bgr.empty())
 		break;
-		//out_rot << frame_bgr;
 		imshow("Color", frame_bgr);
 		
 		//Convert the frame to be 32bit floating
@@ -124,13 +127,27 @@ int main( int argc, char *argv[])
 		
 		//Convert to gray scale
 		cvtColor(frame_bgr, frame_bgr, CV_BGR2GRAY);
+      
+      frame_bgr.convertTo(frame_bgr, CV_8U, 255.0);	
+		//Convert to gray scale
+		cvtColor(frame_bgr, frame_bgr, CV_GRAY2BGR);
+      //orig << frame_bgr;
 		
+      //Convert the frame to be 32bit floating
+		frame_bgr.convertTo(frame_bgr, CV_32F, 1/255.0);	
+      
+		//Convert to gray scale
+		cvtColor(frame_bgr, frame_bgr, CV_BGR2GRAY);
+      dft(frame_bgr, frame_bgr); 
 		imshow("Original", frame_bgr);
 		
-		frame_bgr = gaussianFilter(frame_bgr, gaussKernel);
+		//frame_bgr = gaussianFilter(frame_bgr, gaussKernel);
 		
 		//Show the corrected image
 		imshow("Smoothed", frame_bgr);
+      //frame_bgr.convertTo(frame_bgr, CV_8U, 255.0);	
+      //cvtColor(frame_bgr, frame_bgr, CV_GRAY2BGR);
+      //blur << frame_bgr;
 		
 
 		//Timing code

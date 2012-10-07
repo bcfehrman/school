@@ -50,9 +50,11 @@ int main( int argc, char *argv[])
 {	
 	clock_t begin;
 	VideoCapture cap;
+   VideoWriter blur, orig;
 	int curr_frame = 1;
 	clock_t end;
 	Size frame_size;
+   Size new_frame_size;
 	Mat gaussKernel;
 	double time_diff = 0;
 	xy_pos window_pos;
@@ -65,7 +67,6 @@ int main( int argc, char *argv[])
 	if(argc > 2)
 		kernelSize = atoi(argv[2]);
 	
-	
 	cap.open(0); //open the default camera
 
 	//Check to see if the camera opened
@@ -77,20 +78,64 @@ int main( int argc, char *argv[])
 	
 	gaussKernel = createGausianKernal(standardDeviation, kernelSize);
 	
-	cap.set(CV_CAP_PROP_FRAME_WIDTH, 320);
-	cap.set(CV_CAP_PROP_FRAME_HEIGHT, 240);
+	//cap.set(CV_CAP_PROP_FRAME_WIDTH, 320);
+	//cap.set(CV_CAP_PROP_FRAME_HEIGHT, 240);
 	
+   Mat FFTKern(480, 640, CV_32F);
+   
+   for(int i = 0; i < FFTKern.size().height; i++)
+   for(int j = 0; j < FFTKern.size().width; j++)
+   {
+      int offsety = i - FFTKern.size().height /2;
+      int offsetx = j - FFTKern.size().width /2;
+      
+      if( sqrt(offsety * offsety + offsetx * offsetx) > 60)
+         FFTKern.at<float>(i,j) = 1;
+      else
+         FFTKern.at<float>(i,j) = 0;
+   }
+   
+   int cx = FFTKern.cols/2;
+int cy = FFTKern.rows/2;
+
+Mat q0(FFTKern, Rect(0, 0, cx, cy));   // Top-Left - Create a ROI per quadrant
+Mat q1(FFTKern, Rect(cx, 0, cx, cy));  // Top-Right
+Mat q2(FFTKern, Rect(0, cy, cx, cy));  // Bottom-Left
+Mat q3(FFTKern, Rect(cx, cy, cx, cy)); // Bottom-Right
+
+Mat tmp;                           // swap quadrants (Top-Left with Bottom-Right)
+q0.copyTo(tmp);
+q3.copyTo(q0);
+tmp.copyTo(q3);
+
+q1.copyTo(tmp);                    // swap quadrant (Top-Right with Bottom-Left)
+q2.copyTo(q1);
+tmp.copyTo(q2);
+	namedWindow("Original", WINDOW_SIZE_CHOICE);
+   imshow("Original", FFTKern);
+   
 	Mat frame_bgr;
 	cap >> frame_bgr;
+   
+      //Convert the frame t be 32bit floating
+   frame_bgr.convertTo(frame_bgr, CV_32F, 1/255.0);	
+   
+   //Convert to gray scale
+   cvtColor(frame_bgr, frame_bgr, CV_BGR2GRAY);
+   int m = getOptimalDFTSize(frame_bgr.rows);
+   int n = getOptimalDFTSize(frame_bgr.cols);
+   
 	curr_frame++;
 	frame_size = frame_bgr.size();
-
-	//out_rank.open(filename_out_rank, CV_FOURCC('X','V','I','D'), 14, frame_size, true);
+   new_frame_size.width = frame_size.width - (kernelSize / 2) * 2;
+   new_frame_size.height = frame_size.height- (kernelSize / 2) * 2;
+	blur.open("edge.avi", CV_FOURCC('X','V','I','D'), 14, frame_size, true);
+   orig.open("orig.avi", CV_FOURCC('X','V','I','D'), 14, frame_size, true);
 
 	namedWindow("Smoothed", WINDOW_SIZE_CHOICE);
 	cvMoveWindow("Smoothed", 900, 0);
-	namedWindow("Original", WINDOW_SIZE_CHOICE);
-
+	namedWindow("Color", WINDOW_SIZE_CHOICE);
+	cvMoveWindow("Color", 400, 0);
 	
 	
 	for(;;)
@@ -111,32 +156,86 @@ int main( int argc, char *argv[])
 		//Create new bgr matrix and fill it with the
 		//current frame from the video camera
 		Mat frame_bgr;
-		cap >> frame_bgr;
+      Mat padded;
+      Mat frame_orig;
+		cap >> frame_orig;
+      frame_bgr = frame_orig;
 		
 		if(frame_bgr.empty())
 		break;
-		//out_rot << frame_bgr;
+//cout << frame_orig.size().width << " " << frame_orig.size().height << endl; 
 		
-		//Convert the frame to be 32bit floating
+		//Convert the frame t be 32bit floating
 		frame_bgr.convertTo(frame_bgr, CV_32F, 1/255.0);	
 		
 		//Convert to gray scale
 		cvtColor(frame_bgr, frame_bgr, CV_BGR2GRAY);
-		
-		imshow("Original", frame_bgr);
-		
-		frame_bgr = gaussianFilter(frame_bgr, gaussKernel);
-		
-		//Show the corrected image
-		imshow("Smoothed", frame_bgr);
-		
+      
 
-		//Timing code
+  
 		
-		end = clock();
-		time_diff = (double)(end - begin);
-		cout << 1.0 / (time_diff / CLOCKS_PER_SEC ) << endl;
-		
+      //copyMakeBorder(frame_bgr, padded, 0, m - frame_bgr.rows, 0, n - frame_bgr.cols, BORDER_CONSTANT, Scalar::all(0));
+      
+      //    Mat planes[] = {Mat_<float>(padded), Mat::zeros(padded.size(), CV_32F)};
+    //Mat complexI;
+    //merge(planes, 2, complexI);         // Add to the expanded another plane with zeros
+
+    dft(frame_bgr, frame_bgr);            // this way the result may fit in the source matrix
+
+
+
+for(int i = 0; i < FFTKern.size().height; i++)
+   for(int j = 0; j < FFTKern.size().width; j++)
+   {
+      frame_bgr.at<float>(i,j) *= FFTKern.at<float>(i,j);
+   }
+  // split(complexI, planes);                   // planes[0] = Re(DFT(I), planes[1] = Im(DFT(I))
+//magnitude(planes[0], planes[1], planes[0]);// planes[0] = magnitude
+//Mat magI = planes[0];
+//magnitude(frame_bgr, frame_bgr, frame_bgr);
+
+//frame_bgr+= Scalar::all(1);                    // switch to logarithmic scale
+//log(frame_bgr, frame_bgr);
+
+
+
+
+ //normalize(magI, magI, 0, 1, CV_MINMAX);
+  idft(frame_bgr, frame_bgr);
+ //idft(magI, magI);
+ normalize(frame_bgr, frame_bgr, 0, 1, CV_MINMAX);
+ 
+ for(int i = 0; i < FFTKern.size().height; i++)
+   for(int j = 0; j < FFTKern.size().width; j++)
+   {
+      if(frame_bgr.at<float>(i,j) < .38)
+         frame_bgr.at<float>(i,j) = 0;
+      else
+         frame_bgr.at<float>(i,j) = 1;
+   }
+   
+    for(int i = 0; i < frame_orig.size().height; i++)
+   for(int j = 0; j < frame_orig.size().width; j++)
+   {
+      if(!frame_bgr.at<float>(i,j))
+      {
+         for(int k = -1; k < 1; k++)
+            for( int l = -1; l<1; l++)
+            {
+               if(i + k > 0 && i + k < frame_orig.size().height
+                  && j + l > 0 && j + l < frame_orig.size().width)
+                  {
+                     frame_orig.at<Vec3b>(i+k,j+l).val[1] = 0;
+                     frame_orig.at<Vec3b>(i+k,j+l).val[2] = 100;
+                     frame_orig.at<Vec3b>(i+k,j+l).val[0] = 0;
+                  }
+            }
+      }
+   }
+                   
+       		imshow("Smoothed", frame_bgr);
+            imshow("Color", frame_orig);
+
 		//Will exit if a window is in focus an a key is pressed
 		if(waitKey(30) >= 0) break;
 	}

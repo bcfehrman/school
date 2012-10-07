@@ -1,0 +1,8 @@
+int main()
+{
+		double x = 0;
+		double y = 6;
+		
+		int result = y / x;
+	
+}

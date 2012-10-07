@@ -14,17 +14,19 @@ LFLAGS = -L$(LIBDIR) -lgsl -lm -lopencv_highgui -lopencv_core -lopencv_imgproc
 
 all: $(BINDIR)/$(EXEC)
 
-$(OBJDIR)/$(EXEC).o: $(SRCDIR)/$(EXEC).cpp | $(OBJDIR)
-	$(CPP) $(CFLAGS) -c -o $@ $^
+	rm -rf $(OBJDIR) $(BINDIR)
 
-$(BINDIR)/$(EXEC): $(OBJDIR)/$(EXEC).o | $(BINDIR)
-	$(CPP) $(LFLAGS) -o $@ $^
+	$(OBJDIR)/$(EXEC).o: $(SRCDIR)/$(EXEC).cpp | $(OBJDIR)
+		$(CPP) $(CFLAGS) -c -o $@ $^
 
-$(OBJDIR):
-	mkdir $(OBJDIR)
+	$(BINDIR)/$(EXEC): $(OBJDIR)/$(EXEC).o | $(BINDIR)
+		$(CPP) $(LFLAGS) -o $@ $^
 
-$(BINDIR):
-	mkdir $(BINDIR)
+	$(OBJDIR):
+		mkdir $(OBJDIR)
+
+	$(BINDIR):
+		mkdir $(BINDIR)
 
 valgrind: $(BINDIR)/$(EXEC)
 	valgrind --leak-check=full --show-reachable=yes $(BINDIR)/$(EXEC)

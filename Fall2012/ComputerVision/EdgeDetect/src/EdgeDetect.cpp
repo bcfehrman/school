@@ -50,7 +50,7 @@ int main( int argc, char *argv[])
 {	
 	clock_t begin;
 	VideoCapture cap;
-   VideoWriter blur, orig;
+   VideoWriter blur, orig,  orig_edge_highlight;
 	int curr_frame = 1;
 	clock_t end;
 	Size frame_size;
@@ -67,7 +67,7 @@ int main( int argc, char *argv[])
 	if(argc > 2)
 		kernelSize = atoi(argv[2]);
 	
-	cap.open(0); //open the default camera
+	cap.open(1); //open the default camera
 
 	//Check to see if the camera opened
 	if(!cap.isOpened())
@@ -89,7 +89,7 @@ int main( int argc, char *argv[])
       int offsety = i - FFTKern.size().height /2;
       int offsetx = j - FFTKern.size().width /2;
       
-      if( sqrt(offsety * offsety + offsetx * offsetx) > 60)
+      if( sqrt(offsety * offsety + offsetx * offsetx) > 40)
          FFTKern.at<float>(i,j) = 1;
       else
          FFTKern.at<float>(i,j) = 0;
@@ -111,12 +111,13 @@ tmp.copyTo(q3);
 q1.copyTo(tmp);                    // swap quadrant (Top-Right with Bottom-Left)
 q2.copyTo(q1);
 tmp.copyTo(q2);
-	namedWindow("Original", WINDOW_SIZE_CHOICE);
-   imshow("Original", FFTKern);
-   
+	namedWindow("FFTKernel", WINDOW_SIZE_CHOICE);
+  
 	Mat frame_bgr;
 	cap >> frame_bgr;
-   
+   FFTKern.convertTo(FFTKern, CV_8U, 255);
+    imshow("FFT_Kernel", FFTKern);
+   imwrite("FFT_Kernel.jpg", FFTKern);
       //Convert the frame t be 32bit floating
    frame_bgr.convertTo(frame_bgr, CV_32F, 1/255.0);	
    
@@ -131,6 +132,7 @@ tmp.copyTo(q2);
    new_frame_size.height = frame_size.height- (kernelSize / 2) * 2;
 	blur.open("edge.avi", CV_FOURCC('X','V','I','D'), 14, frame_size, true);
    orig.open("orig.avi", CV_FOURCC('X','V','I','D'), 14, frame_size, true);
+   orig_edge_highlight.open("orig_edge_highlight.avi", CV_FOURCC('X','V','I','D'), 14, frame_size, true);
 
 	namedWindow("Smoothed", WINDOW_SIZE_CHOICE);
 	cvMoveWindow("Smoothed", 900, 0);
@@ -160,7 +162,7 @@ tmp.copyTo(q2);
       Mat frame_orig;
 		cap >> frame_orig;
       frame_bgr = frame_orig;
-		
+		orig << frame_orig;
 		if(frame_bgr.empty())
 		break;
 //cout << frame_orig.size().width << " " << frame_orig.size().height << endl; 
@@ -226,12 +228,18 @@ for(int i = 0; i < FFTKern.size().height; i++)
                   && j + l > 0 && j + l < frame_orig.size().width)
                   {
                      frame_orig.at<Vec3b>(i+k,j+l).val[1] = 0;
-                     frame_orig.at<Vec3b>(i+k,j+l).val[2] = 100;
-                     frame_orig.at<Vec3b>(i+k,j+l).val[0] = 0;
+                     frame_orig.at<Vec3b>(i+k,j+l).val[0] = 150;
+                     frame_orig.at<Vec3b>(i+k,j+l).val[2] = 0;
                   }
             }
       }
    }
+   frame_bgr.convertTo(frame_bgr, CV_8U, 255.0);	
+		
+		//Convert to gray scale
+		cvtColor(frame_bgr, frame_bgr, CV_GRAY2BGR);
+            orig_edge_highlight << frame_orig;
+            blur << frame_bgr;       
                    
        		imshow("Smoothed", frame_bgr);
             imshow("Color", frame_orig);

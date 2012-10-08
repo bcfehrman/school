@@ -91,6 +91,12 @@ int main( int argc, char *argv[])
       
       if( sqrt(offsety * offsety + offsetx * offsetx) > 40)
          FFTKern.at<float>(i,j) = 1;
+      else if( sqrt(offsety * offsety + offsetx * offsetx) > 35)
+         FFTKern.at<float>(i,j) = .75;
+      else if( sqrt(offsety * offsety + offsetx * offsetx) > 30)
+         FFTKern.at<float>(i,j) = .5;
+      else if( sqrt(offsety * offsety + offsetx * offsetx) > 25)
+         FFTKern.at<float>(i,j) = .25;
       else
          FFTKern.at<float>(i,j) = 0;
    }
@@ -115,11 +121,6 @@ tmp.copyTo(q2);
   
 	Mat frame_bgr;
 	cap >> frame_bgr;
-   FFTKern.convertTo(FFTKern, CV_8U, 255);
-    imshow("FFT_Kernel", FFTKern);
-   imwrite("FFT_Kernel.jpg", FFTKern);
-      //Convert the frame t be 32bit floating
-   frame_bgr.convertTo(frame_bgr, CV_32F, 1/255.0);	
    
    //Convert to gray scale
    cvtColor(frame_bgr, frame_bgr, CV_BGR2GRAY);
@@ -210,7 +211,7 @@ for(int i = 0; i < FFTKern.size().height; i++)
  for(int i = 0; i < FFTKern.size().height; i++)
    for(int j = 0; j < FFTKern.size().width; j++)
    {
-      if(frame_bgr.at<float>(i,j) < .38)
+      if(frame_bgr.at<float>(i,j) < .35)
          frame_bgr.at<float>(i,j) = 0;
       else
          frame_bgr.at<float>(i,j) = 1;
@@ -227,9 +228,9 @@ for(int i = 0; i < FFTKern.size().height; i++)
                if(i + k > 0 && i + k < frame_orig.size().height
                   && j + l > 0 && j + l < frame_orig.size().width)
                   {
-                     frame_orig.at<Vec3b>(i+k,j+l).val[1] = 0;
-                     frame_orig.at<Vec3b>(i+k,j+l).val[0] = 150;
-                     frame_orig.at<Vec3b>(i+k,j+l).val[2] = 0;
+                     frame_orig.at<Vec3b>(i+k,j+l).val[1] = 190;
+                     frame_orig.at<Vec3b>(i+k,j+l).val[0] = 0;
+                     frame_orig.at<Vec3b>(i+k,j+l).val[2] = 190;
                   }
             }
       }
@@ -240,6 +241,7 @@ for(int i = 0; i < FFTKern.size().height; i++)
 		cvtColor(frame_bgr, frame_bgr, CV_GRAY2BGR);
             orig_edge_highlight << frame_orig;
             blur << frame_bgr;       
+            imwrite("me.jpg", frame_bgr);
                    
        		imshow("Smoothed", frame_bgr);
             imshow("Color", frame_orig);

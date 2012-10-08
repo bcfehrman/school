@@ -25,6 +25,7 @@ used, the step size for the ranks, and the overall number of ranks.
 #include <stdio.h>
 #include <string>
 #include <sstream>
+#include "vision_functions.h"
 
 /**** Defines ****/
 #define WINDOW_SIZE_CHOICE CV_WINDOW_NORMAL
@@ -40,9 +41,6 @@ struct xy_pos
 	int y;
 };
 
-/***** Prototypes *****/
-Mat createGausianKernal( double standardDeviation, int size);
-Mat gaussianFilter( Mat origImage, Mat kernel );
 
 /******** Main ***********/
 
@@ -55,7 +53,7 @@ int main( int argc, char *argv[])
 	clock_t end;
 	Size frame_size;
    Size new_frame_size;
-	Mat gaussKernel;
+	Mat FFTKern(480, 640, CV_32F);
 	double time_diff = 0;
 	xy_pos window_pos;
 	double standardDeviation = 1.5;
@@ -67,7 +65,7 @@ int main( int argc, char *argv[])
 	if(argc > 2)
 		kernelSize = atoi(argv[2]);
 	
-	cap.open(1); //open the default camera
+	cap.open(0); //open the default camera
 
 	//Check to see if the camera opened
 	if(!cap.isOpened())
@@ -76,48 +74,14 @@ int main( int argc, char *argv[])
 	return -1;
 	}
 	
-	gaussKernel = createGausianKernal(standardDeviation, kernelSize);
-	
+	createGausianKernal(FFTKern, 12, true);
+	FFTKern.convertTo(FFTKern, CV_32F, 255);
 	//cap.set(CV_CAP_PROP_FRAME_WIDTH, 320);
 	//cap.set(CV_CAP_PROP_FRAME_HEIGHT, 240);
 	
-   Mat FFTKern(480, 640, CV_32F);
-   
-   for(int i = 0; i < FFTKern.size().height; i++)
-   for(int j = 0; j < FFTKern.size().width; j++)
-   {
-      int offsety = i - FFTKern.size().height /2;
-      int offsetx = j - FFTKern.size().width /2;
-      
-      if( sqrt(offsety * offsety + offsetx * offsetx) > 40)
-         FFTKern.at<float>(i,j) = 1;
-      else if( sqrt(offsety * offsety + offsetx * offsetx) > 35)
-         FFTKern.at<float>(i,j) = .75;
-      else if( sqrt(offsety * offsety + offsetx * offsetx) > 30)
-         FFTKern.at<float>(i,j) = .5;
-      else if( sqrt(offsety * offsety + offsetx * offsetx) > 25)
-         FFTKern.at<float>(i,j) = .25;
-      else
-         FFTKern.at<float>(i,j) = 0;
-   }
-   
-   int cx = FFTKern.cols/2;
-int cy = FFTKern.rows/2;
 
-Mat q0(FFTKern, Rect(0, 0, cx, cy));   // Top-Left - Create a ROI per quadrant
-Mat q1(FFTKern, Rect(cx, 0, cx, cy));  // Top-Right
-Mat q2(FFTKern, Rect(0, cy, cx, cy));  // Bottom-Left
-Mat q3(FFTKern, Rect(cx, cy, cx, cy)); // Bottom-Right
-
-Mat tmp;                           // swap quadrants (Top-Left with Bottom-Right)
-q0.copyTo(tmp);
-q3.copyTo(q0);
-tmp.copyTo(q3);
-
-q1.copyTo(tmp);                    // swap quadrant (Top-Right with Bottom-Left)
-q2.copyTo(q1);
-tmp.copyTo(q2);
 	namedWindow("FFTKernel", WINDOW_SIZE_CHOICE);
+   imshow("FFTKernel", FFTKern);
   
 	Mat frame_bgr;
 	cap >> frame_bgr;
@@ -253,79 +217,4 @@ for(int i = 0; i < FFTKern.size().height; i++)
 	return 0;
 }
 
-Mat createGausianKernal( double standardDeviation, int size)
-{
-	Mat kernel(size, size, CV_32F);
-	int sizeDiv2 = size / 2;
-	double variance = standardDeviation * standardDeviation;
-	double num;
-	double den = 2 * M_PI * variance;
-	int x,ySqrd;
-	double kernelVal = 0;
-	double preNormSum = 0;
-	double normSum = 0;
 
-	for(int i = 0; i < size; i++)
-	{
-		ySqrd = i -sizeDiv2;
-		ySqrd *= ySqrd;
-		
-		for(int j = 0; j < size; j++)
-		{
-			x = j - sizeDiv2;
-		
-			num =  exp(-1 * ( ( x * x + ySqrd) / ( 2 * variance ) ) );
-			
-			kernelVal = num / den;
-			
-			kernel.at<float>(i,j) = kernelVal;
-			
-			preNormSum += kernelVal;
-		}
-	}
-	
-	for(int i = 0; i < size; i++)
-	{
-		for( int j = 0; j < size; j++ )
-		{
-			kernel.at<float>(i,j) = kernel.at<float>(i,j) / preNormSum;
-			normSum += kernel.at<float>(i,j);
-		}
-	}
-		
-	return kernel;
-}
-
-Mat gaussianFilter( Mat origImage, Mat kernel )
-{
-	int origRowSize = origImage.size().height;
-	int origColSize = origImage.size().width;
-	int kernelSize = kernel.size().width;
-	int kernelSizeDiv2 = kernelSize / 2;
-	int newRowSize = origRowSize - (kernelSizeDiv2 * 2);
-	int newColSize = origColSize - (kernelSizeDiv2 * 2);
-	
-	Mat filteredImage(newRowSize, newColSize, CV_32F);
-	double average = 0;
-	int currRow, currCol, newRow, newCol, filtRow, filtCol, kernelRow, kernelCol;
-
-	for(currRow = 0, newRow = 0; currRow < newRowSize; currRow++, newRow++)
-	{ 
-		for(currCol = 0, newCol = 0; currCol < newColSize; currCol++, newCol++)
-		{
-			average = 0;
-		
-		for(filtRow = currRow, kernelRow = 0; filtRow < (currRow +  kernelSize); filtRow++, kernelRow++)
-		{
-			
-			for( filtCol = currCol, kernelCol = 0; filtCol < (currCol +  kernelSize); filtCol++, kernelCol++)
-			{
-				average += origImage.at<float>(filtRow, filtCol) * kernel.at<float>(kernelRow, kernelCol);
-			}
-		}
-			filteredImage.at<float>(newRow, newCol) = average;
-		}
-	}
-
-	return filteredImage;
-}

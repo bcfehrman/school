@@ -4,12 +4,14 @@ CPP = g++
 OBJDIR = build
 SRCDIR = src
 INCDIR = /usr/include
+LOCINCDIR = include
 LIBDIR = /usr/lib
+LOCLIBDIR = lib
 BINDIR = bin
 EXEC = EdgeDetect
 
-CFLAGS = -Wall -I$(INCDIR) -g
-LFLAGS = -L$(LIBDIR) -lgsl -lm -lopencv_highgui -lopencv_core -lopencv_imgproc
+CFLAGS = -Wall -I$(INCDIR) -I$(LOCINCDIR) -g
+LFLAGS = -L$(LIBDIR) -L$(LOCLIBDIR) -lgsl -lm -lopencv_highgui -lopencv_core -lopencv_imgproc -lvision_functions
 
 
 all: $(BINDIR)/$(EXEC)

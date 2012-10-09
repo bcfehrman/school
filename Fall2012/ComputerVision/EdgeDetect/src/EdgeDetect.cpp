@@ -41,6 +41,11 @@ struct xy_pos
 	int y;
 };
 
+void updateSTDEdgeValue(int trackValue, void* userData);
+void updateCutoffEdgeValue(int trackValue, void* userData);
+double standardDeviation = 1.5;
+double cuttOff;
+Mat FFTKern(480, 640, CV_32F);
 
 /******** Main ***********/
 
@@ -53,10 +58,8 @@ int main( int argc, char *argv[])
 	clock_t end;
 	Size frame_size;
    Size new_frame_size;
-	Mat FFTKern(480, 640, CV_32F);
 	double time_diff = 0;
 	xy_pos window_pos;
-	double standardDeviation = 1.5;
 	int kernelSize = 5;
 	
 	if(argc > 1)
@@ -75,12 +78,14 @@ int main( int argc, char *argv[])
 	}
 	
 	createGausianKernal(FFTKern, 12, true);
-	FFTKern.convertTo(FFTKern, CV_32F, 255);
+	//FFTKern.convertTo(FFTKern, CV_32F, 255);
 	//cap.set(CV_CAP_PROP_FRAME_WIDTH, 320);
 	//cap.set(CV_CAP_PROP_FRAME_HEIGHT, 240);
 	
 
 	namedWindow("FFTKernel", WINDOW_SIZE_CHOICE);
+   createTrackbar("FFTKernelSTD", "FFTKernel", 0, 500,  updateSTDEdgeValue, NULL); 
+    createTrackbar("FFTKernelCutoff", "FFTKernel", 0, 500, updateCutoffEdgeValue, NULL); 
    imshow("FFTKernel", FFTKern);
   
 	Mat frame_bgr;
@@ -175,7 +180,7 @@ for(int i = 0; i < FFTKern.size().height; i++)
  for(int i = 0; i < FFTKern.size().height; i++)
    for(int j = 0; j < FFTKern.size().width; j++)
    {
-      if(frame_bgr.at<float>(i,j) < .35)
+      if(frame_bgr.at<float>(i,j) < cuttOff)
          frame_bgr.at<float>(i,j) = 0;
       else
          frame_bgr.at<float>(i,j) = 1;
@@ -209,6 +214,9 @@ for(int i = 0; i < FFTKern.size().height; i++)
                    
        		imshow("Smoothed", frame_bgr);
             imshow("Color", frame_orig);
+            FFTKern.convertTo(FFTKern, CV_32F, 255);
+            imshow("FFTKernel", FFTKern);
+            FFTKern.convertTo(FFTKern, CV_32F, 1/255.0);
 
 		//Will exit if a window is in focus an a key is pressed
 		if(waitKey(30) >= 0) break;
@@ -216,5 +224,17 @@ for(int i = 0; i < FFTKern.size().height; i++)
 
 	return 0;
 }
+
+ void updateSTDEdgeValue(int trackValue, void* userData)
+ {
+    standardDeviation = trackValue / 10.0;
+    createGausianKernal(FFTKern, standardDeviation, true);
+    
+ }
+ void updateCutoffEdgeValue(int trackValue, void* userData)
+ {
+    cuttOff = trackValue / 1000.0;
+    
+ }
 
 

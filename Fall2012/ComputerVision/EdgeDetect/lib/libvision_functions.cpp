@@ -122,3 +122,51 @@ void gaussianFilter( Mat &origImage, Mat &kernel, Mat &destImage )
 
 	destImage = filteredImage;
 }
+
+void fftEdgeDetect(Mat &frameSrc, Mat &frameDst, Mat &FFTKern, double cuttOff)
+{
+   dft(frameSrc, frameSrc);            // this way the result may fit in the source matrix
+
+   for(int i = 0; i < FFTKern.size().height; i++)
+   {
+      for(int j = 0; j < FFTKern.size().width; j++)
+      {
+         frameSrc.at<float>(i,j) *= FFTKern.at<float>(i,j);
+      }
+   }
+
+   idft(frameSrc, frameSrc);
+   normalize(frameSrc, frameSrc, 0, 1, CV_MINMAX);
+    
+   for(int i = 0; i < FFTKern.size().height; i++)
+   {
+      for(int j = 0; j < FFTKern.size().width; j++)
+      {
+         if(frameSrc.at<float>(i,j) < cuttOff)
+            frameSrc.at<float>(i,j) = 0;
+         else
+            frameSrc.at<float>(i,j) = 1;
+      }
+   }
+   
+   for(int i = 0; i < frameDst.size().height; i++)
+   {
+      for(int j = 0; j < frameDst.size().width; j++)
+      {
+         if(!frameSrc.at<float>(i,j))
+         {
+            for(int k = -1; k < 1; k++)
+               for( int l = -1; l<1; l++)
+               {
+                  if(i + k > 0 && i + k < frameDst.size().height
+                     && j + l > 0 && j + l < frameDst.size().width)
+                     {
+                        frameDst.at<Vec3b>(i+k,j+l).val[1] = 0;
+                        frameDst.at<Vec3b>(i+k,j+l).val[0] = 100;
+                        frameDst.at<Vec3b>(i+k,j+l).val[2] = 100;
+                     }
+               }
+         }
+      }
+   }
+}

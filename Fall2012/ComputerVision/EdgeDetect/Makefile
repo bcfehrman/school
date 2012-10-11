@@ -32,7 +32,7 @@ $(BINDIR):
 library: $(LIBRARY)
 
 $(LIBRARY):
-	$(CPP) -o $@.so $@.cpp -shared $(CFLAGS) -c -fpermissive
+	$(CPP) -o $@.so $@.cpp -shared $(CFLAGS) -c
 
 
 valgrind: $(BINDIR)/$(EXEC)

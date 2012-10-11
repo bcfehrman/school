@@ -1,7 +1,7 @@
-#include "vision_functions.h"
+#include "libvision_functions.h"
 
 
-void createGausianKernal( Mat &kernDst, double standardDeviation, const bool fftKern = false)
+void createGausianKernal( Mat& kernDst, double standardDeviation, const bool fftKern)
 {
 	int width = kernDst.size().width;
    int height = kernDst.size().height;
@@ -89,7 +89,7 @@ void createGausianKernal( Mat &kernDst, double standardDeviation, const bool fft
    }
 }
 
-void gaussianFilter( Mat &origImage, Mat &kernel, Mat &destImage )
+void gaussianFilter( Mat& origImage, Mat& kernel, Mat& destImage )
 {
 	int origRowSize = origImage.size().height;
 	int origColSize = origImage.size().width;
@@ -123,7 +123,7 @@ void gaussianFilter( Mat &origImage, Mat &kernel, Mat &destImage )
 	destImage = filteredImage;
 }
 
-void fftEdgeDetect(Mat &frameSrc, Mat &frameDst, Mat &FFTKern, double cuttOff)
+void fftEdgeDetect(Mat& frameSrc, Mat& frameDst, Mat& FFTKern, double cuttOff)
 {
    dft(frameSrc, frameSrc);            // this way the result may fit in the source matrix
 

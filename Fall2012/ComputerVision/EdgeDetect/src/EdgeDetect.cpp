@@ -56,7 +56,7 @@ int main( int argc, char *argv[])
    VideoWriter blur;
 	clock_t end;
 	Size frame_size;
-	double time_diff = 0;
+	//double time_diff = 0;
 	
 	cap.open(0); //open the default camera
 
@@ -71,9 +71,11 @@ int main( int argc, char *argv[])
 	//cap.set(CV_CAP_PROP_FRAME_WIDTH, 320);
 	//cap.set(CV_CAP_PROP_FRAME_HEIGHT, 240);
 	
+   int* fftInit = new int;
+   *fftInit = 300;
 
 	namedWindow("FFTKernel", WINDOW_SIZE_CHOICE);
-   createTrackbar("FFTKernelSTD", "FFTKernel", 0, 500,  updateSTDEdgeValue, NULL); 
+   createTrackbar("FFTKernelSTD", "FFTKernel", fftInit, 500,  updateSTDEdgeValue, NULL); 
    createTrackbar("FFTKernelCutoff", "FFTKernel", 0, 500, updateCutoffEdgeValue, NULL); 
    createTrackbar("FFTKernelCutoff3", "FFTKernel", 0, 20, updateCutoffEdgeValue, NULL); 
    imshow("FFTKernel", FFTKern);
@@ -114,7 +116,6 @@ int main( int argc, char *argv[])
 		//Create new bgr matrix and fill it with the
 		//current frame from the video camera
 		Mat frame_bgr;
-      Mat padded;
       Mat frame_orig;
 		cap >> frame_orig;
       frame_bgr = frame_orig;
@@ -156,12 +157,10 @@ int main( int argc, char *argv[])
  {
     standardDeviation = trackValue / 20.0;
     createGausianKernal(FFTKern, standardDeviation, true);
-    
  }
  void updateCutoffEdgeValue(int trackValue, void* userData)
  {
     cuttOff = trackValue / 1000.0;
-    
  }
 
 

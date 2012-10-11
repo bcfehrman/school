@@ -8,8 +8,8 @@
 using namespace cv;
 using namespace std;
 
-void createGausianKernal( Mat& kernDst, double standardDeviation, const bool fftKern = false);
-void gaussianFilter( Mat& origImage, Mat& kernel, Mat& destImage );
-void fftEdgeDetect(Mat& frameSrc, Mat& frameDst, Mat& FFTKern, double cuttOff);
+void createAutoCorrMatrix( Mat& srcMat, Mat& dstMat, Mat& xDeriv, Mat& yDeriv);
+void createDeriveKernels( Mat& GX, Mat& GY);
+void createGaussianKernal( Mat& kernDst, double standardDeviation);
 
 #endif

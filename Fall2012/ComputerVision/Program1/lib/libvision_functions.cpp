@@ -1,14 +1,14 @@
 #include "libvision_functions.h"
 
-
 //Generates a matrix of the autocorrelation value found at each point.
 //Algorithm taken from Szeliski page 188.
-void createAutoCorrMatrix( Mat& srcMat, Mat& dstMat, Mat& xDeriv, Mat& yDeriv)
+void createAutoCorrMatrix( Mat& srcMat, vector<featVal>& dstMat, Mat& xDeriv, Mat& yDeriv, const double thresholdVal)
 {
    int numRows = srcMat.size().height;
    int numCols = srcMat.size().width;
-   float currIx, currIy, currIxIy;
-   float traceVal, detVal;
+   double currIx, currIy, currIxIy;
+   double traceVal, detVal, intensityVal;
+   featVal featValStruct;
    
    for( int i = 0; i < numRows; i++ )
    {
@@ -22,8 +22,17 @@ void createAutoCorrMatrix( Mat& srcMat, Mat& dstMat, Mat& xDeriv, Mat& yDeriv)
          //Calculate trace and determinant of the 2x2 matrix
          detVal = ( ( currIx * currIx ) * ( currIy * currIy ) ) - ( currIxIy * currIxIy );
          traceVal = ( ( currIx * currIx ) + ( currIy * currIy ) );
+         intensityVal = detVal / traceVal;
          
-         dstMat.at<float>( i, j ) = detVal / traceVal;
+         //Suppress values less than threshold
+         if( intensityVal > thresholdVal)
+         {
+            featValStruct.x = i;
+            featValStruct.y = j;
+            featValStruct.intensityVal = intensityVal;
+            featValStruct.orientation = atan2( currIy / currIx ) / M_PI * 180;
+            //dstMat.at<float>( i, j ) = intensityVal;
+         }
       } 
    }
 }
@@ -118,4 +127,11 @@ void createGaussianKernal( Mat& kernDst, double standardDeviation)
          kernPtr++;
       }
    }
+}
+
+void suppressNonMaximums( Mat& srcMat, Mat& dstMat, const int sizeNeighbor)
+{
+   
+   
+   
 }

@@ -36,12 +36,13 @@ using namespace std;
 
 /****** Prototypes ****/
 void updateThreshold(int trackValue, void* userData);
-double thresholdVal = 0.1;
+double thresholdVal = 0.0000000005;
 
 /******** Main ***********/
 
 int main( int argc, char *argv[])
 {	
+   int* defaultThreshold = new int;
 	clock_t begin;
 	clock_t end;
 	Size frame_size;
@@ -52,6 +53,8 @@ int main( int argc, char *argv[])
    Mat autoCorrMat1;
    double standardDeviation = 1;
    double sum = 0;
+   
+   *defaultThreshold = 500;
    
    origImage1 = imread("img/Yosemite/Yosemite1.jpg");
    origImage1.copyTo( image1Highlight);
@@ -76,15 +79,11 @@ int main( int argc, char *argv[])
    
    createAutoCorrMatrix( smoothedImage1, autoCorrMat1, xDeriv, yDeriv );
    
-
-	//blur.open("edge.avi", CV_FOURCC('X','V','I','D'), 14, frame_size, true);
-
 	namedWindow("Orig", WINDOW_SIZE_CHOICE);
 	cvMoveWindow("Orig", 900, 0);
    namedWindow("Smoothed", WINDOW_SIZE_CHOICE);
-   createTrackbar("Threshold", "Smoothed", 0, 500,  updateThreshold, NULL); 
+   createTrackbar("Threshold", "Smoothed", defaultThreshold, 5000,  updateThreshold, NULL); 
 	
-   
    for(;;)
    {
       for(int i = 0; i < autoCorrMat1.size().height; i++)
@@ -118,6 +117,6 @@ int main( int argc, char *argv[])
 
 void updateThreshold(int trackValue, void* userData)
 {
-   thresholdVal = trackValue / 100000000000.0;
+   thresholdVal = trackValue * pow(10, -12.0);
 }
 

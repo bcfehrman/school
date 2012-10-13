@@ -36,7 +36,7 @@ using namespace std;
 
 /****** Prototypes ****/
 void updateThreshold(int trackValue, void* userData);
-double thresholdVal = 0.0000000005;
+double thresholdVal = 0.000000000005;
 
 /******** Main ***********/
 
@@ -57,7 +57,7 @@ int main( int argc, char *argv[])
    
    *defaultThreshold = 500;
    
-   origImage1 = imread("img/Yosemite/Yosemite1.jpg");
+   origImage1 = imread("img/graf/img1.ppm");
    origImage1.copyTo( image1Highlight);
 
    //Convert to gray scale
@@ -116,6 +116,6 @@ int main( int argc, char *argv[])
 
 void updateThreshold(int trackValue, void* userData)
 {
-   thresholdVal = trackValue * pow(10, -12.0);
+   thresholdVal = trackValue * pow(10, -14.0);
 }
 

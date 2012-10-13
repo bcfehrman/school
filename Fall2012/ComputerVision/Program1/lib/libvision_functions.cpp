@@ -2,12 +2,12 @@
 
 //Generates a matrix of the autocorrelation value found at each point.
 //Algorithm taken from Szeliski page 188.
-void createAutoCorrMatrix( Mat& srcMat, vector<featVal>& dstMat, Mat& xDeriv, Mat& yDeriv, const double thresholdVal)
+void createAutoCorrMatrix( Mat& srcMat, Mat& dstMat, Mat& xDeriv, Mat& yDeriv)
 {
    int numRows = srcMat.size().height;
    int numCols = srcMat.size().width;
-   double currIx, currIy, currIxIy;
-   double traceVal, detVal, intensityVal;
+   float currIx, currIy, currIxIy;
+   float traceVal, detVal, intensityVal;
    featVal featValStruct;
    
    for( int i = 0; i < numRows; i++ )
@@ -25,14 +25,14 @@ void createAutoCorrMatrix( Mat& srcMat, vector<featVal>& dstMat, Mat& xDeriv, Ma
          intensityVal = detVal / traceVal;
          
          //Suppress values less than threshold
-         if( intensityVal > thresholdVal)
-         {
-            featValStruct.x = i;
-            featValStruct.y = j;
-            featValStruct.intensityVal = intensityVal;
-            featValStruct.orientation = atan2( currIy / currIx ) / M_PI * 180;
-            //dstMat.at<float>( i, j ) = intensityVal;
-         }
+         //if( intensityVal > thresholdVal)
+         //{
+            //featValStruct.x = i;
+            //featValStruct.y = j;
+            //featValStruct.intensityVal = intensityVal;
+           // featValStruct.orientation = atan2( currIy / currIx ) / M_PI * 180;
+            dstMat.at<float>( i, j ) = intensityVal;
+         //}
       } 
    }
 }

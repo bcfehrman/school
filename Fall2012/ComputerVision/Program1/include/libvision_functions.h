@@ -16,7 +16,7 @@ struct featVal{
   double orientation; 
 };
 
-void createAutoCorrMatrix( Mat& srcMat, vector<featVal>& dstMat, Mat& xDeriv, Mat& yDeriv, const double thresholdVal);
+void createAutoCorrMatrix( Mat& srcMat, Mat& dstMat, Mat& xDeriv, Mat& yDeriv);
 void createDeriveKernels( Mat& GX, Mat& GY);
 void createGaussianKernal( Mat& kernDst, double standardDeviation);
 

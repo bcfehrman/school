@@ -48,8 +48,9 @@ int main( int argc, char *argv[])
 	Size frame_size;
    Mat origImage1, image1Highlight;
    Mat gaussKernel( 5, 5, CV_32F );
-   Mat smoothedImage1;
-   Mat xDeriv, GX, yDeriv, GY;
+   Mat gaussGX( 5, 5, CV_32F), gaussGY( 5, 5, CV_32F);
+   Mat grayImage1;
+   Mat GX, xDeriv, GY, yDeriv;
    Mat autoCorrMat1;
    double standardDeviation = 1;
    double sum = 0;
@@ -58,26 +59,24 @@ int main( int argc, char *argv[])
    
    origImage1 = imread("img/Yosemite/Yosemite1.jpg");
    origImage1.copyTo( image1Highlight);
+
+   //Convert to gray scale
+   origImage1.convertTo(grayImage1, CV_32F, 1/255.0);	
+   cvtColor(grayImage1, grayImage1, CV_BGR2GRAY);
    
-   autoCorrMat1.create( origImage1.size().height, origImage1.size().width, CV_32F);
+   autoCorrMat1.create( origImage1.rows, origImage1.cols, CV_32F);
    
 	createGaussianKernal(gaussKernel, standardDeviation);
    
-   origImage1.convertTo(smoothedImage1, CV_32F, 1/255.0);	
-
-   //Convert to gray scale
-   cvtColor(smoothedImage1, smoothedImage1, CV_BGR2GRAY);
-   
-   filter2D( smoothedImage1, smoothedImage1, -1, gaussKernel); 
-
-   //hessianMat.create( smoothedImage1.size().height, smoothedImage1.size().width, CV_32F);
-   
    createDeriveKernels(GX, GY);
    
-   filter2D( smoothedImage1, xDeriv, -1, GX);
-   filter2D( smoothedImage1, yDeriv, -1, GY);
+   filter2D( gaussKernel, gaussGX, -1, GX); 
+   filter2D( gaussKernel, gaussGY, -1, GY);
    
-   createAutoCorrMatrix( smoothedImage1, autoCorrMat1, xDeriv, yDeriv );
+   filter2D( grayImage1, xDeriv, -1, gaussGX);
+   filter2D( grayImage1, yDeriv, -1, gaussGY);
+   
+   createAutoCorrMatrix( grayImage1, autoCorrMat1, xDeriv, yDeriv );
    
 	namedWindow("Orig", WINDOW_SIZE_CHOICE);
 	cvMoveWindow("Orig", 900, 0);
@@ -86,9 +85,9 @@ int main( int argc, char *argv[])
 	
    for(;;)
    {
-      for(int i = 0; i < autoCorrMat1.size().height; i++)
+      for(int i = 0; i < autoCorrMat1.rows; i++)
       {
-         for(int j = 0; j < autoCorrMat1.size().width; j++ )
+         for(int j = 0; j < autoCorrMat1.cols; j++ )
          {
             if(autoCorrMat1.at<float>(i,j) > thresholdVal)
             {

@@ -76,6 +76,70 @@ void createDeriveKernels( Mat& GX, Mat& GY)
 
 //Creates a gaussian kernel which will be the size of the
 //destination matrix
+void createDerivGaussianKernels( Mat& kernXDst, Mat& kernYDst, double standardDeviation)
+{
+	int width = kernXDst.size().width;
+   int height = kernXDst.size().height;
+   int widthDiv2 = kernXDst.size().width / 2;
+   int heightDiv2 = kernXDst.size().height / 2;
+	double variance = standardDeviation * standardDeviation;
+	double num;
+	double den = -sqrt(2 * M_PI) * standardDeviation * variance;
+	int x,y,ySqrd;
+	double kernelVal = 0;
+   double preNormSumX = 0;
+	double preNormSumY = 0;
+   float* kernXPtrHead = (float*) kernXDst.data;
+   float* kernXPtr = kernXPtrHead;
+   float* kernYPtrHead = (float*) kernYDst.data;
+   float* kernYPtr = kernYPtrHead;
+
+
+   //Generate the gaussian kernel
+	for(int i = 0; i < height; i++)
+	{
+		y = i -heightDiv2;
+		ySqrd = y * y;
+		
+      for(int j = 0; j < width; j++)
+      {
+         x = j - widthDiv2;
+      
+         num =  exp(-1 * ( ( x * x + ySqrd) / ( 2 * variance ) ) );
+         
+         kernelVal = num / den;
+         
+         *kernXPtr = kernelVal * x;
+         preNormSumX += *kernXPtr;
+         kernXPtr++;
+         
+         *kernYPtr = kernelVal * y;
+         preNormSumY += *kernYPtr;
+         kernYPtr++;
+      
+      }
+   }
+   
+   //Reset the pointer
+   kernXPtr = kernXPtrHead;
+   kernXPtr = kernYPtrHead;
+   
+   //Normalize the values
+   for(int i = 0; i < height; i++)
+   {
+      for( int j = 0; j < width; j++ )
+      {
+         //*kernXPtr /= preNormSumX;
+         kernXPtr++;
+         
+         //*kernYPtr /= preNormSumY;
+         kernYPtr++;
+      }
+   }
+}
+
+//Creates a gaussian kernel which will be the size of the
+//destination matrix
 void createGaussianKernal( Mat& kernDst, double standardDeviation)
 {
 	int width = kernDst.size().width;

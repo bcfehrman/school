@@ -52,8 +52,8 @@ int main( int argc, char *argv[])
    Mat grayImage1;
    Mat GX, xDeriv, GY, yDeriv;
    Mat autoCorrMat1;
-   double standardDeviation = 1;
-   double sum = 0;
+   double standardDeviation = 1.4;
+   
    
    *defaultThreshold = 500;
    
@@ -71,10 +71,28 @@ int main( int argc, char *argv[])
    createDeriveKernels(GX, GY);
    
    filter2D( gaussKernel, gaussGX, -1, GX); 
+   
+   for(int i = 0; i < gaussGX.rows; i++)
+   {
+      for(int j = 0; j < gaussGX.cols; j++)
+      {
+       cout << gaussGX.at<float>(i,j)  << " ";
+         
+      }
+      cout << endl;
+   }
+   
+   //createDerivGaussianKernels( gaussGX, gaussGY, standardDeviation);
+   
    filter2D( gaussKernel, gaussGY, -1, GY);
+   //filter2D( gaussGY, gaussGY, -1, GY);
    
    filter2D( grayImage1, xDeriv, -1, gaussGX);
    filter2D( grayImage1, yDeriv, -1, gaussGY);
+   
+   //filter2D( xDeriv, xDeriv, -1, gaussGX);
+   //filter2D( yDeriv, yDeriv, -1, gaussGY);
+
    
    createAutoCorrMatrix( grayImage1, autoCorrMat1, xDeriv, yDeriv );
    
@@ -83,8 +101,7 @@ int main( int argc, char *argv[])
    namedWindow("Smoothed", WINDOW_SIZE_CHOICE);
    createTrackbar("Threshold", "Smoothed", defaultThreshold, 5000,  updateThreshold, NULL); 
 	
-   for(;;)
-   {
+   int sum = 0;
       for(int i = 0; i < autoCorrMat1.rows; i++)
       {
          for(int j = 0; j < autoCorrMat1.cols; j++ )
@@ -94,6 +111,7 @@ int main( int argc, char *argv[])
                image1Highlight.at<Vec3b>(i,j)[0] = 0;
                image1Highlight.at<Vec3b>(i,j)[1] = 200;
                image1Highlight.at<Vec3b>(i,j)[2] = 0;
+               sum++;
             }
             else
             {
@@ -104,6 +122,11 @@ int main( int argc, char *argv[])
             
          }
       }
+      
+      cout << sum;
+   
+   for(;;)
+   {
    
       imshow("Orig", image1Highlight);
       imshow("Smoothed", autoCorrMat1);

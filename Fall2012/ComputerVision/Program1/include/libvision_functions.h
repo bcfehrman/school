@@ -18,6 +18,7 @@ struct featVal{
 
 void createAutoCorrMatrix( Mat& srcMat, Mat& dstMat, Mat& xDeriv, Mat& yDeriv);
 void createDeriveKernels( Mat& GX, Mat& GY);
+void createDerivGaussianKernels( Mat& kernXDst, Mat& kernYDst, double standardDeviation);
 void createGaussianKernal( Mat& kernDst, double standardDeviation);
 
 #endif

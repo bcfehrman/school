@@ -2,7 +2,7 @@
 
 //Generates a matrix of the autocorrelation value found at each point.
 //Algorithm taken from Szeliski page 188.
-void createAutoCorrMatrix( Mat& srcMat, Mat& dstMat, Mat& xDeriv, Mat& yDeriv)
+void createAutoCorrMatrix( Mat& srcMat, Mat& dstMat, Mat& xDeriv, Mat& yDeriv, const float thresholdVal)
 {
    int numRows = srcMat.size().height;
    int numCols = srcMat.size().width;
@@ -25,14 +25,14 @@ void createAutoCorrMatrix( Mat& srcMat, Mat& dstMat, Mat& xDeriv, Mat& yDeriv)
          intensityVal = detVal / traceVal;
          
          //Suppress values less than threshold
-         //if( intensityVal > thresholdVal)
-         //{
-            //featValStruct.x = i;
-            //featValStruct.y = j;
-            //featValStruct.intensityVal = intensityVal;
-           // featValStruct.orientation = atan2( currIy / currIx ) / M_PI * 180;
+         if( intensityVal > thresholdVal )
+         {
             dstMat.at<float>( i, j ) = intensityVal;
-         //}
+         }
+         else
+         {
+            dstMat.at<float>( i, j ) = 0;
+         }
       } 
    }
 }
@@ -195,7 +195,91 @@ void createGaussianKernal( Mat& kernDst, double standardDeviation)
 
 void suppressNonMaximums( Mat& srcMat, Mat& dstMat, const int sizeNeighbor)
 {
+   int sizeNeighborDiv2 = sizeNeighbor / 2;
+   float currCheck = 0.0;
+   bool breakOut = false;
+   int numRows = srcMat.rows;
+   int numCols = srcMat.cols;
+   int topRange = sizeNeighbor;
+   int bottomRange = sizeNeighbor;
+   int leftRange = sizeNeighbor;
+   int rightRange = sizeNeighbor;
    
+   for(int i = 1; i < numRows; i++)
+   {
+      if(i < sizeNeighbor )
+      {
+         topRange = i;
+      }
+      else if( i >= numRows - sizeNeighbor )
+      {
+         bottomRange = numRows - i;
+      }
+      
+      rightRange = sizeNeighbor;
+      leftRange = sizeNeighbor;
+      
+      for( int j = 0; j < numCols; j++ )
+      {
+         if(j < sizeNeighbor )
+         {
+            leftRange = j;
+         }
+         else if( j >= numCols - sizeNeighbor )
+         {
+            rightRange = numCols - j;
+         }
+         
+         //Get the current pixel to check and set it to 90% of its
+         //value to make sure that it is at least 10% greater in value
+         //than its neighbors
+         currCheck = srcMat.at<float>(i,j) * 0.9;
+         
+         //Skip over points that are 0
+         if( currCheck != 0 )
+         {
+            //Check the neigbhorhood to both the right and the bottom of the
+            //current pixel. No need to check left and up because this is taken
+            //care of by the right/bottom checking
+            for(int currRow = i - topRange; currRow < i + bottomRange; currRow++)
+            {
+               for( int currCol = j  - leftRange; currCol < j + rightRange; currCol++)
+               {
+                  //If neighboring pixel is less than current, then zero it
+                  //Else set the current pixel to be zero and move on
+                  
+                  if( currRow == i && currCol == j )
+                  {
+                     break;
+                  }
+                  else if( currCheck >= srcMat.at<float>( currRow, currCol ) )
+                  {
+                     srcMat.at<float>( currRow, currCol ) = 0;
+                     dstMat.at<float>( currRow, currCol ) = 0;
+                  }
+                  else
+                  {
+                     srcMat.at<float>( i, j ) = 0;
+                     dstMat.at<float>( i, j) = 0;
+                     breakOut = true;
+                     break;
+                  }
+               }
+               
+               //Handles exiting the loops if current pixel was zeroed
+               if( breakOut )
+               {
+                  breakOut = false;
+                  break;
+               }
+               else
+               {
+                  dstMat.at<float>(i, j) = srcMat.at<float>( i, j );
+               }
+            }
+         }
+      }
+   }
    
    
 }

@@ -36,7 +36,7 @@ using namespace std;
 
 /****** Prototypes ****/
 void updateThreshold(int trackValue, void* userData);
-double thresholdVal = 0.000000000005;
+double thresholdVal = 0.0000000000005;
 
 /******** Main ***********/
 
@@ -57,7 +57,7 @@ int main( int argc, char *argv[])
    
    *defaultThreshold = 500;
    
-   origImage1 = imread("img/graf/img1.ppm");
+   origImage1 = imread("img/bikes/img6.ppm");
    origImage1.copyTo( image1Highlight);
 
    //Convert to gray scale
@@ -94,24 +94,25 @@ int main( int argc, char *argv[])
    //filter2D( yDeriv, yDeriv, -1, gaussGY);
 
    
-   createAutoCorrMatrix( grayImage1, autoCorrMat1, xDeriv, yDeriv );
+   createAutoCorrMatrix( grayImage1, autoCorrMat1, xDeriv, yDeriv, thresholdVal );
+   suppressNonMaximums( autoCorrMat1, autoCorrMat1, 10);
    
 	namedWindow("Orig", WINDOW_SIZE_CHOICE);
 	cvMoveWindow("Orig", 900, 0);
    namedWindow("Smoothed", WINDOW_SIZE_CHOICE);
-   createTrackbar("Threshold", "Smoothed", defaultThreshold, 5000,  updateThreshold, NULL); 
-	
-   int sum = 0;
+   //createTrackbar("Threshold", "Smoothed", defaultThreshold, 50000,  updateThreshold, NULL); 
+   
+   for(;;)
+   {
       for(int i = 0; i < autoCorrMat1.rows; i++)
       {
          for(int j = 0; j < autoCorrMat1.cols; j++ )
          {
-            if(autoCorrMat1.at<float>(i,j) > thresholdVal)
+            if(autoCorrMat1.at<float>(i,j) != 0)
             {
                image1Highlight.at<Vec3b>(i,j)[0] = 0;
                image1Highlight.at<Vec3b>(i,j)[1] = 200;
                image1Highlight.at<Vec3b>(i,j)[2] = 0;
-               sum++;
             }
             else
             {
@@ -122,11 +123,6 @@ int main( int argc, char *argv[])
             
          }
       }
-      
-      cout << sum;
-   
-   for(;;)
-   {
    
       imshow("Orig", image1Highlight);
       imshow("Smoothed", autoCorrMat1);

@@ -16,9 +16,10 @@ struct featVal{
   double orientation; 
 };
 
-void createAutoCorrMatrix( Mat& srcMat, Mat& dstMat, Mat& xDeriv, Mat& yDeriv);
+void createAutoCorrMatrix( Mat& srcMat, Mat& dstMat, Mat& xDeriv, Mat& yDeriv, const float thresholdVal);
 void createDeriveKernels( Mat& GX, Mat& GY);
 void createDerivGaussianKernels( Mat& kernXDst, Mat& kernYDst, double standardDeviation);
 void createGaussianKernal( Mat& kernDst, double standardDeviation);
+void suppressNonMaximums( Mat& srcMat, Mat& dstMat, const int sizeNeighbor);
 
 #endif

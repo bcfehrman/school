@@ -94,7 +94,6 @@ void createDerivGaussianKernels( Mat& kernXDst, Mat& kernYDst, double standardDe
    float* kernYPtrHead = (float*) kernYDst.data;
    float* kernYPtr = kernYPtrHead;
 
-
    //Generate the gaussian kernel
 	for(int i = 0; i < height; i++)
 	{
@@ -116,7 +115,6 @@ void createDerivGaussianKernels( Mat& kernXDst, Mat& kernYDst, double standardDe
          *kernYPtr = kernelVal * y;
          preNormSumY += *kernYPtr;
          kernYPtr++;
-      
       }
    }
    
@@ -140,7 +138,7 @@ void createDerivGaussianKernels( Mat& kernXDst, Mat& kernYDst, double standardDe
 
 //Creates a gaussian kernel which will be the size of the
 //destination matrix
-void createGaussianKernal( Mat& kernDst, double standardDeviation)
+void createGaussianKernel( Mat& kernDst, double standardDeviation)
 {
 	int width = kernDst.size().width;
    int height = kernDst.size().height;
@@ -169,6 +167,59 @@ void createGaussianKernal( Mat& kernDst, double standardDeviation)
          num =  exp(-1 * ( ( x * x + ySqrd) / ( 2 * variance ) ) );
          
          kernelVal = num / den;
+         
+         *kernPtr = kernelVal;
+         kernPtr++;
+         
+         preNormSum += kernelVal;
+      }
+   }
+   
+   //Reset the pointer
+   kernPtr = kernPtrHead;
+   
+   //Normalize the values
+   for(int i = 0; i < height; i++)
+   {
+      for( int j = 0; j < width; j++ )
+      {
+         *kernPtr = *kernPtr / preNormSum;
+         normSum += *kernPtr;
+   
+         kernPtr++;
+      }
+   }
+}
+
+//Creates a gaussian kernel which will be the size of the
+//destination matrix
+void createNormLOGKernel( Mat& kernDst, double standardDeviation)
+{
+	int width = kernDst.size().width;
+   int height = kernDst.size().height;
+   int widthDiv2 = kernDst.size().width / 2;
+   int heightDiv2 = kernDst.size().height / 2;
+	double variance = standardDeviation * standardDeviation;
+	int xSqrd,ySqrd;
+	double kernelVal = -2 * variance;
+	double preNormSum = 0;
+	double normSum = 0;
+   float* kernPtrHead = (float*) kernDst.data;
+   float* kernPtr = kernPtrHead;
+
+   //Generate the scale normalized Laplacian of Gaussian kernel
+	for(int i = 0; i < height; i++)
+	{
+		ySqrd = i -heightDiv2;
+		ySqrd *= ySqrd;
+      kernelVal += ySqrd;
+		
+      for(int j = 0; j < width; j++)
+      {
+         xSqrd = j - widthDiv2;
+         xSqrd *= xSqrd;
+         kernelVal += xSqrd;
+         kernelVal *=  exp(-1 * ( ( xSqrd + ySqrd) / ( 2 * variance ) ) );
          
          *kernPtr = kernelVal;
          kernPtr++;
@@ -280,6 +331,4 @@ void suppressNonMaximums( Mat& srcMat, Mat& dstMat, const int sizeNeighbor)
          }
       }
    }
-   
-   
 }

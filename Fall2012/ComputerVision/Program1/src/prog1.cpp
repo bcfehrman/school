@@ -29,6 +29,7 @@ used, the step size for the ranks, and the overall number of ranks.
 
 /**** Defines ****/
 #define WINDOW_SIZE_CHOICE CV_WINDOW_AUTOSIZE
+#define NUM_SCALES 5
 
 /**** Using Statements ****/
 using namespace cv;
@@ -47,17 +48,20 @@ int main( int argc, char *argv[])
 	clock_t end;
 	Size frame_size;
    Mat origImage1, image1Highlight;
-   Mat gaussKernel( 5, 5, CV_32F );
+   Mat normLOGKernels[NUM_SCALES];
    Mat gaussGX( 5, 5, CV_32F), gaussGY( 5, 5, CV_32F);
    Mat grayImage1;
    Mat GX, xDeriv, GY, yDeriv;
    Mat autoCorrMat1;
    double standardDeviation = 1.4;
    
+   for(int i = 0; i < NUM_SCALES; i++)
+   {
+      normLOGKernels[ i ].create( 5, 5, CV_32F );
+      createNormLOGKernel( normLOGKernels[ i ], standardDeviation * ( i + 1 ) );
+   } 
    
-   *defaultThreshold = 500;
-   
-   origImage1 = imread("img/bikes/img6.ppm");
+   origImage1 = imread("img/bikes/img1.ppm");
    origImage1.copyTo( image1Highlight);
 
    //Convert to gray scale
@@ -66,33 +70,10 @@ int main( int argc, char *argv[])
    
    autoCorrMat1.create( origImage1.rows, origImage1.cols, CV_32F);
    
-	createGaussianKernal(gaussKernel, standardDeviation);
-   
-   createDeriveKernels(GX, GY);
-   
-   filter2D( gaussKernel, gaussGX, -1, GX); 
-   
-   for(int i = 0; i < gaussGX.rows; i++)
-   {
-      for(int j = 0; j < gaussGX.cols; j++)
-      {
-       cout << gaussGX.at<float>(i,j)  << " ";
-         
-      }
-      cout << endl;
-   }
-   
-   //createDerivGaussianKernels( gaussGX, gaussGY, standardDeviation);
-   
-   filter2D( gaussKernel, gaussGY, -1, GY);
-   //filter2D( gaussGY, gaussGY, -1, GY);
+   createDerivGaussianKernels( gaussGX, gaussGY, standardDeviation);
    
    filter2D( grayImage1, xDeriv, -1, gaussGX);
    filter2D( grayImage1, yDeriv, -1, gaussGY);
-   
-   //filter2D( xDeriv, xDeriv, -1, gaussGX);
-   //filter2D( yDeriv, yDeriv, -1, gaussGY);
-
    
    createAutoCorrMatrix( grayImage1, autoCorrMat1, xDeriv, yDeriv, thresholdVal );
    suppressNonMaximums( autoCorrMat1, autoCorrMat1, 10);
@@ -100,8 +81,8 @@ int main( int argc, char *argv[])
 	namedWindow("Orig", WINDOW_SIZE_CHOICE);
 	cvMoveWindow("Orig", 900, 0);
    namedWindow("Smoothed", WINDOW_SIZE_CHOICE);
-   //createTrackbar("Threshold", "Smoothed", defaultThreshold, 50000,  updateThreshold, NULL); 
-   
+   //createTrackbar("Threshold", "Smoothed", defaultThreshold, 50000,  updateThreshold, NULL);
+    
    for(;;)
    {
       for(int i = 0; i < autoCorrMat1.rows; i++)
@@ -120,7 +101,6 @@ int main( int argc, char *argv[])
                image1Highlight.at<Vec3b>(i,j)[1] = origImage1.at<Vec3b>(i,j)[1];
                image1Highlight.at<Vec3b>(i,j)[2] = origImage1.at<Vec3b>(i,j)[2];
             }
-            
          }
       }
    

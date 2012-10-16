@@ -12,14 +12,17 @@ using namespace std;
 struct featVal{
   int x;
   int y;
-  double intensityVal;
-  double orientation; 
+  float intensityVal;
+  float majorOrientation;
+  float minorOrientations[10];
+  float scale; 
 };
 
 void createAutoCorrMatrix( Mat& srcMat, Mat& dstMat, Mat& xDeriv, Mat& yDeriv, const float thresholdVal);
 void createDeriveKernels( Mat& GX, Mat& GY);
 void createDerivGaussianKernels( Mat& kernXDst, Mat& kernYDst, double standardDeviation);
-void createGaussianKernal( Mat& kernDst, double standardDeviation);
+void createGaussianKernel( Mat& kernDst, double standardDeviation);
+void createNormLOGKernel( Mat& kernDst, double standardDeviation);
 void suppressNonMaximums( Mat& srcMat, Mat& dstMat, const int sizeNeighbor);
 
 #endif

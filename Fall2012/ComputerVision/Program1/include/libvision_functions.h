@@ -11,8 +11,11 @@
 using namespace cv;
 using namespace std;
 
+#define NUM_SCALES 5
+
 struct featVal{
-  Point pos;
+  int iPos;
+  int jPos;
   float intensityVal;
   float majorOrientation;
   float minorOrientations[10];
@@ -24,6 +27,8 @@ void createDeriveKernels( Mat& GX, Mat& GY);
 void createDerivGaussianKernels( Mat& kernXDst, Mat& kernYDst, double standardDeviation);
 void createGaussianKernel( Mat& kernDst, double standardDeviation);
 void createNormLOGKernel( Mat& kernDst, double standardDeviation);
+void findScales( Mat& srcMat, vector<featVal>& featVec, Mat LOGKernels[NUM_SCALES], float startVariance );
+float scalerConvolveMatrixRegion( Mat& srcMat, Mat& kernel, const int iPos, const int jPos);
 bool sortFeatVal( featVal featVal1, featVal featVal2 );
 void suppressNonMaximumsAdaptive( Mat& srcMat, vector<featVal>& featVec, const int sizeNeighbor, const int numKeep);
 

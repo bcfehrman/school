@@ -84,9 +84,9 @@ void createDerivGaussianKernels( Mat& kernXDst, Mat& kernYDst, double standardDe
    int widthDiv2 = kernXDst.size().width / 2;
    int heightDiv2 = kernXDst.size().height / 2;
 	double variance = standardDeviation * standardDeviation;
-	double num;
+	double num = 0;
 	double den = -sqrt(2 * M_PI) * standardDeviation * variance;
-	int x,y,ySqrd;
+	int x = 0, y = 0, ySqrd = 0;
 	double kernelVal = 0;
    double preNormSumX = 0;
 	double preNormSumY = 0;
@@ -146,9 +146,9 @@ void createGaussianKernel( Mat& kernDst, double standardDeviation)
    int widthDiv2 = kernDst.size().width / 2;
    int heightDiv2 = kernDst.size().height / 2;
 	double variance = standardDeviation * standardDeviation;
-	double num;
+	double num = 0;
 	double den = 2 * M_PI * variance;
-	int x,ySqrd;
+	int x = 0, ySqrd = 0;
 	double kernelVal = 0;
 	double preNormSum = 0;
 	double normSum = 0;
@@ -201,7 +201,7 @@ void createNormLOGKernel( Mat& kernDst, double standardDeviation)
    int widthDiv2 = kernDst.size().width / 2;
    int heightDiv2 = kernDst.size().height / 2;
 	double variance = standardDeviation * standardDeviation;
-	int xSqrd,ySqrd;
+	int xSqrd = 0, ySqrd = 0;
 	double kernelVal = -2 * variance;
 	double preNormSum = 0;
 	double normSum = 0;
@@ -245,6 +245,81 @@ void createNormLOGKernel( Mat& kernDst, double standardDeviation)
    }
 }
 
+//Uses the Laplacian of Gaussian to find the scale at which the current
+//feature is an extrema and sets this as the feature's characteristic
+//scale
+void findScales( Mat& srcMat, vector<featVal>& featVec, Mat LOGKernels[NUM_SCALES], const float startSTD )
+{
+   float maxResponse = 0.0;
+   float currScale = startSTD;
+   float maxScale = 0.0;
+   float currResponse = 0.0;
+   
+   for( int i = 0; i < featVec.size(); i++ )
+   {
+      currScale = startSTD;
+      maxResponse = 0.0;
+        
+      for(int j = 0; j < NUM_SCALES; j++ )
+      {               
+         //Get the Laplacian of Gaussian measurement for the current feature point
+         currResponse = scalerConvolveMatrixRegion( srcMat, LOGKernels[j], featVec.at(i).iPos, featVec.at(i).jPos );
+         
+         //Want either min or max
+         currResponse *= currResponse;
+         
+         if( currResponse > maxResponse )
+         {
+            maxResponse = currResponse;
+            maxScale = currScale;
+         }
+         
+         currScale += currScale;
+      }
+      
+      featVec.at(i).scale = maxScale;
+   }
+}
+
+//Puts the center of the kernel on the matConvCenter point in srcMat and then
+//performs convolution at the point and returns the result
+float scalerConvolveMatrixRegion( Mat& srcMat, Mat& kernel, const int iPos, const int jPos)
+{
+   float result = 0.0;
+   int srcMatCols = srcMat.cols;
+   int srcMatRows = srcMat.rows;
+   int kernelSize = kernel.rows;
+   int kernelSizeDiv2 = kernelSize / 2;
+   int curr_i_pos = iPos - kernelSizeDiv2;
+   int curr_j_pos = 0;
+   
+   for( int i = 0; i < kernelSize; i++, curr_i_pos++ )
+   {
+      if( curr_i_pos < 0 )
+         continue;
+      else if( curr_i_pos >= srcMatRows )
+         break;
+         
+      curr_j_pos = jPos - kernelSizeDiv2;
+      
+      for( int j = 0; j < kernelSize; j++, curr_j_pos++ )
+      {
+               
+         if( curr_j_pos < 0 )
+            continue;
+         else if( curr_j_pos >= srcMatCols )
+            break;
+
+         result += ( kernel.at<float>( i, j ) * srcMat.at<float>( curr_i_pos, curr_j_pos ) ) ;
+      }
+   }
+   
+   return result;
+}
+
+//Sort function used for sorting a vector of featVal structs
+//and is based upon their intensity response value wrt the
+//harrison operator.
 bool sortFeatVal( featVal featVal1, featVal featVal2 )
 {
    return ( featVal1.intensityVal < featVal2.intensityVal );
@@ -291,12 +366,11 @@ void suppressNonMaximumsAdaptive( Mat& srcMat, vector<featVal>& dstVec, const in
          //Get the current pixel to check and set it to 90% of its
          //value to make sure that it is at least 10% greater in value
          //than its neighbors
-         currCheck = srcMat.at<float>(i,j);
+         currCheck = srcMat.at<float>(i,j) * 0.9;
          
          //Skip over points that are 0
          if( currCheck != 0 )
          {
-            currCheck *=  0.9;
             breakOut = false;
             
             //Check the neigbhorhood to both the right and the bottom of the
@@ -334,7 +408,8 @@ void suppressNonMaximumsAdaptive( Mat& srcMat, vector<featVal>& dstVec, const in
             
             if(!breakOut)
             {
-               currFeat.pos = Point( j, i );
+               currFeat.iPos = i;
+               currFeat.jPos = j;
                currFeat.intensityVal = srcMat.at<float>( i, j );
                dstVec.push_back( currFeat );
             }
@@ -342,6 +417,16 @@ void suppressNonMaximumsAdaptive( Mat& srcMat, vector<featVal>& dstVec, const in
       }
    }
    
-   sort( dstVec.begin(), dstVec.end(), sortFeatVal );
-   dstVec.erase( dstVec.begin() + numKeep, dstVec.end() );
+   //Make sure we have features
+   if( !dstVec.empty() )
+   {
+      //Sort based on harris response value
+      sort( dstVec.begin(), dstVec.end(), sortFeatVal );
+      
+      //If more features than desired, get rid of the extra features.
+      if( dstVec.size() > numKeep )
+      {
+         dstVec.erase( dstVec.begin() + numKeep, dstVec.end() );
+      }
+   }
 }

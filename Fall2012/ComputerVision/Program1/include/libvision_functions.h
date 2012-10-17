@@ -5,13 +5,14 @@
 #include <cmath>
 #include <opencv/cv.h>
 #include <opencv/highgui.h>
+#include <vector>
+#include <algorithm>
 
 using namespace cv;
 using namespace std;
 
 struct featVal{
-  int x;
-  int y;
+  Point pos;
   float intensityVal;
   float majorOrientation;
   float minorOrientations[10];
@@ -23,6 +24,7 @@ void createDeriveKernels( Mat& GX, Mat& GY);
 void createDerivGaussianKernels( Mat& kernXDst, Mat& kernYDst, double standardDeviation);
 void createGaussianKernel( Mat& kernDst, double standardDeviation);
 void createNormLOGKernel( Mat& kernDst, double standardDeviation);
-void suppressNonMaximums( Mat& srcMat, Mat& dstMat, const int sizeNeighbor);
+bool sortFeatVal( featVal featVal1, featVal featVal2 );
+void suppressNonMaximumsAdaptive( Mat& srcMat, vector<featVal>& featVec, const int sizeNeighbor, const int numKeep);
 
 #endif

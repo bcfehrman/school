@@ -54,6 +54,7 @@ int main( int argc, char *argv[])
    Mat GX, xDeriv, GY, yDeriv;
    Mat autoCorrMat1;
    double standardDeviation = 1.4;
+   vector<featVal> featVec;
    
    for(int i = 0; i < NUM_SCALES; i++)
    {
@@ -76,7 +77,7 @@ int main( int argc, char *argv[])
    filter2D( grayImage1, yDeriv, -1, gaussGY);
    
    createAutoCorrMatrix( grayImage1, autoCorrMat1, xDeriv, yDeriv, thresholdVal );
-   suppressNonMaximums( autoCorrMat1, autoCorrMat1, 10);
+   suppressNonMaximumsAdaptive( autoCorrMat1, featVec, 30, 250);
    
 	namedWindow("Orig", WINDOW_SIZE_CHOICE);
 	cvMoveWindow("Orig", 900, 0);
@@ -85,23 +86,13 @@ int main( int argc, char *argv[])
     
    for(;;)
    {
-      for(int i = 0; i < autoCorrMat1.rows; i++)
+      for(int i = 0; i < featVec.size(); i++)
       {
-         for(int j = 0; j < autoCorrMat1.cols; j++ )
-         {
-            if(autoCorrMat1.at<float>(i,j) != 0)
-            {
-               image1Highlight.at<Vec3b>(i,j)[0] = 0;
-               image1Highlight.at<Vec3b>(i,j)[1] = 200;
-               image1Highlight.at<Vec3b>(i,j)[2] = 0;
-            }
-            else
-            {
-               image1Highlight.at<Vec3b>(i,j)[0] = origImage1.at<Vec3b>(i,j)[0];
-               image1Highlight.at<Vec3b>(i,j)[1] = origImage1.at<Vec3b>(i,j)[1];
-               image1Highlight.at<Vec3b>(i,j)[2] = origImage1.at<Vec3b>(i,j)[2];
-            }
-         }
+         circle(image1Highlight, featVec.at(i).pos, 5, Scalar(100, 100, 0), 3);
+         
+         image1Highlight.at<Vec3b>(featVec.at(i).pos.y, featVec.at(i).pos.x)[0] = 0;
+         image1Highlight.at<Vec3b>(featVec.at(i).pos.y, featVec.at(i).pos.x)[1] = 200;
+         image1Highlight.at<Vec3b>(featVec.at(i).pos.y, featVec.at(i).pos.x)[2] = 0;
       }
    
       imshow("Orig", image1Highlight);

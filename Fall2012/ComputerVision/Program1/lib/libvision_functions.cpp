@@ -69,7 +69,8 @@ void createDeriveKernels( Mat& GX, Mat& GY)
    }
    
    //Flip around both axes since opencv uses correlation
-   //instead of convolution
+   //instead of convolution although I'm still not convinced
+   //that it matters for these matrices.
    flip(GX, GX, -1);
    flip(GY, GY, -1);
 }
@@ -244,7 +245,12 @@ void createNormLOGKernel( Mat& kernDst, double standardDeviation)
    }
 }
 
-void suppressNonMaximums( Mat& srcMat, Mat& dstMat, const int sizeNeighbor)
+bool sortFeatVal( featVal featVal1, featVal featVal2 )
+{
+   return ( featVal1.intensityVal < featVal2.intensityVal );
+}
+
+void suppressNonMaximumsAdaptive( Mat& srcMat, vector<featVal>& dstVec, const int sizeNeighbor, const int numKeep)
 {
    int sizeNeighborDiv2 = sizeNeighbor / 2;
    float currCheck = 0.0;
@@ -255,6 +261,7 @@ void suppressNonMaximums( Mat& srcMat, Mat& dstMat, const int sizeNeighbor)
    int bottomRange = sizeNeighbor;
    int leftRange = sizeNeighbor;
    int rightRange = sizeNeighbor;
+   featVal currFeat;
    
    for(int i = 1; i < numRows; i++)
    {
@@ -284,11 +291,14 @@ void suppressNonMaximums( Mat& srcMat, Mat& dstMat, const int sizeNeighbor)
          //Get the current pixel to check and set it to 90% of its
          //value to make sure that it is at least 10% greater in value
          //than its neighbors
-         currCheck = srcMat.at<float>(i,j) * 0.9;
+         currCheck = srcMat.at<float>(i,j);
          
          //Skip over points that are 0
          if( currCheck != 0 )
          {
+            currCheck *=  0.9;
+            breakOut = false;
+            
             //Check the neigbhorhood to both the right and the bottom of the
             //current pixel. No need to check left and up because this is taken
             //care of by the right/bottom checking
@@ -306,12 +316,10 @@ void suppressNonMaximums( Mat& srcMat, Mat& dstMat, const int sizeNeighbor)
                   else if( currCheck >= srcMat.at<float>( currRow, currCol ) )
                   {
                      srcMat.at<float>( currRow, currCol ) = 0;
-                     dstMat.at<float>( currRow, currCol ) = 0;
                   }
                   else
                   {
                      srcMat.at<float>( i, j ) = 0;
-                     dstMat.at<float>( i, j) = 0;
                      breakOut = true;
                      break;
                   }
@@ -320,15 +328,20 @@ void suppressNonMaximums( Mat& srcMat, Mat& dstMat, const int sizeNeighbor)
                //Handles exiting the loops if current pixel was zeroed
                if( breakOut )
                {
-                  breakOut = false;
                   break;
                }
-               else
-               {
-                  dstMat.at<float>(i, j) = srcMat.at<float>( i, j );
-               }
+            }
+            
+            if(!breakOut)
+            {
+               currFeat.pos = Point( j, i );
+               currFeat.intensityVal = srcMat.at<float>( i, j );
+               dstVec.push_back( currFeat );
             }
          }
       }
    }
+   
+   sort( dstVec.begin(), dstVec.end(), sortFeatVal );
+   dstVec.erase( dstVec.begin() + numKeep, dstVec.end() );
 }

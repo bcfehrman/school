@@ -2,11 +2,11 @@
 
 //Generates a matrix of the autocorrelation value found at each point.
 //Algorithm taken from Szeliski page 188.
-void createAutoCorrMatrix( Mat& srcMat, Mat& dstMat, Mat& xDeriv, Mat& yDeriv, const float thresholdVal)
+void createAutoCorrMatrix( Mat& srcMat, Mat& dstMat, Mat& xyDeriv, Mat& xDerivSqd, Mat& yDerivSqd, const float thresholdVal)
 {
    int numRows = srcMat.size().height;
    int numCols = srcMat.size().width;
-   float currIx, currIy, currIxIy;
+   float currIxSqd, currIySqd, currIxIy;
    float traceVal, detVal, intensityVal;
    featVal featValStruct;
    
@@ -15,13 +15,13 @@ void createAutoCorrMatrix( Mat& srcMat, Mat& dstMat, Mat& xDeriv, Mat& yDeriv, c
       for( int j = 0; j < numCols; j++ )
       {
          //So we don't have to unnecessarily index into the matrix
-         currIx = xDeriv.at<float>( i, j );
-         currIy = yDeriv.at<float>( i, j );
-         currIxIy = currIx * currIy; 
+         currIxSqd = xDerivSqd.at<float>( i, j );
+         currIySqd = yDerivSqd.at<float>( i, j );
+         currIxIy = xyDeriv.at<float>(i, j); 
          
          //Calculate trace and determinant of the 2x2 matrix
-         detVal = ( ( currIx * currIx ) * ( currIy * currIy ) ) - ( currIxIy * currIxIy );
-         traceVal = ( ( currIx * currIx ) + ( currIy * currIy ) );
+         detVal = ( currIxSqd * currIySqd ) - ( currIxIy * currIxIy );
+         traceVal = ( currIxSqd  + currIySqd);
          intensityVal = detVal / traceVal;
          
          //Suppress values less than threshold
@@ -77,19 +77,19 @@ void createDeriveKernels( Mat& GX, Mat& GY)
 
 //Creates a gaussian kernel which will be the size of the
 //destination matrix
-void createDerivGaussianKernels( Mat& kernXDst, Mat& kernYDst, double standardDeviation)
+void createDerivGaussianKernels( Mat& kernXDst, Mat& kernYDst, float standardDeviation)
 {
 	int width = kernXDst.size().width;
    int height = kernXDst.size().height;
    int widthDiv2 = kernXDst.size().width / 2;
    int heightDiv2 = kernXDst.size().height / 2;
-	double variance = standardDeviation * standardDeviation;
-	double num = 0;
-	double den = -sqrt(2 * M_PI) * standardDeviation * variance;
+	float variance = standardDeviation * standardDeviation;
+	float num = 0;
+	float den = -sqrt(2 * M_PI);
 	int x = 0, y = 0, ySqrd = 0;
-	double kernelVal = 0;
-   double preNormSumX = 0;
-	double preNormSumY = 0;
+	float kernelVal = 0;
+   float preNormSumX = 0;
+	float preNormSumY = 0;
    float* kernXPtrHead = (float*) kernXDst.data;
    float* kernXPtr = kernXPtrHead;
    float* kernYPtrHead = (float*) kernYDst.data;
@@ -106,32 +106,28 @@ void createDerivGaussianKernels( Mat& kernXDst, Mat& kernYDst, double standardDe
          x = j - widthDiv2;
       
          num =  exp(-1 * ( ( x * x + ySqrd) / ( 2 * variance ) ) );
-         
+
          kernelVal = num / den;
+
+         if( x == 0 )
+         {
+            *kernXPtr = 0;
+         }
+         else
+         {
+            *kernXPtr = kernelVal * x;
+         }
          
-         *kernXPtr = kernelVal * x;
-         preNormSumX += *kernXPtr;
          kernXPtr++;
          
-         *kernYPtr = kernelVal * y;
-         preNormSumY += *kernYPtr;
-         kernYPtr++;
-      }
-   }
-   
-   //Reset the pointer
-   kernXPtr = kernXPtrHead;
-   kernXPtr = kernYPtrHead;
-   
-   //Normalize the values
-   for(int i = 0; i < height; i++)
-   {
-      for( int j = 0; j < width; j++ )
-      {
-         //*kernXPtr /= preNormSumX;
-         kernXPtr++;
-         
-         //*kernYPtr /= preNormSumY;
+         if( y == 0 )
+         {
+            *kernYPtr = 0;
+         }
+         else
+         {
+            *kernYPtr = kernelVal * y;
+         }
          kernYPtr++;
       }
    }
@@ -139,19 +135,19 @@ void createDerivGaussianKernels( Mat& kernXDst, Mat& kernYDst, double standardDe
 
 //Creates a gaussian kernel which will be the size of the
 //destination matrix
-void createGaussianKernel( Mat& kernDst, double standardDeviation)
+void createGaussianKernel( Mat& kernDst, float standardDeviation)
 {
 	int width = kernDst.size().width;
    int height = kernDst.size().height;
    int widthDiv2 = kernDst.size().width / 2;
    int heightDiv2 = kernDst.size().height / 2;
-	double variance = standardDeviation * standardDeviation;
-	double num = 0;
-	double den = 2 * M_PI * variance;
+	float variance = standardDeviation * standardDeviation;
+	float num = 0;
+	float den = 2 * M_PI;
 	int x = 0, ySqrd = 0;
-	double kernelVal = 0;
-	double preNormSum = 0;
-	double normSum = 0;
+	float kernelVal = 0;
+	float preNormSum = 0;
+	float normSum = 0;
    float* kernPtrHead = (float*) kernDst.data;
    float* kernPtr = kernPtrHead;
 
@@ -194,17 +190,17 @@ void createGaussianKernel( Mat& kernDst, double standardDeviation)
 
 //Creates a gaussian kernel which will be the size of the
 //destination matrix
-void createNormLOGKernel( Mat& kernDst, double standardDeviation)
+void createNormLOGKernel( Mat& kernDst, float standardDeviation)
 {
 	int width = kernDst.size().width;
    int height = kernDst.size().height;
    int widthDiv2 = kernDst.size().width / 2;
    int heightDiv2 = kernDst.size().height / 2;
-	double variance = standardDeviation * standardDeviation;
+	float variance = standardDeviation * standardDeviation;
 	int xSqrd = 0, ySqrd = 0;
-	double kernelVal = -2 * variance;
-	double preNormSum = 0;
-	double normSum = 0;
+	float kernelVal = -2 * variance;
+	float preNormSum = 0;
+	float normSum = 0;
    float* kernPtrHead = (float*) kernDst.data;
    float* kernPtr = kernPtrHead;
 
@@ -242,6 +238,17 @@ void createNormLOGKernel( Mat& kernDst, double standardDeviation)
    
          kernPtr++;
       }
+   }
+}
+
+void findOrientations( Mat& srcMat, vector<featVal>& featVec, Mat srcXKern[NUM_SCALES], Mat srcYKern[NUM_SCALES] )
+{
+   Mat tmp;
+   float currScale = 0.0;
+   
+   for(int i = 0; i < featVec.size(); i++ )
+   {
+      currScale = featVec.at(i).scale;
    }
 }
 

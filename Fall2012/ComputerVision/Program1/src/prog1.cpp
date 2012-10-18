@@ -36,7 +36,7 @@ using namespace std;
 
 /****** Prototypes ****/
 void updateThreshold(int trackValue, void* userData);
-double thresholdVal = 0.0000000000005;
+float thresholdVal = .001;
 
 /******** Main ***********/
 
@@ -49,22 +49,45 @@ int main( int argc, char *argv[])
    Mat origImage1, image1Highlight;
    Mat origImage2, image2Highlight;
    Mat normLOGKernels[NUM_SCALES];
-   Mat gaussGX( 5, 5, CV_32F), gaussGY( 5, 5, CV_32F);
+   Mat gaussGXKernels[NUM_SCALES];
+   Mat gaussGYKernels[NUM_SCALES];
    Mat grayImage1, grayImage2;
-   Mat GX, xDeriv, GY, yDeriv;
+   Mat GX, xDeriv, GY, yDeriv, xyDeriv;
    Mat autoCorrMat1, autoCorrMat2;
-   double standardDeviation = 1;
+   const float derivStandardDeviation = 1.5;
+   const float smoothStandardDeviation = 2;
    vector<featVal> featVec1, featVec2;
+   const int numKeep = 250;
+   const int radiusSuppress = 25;
+   Mat smoothGauss(5, 5, CV_32F);
+   VideoCapture cap(0);
    
+   createGaussianKernel( smoothGauss, smoothStandardDeviation );
+  
    for(int i = 0; i < NUM_SCALES; i++)
    {
       normLOGKernels[ i ].create( 5, 5, CV_32F );
-      createNormLOGKernel( normLOGKernels[ i ],  .5 * ( i + 1 ) );
+      createNormLOGKernel( normLOGKernels[ i ],  smoothStandardDeviation * ( i + 1 ) );
+      
+      gaussGXKernels[ i ].create( 5, 5, CV_32F );
+      gaussGYKernels[ i ].create( 5, 5, CV_32F );
+      createDerivGaussianKernels(  gaussGXKernels[ i ], gaussGYKernels[ i ], derivStandardDeviation);
    } 
+   
+   for(int i = 0; i < 5; i++ )
+   {
+      for(int j = 0; j < 5; j++)
+      {
+         cout << gaussGXKernels[0].at<float>(i,j) << " ";
+      }
+      cout << endl;
+   }
+   
    begin = clock();
-   origImage1 = imread("img/Yosemite/Yosemite1.jpg");
+   cap >> origImage1;
+   //origImage1 = imread("img/graf/img1.ppm");
    origImage1.copyTo( image1Highlight);
-   origImage2 = imread("img/Yosemite/Yosemite2.jpg");
+   origImage2 = imread("img/graf/img2.ppm");
    origImage2.copyTo( image2Highlight);
 
    //Convert to gray scale
@@ -73,28 +96,40 @@ int main( int argc, char *argv[])
    
    autoCorrMat1.create( origImage1.rows, origImage1.cols, CV_32F);
    
-   createDerivGaussianKernels( gaussGX, gaussGY, standardDeviation);
+   filter2D( grayImage1, xDeriv, -1, gaussGXKernels[ 0 ]);
+   filter2D( grayImage1, yDeriv, -1, gaussGYKernels[ 0 ]);
    
-   filter2D( grayImage1, xDeriv, -1, gaussGX);
-   filter2D( grayImage1, yDeriv, -1, gaussGY);
+   xyDeriv = xDeriv.mul(yDeriv);
+   xDeriv = xDeriv.mul(xDeriv);
+   yDeriv = yDeriv.mul(yDeriv);
    
-   createAutoCorrMatrix( grayImage1, autoCorrMat1, xDeriv, yDeriv, thresholdVal );
-   suppressNonMaximumsAdaptive( autoCorrMat1, featVec1, 20, 500);
-   findScales( grayImage1, featVec1, normLOGKernels, .5);
+   filter2D( xyDeriv, xyDeriv, -1, smoothGauss);
+   filter2D( xDeriv, xDeriv, -1, smoothGauss);
+   filter2D( yDeriv, yDeriv, -1, smoothGauss);
+   
+   createAutoCorrMatrix( grayImage1, autoCorrMat1, xyDeriv, xDeriv, yDeriv, thresholdVal );
+   suppressNonMaximumsAdaptive( autoCorrMat1, featVec1, radiusSuppress, numKeep);
+   findScales( grayImage1, featVec1, normLOGKernels, smoothStandardDeviation);
    
    origImage2.convertTo(grayImage2, CV_32F, 1/255.0);	
    cvtColor(grayImage2, grayImage2, CV_BGR2GRAY);
    
    autoCorrMat2.create( origImage2.rows, origImage2.cols, CV_32F);
    
-   createDerivGaussianKernels( gaussGX, gaussGY, standardDeviation);
+   filter2D( grayImage2, xDeriv, -1, gaussGXKernels[ 0 ]);
+   filter2D( grayImage2, yDeriv, -1, gaussGYKernels[ 0 ]);
    
-   filter2D( grayImage2, xDeriv, -1, gaussGX);
-   filter2D( grayImage2, yDeriv, -1, gaussGY);
+   xyDeriv = xDeriv.mul(yDeriv);
+   xDeriv = xDeriv.mul(xDeriv);
+   yDeriv = yDeriv.mul(yDeriv);
    
-   createAutoCorrMatrix( grayImage2, autoCorrMat2, xDeriv, yDeriv, thresholdVal );
-   suppressNonMaximumsAdaptive( autoCorrMat2, featVec2, 20, 500);
-   findScales( grayImage2, featVec2, normLOGKernels, .5);
+   filter2D( xyDeriv, xyDeriv, -1, smoothGauss);
+   filter2D( xDeriv, xDeriv, -1, smoothGauss);
+   filter2D( yDeriv, yDeriv, -1, smoothGauss);
+   
+   createAutoCorrMatrix( grayImage2, autoCorrMat2, xyDeriv, xDeriv, yDeriv, thresholdVal );
+   suppressNonMaximumsAdaptive( autoCorrMat2, featVec2, radiusSuppress, numKeep);
+   findScales( grayImage2, featVec2, normLOGKernels, smoothStandardDeviation);
 
    end = clock();
    
@@ -118,6 +153,8 @@ int main( int argc, char *argv[])
     
    for(;;)
    {
+      
+      
    
       imshow("Orig", image1Highlight);
       imshow("Smoothed", image2Highlight);

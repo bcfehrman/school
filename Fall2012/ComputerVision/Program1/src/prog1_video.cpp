@@ -36,7 +36,7 @@ using namespace std;
 
 /****** Prototypes ****/
 void updateThreshold(int trackValue, void* userData);
-float thresholdVal = .01;
+float thresholdVal = .001;
 
 /******** Main ***********/
 
@@ -173,7 +173,7 @@ int main( int argc, char *argv[])
    
       for(int i = 0; i < featVec1.size(); i++)
       {
-         circle(image1Highlight, Point(featVec1.at(i).jPos,featVec1.at(i).iPos) ,  (featVec1.at(i).scale + 5) * 3, Scalar(100, 100, 0), 3);
+         //circle(image1Highlight, Point(featVec1.at(i).jPos,featVec1.at(i).iPos) ,  (featVec1.at(i).scale + 5) * 3, Scalar(100, 100, 0), 3);
          circle(image1Highlight, Point(featVec1.at(i).jPos,featVec1.at(i).iPos) ,  5, Scalar(0, 100, 0), -1);
       }
       

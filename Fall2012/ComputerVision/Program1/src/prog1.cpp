@@ -35,99 +35,102 @@ using namespace cv;
 using namespace std;
 
 /****** Prototypes ****/
-void updateThreshold(int trackValue, void* userData);
-float thresholdVal = .1;
+float threshold_val = .01;
 
 /******** Main ***********/
 
 int main( int argc, char *argv[])
 {	
-   int* defaultThreshold = new int;
 	clock_t begin;
 	clock_t end;
 	Size frame_size;
-   Mat origImage1, image1Highlight;
-   Mat origImage2, image2Highlight;
-   Mat normLOGKernels[NUM_SCALES];
-   Mat gaussGXKernels[NUM_SCALES];
-   Mat gaussGYKernels[NUM_SCALES];
-   Mat grayImage1, grayImage2;
-   Mat GX, xDeriv, GY, yDeriv, xyDeriv;
-   Mat autoCorrMat1, autoCorrMat2;
-   const float derivStandardDeviation = 1.5;
-   const float smoothStandardDeviation = 1.6;
-   vector<featVal> featVec1, featVec2;
-   const int numKeep = 100;
-   const int radiusSuppress = 25;
-   Mat smoothGauss(5, 5, CV_32F);
-   
-   createGaussianKernel( smoothGauss, smoothStandardDeviation );
+   Mat orig_image_1, image_1_highlighted;
+   Mat orig_image_2, image_2_highlighted;
+   Mat norm_LOG_kernels[NUM_SCALES];
+   Mat gauss_Gx_kernels[NUM_SCALES];
+   Mat gauss_Gy_kernels[NUM_SCALES];
+   Mat gray_image_1, gray_image_2;
+   Mat Gx, Ix, Gy, Iy, IxIy;
+   Mat auto_corr_mat_1, auto_corr_mat_2;
+   const float deriv_standard_deviation = 1.5;
+   const float smooth_standard_deviation = 1.6;
+   vector<feat_val> feat_vec_1, feat_vec_2;
+   const int num_keep = 100;
+   const int radius_suppress = 25;
+   const int kernel_size = 5;
+   Mat smooth_gauss[NUM_SCALES];
+
   
    for(int i = 0; i < NUM_SCALES; i++)
    {
-      normLOGKernels[ i ].create( 5, 5, CV_32F );
-      createNormLOGKernel( normLOGKernels[ i ],  smoothStandardDeviation * ( i + 1 ) );
+      norm_LOG_kernels[ i ].create( kernel_size, kernel_size, CV_32F );
+      create_norm_LOG_kernel( norm_LOG_kernels[ i ],  smooth_standard_deviation + i );
       
-      gaussGXKernels[ i ].create( 5, 5, CV_32F );
-      gaussGYKernels[ i ].create( 5, 5, CV_32F );
-      createDerivGaussianKernels(  gaussGXKernels[ i ], gaussGYKernels[ i ], derivStandardDeviation);
+      smooth_gauss[ i ].create( kernel_size, kernel_size, CV_32F );
+      create_gaussian_kernel( smooth_gauss[ i ], smooth_standard_deviation + i );
+      
+      gauss_Gx_kernels[ i ].create( kernel_size, kernel_size, CV_32F );
+      gauss_Gy_kernels[ i ].create( kernel_size, kernel_size, CV_32F );
+      create_deriv_gaussian_kernels(  gauss_Gx_kernels[ i ], gauss_Gy_kernels[ i ], deriv_standard_deviation);
    } 
    
    for(int i = 0; i < 5; i++ )
    {
       for(int j = 0; j < 5; j++)
       {
-         cout << gaussGXKernels[0].at<float>(i,j) << " ";
+         cout << gauss_Gx_kernels[0].at<float>(i,j) << " ";
       }
       cout << endl;
    }
    
    begin = clock();
-   origImage1 = imread("img/graf/img1.ppm");
-   origImage1.copyTo( image1Highlight);
-   origImage2 = imread("img/graf/img2.ppm");
-   origImage2.copyTo( image2Highlight);
+   orig_image_1 = imread("img/Yosemite/Yosemite1.jpg");
+   orig_image_1.copyTo( image_1_highlighted);
+   orig_image_2 = imread("img/Yosemite/Yosemite2.jpg");
+   orig_image_2.copyTo( image_2_highlighted);
 
    //Convert to gray scale
-   origImage1.convertTo(grayImage1, CV_32F, 1/255.0);	
-   cvtColor(grayImage1, grayImage1, CV_BGR2GRAY);
+   orig_image_1.convertTo(gray_image_1, CV_32F, 1/255.0);	
+   cvtColor(gray_image_1, gray_image_1, CV_BGR2GRAY);
    
-   autoCorrMat1.create( origImage1.rows, origImage1.cols, CV_32F);
+   auto_corr_mat_1.create( orig_image_1.rows, orig_image_1.cols, CV_32F);
    
-   filter2D( grayImage1, xDeriv, -1, gaussGXKernels[ 0 ]);
-   filter2D( grayImage1, yDeriv, -1, gaussGYKernels[ 0 ]);
+   filter2D( gray_image_1, Ix, -1, gauss_Gx_kernels[ 0 ]);
+   filter2D( gray_image_1, Iy, -1, gauss_Gy_kernels[ 0 ]);
    
-   xyDeriv = xDeriv.mul(yDeriv);
-   xDeriv = xDeriv.mul(xDeriv);
-   yDeriv = yDeriv.mul(yDeriv);
+   IxIy = Ix.mul(Iy);
+   Ix = Ix.mul(Ix);
+   Iy = Iy.mul(Iy);
    
-   filter2D( xyDeriv, xyDeriv, -1, smoothGauss);
-   filter2D( xDeriv, xDeriv, -1, smoothGauss);
-   filter2D( yDeriv, yDeriv, -1, smoothGauss);
+   filter2D( IxIy, IxIy, -1, smooth_gauss[0]);
+   filter2D( Ix, Ix, -1, smooth_gauss[0]);
+   filter2D( Iy, Iy, -1, smooth_gauss[0]);
    
-   createAutoCorrMatrix( grayImage1, autoCorrMat1, xyDeriv, xDeriv, yDeriv, thresholdVal );
-   suppressNonMaximumsAdaptive( autoCorrMat1, featVec1, radiusSuppress, numKeep);
-   findScales( grayImage1, featVec1, normLOGKernels, smoothStandardDeviation);
+   create_auto_corr_matrix( gray_image_1, auto_corr_mat_1, IxIy, Ix, Iy, threshold_val );
+   suppress_non_maximums_adaptive( auto_corr_mat_1, feat_vec_1, radius_suppress, num_keep);
+   find_scales( gray_image_1, feat_vec_1, norm_LOG_kernels, smooth_standard_deviation);
    
-   origImage2.convertTo(grayImage2, CV_32F, 1/255.0);	
-   cvtColor(grayImage2, grayImage2, CV_BGR2GRAY);
+   extract_and_describe_features( gray_image_1, feat_vec_1, smooth_gauss, smooth_standard_deviation );
    
-   autoCorrMat2.create( origImage2.rows, origImage2.cols, CV_32F);
+   orig_image_2.convertTo(gray_image_2, CV_32F, 1/255.0);	
+   cvtColor(gray_image_2, gray_image_2, CV_BGR2GRAY);
    
-   filter2D( grayImage2, xDeriv, -1, gaussGXKernels[ 0 ]);
-   filter2D( grayImage2, yDeriv, -1, gaussGYKernels[ 0 ]);
+   auto_corr_mat_2.create( orig_image_2.rows, orig_image_2.cols, CV_32F);
    
-   xyDeriv = xDeriv.mul(yDeriv);
-   xDeriv = xDeriv.mul(xDeriv);
-   yDeriv = yDeriv.mul(yDeriv);
+   filter2D( gray_image_2, Ix, -1, gauss_Gx_kernels[ 0 ]);
+   filter2D( gray_image_2, Iy, -1, gauss_Gy_kernels[ 0 ]);
    
-   filter2D( xyDeriv, xyDeriv, -1, smoothGauss);
-   filter2D( xDeriv, xDeriv, -1, smoothGauss);
-   filter2D( yDeriv, yDeriv, -1, smoothGauss);
+   IxIy = Ix.mul(Iy);
+   Ix = Ix.mul(Ix);
+   Iy = Iy.mul(Iy);
    
-   createAutoCorrMatrix( grayImage2, autoCorrMat2, xyDeriv, xDeriv, yDeriv, thresholdVal );
-   suppressNonMaximumsAdaptive( autoCorrMat2, featVec2, radiusSuppress, numKeep);
-   findScales( grayImage2, featVec2, normLOGKernels, smoothStandardDeviation);
+   filter2D( IxIy, IxIy, -1, smooth_gauss[0]);
+   filter2D( Ix, Ix, -1, smooth_gauss[0]);
+   filter2D( Iy, Iy, -1, smooth_gauss[0]);
+   
+   create_auto_corr_matrix( gray_image_2, auto_corr_mat_2, IxIy, Ix, Iy, threshold_val );
+   suppress_non_maximums_adaptive( auto_corr_mat_2, feat_vec_2, radius_suppress, num_keep);
+   find_scales( gray_image_2, feat_vec_2, norm_LOG_kernels, smooth_standard_deviation);
 
    end = clock();
    
@@ -135,34 +138,26 @@ int main( int argc, char *argv[])
 	namedWindow("Orig", WINDOW_SIZE_CHOICE);
 	cvMoveWindow("Orig", 900, 0);
    namedWindow("Smoothed", WINDOW_SIZE_CHOICE);
-   //createTrackbar("Threshold", "Smoothed", defaultThreshold, 50000,  updateThreshold, NULL);
     
-   for(int i = 0; i < featVec1.size(); i++)
+   for( unsigned int i = 0; i < feat_vec_1.size(); i++)
    {
-      circle(image1Highlight, Point(featVec1.at(i).jPos,featVec1.at(i).iPos) ,  (featVec1.at(i).scale + 5) * 3, Scalar(100, 100, 0), 3);
-      circle(image1Highlight, Point(featVec1.at(i).jPos,featVec1.at(i).iPos) ,  5, Scalar(0, 100, 0), -1);
+      circle(image_1_highlighted, Point(feat_vec_1.at(i).j_pos,feat_vec_1.at(i).i_pos) ,  (feat_vec_1.at(i).scale + 5) * 3, Scalar(100, 100, 0), 3);
+      circle(image_1_highlighted, Point(feat_vec_1.at(i).j_pos,feat_vec_1.at(i).i_pos) ,  5, Scalar(0, 100, 0), -1);
    }
    
-   for(int i = 0; i < featVec2.size(); i++)
+   for( unsigned int i = 0; i < feat_vec_2.size(); i++)
    {
-      circle(image2Highlight, Point(featVec2.at(i).jPos,featVec2.at(i).iPos) ,  (featVec2.at(i).scale + 5) * 3, Scalar(100, 100, 0), 3);
-      circle(image2Highlight, Point(featVec2.at(i).jPos,featVec2.at(i).iPos) ,  5, Scalar(0, 100, 0), -1);
+      circle(image_2_highlighted, Point(feat_vec_2.at(i).j_pos,feat_vec_2.at(i).i_pos) ,  (feat_vec_2.at(i).scale + 5) * 3, Scalar(100, 100, 0), 3);
+      circle(image_2_highlighted, Point(feat_vec_2.at(i).j_pos,feat_vec_2.at(i).i_pos) ,  5, Scalar(0, 100, 0), -1);
    }
     
    for(;;)
    {
-   
-      imshow("Orig", image1Highlight);
-      imshow("Smoothed", image2Highlight);
+      imshow("Orig", image_1_highlighted);
+      imshow("Smoothed", image_2_highlighted);
       
       if(waitKey(30) >= 0) break;
 	}
 
 	return 0;
 }
-
-void updateThreshold(int trackValue, void* userData)
-{
-   thresholdVal = trackValue * pow(10, -14.0);
-}
-

@@ -8,7 +8,7 @@ LOCINCDIR = include
 LIBDIR = /usr/lib
 LOCLIBDIR = lib/
 BINDIR = bin
-EXEC = prog1_video
+EXEC = prog1
 LIBRARY = lib/libvision_functions
 
 CFLAGS = -Wall -I$(INCDIR) -I$(LOCINCDIR) -g

@@ -15,7 +15,7 @@ CFLAGS = -Wall -I$(INCDIR) -I$(LOCINCDIR) -g
 LFLAGS = -L$(LOCLIBDIR) -L$(LIBDIR) -lgsl -lm -lopencv_highgui -lopencv_core -lopencv_imgproc -lvision_functions
 
 
-all: $(BINDIR)/$(EXEC)
+all: $(LIBRARY) $(BINDIR)/$(EXEC)
 
 $(OBJDIR)/$(EXEC).o: $(SRCDIR)/$(EXEC).cpp | $(OBJDIR)
 	$(CPP) $(CFLAGS) -c -o $@ $^
@@ -28,8 +28,6 @@ $(OBJDIR):
 
 $(BINDIR):
 	mkdir $(BINDIR)
-	
-library: $(LIBRARY)
 
 $(LIBRARY):
 	$(CPP) -o $@.so $@.cpp -shared $(CFLAGS) -c

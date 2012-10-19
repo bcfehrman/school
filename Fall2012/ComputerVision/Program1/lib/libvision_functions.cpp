@@ -1,7 +1,7 @@
 #include "libvision_functions.h"
 
 void convolve_matrix_region( Mat& src_mat, const int start_row, const int end_row, const int start_col, const int end_col, Mat& dst_mat, Mat& kernel )
-{
+{   
    int size_kernel = kernel.rows;
    int size_kernel_div_2 = size_kernel / 2;
    int adjusted_start_row = start_row - size_kernel_div_2;
@@ -11,9 +11,9 @@ void convolve_matrix_region( Mat& src_mat, const int start_row, const int end_ro
    
    Mat sub_mat = src_mat.colRange(adjusted_start_col, adjusted_end_col).rowRange(adjusted_start_row, adjusted_end_row);
    
-  // filter2D( sub_mat, sub_mat, -1, kernel );
+   filter2D( sub_mat, sub_mat, -1, kernel );
    
-   //dst_mat = sub_mat.colRange( size_kernel_div_2, size_kernel_div_2 + ( end_col - start_col) ).rowRange( size_kernel_div_2, size_kernel_div_2 + ( end_row - start_row) );
+   dst_mat = sub_mat.colRange( size_kernel_div_2, size_kernel_div_2 + ( end_col - start_col) ).rowRange( size_kernel_div_2, size_kernel_div_2 + ( end_row - start_row) );
 }
 
 //Generates a matrix of the autocorrelation value found at each point.
@@ -255,34 +255,73 @@ void create_norm_LOG_kernel( Mat& kern_dst, float standard_deviation)
    }
 }
 
-void extract_and_describe_features( Mat& src_mat, vector<feat_val>& feat_vec, Mat smooth_gauss[ NUM_SCALES ], const float start_STD )
+void extract_features( Mat& src_mat, vector<feat_val>& feat_vec, Mat smooth_gauss[ NUM_SCALES ], const float start_STD )
 {
    feat_val curr_feature;
    int curr_scale = 0;
    
    for( unsigned int i = 0; i < feat_vec.size(); i++ )
    {
-      curr_feature = feat_vec.at( i );
+      curr_scale = int ( feat_vec.at( i ).scale / start_STD ) - 1;
+      feat_vec.at( i ).feature.create( FEATURE_SIZE, FEATURE_SIZE, CV_32F );
       
-      curr_scale = int ( curr_feature.scale / start_STD );
-      
-      curr_feature.feature.create( FEATURE_SIZE, FEATURE_SIZE, CV_32F );
-      
-      convolve_matrix_region( src_mat, curr_feature.i_pos, curr_feature.i_pos + FEATURE_SIZE, curr_feature.j_pos, curr_feature.j_pos + FEATURE_SIZE, curr_feature.feature, smooth_gauss[ curr_scale ] );
+      //Extract feature region at dominant smoothing scale
+      convolve_matrix_region( src_mat, feat_vec.at( i ).i_pos - FEATURE_SIZE_DIV_2,
+         feat_vec.at( i ).i_pos + FEATURE_SIZE_DIV_2, feat_vec.at( i ).j_pos - FEATURE_SIZE_DIV_2, 
+         feat_vec.at( i ).j_pos + FEATURE_SIZE_DIV_2, feat_vec.at( i ).feature, 
+         smooth_gauss[ curr_scale ] );
    }
 }
 
 void find_orientations( Mat& src_mat, vector<feat_val>& feat_vec, Mat& src_x_kern, Mat src_y_kern )
 {
-   /*
-   Mat tmp;
-   float curr_scale = 0.0;
+   Mat feat_Ix, feat_Iy;
+   float Ix_sum = 0.0;
+   float Iy_sum = 0.0;
+   float mag_Ix_Iy;
+   float angle;
+   float tmp_x, tmp_y;
    
    for(unsigned int i = 0; i < feat_vec.size(); i++ )
    {
-      curr_scale = feat_vec.at(i).scale;
+      filter2D( feat_vec.at( i ).feature, feat_Ix, -1, src_x_kern );
+      filter2D( feat_vec.at( i ).feature, feat_Iy, -1, src_y_kern );
+      
+      Ix_sum = sum( feat_Ix )[ 0 ];
+      Iy_sum = sum( feat_Iy )[ 0 ];
+
+      //normalize
+      feat_Ix /= Ix_sum;
+      feat_Iy /= Iy_sum;
+
+      //Average derivative for each directions
+      feat_vec.at( i ).major_orientation_x = Ix_sum / FEATURE_SIZE_SQD;
+      feat_vec.at( i ).major_orientation_y = Iy_sum / FEATURE_SIZE_SQD;
+
+      //Normalize
+      mag_Ix_Iy = sqrt( feat_vec.at( i ).major_orientation_x * feat_vec.at( i ).major_orientation_x + 
+         feat_vec.at( i ).major_orientation_y * feat_vec.at( i ).major_orientation_y);
+      
+      feat_vec.at( i ).major_orientation_x /= mag_Ix_Iy;
+      feat_vec.at( i ).major_orientation_y /= mag_Ix_Iy;
+      
+      angle = atan2( feat_vec.at( i ).major_orientation_y , feat_vec.at( i ).major_orientation_x );
+      
+      for( int curr_row = 0; curr_row < FEATURE_SIZE; curr_row++ )
+      {
+         for( int curr_col = 0; curr_col < FEATURE_SIZE; curr_col++ )
+         {
+            tmp_x = feat_Ix.at<float>( curr_row, curr_col ) * cos( -angle ) - feat_Iy.at<float>( curr_row, curr_col ) * sin( -angle );
+            tmp_y = feat_Ix.at<float>( curr_row, curr_col ) * sin( -angle ) + feat_Iy.at<float>( curr_row, curr_col ) * cos( -angle );
+            
+            feat_Ix.at<float>( curr_row, curr_col ) = tmp_x;
+            feat_Iy.at<float>( curr_row, curr_col ) = tmp_y;
+         }
+      }
+      
+      feat_vec.at( i ).feat_Ix = feat_Ix;
+      feat_vec.at( i ).feat_Iy = feat_Iy;
    }
-   */
 }
 
 //Uses the Laplacian of Gaussian to find the scale at which the current
@@ -298,10 +337,10 @@ void find_scales( Mat& src_mat, vector<feat_val>& feat_vec, Mat LOG_kernels[NUM_
    for( unsigned int i = 0; i < feat_vec.size(); i++ )
    {
       curr_scale = start_STD;
-      max_response = 0.0;
-        
+      max_response = -100000.0;
+                 
       for(int j = 0; j < NUM_SCALES; j++ )
-      {               
+      {       
          //Get the Laplacian of Gaussian measurement for the current feature point
          curr_response = scaler_convolve_matrix_region( src_mat, LOG_kernels[j], feat_vec.at(i).i_pos, feat_vec.at(i).j_pos );
          
@@ -313,8 +352,8 @@ void find_scales( Mat& src_mat, vector<feat_val>& feat_vec, Mat LOG_kernels[NUM_
             max_response = curr_response;
             max_scale = curr_scale;
          }
-         
-         curr_scale += curr_scale;
+
+         curr_scale += start_STD;
       }
       
       feat_vec.at(i).scale = max_scale;
@@ -377,7 +416,7 @@ void suppress_non_maximums_adaptive( Mat& src_mat, vector<feat_val>& dst_vec, co
    int right_range = size_neighbor;
    feat_val curr_feat;
    
-   for(int i = FEATURE_SIZE_DIV_2; i < num_rows - FEATURE_SIZE_DIV_2; i++)
+   for(int i = FEATURE_SIZE; i < num_rows - FEATURE_SIZE; i++)
    {
       if(i < size_neighbor )
       {
@@ -391,7 +430,7 @@ void suppress_non_maximums_adaptive( Mat& src_mat, vector<feat_val>& dst_vec, co
       right_range = size_neighbor;
       left_range = size_neighbor;
       
-      for( int j = FEATURE_SIZE_DIV_2; j < num_cols - FEATURE_SIZE_DIV_2; j++ )
+      for( int j = FEATURE_SIZE; j < num_cols - FEATURE_SIZE; j++ )
       {
          if(j < size_neighbor )
          {

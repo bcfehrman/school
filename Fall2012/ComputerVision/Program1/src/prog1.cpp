@@ -52,14 +52,13 @@ int main( int argc, char *argv[])
    Mat gray_image_1, gray_image_2;
    Mat Gx, Ix, Gy, Iy, IxIy;
    Mat auto_corr_mat_1, auto_corr_mat_2;
-   const float deriv_standard_deviation = 1.5;
+   const float deriv_standard_deviation = 1.4;
    const float smooth_standard_deviation = 1.6;
    vector<feat_val> feat_vec_1, feat_vec_2;
    const int num_keep = 100;
    const int radius_suppress = 25;
    const int kernel_size = 5;
    Mat smooth_gauss[NUM_SCALES];
-
   
    for(int i = 0; i < NUM_SCALES; i++)
    {
@@ -109,8 +108,8 @@ int main( int argc, char *argv[])
    create_auto_corr_matrix( gray_image_1, auto_corr_mat_1, IxIy, Ix, Iy, threshold_val );
    suppress_non_maximums_adaptive( auto_corr_mat_1, feat_vec_1, radius_suppress, num_keep);
    find_scales( gray_image_1, feat_vec_1, norm_LOG_kernels, smooth_standard_deviation);
-   
-   extract_and_describe_features( gray_image_1, feat_vec_1, smooth_gauss, smooth_standard_deviation );
+   extract_features( gray_image_1, feat_vec_1, smooth_gauss, smooth_standard_deviation );
+   find_orientations( gray_image_1, feat_vec_1, gauss_Gx_kernels[ 0 ], gauss_Gy_kernels[ 0 ]);
    
    orig_image_2.convertTo(gray_image_2, CV_32F, 1/255.0);	
    cvtColor(gray_image_2, gray_image_2, CV_BGR2GRAY);
@@ -131,6 +130,8 @@ int main( int argc, char *argv[])
    create_auto_corr_matrix( gray_image_2, auto_corr_mat_2, IxIy, Ix, Iy, threshold_val );
    suppress_non_maximums_adaptive( auto_corr_mat_2, feat_vec_2, radius_suppress, num_keep);
    find_scales( gray_image_2, feat_vec_2, norm_LOG_kernels, smooth_standard_deviation);
+   extract_features( gray_image_2, feat_vec_2, smooth_gauss, smooth_standard_deviation );
+   find_orientations( gray_image_2, feat_vec_2, gauss_Gx_kernels[ 0 ], gauss_Gy_kernels[ 0 ]);
 
    end = clock();
    
@@ -143,12 +144,18 @@ int main( int argc, char *argv[])
    {
       circle(image_1_highlighted, Point(feat_vec_1.at(i).j_pos,feat_vec_1.at(i).i_pos) ,  (feat_vec_1.at(i).scale + 5) * 3, Scalar(100, 100, 0), 3);
       circle(image_1_highlighted, Point(feat_vec_1.at(i).j_pos,feat_vec_1.at(i).i_pos) ,  5, Scalar(0, 100, 0), -1);
+      line(image_1_highlighted, Point(feat_vec_1.at(i).j_pos,feat_vec_1.at(i).i_pos),
+         Point(feat_vec_1.at(i).j_pos + feat_vec_1.at(i).major_orientation_x * 20, feat_vec_1.at(i).i_pos + feat_vec_1.at(i).major_orientation_y * 20),
+         Scalar( 0, 0, 100 ), 2);
    }
    
    for( unsigned int i = 0; i < feat_vec_2.size(); i++)
    {
       circle(image_2_highlighted, Point(feat_vec_2.at(i).j_pos,feat_vec_2.at(i).i_pos) ,  (feat_vec_2.at(i).scale + 5) * 3, Scalar(100, 100, 0), 3);
       circle(image_2_highlighted, Point(feat_vec_2.at(i).j_pos,feat_vec_2.at(i).i_pos) ,  5, Scalar(0, 100, 0), -1);
+      line(image_2_highlighted, Point(feat_vec_2.at(i).j_pos,feat_vec_2.at(i).i_pos),
+         Point(feat_vec_2.at(i).j_pos + feat_vec_2.at(i).major_orientation_x * 20, feat_vec_2.at(i).i_pos + feat_vec_2.at(i).major_orientation_y * 20),
+         Scalar( 0, 0, 100 ), 2);
    }
     
    for(;;)

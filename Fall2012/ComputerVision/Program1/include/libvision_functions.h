@@ -13,6 +13,7 @@ using namespace std;
 
 #define NUM_SCALES 5
 #define FEATURE_SIZE 10
+#define FEATURE_SIZE_SQD 100
 #define FEATURE_SIZE_DIV_2 5
 
 struct feat_val{
@@ -21,8 +22,8 @@ struct feat_val{
   float intensity_val;
   float major_orientation_x;
   float major_orientation_y;
-  float minor_orientations_x[18];
-  float minor_orientations_y[18];
+  Mat feat_Ix;
+  Mat feat_Iy;
   Mat feature;
   float scale; 
 };
@@ -33,7 +34,8 @@ void create_derive_kernels( Mat& Gx, Mat& Gy);
 void create_deriv_gaussian_kernels( Mat& kern_X_dst, Mat& kern_y_dst, float standard_deviation);
 void create_gaussian_kernel( Mat& kern_dst, float standard_deviation);
 void create_norm_LOG_kernel( Mat& kern_dst, float standard_deviation);
-void extract_and_describe_features( Mat& src_mat, vector<feat_val>& feat_vec, Mat smooth_gauss[ NUM_SCALES ], const float start_STD );
+void extract_features( Mat& src_mat, vector<feat_val>& feat_vec, Mat smooth_gauss[ NUM_SCALES ], const float start_STD );
+void find_orientations( Mat& src_mat, vector<feat_val>& feat_vec, Mat& src_x_kern, Mat src_y_kern );
 void find_scales( Mat& src_mat, vector<feat_val>& feat_vec, Mat LOG_kernels[NUM_SCALES], float start_variance );
 float scaler_convolve_matrix_region( Mat& src_mat, Mat& kernel, const int i_pos, const int j_pos);
 bool sort_feat_val( feat_val feat_val_1, feat_val feat_val_2 );

@@ -7,6 +7,7 @@
 #include <opencv/highgui.h>
 #include <vector>
 #include <algorithm>
+#include <iomanip>
 
 using namespace cv;
 using namespace std;
@@ -28,6 +29,13 @@ struct feat_val{
   float scale; 
 };
 
+struct matches{
+   int i_pos_1;
+   int j_pos_1;
+   int i_pos_2;
+   int j_pos_2;
+};
+
 void convolve_matrix_region( Mat& src_mat, const int start_row, const int end_row, const int start_col, const int end_col, Mat& dst_mat, Mat& kernel );
 void create_auto_corr_matrix( Mat& src_mat, Mat& dst_mat, Mat& IxIy, Mat& Ix_sqd, Mat& Iy_sqd, const float threshold_val);
 void create_derive_kernels( Mat& Gx, Mat& Gy);
@@ -36,6 +44,7 @@ void create_gaussian_kernel( Mat& kern_dst, float standard_deviation);
 void create_norm_LOG_kernel( Mat& kern_dst, float standard_deviation);
 void extract_features( Mat& src_mat, vector<feat_val>& feat_vec, Mat smooth_gauss[ NUM_SCALES ], const float start_STD );
 void find_orientations( Mat& src_mat, vector<feat_val>& feat_vec, Mat& src_x_kern, Mat src_y_kern );
+void find_matches( vector<feat_val>& feat_vec1, vector<feat_val>& feat_vec2, vector<matches>& match_vec, const float threshold_val );
 void find_scales( Mat& src_mat, vector<feat_val>& feat_vec, Mat LOG_kernels[NUM_SCALES], float start_variance );
 float scaler_convolve_matrix_region( Mat& src_mat, Mat& kernel, const int i_pos, const int j_pos);
 bool sort_feat_val( feat_val feat_val_1, feat_val feat_val_2 );

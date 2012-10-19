@@ -46,20 +46,22 @@ int main( int argc, char *argv[])
 	Size frame_size;
    Mat orig_image_1, image_1_highlighted;
    Mat orig_image_2, image_2_highlighted;
+   Mat combined_images;
    Mat norm_LOG_kernels[NUM_SCALES];
    Mat gauss_Gx_kernels[NUM_SCALES];
    Mat gauss_Gy_kernels[NUM_SCALES];
    Mat gray_image_1, gray_image_2;
    Mat Gx, Ix, Gy, Iy, IxIy;
    Mat auto_corr_mat_1, auto_corr_mat_2;
-   const float deriv_standard_deviation = 1.4;
-   const float smooth_standard_deviation = 1.6;
+   const float deriv_standard_deviation = 2;
+   const float smooth_standard_deviation = 1.4;
    vector<feat_val> feat_vec_1, feat_vec_2;
    const int num_keep = 100;
    const int radius_suppress = 25;
    const int kernel_size = 5;
    Mat smooth_gauss[NUM_SCALES];
-  
+   vector<matches> match_vec;
+   
    for(int i = 0; i < NUM_SCALES; i++)
    {
       norm_LOG_kernels[ i ].create( kernel_size, kernel_size, CV_32F );
@@ -87,6 +89,17 @@ int main( int argc, char *argv[])
    orig_image_1.copyTo( image_1_highlighted);
    orig_image_2 = imread("img/Yosemite/Yosemite2.jpg");
    orig_image_2.copyTo( image_2_highlighted);
+   
+   combined_images.create( orig_image_1.rows, orig_image_1.cols * 2, CV_8UC3);
+   
+   for( unsigned int i = 0; i < orig_image_1.rows; i++)
+   {
+      for( unsigned int j = 0; j < orig_image_1.cols; j++ )
+      {
+         combined_images.at<Vec3b>( i, j ) = orig_image_1.at<Vec3b>( i , j );
+         combined_images.at<Vec3b>( i, j + orig_image_1.cols ) = orig_image_2.at<Vec3b>( i , j );
+      }
+   }
 
    //Convert to gray scale
    orig_image_1.convertTo(gray_image_1, CV_32F, 1/255.0);	
@@ -136,32 +149,47 @@ int main( int argc, char *argv[])
    end = clock();
    
    cout << float( end - begin) / CLOCKS_PER_SEC << endl;
+   
 	namedWindow("Orig", WINDOW_SIZE_CHOICE);
 	cvMoveWindow("Orig", 900, 0);
    namedWindow("Smoothed", WINDOW_SIZE_CHOICE);
+   namedWindow("Combined", WINDOW_SIZE_CHOICE);
     
    for( unsigned int i = 0; i < feat_vec_1.size(); i++)
    {
       circle(image_1_highlighted, Point(feat_vec_1.at(i).j_pos,feat_vec_1.at(i).i_pos) ,  (feat_vec_1.at(i).scale + 5) * 3, Scalar(100, 100, 0), 3);
-      circle(image_1_highlighted, Point(feat_vec_1.at(i).j_pos,feat_vec_1.at(i).i_pos) ,  5, Scalar(0, 100, 0), -1);
-      line(image_1_highlighted, Point(feat_vec_1.at(i).j_pos,feat_vec_1.at(i).i_pos),
-         Point(feat_vec_1.at(i).j_pos + feat_vec_1.at(i).major_orientation_x * 20, feat_vec_1.at(i).i_pos + feat_vec_1.at(i).major_orientation_y * 20),
-         Scalar( 0, 0, 100 ), 2);
+      //circle(image_1_highlighted, Point(feat_vec_1.at(i).j_pos,feat_vec_1.at(i).i_pos) ,  5, Scalar(0, 100, 0), -1);
+     // line(image_1_highlighted, Point(feat_vec_1.at(i).j_pos,feat_vec_1.at(i).i_pos),
+        // Point(feat_vec_1.at(i).j_pos + feat_vec_1.at(i).major_orientation_x * 20, feat_vec_1.at(i).i_pos + feat_vec_1.at(i).major_orientation_y * 20),
+        // Scalar( 0, 0, 100 ), 2);
    }
    
    for( unsigned int i = 0; i < feat_vec_2.size(); i++)
    {
       circle(image_2_highlighted, Point(feat_vec_2.at(i).j_pos,feat_vec_2.at(i).i_pos) ,  (feat_vec_2.at(i).scale + 5) * 3, Scalar(100, 100, 0), 3);
-      circle(image_2_highlighted, Point(feat_vec_2.at(i).j_pos,feat_vec_2.at(i).i_pos) ,  5, Scalar(0, 100, 0), -1);
-      line(image_2_highlighted, Point(feat_vec_2.at(i).j_pos,feat_vec_2.at(i).i_pos),
-         Point(feat_vec_2.at(i).j_pos + feat_vec_2.at(i).major_orientation_x * 20, feat_vec_2.at(i).i_pos + feat_vec_2.at(i).major_orientation_y * 20),
-         Scalar( 0, 0, 100 ), 2);
+      //circle(image_2_highlighted, Point(feat_vec_2.at(i).j_pos,feat_vec_2.at(i).i_pos) ,  5, Scalar(0, 100, 0), -1);
+      //line(image_2_highlighted, Point(feat_vec_2.at(i).j_pos,feat_vec_2.at(i).i_pos),
+        // Point(feat_vec_2.at(i).j_pos + feat_vec_2.at(i).major_orientation_x * 20, feat_vec_2.at(i).i_pos + feat_vec_2.at(i).major_orientation_y * 20),
+         //Scalar( 0, 0, 100 ), 2);
+   }
+    
+   find_matches( feat_vec_1, feat_vec_2, match_vec, .1);
+   
+   for( unsigned int i = 0; i < match_vec.size(); i++ )
+   {
+      line( combined_images, Point(match_vec.at(i).j_pos_1, match_vec.at(i).i_pos_1 ),
+         Point(match_vec.at(i).j_pos_2 + orig_image_1.cols, match_vec.at(i).i_pos_2),
+         Scalar(0, 0, 100 ), 2);
+      
+      circle(combined_images, Point(match_vec.at(i).j_pos_1, match_vec.at(i).i_pos_1 ) ,  5, Scalar(0, 100, 0), -1);
+      circle(combined_images, Point(match_vec.at(i).j_pos_2 + orig_image_1.cols, match_vec.at(i).i_pos_2) ,  5, Scalar(0, 100, 0), -1);
    }
     
    for(;;)
    {
       imshow("Orig", image_1_highlighted);
       imshow("Smoothed", image_2_highlighted);
+      imshow("Combined", combined_images);
       
       if(waitKey(30) >= 0) break;
 	}

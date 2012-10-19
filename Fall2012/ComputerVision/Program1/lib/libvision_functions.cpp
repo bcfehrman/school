@@ -270,6 +270,57 @@ void extract_features( Mat& src_mat, vector<feat_val>& feat_vec, Mat smooth_gaus
          feat_vec.at( i ).i_pos + FEATURE_SIZE_DIV_2, feat_vec.at( i ).j_pos - FEATURE_SIZE_DIV_2, 
          feat_vec.at( i ).j_pos + FEATURE_SIZE_DIV_2, feat_vec.at( i ).feature, 
          smooth_gauss[ curr_scale ] );
+         
+      //Normalize   
+      feat_vec.at( i ).feature /= sum( feat_vec.at( i ).feature )[ 0 ];
+   }
+}
+
+void find_matches( vector<feat_val>& feat_vec_1, vector<feat_val>& feat_vec_2, vector<matches>& match_vec, const float threshold_val )
+{
+   float difference = 0.0;
+   float min_difference = 0.0;
+   float temp = 0.0;
+   matches curr_match;
+   int match_j = 0;
+   
+   
+   for( unsigned int i = 0; i < feat_vec_1.size(); i++ )
+   {
+      min_difference = 10000000000;
+      
+      for( unsigned int j = 0; j < feat_vec_2.size(); j++ )
+      {
+         difference = 0.0;
+         
+         for( int curr_row = 0; curr_row < FEATURE_SIZE; curr_row++ )
+         {
+            for( int curr_col = 0; curr_col < FEATURE_SIZE; curr_col++ )
+            {
+               temp = fabs (feat_vec_1.at( i ).feature.at<float>( curr_row, curr_col ) - feat_vec_2.at( j ).feature.at<float>( curr_row, curr_col ) );
+               difference += temp;
+               
+               //temp = fabs( feat_vec_1.at( i ).feat_Iy.at<float>( curr_row, curr_col ) - feat_vec_2.at( j ).feat_Iy.at<float>( curr_row, curr_col ) );
+               //difference += temp;
+            }
+         }
+         
+         if(difference < min_difference )
+         {
+            min_difference = difference;
+            match_j = j;
+         }
+      }
+      
+      if( min_difference < threshold_val )
+      {
+         curr_match.i_pos_1 = feat_vec_1.at( i ).i_pos;
+         curr_match.j_pos_1 = feat_vec_1.at( i ).j_pos;
+         curr_match.i_pos_2 = feat_vec_2.at( match_j ).i_pos;
+         curr_match.j_pos_2 = feat_vec_2.at( match_j ).j_pos;
+            
+         match_vec.push_back( curr_match );
+      }
    }
 }
 

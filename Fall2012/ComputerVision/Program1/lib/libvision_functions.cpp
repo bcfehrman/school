@@ -255,25 +255,26 @@ void create_norm_LOG_kernel( Mat& kern_dst, float standard_deviation)
    }
 }
 
-void extract_features( Mat& src_mat, vector<feat_val>& feat_vec, Mat smooth_gauss[ NUM_SCALES ], const float start_STD )
+void extract_features( Mat& src_mat, vector<feat_val>& feat_vec, Mat smooth_gauss[ NUM_SCALES ], const float start_STD, Mat& src_x_kern, Mat src_y_kern  )
 {
    feat_val curr_feature;
    int curr_scale = 0;
+   float sqrt_2 = sqrt(2.0);
    
    for( unsigned int i = 0; i < feat_vec.size(); i++ )
    {
+      //Make temporay region large enough to accomodate rotation of feature patch
+      feat_vec.at( i ).region_patch.create(FEATURE_SIZE * sqrt_2, FEATURE_SIZE * sqrt_2, CV_32F);
       curr_scale = int ( feat_vec.at( i ).scale / start_STD ) - 1;
-      feat_vec.at( i ).feature.create( FEATURE_SIZE, FEATURE_SIZE, CV_32F );
       
       //Extract feature region at dominant smoothing scale
-      convolve_matrix_region( src_mat, feat_vec.at( i ).i_pos - FEATURE_SIZE_DIV_2,
-         feat_vec.at( i ).i_pos + FEATURE_SIZE_DIV_2, feat_vec.at( i ).j_pos - FEATURE_SIZE_DIV_2, 
-         feat_vec.at( i ).j_pos + FEATURE_SIZE_DIV_2, feat_vec.at( i ).feature, 
+      convolve_matrix_region( src_mat, feat_vec.at( i ).i_pos - ( FEATURE_SIZE_DIV_2 * sqrt_2 ),
+         feat_vec.at( i ).i_pos + ( FEATURE_SIZE_DIV_2 * sqrt_2 + 1 ), feat_vec.at( i ).j_pos - ( FEATURE_SIZE_DIV_2 * sqrt_2 ), 
+         feat_vec.at( i ).j_pos + ( FEATURE_SIZE_DIV_2 * sqrt_2 + 1 ), feat_vec.at( i ).region_patch, 
          smooth_gauss[ curr_scale ] );
-         
-      //Normalize   
-      feat_vec.at( i ).feature /= sum( feat_vec.at( i ).feature )[ 0 ];
    }
+ 
+   find_orientations( feat_vec, src_x_kern, src_y_kern );
 }
 
 void find_matches( vector<feat_val>& feat_vec_1, vector<feat_val>& feat_vec_2, vector<matches>& match_vec, const float threshold_val )
@@ -297,11 +298,8 @@ void find_matches( vector<feat_val>& feat_vec_1, vector<feat_val>& feat_vec_2, v
          {
             for( int curr_col = 0; curr_col < FEATURE_SIZE; curr_col++ )
             {
-               temp = fabs (feat_vec_1.at( i ).feature.at<float>( curr_row, curr_col ) - feat_vec_2.at( j ).feature.at<float>( curr_row, curr_col ) );
+               temp = fabs(feat_vec_1.at( i ).feature.at<float>( curr_row, curr_col) - feat_vec_2.at( j ).feature.at<float>( curr_row, curr_col));
                difference += temp;
-               
-               //temp = fabs( feat_vec_1.at( i ).feat_Iy.at<float>( curr_row, curr_col ) - feat_vec_2.at( j ).feat_Iy.at<float>( curr_row, curr_col ) );
-               //difference += temp;
             }
          }
          
@@ -324,7 +322,7 @@ void find_matches( vector<feat_val>& feat_vec_1, vector<feat_val>& feat_vec_2, v
    }
 }
 
-void find_orientations( Mat& src_mat, vector<feat_val>& feat_vec, Mat& src_x_kern, Mat src_y_kern )
+void find_orientations( vector<feat_val>& feat_vec, Mat& src_x_kern, Mat src_y_kern )
 {
    Mat feat_Ix, feat_Iy;
    float Ix_sum = 0.0;
@@ -332,18 +330,19 @@ void find_orientations( Mat& src_mat, vector<feat_val>& feat_vec, Mat& src_x_ker
    float mag_Ix_Iy;
    float angle;
    float tmp_x, tmp_y;
+   float new_x, new_y;
+   int equiv_row, equiv_col;
+   int size_diff = FEATURE_SIZE * sqrt( 2.0 ) - FEATURE_SIZE;
    
    for(unsigned int i = 0; i < feat_vec.size(); i++ )
    {
-      filter2D( feat_vec.at( i ).feature, feat_Ix, -1, src_x_kern );
-      filter2D( feat_vec.at( i ).feature, feat_Iy, -1, src_y_kern );
+      feat_vec.at( i ).feature.create( FEATURE_SIZE, FEATURE_SIZE, CV_32F );
       
+      filter2D( feat_vec.at( i ).region_patch, feat_Ix, -1, src_x_kern );
+      filter2D( feat_vec.at( i ).region_patch, feat_Iy, -1, src_y_kern );
+   
       Ix_sum = sum( feat_Ix )[ 0 ];
       Iy_sum = sum( feat_Iy )[ 0 ];
-
-      //normalize
-      feat_Ix /= Ix_sum;
-      feat_Iy /= Iy_sum;
 
       //Average derivative for each directions
       feat_vec.at( i ).major_orientation_x = Ix_sum / FEATURE_SIZE_SQD;
@@ -360,18 +359,24 @@ void find_orientations( Mat& src_mat, vector<feat_val>& feat_vec, Mat& src_x_ker
       
       for( int curr_row = 0; curr_row < FEATURE_SIZE; curr_row++ )
       {
+         tmp_y = curr_row - FEATURE_SIZE_DIV_2;
+         
          for( int curr_col = 0; curr_col < FEATURE_SIZE; curr_col++ )
          {
-            tmp_x = feat_Ix.at<float>( curr_row, curr_col ) * cos( -angle ) - feat_Iy.at<float>( curr_row, curr_col ) * sin( -angle );
-            tmp_y = feat_Ix.at<float>( curr_row, curr_col ) * sin( -angle ) + feat_Iy.at<float>( curr_row, curr_col ) * cos( -angle );
+            tmp_x = curr_col -  FEATURE_SIZE_DIV_2;
             
-            feat_Ix.at<float>( curr_row, curr_col ) = tmp_x;
-            feat_Iy.at<float>( curr_row, curr_col ) = tmp_y;
+            new_x = tmp_x * cos( angle ) - tmp_y * sin( angle );
+            new_y = tmp_x * sin( angle ) - tmp_y * cos( angle );
+            
+            equiv_col = new_x + FEATURE_SIZE_DIV_2 + size_diff;
+            equiv_row = new_y + FEATURE_SIZE_DIV_2 + size_diff;
+            
+            feat_vec.at(i).feature.at<float>( curr_row, curr_col ) = feat_vec.at(i).region_patch.at<float>( equiv_row, equiv_col);
          }
       }
       
-      feat_vec.at( i ).feat_Ix = feat_Ix;
-      feat_vec.at( i ).feat_Iy = feat_Iy;
+      //Normalize 
+      feat_vec.at( i ).feature /= sum( feat_vec.at( i ).feature)[ 0 ];
    }
 }
 

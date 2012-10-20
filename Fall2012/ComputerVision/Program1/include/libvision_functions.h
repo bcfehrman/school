@@ -8,13 +8,14 @@
 #include <vector>
 #include <algorithm>
 #include <iomanip>
+#include <cstdlib>
 
 using namespace cv;
 using namespace std;
 
 #define NUM_SCALES 5
-#define FEATURE_SIZE 10
-#define FEATURE_SIZE_SQD 100
+#define FEATURE_SIZE 11
+#define FEATURE_SIZE_SQD 121
 #define FEATURE_SIZE_DIV_2 5
 
 struct feat_val{
@@ -26,6 +27,7 @@ struct feat_val{
   Mat feat_Ix;
   Mat feat_Iy;
   Mat feature;
+  Mat region_patch;
   float scale; 
 };
 
@@ -42,8 +44,8 @@ void create_derive_kernels( Mat& Gx, Mat& Gy);
 void create_deriv_gaussian_kernels( Mat& kern_X_dst, Mat& kern_y_dst, float standard_deviation);
 void create_gaussian_kernel( Mat& kern_dst, float standard_deviation);
 void create_norm_LOG_kernel( Mat& kern_dst, float standard_deviation);
-void extract_features( Mat& src_mat, vector<feat_val>& feat_vec, Mat smooth_gauss[ NUM_SCALES ], const float start_STD );
-void find_orientations( Mat& src_mat, vector<feat_val>& feat_vec, Mat& src_x_kern, Mat src_y_kern );
+void extract_features( Mat& src_mat, vector<feat_val>& feat_vec, Mat smooth_gauss[ NUM_SCALES ], const float start_STD, Mat& src_x_kern, Mat src_y_kern );
+void find_orientations( vector<feat_val>& feat_vec, Mat& src_x_kern, Mat src_y_kern );
 void find_matches( vector<feat_val>& feat_vec1, vector<feat_val>& feat_vec2, vector<matches>& match_vec, const float threshold_val );
 void find_scales( Mat& src_mat, vector<feat_val>& feat_vec, Mat LOG_kernels[NUM_SCALES], float start_variance );
 float scaler_convolve_matrix_region( Mat& src_mat, Mat& kernel, const int i_pos, const int j_pos);

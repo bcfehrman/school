@@ -54,9 +54,9 @@ int main( int argc, char *argv[])
    Mat Gx, Ix, Gy, Iy, IxIy;
    Mat auto_corr_mat_1, auto_corr_mat_2;
    const float deriv_standard_deviation = 2;
-   const float smooth_standard_deviation = 1.4;
+   const float smooth_standard_deviation = .7;
    vector<feat_val> feat_vec_1, feat_vec_2;
-   const int num_keep = 100;
+   const int num_keep = 200;
    const int radius_suppress = 25;
    const int kernel_size = 5;
    Mat smooth_gauss[NUM_SCALES];
@@ -67,7 +67,7 @@ int main( int argc, char *argv[])
       norm_LOG_kernels[ i ].create( kernel_size, kernel_size, CV_32F );
       create_norm_LOG_kernel( norm_LOG_kernels[ i ],  smooth_standard_deviation + i );
       
-      smooth_gauss[ i ].create( kernel_size, kernel_size, CV_32F );
+      smooth_gauss[ i ].create( kernel_size + 2, kernel_size + 2, CV_32F );
       create_gaussian_kernel( smooth_gauss[ i ], smooth_standard_deviation + i );
       
       gauss_Gx_kernels[ i ].create( kernel_size, kernel_size, CV_32F );
@@ -85,16 +85,16 @@ int main( int argc, char *argv[])
    }
    
    begin = clock();
-   orig_image_1 = imread("img/Yosemite/Yosemite1.jpg");
+   orig_image_1 = imread("img/leuven/img1.ppm");
    orig_image_1.copyTo( image_1_highlighted);
-   orig_image_2 = imread("img/Yosemite/Yosemite2.jpg");
+   orig_image_2 = imread("img/leuven/img2.ppm");
    orig_image_2.copyTo( image_2_highlighted);
    
    combined_images.create( orig_image_1.rows, orig_image_1.cols * 2, CV_8UC3);
    
-   for( unsigned int i = 0; i < orig_image_1.rows; i++)
+   for( int i = 0; i < orig_image_1.rows; i++)
    {
-      for( unsigned int j = 0; j < orig_image_1.cols; j++ )
+      for( int j = 0; j < orig_image_1.cols; j++ )
       {
          combined_images.at<Vec3b>( i, j ) = orig_image_1.at<Vec3b>( i , j );
          combined_images.at<Vec3b>( i, j + orig_image_1.cols ) = orig_image_2.at<Vec3b>( i , j );
@@ -121,8 +121,7 @@ int main( int argc, char *argv[])
    create_auto_corr_matrix( gray_image_1, auto_corr_mat_1, IxIy, Ix, Iy, threshold_val );
    suppress_non_maximums_adaptive( auto_corr_mat_1, feat_vec_1, radius_suppress, num_keep);
    find_scales( gray_image_1, feat_vec_1, norm_LOG_kernels, smooth_standard_deviation);
-   extract_features( gray_image_1, feat_vec_1, smooth_gauss, smooth_standard_deviation );
-   find_orientations( gray_image_1, feat_vec_1, gauss_Gx_kernels[ 0 ], gauss_Gy_kernels[ 0 ]);
+   extract_features( gray_image_1, feat_vec_1, smooth_gauss, smooth_standard_deviation, gauss_Gx_kernels[ 0 ], gauss_Gy_kernels[ 0 ] );
    
    orig_image_2.convertTo(gray_image_2, CV_32F, 1/255.0);	
    cvtColor(gray_image_2, gray_image_2, CV_BGR2GRAY);
@@ -143,8 +142,7 @@ int main( int argc, char *argv[])
    create_auto_corr_matrix( gray_image_2, auto_corr_mat_2, IxIy, Ix, Iy, threshold_val );
    suppress_non_maximums_adaptive( auto_corr_mat_2, feat_vec_2, radius_suppress, num_keep);
    find_scales( gray_image_2, feat_vec_2, norm_LOG_kernels, smooth_standard_deviation);
-   extract_features( gray_image_2, feat_vec_2, smooth_gauss, smooth_standard_deviation );
-   find_orientations( gray_image_2, feat_vec_2, gauss_Gx_kernels[ 0 ], gauss_Gy_kernels[ 0 ]);
+   extract_features( gray_image_2, feat_vec_2, smooth_gauss, smooth_standard_deviation, gauss_Gx_kernels[ 0 ], gauss_Gy_kernels[ 0 ] );
 
    end = clock();
    
@@ -157,29 +155,29 @@ int main( int argc, char *argv[])
     
    for( unsigned int i = 0; i < feat_vec_1.size(); i++)
    {
-      circle(image_1_highlighted, Point(feat_vec_1.at(i).j_pos,feat_vec_1.at(i).i_pos) ,  (feat_vec_1.at(i).scale + 5) * 3, Scalar(100, 100, 0), 3);
-      //circle(image_1_highlighted, Point(feat_vec_1.at(i).j_pos,feat_vec_1.at(i).i_pos) ,  5, Scalar(0, 100, 0), -1);
-     // line(image_1_highlighted, Point(feat_vec_1.at(i).j_pos,feat_vec_1.at(i).i_pos),
-        // Point(feat_vec_1.at(i).j_pos + feat_vec_1.at(i).major_orientation_x * 20, feat_vec_1.at(i).i_pos + feat_vec_1.at(i).major_orientation_y * 20),
-        // Scalar( 0, 0, 100 ), 2);
+      circle(image_1_highlighted, Point(feat_vec_1.at(i).j_pos,feat_vec_1.at(i).i_pos) ,  (feat_vec_1.at(i).scale + 5) * 3, Scalar(feat_vec_1.at(i).scale * 25 , 0 , feat_vec_1.at(i).scale * 15 ), 3);
+      circle(image_1_highlighted, Point(feat_vec_1.at(i).j_pos,feat_vec_1.at(i).i_pos) ,  5, Scalar(0, 100, 0), -1);
+      line(image_1_highlighted, Point(feat_vec_1.at(i).j_pos,feat_vec_1.at(i).i_pos),
+         Point(feat_vec_1.at(i).j_pos + feat_vec_1.at(i).major_orientation_x * 20, feat_vec_1.at(i).i_pos + feat_vec_1.at(i).major_orientation_y * 20),
+         Scalar( 0, 0, 100 ), 2);
    }
    
    for( unsigned int i = 0; i < feat_vec_2.size(); i++)
    {
       circle(image_2_highlighted, Point(feat_vec_2.at(i).j_pos,feat_vec_2.at(i).i_pos) ,  (feat_vec_2.at(i).scale + 5) * 3, Scalar(100, 100, 0), 3);
-      //circle(image_2_highlighted, Point(feat_vec_2.at(i).j_pos,feat_vec_2.at(i).i_pos) ,  5, Scalar(0, 100, 0), -1);
-      //line(image_2_highlighted, Point(feat_vec_2.at(i).j_pos,feat_vec_2.at(i).i_pos),
-        // Point(feat_vec_2.at(i).j_pos + feat_vec_2.at(i).major_orientation_x * 20, feat_vec_2.at(i).i_pos + feat_vec_2.at(i).major_orientation_y * 20),
-         //Scalar( 0, 0, 100 ), 2);
+      circle(image_2_highlighted, Point(feat_vec_2.at(i).j_pos,feat_vec_2.at(i).i_pos) ,  5, Scalar(0, 100, 0), -1);
+      line(image_2_highlighted, Point(feat_vec_2.at(i).j_pos,feat_vec_2.at(i).i_pos),
+         Point(feat_vec_2.at(i).j_pos + feat_vec_2.at(i).major_orientation_x * 20, feat_vec_2.at(i).i_pos + feat_vec_2.at(i).major_orientation_y * 20),
+         Scalar( 0, 0, 100 ), 2);
    }
     
-   find_matches( feat_vec_1, feat_vec_2, match_vec, .1);
+   find_matches( feat_vec_1, feat_vec_2, match_vec, .03);
    
    for( unsigned int i = 0; i < match_vec.size(); i++ )
    {
       line( combined_images, Point(match_vec.at(i).j_pos_1, match_vec.at(i).i_pos_1 ),
          Point(match_vec.at(i).j_pos_2 + orig_image_1.cols, match_vec.at(i).i_pos_2),
-         Scalar(0, 0, 100 ), 2);
+         Scalar(rand() % 255, rand() % 255, rand() % 255 ), 2);
       
       circle(combined_images, Point(match_vec.at(i).j_pos_1, match_vec.at(i).i_pos_1 ) ,  5, Scalar(0, 100, 0), -1);
       circle(combined_images, Point(match_vec.at(i).j_pos_2 + orig_image_1.cols, match_vec.at(i).i_pos_2) ,  5, Scalar(0, 100, 0), -1);

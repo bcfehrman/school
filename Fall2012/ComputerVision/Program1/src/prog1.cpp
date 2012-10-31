@@ -53,7 +53,7 @@ int main( int argc, char *argv[])
    Mat gray_image_1, gray_image_2;
    Mat Gx, Ix, Gy, Iy, IxIy;
    Mat auto_corr_mat_1, auto_corr_mat_2;
-   const float deriv_standard_deviation = 2;
+   const float deriv_standard_deviation = 1.5;
    const float smooth_standard_deviation = .7;
    vector<feat_val> feat_vec_1, feat_vec_2;
    const int num_keep = 200;
@@ -87,7 +87,7 @@ int main( int argc, char *argv[])
    begin = clock();
    orig_image_1 = imread("img/leuven/img1.ppm");
    orig_image_1.copyTo( image_1_highlighted);
-   orig_image_2 = imread("img/leuven/img2.ppm");
+   orig_image_2 = imread("img/leuven/img3.ppm");
    orig_image_2.copyTo( image_2_highlighted);
    
    combined_images.create( orig_image_1.rows, orig_image_1.cols * 2, CV_8UC3);
@@ -113,6 +113,9 @@ int main( int argc, char *argv[])
    IxIy = Ix.mul(Iy);
    Ix = Ix.mul(Ix);
    Iy = Iy.mul(Iy);
+   
+   namedWindow("IxIy", WINDOW_SIZE_CHOICE);
+   imshow( "IxIy", IxIy);
    
    filter2D( IxIy, IxIy, -1, smooth_gauss[0]);
    filter2D( Ix, Ix, -1, smooth_gauss[0]);
@@ -171,7 +174,7 @@ int main( int argc, char *argv[])
          Scalar( 0, 0, 100 ), 2);
    }
     
-   find_matches( feat_vec_1, feat_vec_2, match_vec, .03);
+   find_matches( feat_vec_1, feat_vec_2, match_vec, .04);
    
    for( unsigned int i = 0; i < match_vec.size(); i++ )
    {

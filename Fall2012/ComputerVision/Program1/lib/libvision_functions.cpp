@@ -64,6 +64,42 @@ void create_auto_corr_matrix( Mat& src_mat, Mat& dst_mat, Mat& IxIy, Mat& Ix_sqd
    }
 }
 
+//Creates (hopefully) the rotated boxes around the features
+void create_feat_boxes( vector<feat_val>& feat_vec )
+{
+   Point p1( -FEATURE_SIZE_DIV_2, FEATURE_SIZE_DIV_2);
+   Point p2( FEATURE_SIZE_DIV_2, FEATURE_SIZE_DIV_2);
+   Point p3( FEATURE_SIZE_DIV_2, -FEATURE_SIZE_DIV_2);
+   Point p4( -FEATURE_SIZE_DIV_2, -FEATURE_SIZE_DIV_2);
+   Point tempPoint;
+   feat_val curr_feat;
+   
+   for( unsigned int i = 0; i < feat_vec.size(); i++)
+   {
+      curr_feat = feat_vec.at( i );
+      
+      tempPoint.x = ( p1.x * (curr_feat.scale_num) * cos( curr_feat.orientation_angle) - p1.y * (curr_feat.scale_num) * sin(curr_feat.orientation_angle) ) + curr_feat.j_pos;
+      tempPoint.y = ( p1.x * (curr_feat.scale_num) * sin( curr_feat.orientation_angle) + p1.y * (curr_feat.scale_num) * cos(curr_feat.orientation_angle) ) + curr_feat.i_pos;
+         
+      feat_vec.at(i).feat_box_points.push_back( tempPoint );
+      
+      tempPoint.x = ( p2.x * (curr_feat.scale_num) * cos( curr_feat.orientation_angle) - p2.y * (curr_feat.scale_num) * sin(curr_feat.orientation_angle) ) + curr_feat.j_pos;
+      tempPoint.y = ( p2.x * (curr_feat.scale_num) * sin( curr_feat.orientation_angle) + p2.y * (curr_feat.scale_num) * cos(curr_feat.orientation_angle) ) + curr_feat.i_pos;
+         
+      feat_vec.at(i).feat_box_points.push_back( tempPoint );
+      
+      tempPoint.x = ( p3.x * (curr_feat.scale_num) * cos( curr_feat.orientation_angle) - p3.y * (curr_feat.scale_num) * sin(curr_feat.orientation_angle) ) + curr_feat.j_pos;
+      tempPoint.y = ( p3.x * (curr_feat.scale_num) * sin( curr_feat.orientation_angle) + p3.y * (curr_feat.scale_num) * cos(curr_feat.orientation_angle) ) + curr_feat.i_pos;
+         
+      feat_vec.at(i).feat_box_points.push_back( tempPoint );
+      
+      tempPoint.x = ( p4.x * (curr_feat.scale_num) * cos( curr_feat.orientation_angle) - p4.y * (curr_feat.scale_num) * sin(curr_feat.orientation_angle) ) + curr_feat.j_pos;
+      tempPoint.y = ( p4.x * (curr_feat.scale_num) * sin( curr_feat.orientation_angle) + p4.y * (curr_feat.scale_num) * cos(curr_feat.orientation_angle) ) + curr_feat.i_pos;
+         
+      feat_vec.at(i).feat_box_points.push_back( tempPoint );
+   }
+}
+
 //Creates 3x3 Sobel operator kernels that
 //are used to approximate the x and y
 //derivatives of a matrix
@@ -267,6 +303,16 @@ void create_norm_LOG_kernel( Mat& kern_dst, float standard_deviation)
    }
 }
 
+void draw_boxes( Mat& src, vector<Point> feat_box_points, CvScalar color, int thickness )
+{
+   for(unsigned int i = 0; i < feat_box_points.size() - 1; i++ )
+   {
+      line( src, feat_box_points.at(i), feat_box_points.at(i + 1), color, thickness );
+   }
+   
+   line( src, feat_box_points.at(feat_box_points.size() - 1), feat_box_points.at(0), color, thickness );
+}
+
 void extract_features( vector<Mat>& src_mat, vector<feat_val>& feat_vec, Mat smooth_gauss[ NUM_SCALES ], const float start_STD, Mat& src_x_kern, Mat src_y_kern  )
 {
    feat_val curr_feature;
@@ -372,6 +418,8 @@ void find_orientations( vector<feat_val>& feat_vec, Mat& src_x_kern, Mat src_y_k
       
       angle = atan2( feat_vec.at( i ).major_orientation_y , feat_vec.at( i ).major_orientation_x );
       
+      feat_vec.at( i ).orientation_angle = angle;
+      
       for( int curr_row = 0; curr_row < FEATURE_SIZE; curr_row++ )
       {
          tmp_y = curr_row - FEATURE_SIZE_DIV_2;
@@ -431,6 +479,7 @@ void find_scales( vector<Mat>& src_mat, vector<feat_val>& feat_vec, Mat LOG_kern
       }
       
       feat_vec.at(i).scale = max_scale;
+      feat_vec.at(i).scale_num = int(max_scale / start_STD);
    }
 }
 

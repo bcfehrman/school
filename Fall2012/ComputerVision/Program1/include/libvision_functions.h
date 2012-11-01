@@ -24,11 +24,14 @@ struct feat_val{
   float intensity_val;
   float major_orientation_x;
   float major_orientation_y;
+  float orientation_angle;
   Mat feat_Ix;
   Mat feat_Iy;
   Mat feature;
   Mat region_patch;
-  float scale; 
+  float scale;
+  int scale_num;
+  vector<Point> feat_box_points;
 };
 
 struct matches{
@@ -40,10 +43,12 @@ struct matches{
 
 void convolve_matrix_region( Mat& src_mat, const int start_row, const int end_row, const int start_col, const int end_col, Mat& dst_mat, Mat& kernel );
 void create_auto_corr_matrix( Mat& src_mat, Mat& dst_mat, Mat& IxIy, Mat& Ix_sqd, Mat& Iy_sqd, const float threshold_val);
+void create_feat_boxes( vector<feat_val>& feat_vec );
 void create_derive_kernels( Mat& Gx, Mat& Gy);
 void create_deriv_gaussian_kernels( Mat& kern_X_dst, Mat& kern_y_dst, float standard_deviation);
 void create_gaussian_kernel( Mat& kern_dst, float standard_deviation);
 void create_norm_LOG_kernel( Mat& kern_dst, float standard_deviation);
+void draw_boxes( Mat& src, vector<Point> feat_box_points, CvScalar color, int thickness );
 void extract_features( vector<Mat>& src_mat, vector<feat_val>& feat_vec, Mat smooth_gauss[ NUM_SCALES ], const float start_STD, Mat& src_x_kern, Mat src_y_kern  );
 void find_orientations( vector<feat_val>& feat_vec, Mat& src_x_kern, Mat src_y_kern );
 void find_matches( vector<feat_val>& feat_vec1, vector<feat_val>& feat_vec2, vector<matches>& match_vec, const float threshold_val );

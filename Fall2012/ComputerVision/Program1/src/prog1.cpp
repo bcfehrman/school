@@ -54,13 +54,14 @@ int main( int argc, char *argv[])
    Mat Gx, Ix, Gy, Iy, IxIy;
    Mat auto_corr_mat_1, auto_corr_mat_2;
    const float deriv_standard_deviation = 1.5;
-   const float smooth_standard_deviation = .7;
+   const float smooth_standard_deviation = .8;
    vector<feat_val> feat_vec_1, feat_vec_2;
    const int num_keep = 200;
    const int radius_suppress = 25;
    const int kernel_size = 5;
    Mat smooth_gauss[NUM_SCALES];
    vector<matches> match_vec;
+   vector<Mat> image_1_pyramid, image_2_pyramid;
    
    for(int i = 0; i < NUM_SCALES; i++)
    {
@@ -85,9 +86,9 @@ int main( int argc, char *argv[])
    }
    
    begin = clock();
-   orig_image_1 = imread("img/leuven/img1.ppm");
+   orig_image_1 = imread("img/Yosemite/Yosemite3.jpg");
    orig_image_1.copyTo( image_1_highlighted);
-   orig_image_2 = imread("img/leuven/img3.ppm");
+   orig_image_2 = imread("img/Yosemite/Yosemite4.jpg");
    orig_image_2.copyTo( image_2_highlighted);
    
    combined_images.create( orig_image_1.rows, orig_image_1.cols * 2, CV_8UC3);
@@ -104,6 +105,8 @@ int main( int argc, char *argv[])
    //Convert to gray scale
    orig_image_1.convertTo(gray_image_1, CV_32F, 1/255.0);	
    cvtColor(gray_image_1, gray_image_1, CV_BGR2GRAY);
+   
+   buildPyramid( gray_image_1, image_1_pyramid, NUM_SCALES );
    
    auto_corr_mat_1.create( orig_image_1.rows, orig_image_1.cols, CV_32F);
    
@@ -123,11 +126,13 @@ int main( int argc, char *argv[])
    
    create_auto_corr_matrix( gray_image_1, auto_corr_mat_1, IxIy, Ix, Iy, threshold_val );
    suppress_non_maximums_adaptive( auto_corr_mat_1, feat_vec_1, radius_suppress, num_keep);
-   find_scales( gray_image_1, feat_vec_1, norm_LOG_kernels, smooth_standard_deviation);
-   extract_features( gray_image_1, feat_vec_1, smooth_gauss, smooth_standard_deviation, gauss_Gx_kernels[ 0 ], gauss_Gy_kernels[ 0 ] );
+   find_scales( image_1_pyramid, feat_vec_1, norm_LOG_kernels, smooth_standard_deviation);
+   extract_features( image_1_pyramid, feat_vec_1, smooth_gauss, smooth_standard_deviation, gauss_Gx_kernels[ 0 ], gauss_Gy_kernels[ 0 ] );
    
    orig_image_2.convertTo(gray_image_2, CV_32F, 1/255.0);	
    cvtColor(gray_image_2, gray_image_2, CV_BGR2GRAY);
+   
+   buildPyramid( gray_image_2, image_2_pyramid, NUM_SCALES );
    
    auto_corr_mat_2.create( orig_image_2.rows, orig_image_2.cols, CV_32F);
    
@@ -144,8 +149,8 @@ int main( int argc, char *argv[])
    
    create_auto_corr_matrix( gray_image_2, auto_corr_mat_2, IxIy, Ix, Iy, threshold_val );
    suppress_non_maximums_adaptive( auto_corr_mat_2, feat_vec_2, radius_suppress, num_keep);
-   find_scales( gray_image_2, feat_vec_2, norm_LOG_kernels, smooth_standard_deviation);
-   extract_features( gray_image_2, feat_vec_2, smooth_gauss, smooth_standard_deviation, gauss_Gx_kernels[ 0 ], gauss_Gy_kernels[ 0 ] );
+   find_scales( image_2_pyramid, feat_vec_2, norm_LOG_kernels, smooth_standard_deviation);
+   extract_features(image_2_pyramid, feat_vec_2, smooth_gauss, smooth_standard_deviation, gauss_Gx_kernels[ 0 ], gauss_Gy_kernels[ 0 ] );
 
    end = clock();
    
@@ -174,7 +179,7 @@ int main( int argc, char *argv[])
          Scalar( 0, 0, 100 ), 2);
    }
     
-   find_matches( feat_vec_1, feat_vec_2, match_vec, .04);
+   find_matches( feat_vec_1, feat_vec_2, match_vec, .12);
    
    for( unsigned int i = 0; i < match_vec.size(); i++ )
    {
@@ -191,6 +196,7 @@ int main( int argc, char *argv[])
       imshow("Orig", image_1_highlighted);
       imshow("Smoothed", image_2_highlighted);
       imshow("Combined", combined_images);
+      //imshow("Combined", image_1_pyramid.at(2));
       
       if(waitKey(30) >= 0) break;
 	}

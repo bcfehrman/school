@@ -9,9 +9,21 @@ void convolve_matrix_region( Mat& src_mat, const int start_row, const int end_ro
    int adjusted_start_col = start_col - size_kernel_div_2;
    int adjusted_end_col = end_col + size_kernel_div_2;
    
+   if( adjusted_start_row < 0)
+      adjusted_start_row = 0;
+      
+   if( adjusted_start_col < 0)
+      adjusted_start_col = 0;
+      
+   if( adjusted_end_row > src_mat.rows)
+      adjusted_end_row = src_mat.rows;
+      
+   if( adjusted_end_col > src_mat.cols)
+      adjusted_end_col = src_mat.cols;   
+   
    Mat sub_mat = src_mat.colRange(adjusted_start_col, adjusted_end_col).rowRange(adjusted_start_row, adjusted_end_row);
    
-   filter2D( sub_mat, sub_mat, -1, kernel );
+   //filter2D( sub_mat, sub_mat, -1, kernel );
    
    dst_mat = sub_mat.colRange( size_kernel_div_2, size_kernel_div_2 + ( end_col - start_col) ).rowRange( size_kernel_div_2, size_kernel_div_2 + ( end_row - start_row) );
 }
@@ -255,11 +267,12 @@ void create_norm_LOG_kernel( Mat& kern_dst, float standard_deviation)
    }
 }
 
-void extract_features( Mat& src_mat, vector<feat_val>& feat_vec, Mat smooth_gauss[ NUM_SCALES ], const float start_STD, Mat& src_x_kern, Mat src_y_kern  )
+void extract_features( vector<Mat>& src_mat, vector<feat_val>& feat_vec, Mat smooth_gauss[ NUM_SCALES ], const float start_STD, Mat& src_x_kern, Mat src_y_kern  )
 {
    feat_val curr_feature;
    int curr_scale = 0;
    float sqrt_2 = sqrt(2.0);
+   float curr_pow;
    
    for( unsigned int i = 0; i < feat_vec.size(); i++ )
    {
@@ -267,10 +280,12 @@ void extract_features( Mat& src_mat, vector<feat_val>& feat_vec, Mat smooth_gaus
       feat_vec.at( i ).region_patch.create(FEATURE_SIZE * sqrt_2, FEATURE_SIZE * sqrt_2, CV_32F);
       curr_scale = int ( feat_vec.at( i ).scale / start_STD ) - 1;
       
+      curr_pow = pow(2, curr_scale);
+      
       //Extract feature region at dominant smoothing scale
-      convolve_matrix_region( src_mat, feat_vec.at( i ).i_pos - ( FEATURE_SIZE_DIV_2 * sqrt_2 ),
-         feat_vec.at( i ).i_pos + ( FEATURE_SIZE_DIV_2 * sqrt_2 + 1 ), feat_vec.at( i ).j_pos - ( FEATURE_SIZE_DIV_2 * sqrt_2 ), 
-         feat_vec.at( i ).j_pos + ( FEATURE_SIZE_DIV_2 * sqrt_2 + 1 ), feat_vec.at( i ).region_patch, 
+      convolve_matrix_region( src_mat.at(curr_scale), feat_vec.at( i ).i_pos / curr_pow - ( FEATURE_SIZE_DIV_2 * sqrt_2 ),
+         feat_vec.at( i ).i_pos / curr_pow + ( FEATURE_SIZE_DIV_2 * sqrt_2 + 1 ), feat_vec.at( i ).j_pos / curr_pow - ( FEATURE_SIZE_DIV_2 * sqrt_2 ), 
+         feat_vec.at( i ).j_pos / curr_pow + ( FEATURE_SIZE_DIV_2 * sqrt_2 + 1 ), feat_vec.at( i ).region_patch, 
          smooth_gauss[ curr_scale ] );
    }
  
@@ -383,12 +398,13 @@ void find_orientations( vector<feat_val>& feat_vec, Mat& src_x_kern, Mat src_y_k
 //Uses the Laplacian of Gaussian to find the scale at which the current
 //feature is an extrema and sets this as the feature's characteristic
 //scale
-void find_scales( Mat& src_mat, vector<feat_val>& feat_vec, Mat LOG_kernels[NUM_SCALES], const float start_STD )
+void find_scales( vector<Mat>& src_mat, vector<feat_val>& feat_vec, Mat LOG_kernels[NUM_SCALES], const float start_STD)
 {
    float max_response = 0.0;
    float curr_scale = start_STD;
    float max_scale = 0.0;
    float curr_response = 0.0;
+   int curr_pow = 1;
    
    for( unsigned int i = 0; i < feat_vec.size(); i++ )
    {
@@ -396,9 +412,11 @@ void find_scales( Mat& src_mat, vector<feat_val>& feat_vec, Mat LOG_kernels[NUM_
       max_response = -100000.0;
                  
       for(int j = 0; j < NUM_SCALES; j++ )
-      {       
+      {  
+         curr_pow = pow( 2, j );     
+         
          //Get the Laplacian of Gaussian measurement for the current feature point
-         curr_response = scaler_convolve_matrix_region( src_mat, LOG_kernels[j], feat_vec.at(i).i_pos, feat_vec.at(i).j_pos );
+         curr_response = scaler_convolve_matrix_region( src_mat.at(j), LOG_kernels[j], feat_vec.at(i).i_pos / curr_pow, feat_vec.at(i).j_pos / curr_pow );
          
          //Want either min or max
          curr_response *= curr_response;

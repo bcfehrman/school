@@ -13,10 +13,10 @@
 using namespace cv;
 using namespace std;
 
-#define NUM_SCALES 1
-#define FEATURE_SIZE 11
-#define FEATURE_SIZE_SQD 121
-#define FEATURE_SIZE_DIV_2 5
+#define NUM_SCALES 5
+#define FEATURE_SIZE 13
+#define FEATURE_SIZE_SQD 169
+#define FEATURE_SIZE_DIV_2 6
 
 struct feat_val{
   int i_pos;

@@ -54,7 +54,7 @@ int main( int argc, char *argv[])
    Mat Gx, Ix, Gy, Iy, IxIy;
    Mat auto_corr_mat_1, auto_corr_mat_2;
    const float deriv_standard_deviation = 1.5;
-   const float smooth_standard_deviation = .8;
+   const float smooth_standard_deviation = 1.4;
    vector<feat_val> feat_vec_1, feat_vec_2;
    const int num_keep = 200;
    const int radius_suppress = 25;
@@ -62,10 +62,13 @@ int main( int argc, char *argv[])
    Mat smooth_gauss[NUM_SCALES];
    vector<matches> match_vec;
    vector<Mat> image_1_pyramid, image_2_pyramid;
+   CvScalar colors[NUM_SCALES];
+   
+   srand((unsigned)time(0));
    
    for(int i = 0; i < NUM_SCALES; i++)
    {
-      norm_LOG_kernels[ i ].create( kernel_size, kernel_size, CV_32F );
+      norm_LOG_kernels[ i ].create( FEATURE_SIZE, FEATURE_SIZE, CV_32F );
       create_norm_LOG_kernel( norm_LOG_kernels[ i ],  smooth_standard_deviation + ( i *  smooth_standard_deviation ));
       
       smooth_gauss[ i ].create( kernel_size + 2, kernel_size + 2, CV_32F );
@@ -74,6 +77,8 @@ int main( int argc, char *argv[])
       gauss_Gx_kernels[ i ].create( kernel_size, kernel_size, CV_32F );
       gauss_Gy_kernels[ i ].create( kernel_size, kernel_size, CV_32F );
       create_deriv_gaussian_kernels(  gauss_Gx_kernels[ i ], gauss_Gy_kernels[ i ], deriv_standard_deviation);
+      
+      colors[i] = Scalar(rand() % 255, rand() % 255, rand() % 255 );
    } 
    
    for(int i = 0; i < 5; i++ )
@@ -86,9 +91,9 @@ int main( int argc, char *argv[])
    }
    
    begin = clock();
-   orig_image_1 = imread("img/leuven/img1.ppm");
+   orig_image_1 = imread("img/wall/img1.ppm");
    orig_image_1.copyTo( image_1_highlighted);
-   orig_image_2 = imread("img/leuven/img2.ppm");
+   orig_image_2 = imread("img/wall/img3.ppm");
    orig_image_2.copyTo( image_2_highlighted);
    
    combined_images.create( orig_image_1.rows, orig_image_1.cols * 2, CV_8UC3);
@@ -160,28 +165,25 @@ int main( int argc, char *argv[])
 	cvMoveWindow("Orig", 900, 0);
    namedWindow("Smoothed", WINDOW_SIZE_CHOICE);
    namedWindow("Combined", WINDOW_SIZE_CHOICE);
-   
+
    create_feat_boxes( feat_vec_1 );
    create_feat_boxes( feat_vec_2 );
     
    for( unsigned int i = 0; i < feat_vec_1.size(); i++)
    {
-      //circle(image_1_highlighted, Point(feat_vec_1.at(i).j_pos,feat_vec_1.at(i).i_pos) ,  (feat_vec_1.at(i).scale + 5) * 3, Scalar(feat_vec_1.at(i).scale * 25 , 0 , feat_vec_1.at(i).scale * 15 ), 3);
-      //circle(image_1_highlighted, Point(feat_vec_1.at(i).j_pos,feat_vec_1.at(i).i_pos) ,  5, Scalar(0, 100, 0), -1);
-      draw_boxes( image_1_highlighted, feat_vec_1.at(i).feat_box_points, Scalar(0, 100, 0), 2 );
+      draw_boxes( image_1_highlighted, feat_vec_1.at(i).feat_box_points, colors[feat_vec_1.at(i).scale_num - 1], 2 );
       line(image_1_highlighted, Point(feat_vec_1.at(i).j_pos,feat_vec_1.at(i).i_pos),
          Point(feat_vec_1.at(i).j_pos + feat_vec_1.at(i).major_orientation_x * FEATURE_SIZE_DIV_2 * feat_vec_1.at(i).scale_num , feat_vec_1.at(i).i_pos + feat_vec_1.at(i).major_orientation_y * FEATURE_SIZE_DIV_2 * feat_vec_1.at(i).scale_num ),
-         Scalar( 0, 0, 100 ), 2);
+         Scalar( 0, 220, 220 ), 2);
    }
    
    for( unsigned int i = 0; i < feat_vec_2.size(); i++)
    {
-      //circle(image_2_highlighted, Point(feat_vec_2.at(i).j_pos,feat_vec_2.at(i).i_pos) ,  (feat_vec_2.at(i).scale + 5) * 3, Scalar(100, 100, 0), 3);
-      //circle(image_2_highlighted, Point(feat_vec_2.at(i).j_pos,feat_vec_2.at(i).i_pos) ,  5, Scalar(0, 100, 0), -1);
-      draw_boxes( image_2_highlighted, feat_vec_2.at(i).feat_box_points, Scalar(0, 100, 0), 2 );
+      draw_boxes( image_2_highlighted, feat_vec_2.at(i).feat_box_points, colors[feat_vec_2.at(i).scale_num - 1], 2 );
       line(image_2_highlighted, Point(feat_vec_2.at(i).j_pos,feat_vec_2.at(i).i_pos),
          Point(feat_vec_2.at(i).j_pos + feat_vec_2.at(i).major_orientation_x * FEATURE_SIZE_DIV_2 * feat_vec_2.at(i).scale_num, feat_vec_2.at(i).i_pos + feat_vec_2.at(i).major_orientation_y * FEATURE_SIZE_DIV_2 * feat_vec_2.at(i).scale_num),
-         Scalar( 0, 0, 100 ), 2);
+         Scalar( 0, 220, 220 ), 2);
+
    }
     
    find_matches( feat_vec_1, feat_vec_2, match_vec, .12);

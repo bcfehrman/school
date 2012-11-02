@@ -4,10 +4,10 @@ void convolve_matrix_region( Mat& src_mat, const int start_row, const int end_ro
 {   
    int size_kernel = kernel.rows;
    int size_kernel_div_2 = size_kernel / 2;
-   int adjusted_start_row = start_row - size_kernel_div_2;
-   int adjusted_end_row = end_row + size_kernel_div_2;
-   int adjusted_start_col = start_col - size_kernel_div_2;
-   int adjusted_end_col = end_col + size_kernel_div_2;
+   int adjusted_start_row = start_row;
+   int adjusted_end_row = end_row;
+   int adjusted_start_col = start_col;
+   int adjusted_end_col = end_col;
    
    if( adjusted_start_row < 0)
       adjusted_start_row = 0;
@@ -22,10 +22,12 @@ void convolve_matrix_region( Mat& src_mat, const int start_row, const int end_ro
       adjusted_end_col = src_mat.cols;   
    
    Mat sub_mat = src_mat.colRange(adjusted_start_col, adjusted_end_col).rowRange(adjusted_start_row, adjusted_end_row);
-   
+   dst_mat = sub_mat;
    //filter2D( sub_mat, sub_mat, -1, kernel );
+   //dst_mat = sub_mat;
+   //if( size_kernel_div_2 + ( end_col - start_col) 
    
-   dst_mat = sub_mat.colRange( size_kernel_div_2, size_kernel_div_2 + ( end_col - start_col) ).rowRange( size_kernel_div_2, size_kernel_div_2 + ( end_row - start_row) );
+   //dst_mat = sub_mat.colRange( size_kernel_div_2, size_kernel_div_2 + ( end_col - start_col) ).rowRange( size_kernel_div_2, size_kernel_div_2 + ( end_row - start_row) );
 }
 
 //Generates a matrix of the autocorrelation value found at each point.
@@ -429,10 +431,10 @@ void find_orientations( vector<feat_val>& feat_vec, Mat& src_x_kern, Mat src_y_k
             tmp_x = curr_col -  FEATURE_SIZE_DIV_2;
             
             new_x = tmp_x * cos( angle ) - tmp_y * sin( angle );
-            new_y = tmp_x * sin( angle ) - tmp_y * cos( angle );
+            new_y = tmp_x * sin( angle ) + tmp_y * cos( angle );
             
-            equiv_col = new_x + FEATURE_SIZE_DIV_2 + size_diff;
-            equiv_row = new_y + FEATURE_SIZE_DIV_2 + size_diff;
+            equiv_col = new_x + FEATURE_SIZE_DIV_2;// + size_diff;
+            equiv_row = new_y + FEATURE_SIZE_DIV_2;// + size_diff;
             
             feat_vec.at(i).feature.at<float>( curr_row, curr_col ) = feat_vec.at(i).region_patch.at<float>( equiv_row, equiv_col);
          }

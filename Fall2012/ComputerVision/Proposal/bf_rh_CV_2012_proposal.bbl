@@ -1,0 +1,33 @@
+\begin{thebibliography}{1}\itemsep=-1pt
+
+\bibitem{Lafuente-Arroyo2010}
+S.~Lafuente-Arroyo, S.~Salcedo-Sanz, S.~Maldonado-Bascon, J.~Prtilla-Figueras,
+  and R.~Lopez-Sastre.
+\newblock A decision support system for the automatic management of keep-clear
+  signs based on support vector machines and geographic information systems.
+\newblock {\em Expert Syst. Appl}, 37:767--773.
+
+\bibitem{Mace1984}
+D.~Mace and L.~Pollack.
+\newblock Visual complexity and sign brightness in detection and recognition of
+  traffic signs.
+\newblock volume 800, pages 33--41. Transportation Research Board, 1983.
+
+\bibitem{Piccioli1994}
+G.~Piccioli, E.~De~Micheli, and M.~Campani.
+\newblock A robust method for road sign detection and recognition.
+\newblock In J.-O. Eklundh, editor, {\em Computer Vision — ECCV '94}, volume
+  800 of {\em Lecture Notes in Computer Science}, pages 493--500. Springer
+  Berlin / Heidelberg, 1994.
+
+\bibitem{Shojania2007}
+H.~Shojania.
+\newblock Real-time traffic sign detection, 2007.
+\newblock Private Publication.
+
+\bibitem{Song2008}
+H.~Song, S.~Bolouki, and A.~Yen.
+\newblock Detection of stop signs, 2008.
+\newblock Private Publication.
+
+\end{thebibliography}

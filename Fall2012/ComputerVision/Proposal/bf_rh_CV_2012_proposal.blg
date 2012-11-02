@@ -1,0 +1,53 @@
+This is BibTeX, Version 0.99d (TeX Live 2013/dev)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: bf_rh_CV_2012_proposal.aux
+The style file: ieee.bst
+Database file #1: egbib.bib
+"{" immediately follows a field name---line 103 of file egbib.bib
+ : note
+ :     {http://dl.acm.org/citation.cfm?id=1628324.1628558},
+I'm skipping whatever remains of this entry
+Warning--empty year in Lafuente-Arroyo2010
+Warning--empty booktitle in Mace1984
+You've used 5 entries,
+            2120 wiz_defined-function locations,
+            534 strings with 4651 characters,
+and the built_in function-call counts, 1876 in all, are:
+= -- 179
+> -- 88
+< -- 4
++ -- 36
+- -- 29
+* -- 125
+:= -- 300
+add.period$ -- 17
+call.type$ -- 5
+change.case$ -- 29
+chr.to.int$ -- 0
+cite$ -- 7
+duplicate$ -- 71
+empty$ -- 150
+format.name$ -- 29
+if$ -- 406
+int.to.chr$ -- 0
+int.to.str$ -- 5
+missing$ -- 3
+newline$ -- 28
+num.names$ -- 12
+pop$ -- 44
+preamble$ -- 1
+purify$ -- 24
+quote$ -- 0
+skip$ -- 55
+stack$ -- 0
+substring$ -- 100
+swap$ -- 23
+text.length$ -- 4
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 20
+warning$ -- 2
+while$ -- 17
+width$ -- 6
+write$ -- 57
+(There was 1 error message)

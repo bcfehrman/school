@@ -49,7 +49,7 @@ void mle_classifier::classify_data()
    float max_curr_likelihood = 0.0;
    int max_curr_likelihood_class = 0;
    
-   cout << endl << "*******CLASSIFIYING DATA**********" << endl << endl;
+   cout << endl << "***CLASSIFIYING DATA***" << endl << endl;
    
    //Classify the points
    for( int i = num_data_points / 2; i < num_data_points; i++ )
@@ -90,7 +90,7 @@ void mle_classifier::classify_data()
       //cout << "Decided current feature is class: " << min_dist_class << " and it is really class: " << data_set[ i ].class_num << endl;
    }
    
-   cout << endl << "Number right: " << num_right << " Number wrong: " << num_wrong << endl;
+   cout << "Number right: " << num_right << " Number wrong: " << num_wrong << endl;
 }
 
 void mle_classifier::determine_training_class_info()
@@ -99,7 +99,7 @@ void mle_classifier::determine_training_class_info()
    float curr_feat_val = 0.0;
    int curr_num_samples = 0;
    
-   cout << endl << "*******DETERMINING TRAINING CLASS INFORMATION**********" << endl << endl;
+   cout << endl << "***DETERMINING TRAINING CLASS INFORMATION***" << endl << endl;
    
    //Go through the first half of the given data and use that
    //for finding the means and variances for each class
@@ -156,7 +156,7 @@ int mle_classifier::read_file_data()
    float curr_feat;
    mle_data_point curr_data_point;
    
-   cout << endl << "*******READING FILE DATA*************" << endl << endl;
+   cout << endl << "***READING FILE DATA***" << endl << endl;
    
    //Attempt to open data file and exit with error if unable to
    fin.open( data_file_name.c_str() );
@@ -205,7 +205,9 @@ int mle_classifier::read_file_data()
 
 int mle_classifier::run()
 {
-   cout << endl << "*******RUNNING MLE CLASSIFIER*************" << endl << endl;
+   cout << endl << setw(50) <<"***RUNNING MLE CLASSIFIER***" << endl << endl;
+   cout << setw(80) << setfill('^') << " ";
+   cout << setfill(' ');
    
    //Read in file data and return error
    //if unsucceseful
@@ -216,7 +218,9 @@ int mle_classifier::run()
    
    classify_data();
    
-   cout << endl << "*******FINISHED MLE CLASSIFIER*************" << endl << endl;
+      cout << endl << setw(50) <<"***FINISHED MLE CLASSIFIER***" << endl << endl;
+   cout << setw(80) << setfill('-') << " ";
+   cout << setfill(' ') << endl;
    
    return 0;
 }

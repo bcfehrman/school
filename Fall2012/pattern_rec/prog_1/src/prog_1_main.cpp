@@ -3,6 +3,7 @@
 int main( int argc, char** argv)
 {
    string file_name;
+   knn_classifier* knn_classifier_obj;
    mahalanobis_classifier* mh_classifier_obj;
    mle_classifier* mle_classifier_obj;
    int num_classes = 3;
@@ -31,6 +32,12 @@ int main( int argc, char** argv)
    
    mle_classifier_obj = new mle_classifier( file_name, num_classes, num_class_features );
    mle_classifier_obj->run();
+   
+   knn_classifier_obj = new knn_classifier( file_name, num_classes, num_class_features, 1 );
+   knn_classifier_obj->run();
+   
+   knn_classifier_obj = new knn_classifier( file_name, num_classes, num_class_features, 3 );
+   knn_classifier_obj->run();
    
    return 0;
 }

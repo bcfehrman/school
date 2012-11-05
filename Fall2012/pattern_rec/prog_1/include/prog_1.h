@@ -5,6 +5,7 @@
 #include<stdlib.h>
 #include "mahalanobis_classifier.h"
 #include "mle_classifier.h"
+#include "knn_classifier.h"
 
 using namespace std;
 

@@ -8,8 +8,7 @@ LOCINCDIR = include
 LIBDIR = /usr/lib
 LOCLIBDIR = lib/
 BINDIR = bin
-EXEC = prog1
-LIBRARY = lib/libvision_functions
+EXEC = prog_1
 
 CFLAGS = -Wall -I$(INCDIR) -I$(LOCINCDIR) -g
 LFLAGS = -L$(LOCLIBDIR) -L$(LIBDIR) -lgsl -lm -lopencv_highgui -lopencv_core -lopencv_imgproc -lvision_functions

@@ -39,6 +39,12 @@ struct matches{
    int j_pos_1;
    int i_pos_2;
    int j_pos_2;
+   double difference;
+   bool filled;
+   Mat feat_1;
+   Mat feat_2;
+   
+   matches(): filled(false), difference(-1.0) {} 
 };
 
 void convolve_matrix_region( Mat& src_mat, const int start_row, const int end_row, const int start_col, const int end_col, Mat& dst_mat, Mat& kernel );
@@ -51,7 +57,7 @@ void create_norm_LOG_kernel( Mat& kern_dst, float standard_deviation);
 void draw_boxes( Mat& src, vector<Point> feat_box_points, CvScalar color, int thickness );
 void extract_features( vector<Mat>& src_mat, vector<feat_val>& feat_vec, Mat smooth_gauss[ NUM_SCALES ], const float start_STD, Mat& src_x_kern, Mat src_y_kern  );
 void find_orientations( vector<feat_val>& feat_vec, Mat& src_x_kern, Mat src_y_kern );
-void find_matches( vector<feat_val>& feat_vec1, vector<feat_val>& feat_vec2, vector<matches>& match_vec, const float threshold_val );
+void find_matches(const int rows, const int cols, vector<feat_val>& feat_vec_1, vector<feat_val>& feat_vec_2, vector<matches>& match_vec, const float threshold_val );
 void find_scales( vector<Mat>& src_mat, vector<feat_val>& feat_vec, Mat LOG_kernels[NUM_SCALES], const float start_variance );
 float scaler_convolve_matrix_region( Mat& src_mat, Mat& kernel, const int i_pos, const int j_pos);
 bool sort_feat_val( feat_val feat_val_1, feat_val feat_val_2 );

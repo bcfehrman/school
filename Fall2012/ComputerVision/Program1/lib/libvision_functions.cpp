@@ -340,18 +340,23 @@ void extract_features( vector<Mat>& src_mat, vector<feat_val>& feat_vec, Mat smo
    find_orientations( feat_vec, src_x_kern, src_y_kern );
 }
 
-void find_matches( vector<feat_val>& feat_vec_1, vector<feat_val>& feat_vec_2, vector<matches>& match_vec, const float threshold_val )
+void find_matches(const int rows, const int cols, vector<feat_val>& feat_vec_1, vector<feat_val>& feat_vec_2,
+                     vector<matches>& match_vec, const float threshold_val)
 {
    float difference = 0.0;
    float min_difference = 0.0;
+   float second_min_difference = -1;
    float temp = 0.0;
    matches curr_match;
+   int curr_match_i, curr_match_j;
    int match_j = 0;
+   vector<vector<matches> > potential_matches ( rows, vector<matches> ( cols ) );
    
    
    for( unsigned int i = 0; i < feat_vec_1.size(); i++ )
    {
       min_difference = 10000000000;
+      second_min_difference = -1;
       
       for( unsigned int j = 0; j < feat_vec_2.size(); j++ )
       {
@@ -368,19 +373,48 @@ void find_matches( vector<feat_val>& feat_vec_1, vector<feat_val>& feat_vec_2, v
          
          if(difference < min_difference )
          {
+            second_min_difference = min_difference;
             min_difference = difference;
             match_j = j;
          }
       }
       
-      if( min_difference < threshold_val )
+      //if(min_difference < threshold_val)
+      if( min_difference < threshold_val && abs(min_difference / second_min_difference) < 0.6)
       {
+         curr_match_i = feat_vec_2.at( match_j ).i_pos;
+         curr_match_j = feat_vec_2.at( match_j ).j_pos;
+         
          curr_match.i_pos_1 = feat_vec_1.at( i ).i_pos;
          curr_match.j_pos_1 = feat_vec_1.at( i ).j_pos;
-         curr_match.i_pos_2 = feat_vec_2.at( match_j ).i_pos;
-         curr_match.j_pos_2 = feat_vec_2.at( match_j ).j_pos;
-            
-         match_vec.push_back( curr_match );
+         curr_match.feat_1 = feat_vec_1.at( i ).feature;
+         curr_match.feat_2 = feat_vec_2.at( match_j ).feature;
+         
+         curr_match.i_pos_2 = curr_match_i;
+         curr_match.j_pos_2 = curr_match_j;
+         
+         curr_match.difference = min_difference;
+         
+         if( !potential_matches[curr_match_i][curr_match_j].filled )
+         {
+            potential_matches[curr_match_i][curr_match_j] = curr_match;
+            potential_matches[curr_match_i][curr_match_j].filled = true;
+         }
+         else if( curr_match.difference < potential_matches[curr_match_i][curr_match_j].difference )
+         {
+            potential_matches[curr_match_i][curr_match_j] = curr_match;
+         }
+      }
+   }
+   
+   for(int i = 0; i < rows; i++)
+   {
+      for(int j = 0; j < cols; j++)
+      {
+         if(potential_matches[i][j].filled)
+         {
+            match_vec.push_back(potential_matches[i][j]);
+         }
       }
    }
 }

@@ -30,9 +30,10 @@
 SDSM\&T\\
 501 E. Saint Joseph Street\\
 {\tt\small bcfehrman@gmai1.com}
-\maketitle
 \thispagestyle{empty}
 }
+
+\maketitle
 %%%%%%%%% ABSTRACT
 \begin{abstract}
 In this work I explored feature detection, extraction/description, and matching. The method implemented was a version of the Harris-Laplace method which offers scale, rotation, and illumination invariance when properly implemented. In addition to this, adaptive non-maximum suppression was also implemented and found to have better results than just picking the features with the largest response. A special pruning algorithm has also been implemented during the matching stage which will not allow for multiple matches to the same point and instead will pick the best pair of matches. This pruning along with using the ratio test (instead of just the SSD) was found to get rid of a large amount of the false matches that were present before implementing these techniques. All bench mark images were tested using the same tuning variable values such as the smoothing/derivation scales and the thresholds. Lastly, the algorithm was extended to work on live video feed and is able to track features between successive frames quite well.
@@ -65,42 +66,42 @@ The program proved to work quite well. It fails biggest on graffiti, as would be
 
 \begin{figure*}[ht!]
 \centering
-\includegraphics[width=1\textwidth]{img/bikes1_4_ratio.jpg}
+\includegraphics[width=1\textwidth]{img/bikes1_4_ratio.eps}
 \caption{Bikes images 1 and 4}
 \label{fig:bikes}
 \end{figure*}
 
 \begin{figure*}[ht!]
 \centering
-\includegraphics[width=1\textwidth]{img/leuven1_3_ratio.jpg}
+\includegraphics[width=1\textwidth]{img/leuven1_3_ratio.eps}
 \caption{Leuven images 1 and 3}
 \label{fig:leuven}
 \end{figure*}
 
 \begin{figure*}[ht!]
 \centering
-\includegraphics[width=1\textwidth]{img/graf1_2_ratio.jpg}
+\includegraphics[width=1\textwidth]{img/graf1_2_ratio.eps}
 \caption{Graf images 1 and 2}
 \label{fig:graf}
 \end{figure*}
 
 \begin{figure*}[ht!]
 \centering
-\includegraphics[width=1\textwidth]{img/wall1_3_ratio.jpg}
+\includegraphics[width=1\textwidth]{img/wall1_3_ratio.eps}
 \caption{Wall images 1 and 3}
 \label{fig:wall}
 \end{figure*}
 
 \begin{figure*}[ht!]
 \centering
-\includegraphics[width=1\textwidth]{img/Yosemite1_2_ratio.jpg}
+\includegraphics[width=1\textwidth]{img/Yosemite1_2_ratio.eps}
 \caption{Yosemite images 1 and 2}
 \label{fig:yosemite}
 \end{figure*}
 
 \begin{figure*}[ht!]
 \centering
-\includegraphics[width=1\textwidth]{img/Yosemite1_features.jpg}
+\includegraphics[width=1\textwidth]{img/Yosemite1_features.eps}
 \caption{Yosemite features}
 \label{fig:yosemite_feat}
 \end{figure*}

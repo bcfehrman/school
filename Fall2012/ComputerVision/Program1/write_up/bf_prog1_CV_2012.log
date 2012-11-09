@@ -1,6 +1,7 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=pdflatex 2012.9.28)  2 NOV 2012 22:59
+This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=latex 2012.9.28)  5 NOV 2012 14:44
 entering extended mode
  restricted \write18 enabled.
+ Source specials enabled.
  %&-line parsing enabled.
 **bf_prog1_CV_2012.tex
 (./bf_prog1_CV_2012.tex
@@ -79,18 +80,10 @@ Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
 File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
 )
-Package graphics Info: Driver file: pdftex.def on input line 91.
+Package graphics Info: Driver file: dvips.def on input line 91.
 
-(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
-File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
-Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
-Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
-)
-\Gread@gobject=\count92
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/dvips.def
+File: dvips.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 ))
 \Gin@req@height=\dimen106
 \Gin@req@width=\dimen107
@@ -118,13 +111,13 @@ Package: amsbsy 1999/11/29 v1.2d
 (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
 Package: amsopn 1999/12/14 v2.01 operator names
 )
-\inf@bad=\count93
+\inf@bad=\count92
 LaTeX Info: Redefining \frac on input line 211.
-\uproot@=\count94
-\leftroot@=\count95
+\uproot@=\count93
+\leftroot@=\count94
 LaTeX Info: Redefining \overline on input line 307.
-\classnum@=\count96
-\DOTSCASE@=\count97
+\classnum@=\count95
+\DOTSCASE@=\count96
 LaTeX Info: Redefining \ldots on input line 379.
 LaTeX Info: Redefining \dots on input line 382.
 LaTeX Info: Redefining \cdots on input line 467.
@@ -133,15 +126,15 @@ LaTeX Info: Redefining \cdots on input line 467.
 \big@size=\dimen112
 LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
-\macc@depth=\count98
-\c@MaxMatrixCols=\count99
+\macc@depth=\count97
+\c@MaxMatrixCols=\count98
 \dotsspace@=\muskip10
-\c@parentequation=\count100
-\dspbrk@lvl=\count101
+\c@parentequation=\count99
+\dspbrk@lvl=\count100
 \tag@help=\toks16
-\row@=\count102
-\column@=\count103
-\maxfields@=\count104
+\row@=\count101
+\column@=\count102
+\maxfields@=\count103
 \andhelp@=\toks17
 \eqnshift@=\dimen113
 \alignsep@=\dimen114
@@ -193,131 +186,53 @@ Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
 (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
 File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
 )
-Package color Info: Driver file: pdftex.def on input line 130.
-)
-(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
-[Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count105
-\scratchdimen=\dimen119
-\scratchbox=\box30
-\nofMPsegments=\count106
-\nofMParguments=\count107
-\everyMPshowfont=\toks20
-\MPscratchCnt=\count108
-\MPscratchDim=\dimen120
-\MPnumerator=\count109
-\makeMPintoPDFobject=\count110
-\everyMPtoPDFconversion=\toks21
-) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
-Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
-)
+Package color Info: Driver file: dvips.def on input line 130.
 
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifluatex.sty
-Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
-)
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in PDF mode is detected.
-)
-Package pdftexcmds Info: LuaTeX not detected.
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
-)
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
-Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
-
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
-Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
-Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/dvipsnam.def
+File: dvipsnam.def 1999/02/16 v3.0i Driver-dependant file (DPC,SPQR)
 ))
-(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
-Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 36.
+LaTeX Font Info:    Try loading font information for U+msa on input line 36.
 
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
-Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/etexcmds.sty
-Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
-Package etexcmds Info: Could not find \expanded.
-(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
-(etexcmds)             that some package has redefined \expanded.
-(etexcmds)             In the latter case, load this package earlier.
-)))
-Package grfext Info: Graphics extension search list:
-(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 452.
-
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
-e
-))
-LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 37.
-
-Underfull \hbox (badness 2547) in paragraph at lines 38--39
-[]\OT1/ptm/m/it/10 In this work I ex-plored fea-ture de-tec-tion, ex-trac-
- []
-
-LaTeX Font Info:    Try loading font information for U+msa on input line 51.
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 51.
+LaTeX Font Info:    Try loading font information for U+msb on input line 36.
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
-Underfull \vbox (badness 2245) has occurred while \output is active []
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 36.
 
- [1
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ot1pcr.fd
+File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
+)
+LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 38.
 
-{/usr/share/texlive/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-<img/bikes1_4_ratio.jpg, id=12, 2007.5pt x 702.625pt>
-File: img/bikes1_4_ratio.jpg Graphic file (type jpg)
+Underfull \hbox (badness 2547) in paragraph at lines 39--40
+[][]\OT1/ptm/m/it/10 In this work I ex-plored fea-ture de-tec-tion, ex-trac-
+ []
 
-<use img/bikes1_4_ratio.jpg>
-Package pdftex.def Info: img/bikes1_4_ratio.jpg used on input line 68.
-(pdftex.def)             Requested size: 496.85625pt x 173.89754pt.
+[1
 
-<img/leuven1_3_ratio.jpg, id=13, 1806.75pt x 602.25pt>
-File: img/leuven1_3_ratio.jpg Graphic file (type jpg)
 
-<use img/leuven1_3_ratio.jpg>
-Package pdftex.def Info: img/leuven1_3_ratio.jpg used on input line 75.
-(pdftex.def)             Requested size: 496.85625pt x 165.61465pt.
+]
+File: img/bikes1_4_ratio.eps Graphic file (type eps)
+ <img/bikes1_4_ratio.eps>
+File: img/leuven1_3_ratio.eps Graphic file (type eps)
+ <img/leuven1_3_ratio.eps>
+File: img/graf1_2_ratio.eps Graphic file (type eps)
+ <img/graf1_2_ratio.eps>
+File: img/wall1_3_ratio.eps Graphic file (type eps)
 
-<img/graf1_2_ratio.jpg, id=14, 1606.0pt x 642.4pt>
-File: img/graf1_2_ratio.jpg Graphic file (type jpg)
- <use img/graf1_2_ratio.jpg>
-Package pdftex.def Info: img/graf1_2_ratio.jpg used on input line 82.
-(pdftex.def)             Requested size: 496.85625pt x 198.74005pt.
+<img/wall1_3_ratio.eps>
+File: img/Yosemite1_2_ratio.eps Graphic file (type eps)
+ <img/Yosemite1_2_ratio.eps>
+File: img/Yosemite1_features.eps Graphic file (type eps)
 
-<img/wall1_3_ratio.jpg, id=15, 2007.5pt x 702.625pt>
-File: img/wall1_3_ratio.jpg Graphic file (type jpg)
-
-<use img/wall1_3_ratio.jpg>
-Package pdftex.def Info: img/wall1_3_ratio.jpg used on input line 89.
-(pdftex.def)             Requested size: 496.85625pt x 173.89754pt.
-
-<img/Yosemite1_2_ratio.jpg, id=16, 1284.8pt x 481.8pt>
-File: img/Yosemite1_2_ratio.jpg Graphic file (type jpg)
-
-<use img/Yosemite1_2_ratio.jpg>
-Package pdftex.def Info: img/Yosemite1_2_ratio.jpg used on input line 96.
-(pdftex.def)             Requested size: 496.85625pt x 186.32063pt.
-
-<img/Yosemite1_features.jpg, id=17, 642.4pt x 481.8pt>
-File: img/Yosemite1_features.jpg Graphic file (type jpg)
-
-<use img/Yosemite1_features.jpg>
-Package pdftex.def Info: img/Yosemite1_features.jpg used on input line 103.
-(pdftex.def)             Requested size: 496.85625pt x 372.64862pt.
-
+<img/Yosemite1_features.eps>
 No file bf_prog1_CV_2012.bbl.
 [2
 
@@ -335,29 +250,15 @@ LaTeX Warning: Text page 3 contains only floats.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [3 <./img/bikes1_4_ratio.jpg> <./img/leuven1_3_ratio.jpg> <./img/graf1_2_ratio
-.jpg>]
-[4 <./img/wall1_3_ratio.jpg> <./img/Yosemite1_2_ratio.jpg>] [5 <./img/Yosemite1
-_features.jpg>] (./bf_prog1_CV_2012.aux) ) 
+ [3]
+[4] [5] (./bf_prog1_CV_2012.aux) ) 
 Here is how much of TeX's memory you used:
- 2678 strings out of 493499
- 35828 string characters out of 3143835
- 97827 words of memory out of 3000000
- 5926 multiletter control sequences out of 15000+200000
- 13524 words of font info for 33 fonts, out of 3000000 for 9000
+ 1915 strings out of 493500
+ 23731 string characters out of 3143858
+ 76648 words of memory out of 3000000
+ 5197 multiletter control sequences out of 15000+200000
+ 15228 words of font info for 51 fonts, out of 3000000 for 9000
  953 hyphenation exceptions out of 8191
- 38i,6n,24p,1118b,234s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texlive/texmf-dist/fonts/
-enc/dvips/base/8r.enc}</usr/share/texlive/texmf-dist/fonts/type1/public/amsfont
-s/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mmi7.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dis
-t/fonts/type1/urw/times/utmri8a.pfb>
-Output written on bf_prog1_CV_2012.pdf (5 pages, 2849008 bytes).
-PDF statistics:
- 51 PDF objects out of 1000 (max. 8388607)
- 31 compressed objects within 1 object stream
- 0 named destinations out of 1000 (max. 500000)
- 31 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 32i,9n,24p,1063b,314s stack positions out of 5000i,500n,10000p,200000b,50000s
 
+Output written on bf_prog1_CV_2012.dvi (5 pages, 11168 bytes).

@@ -1,0 +1,23 @@
+///////////////////////
+//Author: Brian Fehrman
+//Class: Fall 2012 Pattern Recognition
+//Teacher: Dr. Corwin
+//Program: Program 1
+//Due Date: 11/9/2012 midnight
+//
+//This program will take a data file with data points on
+//each line which should be whitespace seperated values
+//that are in the form "feat_1_val feat_2_val ... feat_n_val class_num".
+//Optional command line arguments are number of classes and number
+//of features per class. This program will run mahalanobis classfier,
+//mle classifier, and knn classifier with k=1 and then k=3. The summary
+//of each classifier are displayed in the console.
+//
+//The program is very close to be able to handle an arbitrary number
+//of features for each class but is not quite there and currently
+//handles 2. MLE is really the only one that will not work for
+//n features -- mahalanobis and knn classifiers should work.
+//This just has to do with the determinant term used in the MLE.
+/////////////////////
+
+

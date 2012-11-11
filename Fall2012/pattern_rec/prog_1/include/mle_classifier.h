@@ -16,7 +16,8 @@ using namespace std;
 
 /****** Structs ******/
 //Holds the covariance matrix, determinant term (used in MLE equation),
-//class maeans, number of samples in the class, and probability of the class
+//class maeans, number of samples in the class, and probability of the class,
+//and also the number classified right and wrong for each class
 struct mle_class_data
 {
    vector< vector<float> > covariance_matrix;
@@ -24,6 +25,8 @@ struct mle_class_data
    vector<float> means;
    int num_samples;
    float probability;
+   int num_right;
+   int num_wrong;
 };
 
 //Holds the features and class number for each MLE data point

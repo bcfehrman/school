@@ -33,6 +33,8 @@ mle_classifier::mle_classifier( string data_file_name, int num_classes, int num_
    for( int i = 0; i < num_classes; i++ )
    {
       classifier_data[ i ].num_samples = 0;
+      classifier_data[ i ].num_right = 0;
+      classifier_data[ i ].num_wrong = 0;
 
       classifier_data[ i ].means.resize( num_class_features );
 
@@ -113,17 +115,24 @@ void mle_classifier::classify_data()
       if( data_set[ i ].class_num == max_curr_likelihood_class )
       {
          num_right++;
+         classifier_data[ data_set[ i ].class_num ].num_right++;
       }
       else
       {
          num_wrong++;
+         classifier_data[ data_set[ i ].class_num ].num_wrong++;
       }
       
       //Left in for debugging and examination purposes. Can uncomment if needed
       //cout << "Decided current feature is class: " << min_dist_class << " and it is really class: " << data_set[ i ].class_num << endl;
    }
    
-   cout << "Number right: " << num_right << " Number wrong: " << num_wrong << endl;
+   for( int i = 0; i < num_classes; i++ )
+   {
+      cout << "Class : " << i << " had " << classifier_data[ i ].num_right << " right and " << classifier_data[ i ].num_wrong << " wrong." << endl;
+   }
+   cout << endl;
+   cout << "Total number right: " << num_right << " Total Number wrong: " << num_wrong << endl;
 }
 
 ///////////////////////////
@@ -196,6 +205,9 @@ void mle_classifier::determine_training_class_info()
          }
       }
       
+      cout << endl;
+      
+      //Used in determining MLE
       classifier_data[ i ].determinant_term = log( sqrt( classifier_data[ i ].determinant_term ) );
       
    }

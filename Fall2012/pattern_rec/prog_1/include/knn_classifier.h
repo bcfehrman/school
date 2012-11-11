@@ -16,6 +16,16 @@
 using namespace std;
 
 /****** Structs ******/
+
+//Holds the number classified right and wrong for each class
+//and the total number of samples for the class
+struct knn_class_data
+{
+   int num_right;
+   int num_wrong;
+   int num_samples;
+};
+
 //Holds features and class number for each knn data point
 struct knn_data_point
 {
@@ -37,6 +47,7 @@ class knn_classifier
    
       /*** Private Members ***/
       string data_file_name;
+      vector<knn_class_data> classifier_data;
       vector<knn_data_point> data_set;
       int num_class_features;
       int num_classes;

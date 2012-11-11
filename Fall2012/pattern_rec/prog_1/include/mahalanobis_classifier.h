@@ -16,12 +16,14 @@ using namespace std;
 
 /****** Structs ******/
 //Holds the covariance matrix, means, and number of samples
-//for each class
+////and also the number classified right and wrong for each class
 struct mahalanobis_class_data
 {
    vector< vector<float> > covariance_matrix;
    vector<float> means;
    int num_samples;
+   int num_right;
+   int num_wrong;
 };
 
 //Holds the features and class number for each mahalanobis data point

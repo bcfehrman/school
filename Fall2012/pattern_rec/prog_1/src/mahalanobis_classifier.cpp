@@ -33,6 +33,8 @@ mahalanobis_classifier::mahalanobis_classifier( string data_file_name, int num_c
    for( int i = 0; i < num_classes; i++ )
    {
       classifier_data[ i ].num_samples = 0;
+      classifier_data[ i ].num_right = 0;
+      classifier_data[ i ].num_wrong = 0;
 
       classifier_data[ i ].means.resize( num_class_features );
 
@@ -108,17 +110,24 @@ void mahalanobis_classifier::classify_data()
       if( data_set[ i ].class_num == min_dist_class )
       {
          num_right++;
+         classifier_data[ data_set[ i ].class_num ].num_right++;
       }
       else
       {
          num_wrong++;
+         classifier_data[ data_set[ i ].class_num ].num_wrong++;
       }
       
       //Left in for debugging and algorithm examination purposes. Can uncomment if needed
       //cout << "Decided current feature is class: " << min_dist_class << " and it is really class: " << data_set[ i ].class_num << endl;
    }
    
-   cout << "Number right: " << num_right << " Number wrong: " << num_wrong << endl;
+   for( int i = 0; i < num_classes; i++ )
+   {
+      cout << "Class : " << i << " had " << classifier_data[ i ].num_right << " right and " << classifier_data[ i ].num_wrong << " wrong." << endl;
+   }
+   cout << endl;
+   cout << "Total number right: " << num_right << " Total Number wrong: " << num_wrong << endl;
 }
 
 
@@ -184,6 +193,8 @@ void mahalanobis_classifier::determine_training_class_info()
             cout << "No data for class: " << i << endl;
          }
       }
+      
+      cout << endl;
    }
 }
 

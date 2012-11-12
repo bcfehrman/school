@@ -10,7 +10,7 @@ LIBDIR64 = /usr/lib64
 BINDIR = bin
 EXEC = prog_2
 
-CFLAGS = -Wall -I$(INCDIR) -I$(LOCINCDIR) -g
+CFLAGS = -Wall -fpermissive -g -I$(INCDIR) -I$(LOCINCDIR)
 LFLAGS = -L$(LIBDIR) -L$(LIBDIR64) -lgsl -lm -lopencv_highgui -lopencv_core -lopencv_imgproc -lopencv_features2d
 
 

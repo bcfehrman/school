@@ -30,7 +30,7 @@ int main( int argc, char *argv[])
    image_2 = imread("img/mine/buzzard2.jpg");
    int fontFace = FONT_HERSHEY_DUPLEX;
    Scalar colors[4] = {Scalar(0,220,220), Scalar(220,0,220), Scalar(220,220,0), Scalar(50,220,50) }; 
-   
+   stitcher *stitcher_obj = new stitcher( "img/mine/buzzard1.jpg", "img/mine/buzzard2.jpg", 8);
    
    /*
    //Perform the SVD that gives the U, W, Vt (or U, S, Vt) except W is just a vector of the singular values

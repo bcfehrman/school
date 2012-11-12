@@ -3,7 +3,8 @@
 // Include file for Computer Vision Fall 2012 program 2
 ///////////////////
 
-#include "homography.h"
+#include "stitcher.h"
+#include "manual_stitch.h"
 #include <ctime>
 #include <cmath>
 #include <opencv/cv.h>

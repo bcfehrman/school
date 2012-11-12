@@ -4,4 +4,5 @@
 ////////////////////////
 
 #include "prog_2_main.cpp"
-#include "homography.cpp"
+#include "manual_stitch.cpp"
+#include "stitcher.cpp"

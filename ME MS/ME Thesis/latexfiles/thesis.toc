@@ -35,3 +35,4 @@
 \contentsline {chapter}{Code Appendix}{90}
 \contentsline {section}{Crack Detection Matlab Plot Code}{90}
 \contentsline {section}{Time Reversal Results Matlab Plot Code}{93}
+\contentsline {chapter}{Vita}{111}

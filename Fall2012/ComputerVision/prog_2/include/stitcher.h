@@ -24,6 +24,15 @@ using namespace cv;
 
 #define NUM_POINTS 8
 
+struct stitcher_point
+{
+  double row_pos;
+  double col_pos;
+  
+  stitcher_point( double cp=0.0, double rp=0.0 ) : col_pos( cp ), row_pos( rp ){}
+   
+};
+
 class stitcher
 {
    public:
@@ -37,10 +46,11 @@ class stitcher
       string file_name_1, file_name_2;
       Mat image_1, image_1_highlight;
       Mat image_2, image_2_highlight;
-      float alpha_1, mu_x_1, mu_y_1;
-      float alpha_2, mu_x_2, mu_y_2;
-      vector<Point> normalized_points, raw_points;
+      double alpha_1, mu_x_1, mu_y_1;
+      double alpha_2, mu_x_2, mu_y_2;
+      vector<stitcher_point> normalized_points, raw_points;
       unsigned int num_points;
+      double scale_p_val, scale_p_prime_val;
       
       //Private methods
       void compute_H( );

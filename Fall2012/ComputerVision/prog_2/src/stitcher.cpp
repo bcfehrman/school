@@ -31,14 +31,14 @@ stitcher::stitcher( string file_name_1, string file_name_2, const unsigned int n
    normalized_points.resize( num_points );
    raw_points.resize( num_points );
    
-   raw_points[0] = stitcher_point(1.0, 1.0);
-   raw_points[1] = stitcher_point(1.0, 2.0);
-   raw_points[2] = stitcher_point(2.0, 2.0);
-   raw_points[3] = stitcher_point(2.0, 1.0);
-   raw_points[4] = stitcher_point(5.0, 5.0);
-   raw_points[5] = stitcher_point(10.0, 10.0);
-   raw_points[6] = stitcher_point(20.0, 10.0);
-   raw_points[7] = stitcher_point(20.0, 5.0);
+   raw_points[0] = Vec3d(3.0, 1.0, 1.0);
+   raw_points[1] = Vec3d(1.0, 2.0, 1.0);
+   raw_points[2] = Vec3d(2.0, 2.0, 1.0);
+   raw_points[3] = Vec3d(2.0, 1.0, 1.0);
+   raw_points[4] = Vec3d(5.0, 5.0, 1.0);
+   raw_points[5] = Vec3d(10.0, 10.0, 1.0);
+   raw_points[6] = Vec3d(20.0, 10.0, 1.0);
+   raw_points[7] = Vec3d(20.0, 9.0, 1.0);
    
    //Setup matrices for homography
    A_matrix.create( num_points, 9, CV_64FC1 );
@@ -59,12 +59,14 @@ stitcher::stitcher( string file_name_1, string file_name_2, const unsigned int n
    //Normalize points to make algorithm numerically stable
    normalize_points();
    compute_H();
-   //unnormalize_points(); 
+   unnormalize_points(); 
    
    for(int i = 0; i < num_points / 2; i++ )
    {
-      cout << (raw_points[i].col_pos * H_matrix.at<double>(0,0)) + raw_points[i].row_pos * H_matrix.at<double>(0,1) + H_matrix.at<double>(0,2) << " " <<
-               raw_points[i].col_pos * H_matrix.at<double>(1,0)  + raw_points[i].row_pos * H_matrix.at<double>(1,1) + H_matrix.at<double>(1,2) << endl;
+      double temp = raw_points[i][0] * H_matrix.at<double>(2,0)  + raw_points[i][1] * H_matrix.at<double>(2,1) + H_matrix.at<double>(2,2);
+      
+      cout << (raw_points[i][0] * H_matrix.at<double>(0,0) + raw_points[i][1] * H_matrix.at<double>(0,1) + H_matrix.at<double>(0,2))/temp << " " <<
+               (raw_points[i][0] * H_matrix.at<double>(1,0)  + raw_points[i][1] * H_matrix.at<double>(1,1) + H_matrix.at<double>(1,2))/temp << endl;
    }
    
 }
@@ -97,35 +99,33 @@ void stitcher::compute_H()
    //(ith + num_points_div_2) points in normalized points are corresponding pairs. 
    for( unsigned int curr_pair_points = 0; curr_pair_points < num_points_div_2; curr_pair_points ++ )
    {
-      curr_x_prime = normalized_points[ curr_pair_points + num_points_div_2].col_pos;
-      curr_y_prime = normalized_points[ curr_pair_points + num_points_div_2].row_pos;
+      curr_x_prime = normalized_points[ curr_pair_points + num_points_div_2][0];
+      curr_y_prime = normalized_points[ curr_pair_points + num_points_div_2][1];
       
       A_matrix.at<double>( curr_pair_points * 2, 0 ) = 0;
       A_matrix.at<double>( curr_pair_points * 2, 1 ) = 0;
       A_matrix.at<double>( curr_pair_points * 2, 2 ) = 0;
       
-      A_matrix.at<double>( curr_pair_points * 2, 3 ) = -normalized_points[ curr_pair_points ].col_pos;
-      A_matrix.at<double>( curr_pair_points * 2, 4 ) = -normalized_points[ curr_pair_points ].row_pos;
+      A_matrix.at<double>( curr_pair_points * 2, 3 ) = -normalized_points[ curr_pair_points ][0];
+      A_matrix.at<double>( curr_pair_points * 2, 4 ) = -normalized_points[ curr_pair_points ][1];
       A_matrix.at<double>( curr_pair_points * 2, 5 ) = -1;
       
-      A_matrix.at<double>( curr_pair_points * 2, 6 ) =  normalized_points[ curr_pair_points ].col_pos * curr_y_prime;
-      A_matrix.at<double>( curr_pair_points * 2, 7 ) =  normalized_points[ curr_pair_points ].row_pos * curr_y_prime;
+      A_matrix.at<double>( curr_pair_points * 2, 6 ) =  normalized_points[ curr_pair_points ][0] * curr_y_prime;
+      A_matrix.at<double>( curr_pair_points * 2, 7 ) =  normalized_points[ curr_pair_points ][1] * curr_y_prime;
       A_matrix.at<double>( curr_pair_points * 2, 8 ) =  curr_y_prime;   
       
-      A_matrix.at<double>( curr_pair_points * 2 + 1, 0 ) = normalized_points[ curr_pair_points ].col_pos;
-      A_matrix.at<double>( curr_pair_points * 2 + 1, 1 ) = normalized_points[ curr_pair_points ].row_pos;
+      A_matrix.at<double>( curr_pair_points * 2 + 1, 0 ) = normalized_points[ curr_pair_points ][0];
+      A_matrix.at<double>( curr_pair_points * 2 + 1, 1 ) = normalized_points[ curr_pair_points ][1];
       A_matrix.at<double>( curr_pair_points * 2 + 1, 2 ) = 1;
       
       A_matrix.at<double>( curr_pair_points * 2 + 1, 3 ) = 0;
       A_matrix.at<double>( curr_pair_points * 2 + 1, 4 ) = 0;
       A_matrix.at<double>( curr_pair_points * 2 + 1, 5 ) = 0;
       
-      A_matrix.at<double>( curr_pair_points * 2 + 1, 6 ) =  normalized_points[ curr_pair_points ].col_pos * -curr_x_prime;
-      A_matrix.at<double>( curr_pair_points * 2 + 1, 7 ) =  normalized_points[ curr_pair_points ].row_pos * -curr_x_prime;
+      A_matrix.at<double>( curr_pair_points * 2 + 1, 6 ) =  normalized_points[ curr_pair_points ][0] * -curr_x_prime;
+      A_matrix.at<double>( curr_pair_points * 2 + 1, 7 ) =  normalized_points[ curr_pair_points ][1] * -curr_x_prime;
       A_matrix.at<double>( curr_pair_points * 2 + 1, 8 ) =  -curr_x_prime;                                                
    }
-   
-   cout << A_matrix << endl;
    
    //Perform the SVD on the A_matrix
    svd(A_matrix, SVD::FULL_UV);
@@ -164,10 +164,10 @@ void stitcher::find_T_matrix_coefficients( )
    //Find the x and y mean for the raw points
    for( unsigned int curr_point = 0; curr_point < num_points_div_2; curr_point++ )
    {
-      mu_x_1 += raw_points[ curr_point ].col_pos;
-      mu_y_1 += raw_points[ curr_point ].row_pos;
-      mu_x_2 += raw_points[ curr_point + num_points_div_2 ].col_pos;
-      mu_y_2 += raw_points[ curr_point + num_points_div_2 ].row_pos;
+      mu_x_1 += raw_points[ curr_point ][0];
+      mu_y_1 += raw_points[ curr_point ][1];
+      mu_x_2 += raw_points[ curr_point + num_points_div_2 ][0];
+      mu_y_2 += raw_points[ curr_point + num_points_div_2 ][1];
    }
    
    mu_x_1 /= (double) num_points_div_2;
@@ -179,11 +179,11 @@ void stitcher::find_T_matrix_coefficients( )
    //average distance of sqrt(2.0) from the origin
    for( unsigned int curr_point = 0; curr_point < num_points_div_2; curr_point++ )
    {
-      alpha_1 += sqrt( ( raw_points[ curr_point ].col_pos - mu_x_1 ) * ( raw_points[ curr_point ].col_pos - mu_x_1 ) +
-                     ( raw_points[ curr_point ].row_pos - mu_y_1 ) * ( raw_points[ curr_point ].row_pos - mu_y_1 ) );
+      alpha_1 += sqrt( ( raw_points[ curr_point ][0] - mu_x_1 ) * ( raw_points[ curr_point ][0] - mu_x_1 ) +
+                     ( raw_points[ curr_point ][1] - mu_y_1 ) * ( raw_points[ curr_point ][1] - mu_y_1 ) );
                      
-      alpha_2 += sqrt( ( raw_points[ curr_point + num_points_div_2 ].col_pos - mu_x_2 ) * ( raw_points[ curr_point + num_points_div_2 ].col_pos - mu_x_2 ) +
-                     ( raw_points[ curr_point + num_points_div_2 ].row_pos - mu_y_2 ) * ( raw_points[ curr_point + num_points_div_2 ].row_pos - mu_y_2 ) );
+      alpha_2 += sqrt( ( raw_points[ curr_point + num_points_div_2 ][0] - mu_x_2 ) * ( raw_points[ curr_point + num_points_div_2 ][0] - mu_x_2 ) +
+                     ( raw_points[ curr_point + num_points_div_2 ][1] - mu_y_2 ) * ( raw_points[ curr_point + num_points_div_2 ][1] - mu_y_2 ) );
    }
    
    alpha_1 = (num_points * sqrt( 2.0 ) ) / alpha_1;
@@ -206,49 +206,17 @@ void stitcher::normalize_points()
    //Normalize the raw points
    for( unsigned int curr_point = 0; curr_point < num_points_div_2; curr_point++ )
    {
-   /*
-   normalized_points[ curr_point ].col_pos = raw_points[ curr_point ].col_pos - mu_x_1;
-   normalized_points[ curr_point ].row_pos = raw_points[ curr_point ].row_pos - mu_y_1;
-   normalized_points[ curr_point + num_points_div_2 ].col_pos =  raw_points[ curr_point + num_points_div_2 ].col_pos - mu_x_2;
-   normalized_points[ curr_point + num_points_div_2 ].row_pos = raw_points[ curr_point + num_points_div_2 ].row_pos - mu_y_2;
    
-   if(abs(normalized_points[ curr_point ].col_pos) > max_p_val )
-   {
-      max_p_val = normalized_points[ curr_point ].col_pos;
+      normalized_points[ curr_point ][0] = raw_points[ curr_point ][0] - mu_x_1;
+      normalized_points[ curr_point ][0] *= alpha_1;
+      normalized_points[ curr_point ][1] = raw_points[ curr_point ][1] - mu_y_1;
+      normalized_points[ curr_point ][1] *= alpha_1;
+      
+      normalized_points[ curr_point + num_points_div_2 ][0] =  raw_points[ curr_point + num_points_div_2 ][0] - mu_x_2;
+      normalized_points[ curr_point + num_points_div_2 ][0] *= alpha_2;
+      normalized_points[ curr_point + num_points_div_2 ][1] = raw_points[ curr_point + num_points_div_2 ][1] - mu_y_2;
+      normalized_points[ curr_point + num_points_div_2 ][1] *= alpha_2;
    }
-   if(abs(normalized_points[ curr_point ].row_pos) > max_p_val )
-   {
-      max_p_val = normalized_points[ curr_point ].row_pos;
-   }
-   
-   if(abs(normalized_points[ curr_point + num_points_div_2 ].col_pos) > max_p_prime_val )
-   {
-      max_p_prime_val = normalized_points[ curr_point + num_points_div_2 ].col_pos;
-   }
-   if(abs(normalized_points[ curr_point + num_points_div_2 ].row_pos) > max_p_prime_val )
-   {
-      max_p_prime_val = normalized_points[ curr_point + num_points_div_2 ].row_pos;
-   }
-   */
-   
-   normalized_points[ curr_point ] = raw_points[ curr_point ];
-   normalized_points[ curr_point + num_points_div_2  ] = raw_points[ curr_point + num_points_div_2  ];
-   
-   }
-   
-   /*
-   scale_p_val = max_p_val;
-   cout << "scale " << scale_p_val << endl;
-   scale_p_prime_val = max_p_prime_val;
-   
-   for( unsigned int curr_point = 0; curr_point < num_points_div_2; curr_point++ )
-   {
-      normalized_points[ curr_point ].col_pos /= scale_p_val;
-      normalized_points[ curr_point ].row_pos /= scale_p_val;
-      normalized_points[ curr_point + num_points_div_2 ].col_pos /= scale_p_prime_val;
-      normalized_points[ curr_point + num_points_div_2 ].row_pos /= scale_p_prime_val;
-   }
-   * */
 }
 
 ////////////////////
@@ -319,47 +287,29 @@ void stitcher::unnormalize_points()
 {
    unsigned int num_points_div_2 = num_points / 2;
    
-   /*
-   for( unsigned int curr_point = 0; curr_point < num_points_div_2; curr_point++ )
-   {
-      normalized_points[ curr_point ].col_pos *= scale_val;
-      normalized_points[ curr_point ].col_pos += mu_x_1;
-       
-      normalized_points[ curr_point ].row_pos *= scale_val;
-      normalized_points[ curr_point ].row_pos += mu_y_1;
-      
-      normalized_points[ curr_point + num_points_div_2 ].col_pos *= scale_val;
-      normalized_points[ curr_point + num_points_div_2 ].col_pos += mu_x_2;
-      
-      normalized_points[ curr_point + num_points_div_2 ].row_pos *= scale_val;
-      normalized_points[ curr_point + num_points_div_2 ].row_pos += mu_y_2;
-   }
-   * */
-   
-   
-   Mat T_matrix( 3, 3, CV_32F );
-   Mat T_prime_matrix( 3, 3, CV_32F );
+   Mat T_matrix( 3, 3, CV_64FC1 );
+   Mat T_prime_matrix( 3, 3, CV_64FC1 );
 
-   T_matrix.at<double>( 0, 0 ) = scale_p_val;
+   T_matrix.at<double>( 0, 0 ) = alpha_1;
    T_matrix.at<double>( 0, 1 ) = 0;
-   T_matrix.at<double>( 0, 2 ) = -scale_p_val * mu_x_1;
+   T_matrix.at<double>( 0, 2 ) = -alpha_1 * mu_x_1;
    T_matrix.at<double>( 1, 0 ) = 0;
-   T_matrix.at<double>( 1, 1 ) = scale_p_val;
-   T_matrix.at<double>( 1, 2 ) = -scale_p_val * mu_y_1;
+   T_matrix.at<double>( 1, 1 ) = alpha_1;
+   T_matrix.at<double>( 1, 2 ) = -alpha_1 * mu_y_1;
    T_matrix.at<double>( 2, 0 ) = 0;
    T_matrix.at<double>( 2, 1 ) = 0;
    T_matrix.at<double>( 2, 2 ) = 1;
    
-   T_prime_matrix.at<double>( 0, 0 ) = scale_p_prime_val;
+   T_prime_matrix.at<double>( 0, 0 ) = alpha_2;
    T_prime_matrix.at<double>( 0, 1 ) = 0;
-   T_prime_matrix.at<double>( 0, 2 ) = -scale_p_prime_val * mu_x_2;
+   T_prime_matrix.at<double>( 0, 2 ) = -alpha_2 * mu_x_2;
    T_prime_matrix.at<double>( 1, 0 ) = 0;
-   T_prime_matrix.at<double>( 1, 1 ) = scale_p_prime_val;
-   T_prime_matrix.at<double>( 1, 2 ) = -scale_p_prime_val * mu_y_2;
+   T_prime_matrix.at<double>( 1, 1 ) = alpha_2;
+   T_prime_matrix.at<double>( 1, 2 ) = -alpha_2 * mu_y_2;
    T_prime_matrix.at<double>( 2, 0 ) = 0;
    T_prime_matrix.at<double>( 2, 1 ) = 0;
    T_prime_matrix.at<double>( 2, 2 ) = 1;
    
-   H_matrix = T_prime_matrix.inv() * H_matrix * T_matrix.inv();
+   H_matrix = T_prime_matrix.inv() * H_matrix * T_matrix;
    
 }

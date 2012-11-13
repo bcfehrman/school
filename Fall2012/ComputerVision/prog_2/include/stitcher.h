@@ -24,15 +24,6 @@ using namespace cv;
 
 #define NUM_POINTS 8
 
-struct stitcher_point
-{
-  double row_pos;
-  double col_pos;
-  
-  stitcher_point( double cp=0.0, double rp=0.0 ) : col_pos( cp ), row_pos( rp ){}
-   
-};
-
 class stitcher
 {
    public:
@@ -48,7 +39,7 @@ class stitcher
       Mat image_2, image_2_highlight;
       double alpha_1, mu_x_1, mu_y_1;
       double alpha_2, mu_x_2, mu_y_2;
-      vector<stitcher_point> normalized_points, raw_points;
+      vector<Vec3d> normalized_points, raw_points;
       unsigned int num_points;
       double scale_p_val, scale_p_prime_val;
       

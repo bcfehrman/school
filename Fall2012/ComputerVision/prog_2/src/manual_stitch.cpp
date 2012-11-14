@@ -31,7 +31,7 @@ manual_stitch::manual_stitch()
    
 }
 
-manual_stitch::manual_stitch(string file_name_1, string file_name_2, const unsigned int num_points = 8)
+manual_stitch::manual_stitch(string file_name_1, string file_name_2, const unsigned int num_points)
    : stitcher(file_name_1, file_name_2, num_points)
 {
    

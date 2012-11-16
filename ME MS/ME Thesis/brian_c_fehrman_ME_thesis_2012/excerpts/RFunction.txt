@@ -1,0 +1,23 @@
+\begin{equation}\label{eq:Rh}
+R_h = R_0 + \frac{Kt^{1/4}}{\sigma_{\infty}} 
+\end{equation}
+\nomenclature{$R_h$}{The intrinsic recovery rate during wetting and diffusion}%
+\nomenclature{$R_0$}{Recovery term related to the wetting, proportional to the square of the local stress}%
+\nomenclature{$t$}{Time variable}%
+\nomenclature{$K$}{Recovery term related to the diffusion}%
+
+With $t$ and $\sigma_{\infty}$ being time and the initial fracture strength of the material, respectively. $R_0$ relates to the wetting and is given by:
+
+\begin{equation}\label{eq:R0}
+R_0 = \frac{\sigma_0^2}{2YE_{\infty}}
+\end{equation}
+
+$\sigma_0$ is taken to be the stress experienced at the crack during the wetting or surface attraction stage. $Y$ and $E_{\infty}$ are the partially healed tensile modulus and impact or fracture energy, respectively. 
+
+K corresponds to diffusion and is given by:
+
+\begin{equation}\label{eq:K}
+K = qn_0(2D_c)^{1/4}
+\end{equation}
+
+With $D_c$ being the reptation diffusion coefficient and is dependent on temperature, pressure, and molecular weight.

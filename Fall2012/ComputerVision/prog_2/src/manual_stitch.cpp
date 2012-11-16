@@ -299,8 +299,8 @@ int manual_stitch::run()
 void manual_stitch::transform_box_to_image()
 {
    double scale_val = 1.0;
-   int curr_tran_x = 1.0;
-   int curr_tran_y = 1.0;
+   double curr_tran_x = 1.0;
+   double curr_tran_y = 1.0;
 
    for(double curr_x = 0; curr_x < box_x; curr_x += 1 )
    {   
@@ -327,7 +327,16 @@ void manual_stitch::transform_box_to_image()
             curr_tran_y = 0;
          }
          
+         p_prime_image.at<Vec3b>( curr_tran_y-1, curr_tran_x-1 ) = intermediate_box.at<Vec3b>( curr_y, curr_x );
+         p_prime_image.at<Vec3b>( curr_tran_y-1, curr_tran_x ) = intermediate_box.at<Vec3b>( curr_y, curr_x );
+         p_prime_image.at<Vec3b>( curr_tran_y-1, curr_tran_x+1 ) = intermediate_box.at<Vec3b>( curr_y, curr_x );
+         p_prime_image.at<Vec3b>( curr_tran_y, curr_tran_x-1 ) = intermediate_box.at<Vec3b>( curr_y, curr_x );
          p_prime_image.at<Vec3b>( curr_tran_y, curr_tran_x ) = intermediate_box.at<Vec3b>( curr_y, curr_x );
+         p_prime_image.at<Vec3b>( curr_tran_y, curr_tran_x+1 ) = intermediate_box.at<Vec3b>( curr_y, curr_x );
+         p_prime_image.at<Vec3b>( curr_tran_y+1, curr_tran_x-1 ) = intermediate_box.at<Vec3b>( curr_y, curr_x );
+         p_prime_image.at<Vec3b>( curr_tran_y+1, curr_tran_x ) = intermediate_box.at<Vec3b>( curr_y, curr_x );
+         p_prime_image.at<Vec3b>( curr_tran_y+1, curr_tran_x+1 ) = intermediate_box.at<Vec3b>( curr_y, curr_x );
+         
       }
    }
 }

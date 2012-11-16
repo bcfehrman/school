@@ -16,7 +16,7 @@ Assign: Program 2
 int main( int argc, char *argv[])
 {  
    SurfFeatureDetector sfd;
-   manual_stitch *man_stitch_obj = new manual_stitch( "img/graf/img1.ppm", "img/graf/img2.ppm", 8);
+   manual_stitch *man_stitch_obj = new manual_stitch( "img/mine/buzzard1.jpg", "img/mine/buzzard2.jpg", 8);
    
    man_stitch_obj->run();
    

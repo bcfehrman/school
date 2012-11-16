@@ -1,0 +1,90 @@
+\begin{theglossary} 
+
+ \nomgroup{A}
+
+  \item [{ $\vec{r}_0$}]\begingroup Location of source emitting an acoustic pulse\nomeqref {2.49}
+		\nompageref{29}
+  \item [{$\boldsymbol{\hat{R}}$}]\begingroup Reflection coefficient at $z = (L+ l)$\nomeqref {2.37}
+		\nompageref{23}
+  \item [{$\boldsymbol{\hat{T}}$}]\begingroup Transmission coefficient at $z = (L + l)$\nomeqref {2.37}
+		\nompageref{23}
+  \item [{$\boldsymbol{R}$}]\begingroup Reflection coefficient at $z = l$\nomeqref {2.35}
+		\nompageref{23}
+  \item [{$\boldsymbol{T}$}]\begingroup Transmission coefficient at $z = l$\nomeqref {2.35}
+		\nompageref{23}
+  \item [{$\epsilon ^T_{33}$}]\begingroup PZT permittivity constant for the z direction\nomeqref {2.30}
+		\nompageref{21}
+  \item [{$\frac{\partial w_c}{\partial z}(l_c, t)$}]\begingroup Focused wave response at the crack location due to time reversal focusing\nomeqref {2.47}
+		\nompageref{27}
+  \item [{$\frac{\partial w_{cr}}{\partial z}$}]\begingroup Strain caused by wave portion transmitting to transducer B\nomeqref {2.42}
+		\nompageref{25}
+  \item [{$\frac{\partial w_{ct}}{\partial z}$}]\begingroup Strain caused by wave portion reflecting to transducer A\nomeqref {2.42}
+		\nompageref{25}
+  \item [{$\frac{\partial w}{\partial z}$}]\begingroup The strain resulting from the stress wave that is played by transducer A during the initial phase\nomeqref {2.7}
+		\nompageref{17}
+  \item [{$\nabla ^2$}]\begingroup Laplacian operator\nomeqref {2.48}
+		\nompageref{28}
+  \item [{$\nu$}]\begingroup Spatial dissipation factor\nomeqref {2.47}
+		\nompageref{27}
+  \item [{$\overline{R}$}]\begingroup Reflection coefficient at $z = l_c$\nomeqref {2.39}
+		\nompageref{24}
+  \item [{$\overline{T}$}]\begingroup Transmission coefficient at $z = l_c$\nomeqref {2.39}
+		\nompageref{24}
+  \item [{$\rho ^c$}]\begingroup Density of the crack\nomeqref {2.39}
+		\nompageref{24}
+  \item [{$\rho$}]\begingroup Density of the transducer material\nomeqref {2.32}
+		\nompageref{22}
+  \item [{$\rho^*$}]\begingroup Density of the rod material\nomeqref {2.2}
+		\nompageref{16}
+  \item [{$\vec{r}$}]\begingroup Position of the acoustic pressure field\nomeqref {2.48}
+		\nompageref{28}
+  \item [{$A$}]\begingroup Cross-sectional area of the rod\nomeqref {2.1}
+		\nompageref{16}
+  \item [{$a$}]\begingroup Transducer cross sectional area\nomeqref {2.31}
+		\nompageref{22}
+  \item [{$c^*$}]\begingroup Velocity of wave propagation through the rod\nomeqref {2.10}
+		\nompageref{18}
+  \item [{$C^*_{33}$}]\begingroup Elastic constant in the z direction\nomeqref {2.6}
+		\nompageref{17}
+  \item [{$C^c_{33}$}]\begingroup Elastic coefficient of the crack in the z direction\nomeqref {2.39}
+		\nompageref{24}
+  \item [{$C_c$}]\begingroup Equivalent capacitance for the transducers\nomeqref {2.30}
+		\nompageref{21}
+  \item [{$c_p$}]\begingroup The speed of sound through the plate material.\nomeqref {2.48}
+		\nompageref{28}
+  \item [{$C_{33}$}]\begingroup PZT elastic constant in the z direction\nomeqref {2.30}
+		\nompageref{21}
+  \item [{$D_3$}]\begingroup Electric displacement in the z direction\nomeqref {2.26}
+		\nompageref{20}
+  \item [{$d_{33}$}]\begingroup Strain constant relating the strain and field intensity in the z direction\nomeqref {2.26}
+		\nompageref{20}
+  \item [{$dz$}]\begingroup Differential element of length for the rod\nomeqref {2.1}
+		\nompageref{16}
+  \item [{$E_3$}]\begingroup Electric field intensity in the z direction\nomeqref {2.26}
+		\nompageref{20}
+  \item [{$h_i(\vec{r}_0)$}]\begingroup Integral of the transducer surface $S_i$\nomeqref {2.51}
+		\nompageref{29}
+  \item [{$h_i^{ac}(t)$}]\begingroup Function which relates pressure to voltage for the transducers\nomeqref {2.52}
+		\nompageref{29}
+  \item [{$l$}]\begingroup Transducer length\nomeqref {2.31}
+		\nompageref{22}
+  \item [{$l_T$}]\begingroup Distance from the crack to transducer B\nomeqref {2.47}
+		\nompageref{27}
+  \item [{$P$}]\begingroup Axial pressure applied to rod end\nomeqref {2.1}
+		\nompageref{16}
+  \item [{$S_{33}$}]\begingroup Strain in the z direction\nomeqref {2.6}
+		\nompageref{17}
+  \item [{$T_3$}]\begingroup Stress in the z direction\nomeqref {2.1}
+		\nompageref{16}
+  \item [{$V^+_a(i\omega)$}]\begingroup Reversed signal that is played back by Transducer A\nomeqref {2.46}
+		\nompageref{26}
+  \item [{$V^+_a(i\omega)$}]\begingroup Voltage produced by the wave at transducer A\nomeqref {2.44}
+		\nompageref{26}
+  \item [{$V^+_b(i\omega)$}]\begingroup Reversed signal that is played back by Transducer B\nomeqref {2.46}
+		\nompageref{26}
+  \item [{$V^+_b(i\omega)$}]\begingroup Voltage produced by the wave at transducer B\nomeqref {2.44}
+		\nompageref{26}
+  \item [{$w$}]\begingroup Displacement of the rod\nomeqref {2.2}
+		\nompageref{16}
+
+\end{theglossary}

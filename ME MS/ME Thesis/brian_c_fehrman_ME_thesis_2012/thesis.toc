@@ -1,0 +1,38 @@
+\contentsline {chapter}{List of Figures}{vii}
+\contentsline {chapter}{\numberline {1}Introduction}{3}
+\contentsline {section}{\numberline {1.1}Self-Healing}{5}
+\contentsline {section}{\numberline {1.2}Accelerating the Self-Healing Process}{7}
+\contentsline {section}{\numberline {1.3}Implementation}{8}
+\contentsline {subsection}{\numberline {1.3.1}Damage Sensing}{8}
+\contentsline {subsection}{\numberline {1.3.2}Time Reversal Focusing}{9}
+\contentsline {section}{\numberline {1.4}Objectives}{13}
+\contentsline {chapter}{\numberline {2}Modeling}{15}
+\contentsline {section}{\numberline {2.1}One-Dimensional Wave Equation}{15}
+\contentsline {section}{\numberline {2.2}Piezoelectric transducers}{20}
+\contentsline {section}{\numberline {2.3}Rod with Transducers}{22}
+\contentsline {section}{\numberline {2.4}Cracked Rod with Transducers}{24}
+\contentsline {section}{\numberline {2.5}One-Dimensional Time Reversal Focusing at a Crack}{25}
+\contentsline {section}{\numberline {2.6}Time Reversal Focusing in Two Dimensions}{27}
+\contentsline {chapter}{\numberline {3}Experiments}{31}
+\contentsline {section}{\numberline {3.1}Hardware and Software}{31}
+\contentsline {section}{\numberline {3.2}Crack Detection Tests}{32}
+\contentsline {section}{\numberline {3.3}Time Reversal Tests}{43}
+\contentsline {subsection}{\numberline {3.3.1}Interrogatory Phase}{45}
+\contentsline {subsection}{\numberline {3.3.2}Selection Phase}{48}
+\contentsline {subsection}{\numberline {3.3.3}Time Reversal Focusing Phase}{52}
+\contentsline {subsection}{\numberline {3.3.4}Iterative Time Reversal}{55}
+\contentsline {chapter}{\numberline {4}Results}{58}
+\contentsline {section}{\numberline {4.1}Diode Damping Circuit}{58}
+\contentsline {section}{\numberline {4.2}Crack Detection Results}{60}
+\contentsline {section}{\numberline {4.3}Single Iteration Time Reversal Results}{62}
+\contentsline {subsection}{\numberline {4.3.1}Steel Rods Single Iteration Results}{62}
+\contentsline {subsection}{\numberline {4.3.2}Nylon Rods Single Iteration Results}{65}
+\contentsline {section}{\numberline {4.4}Iterative Time Reversal Results}{66}
+\contentsline {subsection}{\numberline {4.4.1}Steel Rods Multiple Iteration Results}{68}
+\contentsline {subsection}{\numberline {4.4.2}Nylon Rods Multiple Iteration Results}{69}
+\contentsline {chapter}{\numberline {5}Conclusion}{79}
+\contentsline {chapter}{Bibliography}{81}
+\contentsline {chapter}{Code Appendix}{90}
+\contentsline {section}{Crack Detection Matlab Plot Code}{90}
+\contentsline {section}{Time Reversal Results Matlab Plot Code}{93}
+\contentsline {chapter}{Vita}{111}

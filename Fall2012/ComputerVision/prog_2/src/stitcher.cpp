@@ -71,7 +71,7 @@ stitcher::stitcher( string p_file_name, string p_prime_file_name, const unsigned
 
 stitcher::~stitcher()
 {
-
+   
 }
 
 ////////// Stitcher Methods ////////////////////
@@ -151,16 +151,6 @@ void stitcher::compute_H(vector<Vec3d> chosen_p_points, vector<Vec3d> chosen_p_p
    unnormalize_points(); 
 
    H_matrix.copyTo(dst_mat);
-   
-   /* Leave in for debugging
-   for(unsigned int i = 0; i < num_points / 2; i++ )
-   {
-      double temp = p_raw_points[i][0] * H_matrix.at<double>(2,0)  + p_raw_points[i][1] * H_matrix.at<double>(2,1) + H_matrix.at<double>(2,2);
-      
-      cout << (p_raw_points[i][0] * H_matrix.at<double>(0,0) + p_raw_points[i][1] * H_matrix.at<double>(0,1) + H_matrix.at<double>(0,2))/temp << " " <<
-               (p_raw_points[i][0] * H_matrix.at<double>(1,0)  + p_raw_points[i][1] * H_matrix.at<double>(1,1) + H_matrix.at<double>(1,2))/temp << endl;
-   }
-   * */
 }
 
 ///////////////////////

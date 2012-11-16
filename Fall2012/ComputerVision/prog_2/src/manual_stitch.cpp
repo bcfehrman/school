@@ -98,6 +98,8 @@ void manual_stitch::determine_bounding_boxes()
       }
    }
    
+   //Pick the intermediate box dimensions to be the largest extrema
+   //from the rough bounding boxes
    if( abs(p_max_x - p_min_x) > abs(p_prime_max_x - p_prime_min_x) )
    {
       box_x = abs(p_max_x - p_min_x);
@@ -116,6 +118,9 @@ void manual_stitch::determine_bounding_boxes()
       box_y = abs(p_prime_max_y - p_prime_min_y);
    }
    
+   //Create the vector of box points which will act as "p points" in
+   //both transforms -- from p to box and box to p prime. (is actually
+   //box_to_p and box_to_p_prime
    box_points.push_back( Vec3d( 0.0, 0.0, 1.0 ) );
    box_points.push_back( Vec3d( 0.0, box_y-1, 1.0 ) );
    box_points.push_back( Vec3d( box_x-1, box_y-1, 1.0 ) );
@@ -155,19 +160,6 @@ void manual_stitch::get_points()
    
    namedWindow("Pick corresponding points", WINDOW_SIZE_CHOICE );
    cvSetMouseCallback( "Pick corresponding points", mouse_callback, this );
-   
-   /* Leave in for debugging
-   chosen_points.push_back(Point(0.0, 0.0));
-   chosen_points.push_back(Point(0.0, 20.0));
-   chosen_points.push_back(Point(20.0, 20.0));
-   chosen_points.push_back(Point(20.0, 0.0));
-   
-   chosen_points.push_back(Point(40.0, 40.0));
-   chosen_points.push_back(Point(40.0, 80.0));
-   chosen_points.push_back(Point(80.0, 80.0));
-   chosen_points.push_back(Point(80.0, 40.0));
-   */
-   
    
    for(;;)
    {
@@ -293,7 +285,7 @@ int manual_stitch::run()
 
 ///////////////////////////
 // Author: Brian Fehrman
-// Transforms the intermediate box points in to the
+// Transforms the intermediate box points in to the new
 // image frame.
 //////////////////////////
 void manual_stitch::transform_box_to_image()
@@ -327,6 +319,7 @@ void manual_stitch::transform_box_to_image()
             curr_tran_y = 0;
          }
          
+         //Gets rid of missing pieces...isn't the best way to do it and is missing error checking but works for now.
          p_prime_image.at<Vec3b>( curr_tran_y-1, curr_tran_x-1 ) = intermediate_box.at<Vec3b>( curr_y, curr_x );
          p_prime_image.at<Vec3b>( curr_tran_y-1, curr_tran_x ) = intermediate_box.at<Vec3b>( curr_y, curr_x );
          p_prime_image.at<Vec3b>( curr_tran_y-1, curr_tran_x+1 ) = intermediate_box.at<Vec3b>( curr_y, curr_x );

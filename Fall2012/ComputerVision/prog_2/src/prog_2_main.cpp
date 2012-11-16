@@ -16,20 +16,11 @@ Assign: Program 2
 int main( int argc, char *argv[])
 {  
    SurfFeatureDetector sfd;
-   manual_stitch *man_stitch_obj = new manual_stitch( "img/mine/buzzard1.jpg", "img/mine/buzzard2.jpg", 8);
+   manual_stitch *man_stitch_obj = new manual_stitch( "img/mine/my_face_1.jpg", "img/graf/img4.ppm", 8);
    
    man_stitch_obj->run();
    
-   /*
-   //Perform the SVD that gives the U, W, Vt (or U, S, Vt) except W is just a vector of the singular values
-   SVD svd(im1_gray);
-
-   cout << svd.u.rows << " " << svd.u.cols << endl;
-
-   cout << svd.w.rows << " " << svd.w.cols << endl;
-
-   cout << svd.vt.rows << " " << svd.vt.cols << endl;
-   */
+   delete man_stitch_obj;
 
    return 0;
 }

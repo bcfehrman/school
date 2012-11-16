@@ -29,20 +29,31 @@ stitcher::stitcher( string p_file_name, string p_prime_file_name, const unsigned
    //No point in doing everything else if images don't load, so try it first
    read_images();
    
+   //Determine which image coordinates are largest and use that
+   //information when creating the combined image and other tasks
+   if(p_image.rows > p_prime_image.rows)
+   {
+      image_y_max = p_image.rows;
+   }
+   else
+   {
+      image_y_max = p_prime_image.rows;
+   }
+   
+   if(p_image.cols > p_prime_image.cols)
+   {
+      image_x_max = p_image.cols;
+   }
+   else
+   {
+      image_x_max = p_prime_image.cols;
+   }
+   
    //Setup vectors for correspondence points
    p_normalized_points.resize( num_points_div_2 );
    p_prime_normalized_points.resize( num_points_div_2 );
    p_raw_points.resize( num_points );
    p_prime_raw_points.resize( num_points );
-   
-   p_raw_points[0] = Vec3d(3.0, 1.0, 1.0);
-   p_raw_points[1] = Vec3d(1.0, 2.0, 1.0);
-   p_raw_points[2] = Vec3d(2.0, 2.0, 1.0);
-   p_raw_points[3] = Vec3d(2.0, 1.0, 1.0);
-   p_prime_raw_points[0] = Vec3d(5.0, 5.0, 1.0);
-   p_prime_raw_points[1] = Vec3d(10.0, 10.0, 1.0);
-   p_prime_raw_points[2] = Vec3d(20.0, 10.0, 1.0);
-   p_prime_raw_points[3] = Vec3d(20.0, 9.0, 1.0);
    
    //Setup matrices for homography
    A_matrix.create( num_points, 9, CV_64FC1 );
@@ -56,17 +67,6 @@ stitcher::stitcher( string p_file_name, string p_prime_file_name, const unsigned
    p_prime_alpha = 0.0;
    p_prime_mu_x = 0.0;
    p_prime_mu_y = 0.0;
-   
-   compute_H();
-   
-   for(unsigned int i = 0; i < num_points / 2; i++ )
-   {
-      double temp = p_raw_points[i][0] * H_matrix.at<double>(2,0)  + p_raw_points[i][1] * H_matrix.at<double>(2,1) + H_matrix.at<double>(2,2);
-      
-      cout << (p_raw_points[i][0] * H_matrix.at<double>(0,0) + p_raw_points[i][1] * H_matrix.at<double>(0,1) + H_matrix.at<double>(0,2))/temp << " " <<
-               (p_raw_points[i][0] * H_matrix.at<double>(1,0)  + p_raw_points[i][1] * H_matrix.at<double>(1,1) + H_matrix.at<double>(1,2))/temp << endl;
-   }
-   
 }
 
 stitcher::~stitcher()
@@ -85,13 +85,19 @@ stitcher::~stitcher()
 // points vector
 ////////////////////////
 
-void stitcher::compute_H()
-{
+void stitcher::compute_H(vector<Vec3d> chosen_p_points, vector<Vec3d> chosen_p_prime_points, Mat& dst_mat)
+{   
    unsigned int curr_vec_pos = 0;
    double curr_x_prime = 0.0;
    double curr_y_prime = 0.0;
    SVD svd;
-   
+
+   for(unsigned int curr_point = 0; curr_point < num_points_div_2; curr_point++ )
+   {
+      p_raw_points[ curr_point ] = chosen_p_points[ curr_point ];
+      p_prime_raw_points[ curr_point ] = chosen_p_prime_points[ curr_point ];
+   }
+
    //Normalize points to make algorithm numerically stable
    normalize_points();
    
@@ -143,6 +149,18 @@ void stitcher::compute_H()
    
    //Unnormalize the H matrix so it will be correct in terms of original coordinates
    unnormalize_points(); 
+
+   H_matrix.copyTo(dst_mat);
+   
+   /* Leave in for debugging
+   for(unsigned int i = 0; i < num_points / 2; i++ )
+   {
+      double temp = p_raw_points[i][0] * H_matrix.at<double>(2,0)  + p_raw_points[i][1] * H_matrix.at<double>(2,1) + H_matrix.at<double>(2,2);
+      
+      cout << (p_raw_points[i][0] * H_matrix.at<double>(0,0) + p_raw_points[i][1] * H_matrix.at<double>(0,1) + H_matrix.at<double>(0,2))/temp << " " <<
+               (p_raw_points[i][0] * H_matrix.at<double>(1,0)  + p_raw_points[i][1] * H_matrix.at<double>(1,1) + H_matrix.at<double>(1,2))/temp << endl;
+   }
+   * */
 }
 
 ///////////////////////
@@ -154,6 +172,13 @@ void stitcher::compute_H()
 
 void stitcher::find_T_matrix_coefficients( )
 {
+   p_alpha = 0.0;
+   p_mu_x = 0.0;
+   p_mu_y = 0.0;
+   p_prime_alpha = 0.0;
+   p_prime_mu_x = 0.0;
+   p_prime_mu_y = 0.0;
+   
    //Find the x and y mean for the raw points
    for( unsigned int curr_point = 0; curr_point < num_points_div_2; curr_point++ )
    {

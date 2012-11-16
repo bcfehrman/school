@@ -10,14 +10,14 @@ LIBDIR64 = /usr/lib64
 BINDIR = bin
 EXEC = prog_2
 
-CFLAGS = -Wall -fpermissive -g -I$(INCDIR) -I$(LOCINCDIR)
+CFLAGS = -Wall -fpermissive -I$(INCDIR) -I$(LOCINCDIR)
 LFLAGS = -L$(LIBDIR) -L$(LIBDIR64) -lgsl -lm -lopencv_highgui -lopencv_core -lopencv_imgproc -lopencv_features2d -lstdc++
 
 
 all: $(BINDIR)/$(EXEC)
 
 $(OBJDIR)/$(EXEC).o: $(SRCDIR)/$(EXEC).cpp | $(OBJDIR)
-	$(CPP) $(CFLAGS) -c -o $@ $^
+	$(CPP) $(CFLAGS) -g -c -o $@ $^
 
 $(BINDIR)/$(EXEC): $(OBJDIR)/$(EXEC).o | $(BINDIR)
 	$(CPP) $(LFLAGS) -o $@ $^

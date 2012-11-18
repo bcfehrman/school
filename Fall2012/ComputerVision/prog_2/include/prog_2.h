@@ -3,7 +3,7 @@
 // Include file for Computer Vision Fall 2012 program 2
 ///////////////////
 
-#include "stitcher.h"
+#include "stitch_menu.h"
 #include "manual_stitch.h"
 #include <ctime>
 #include <cmath>

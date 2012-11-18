@@ -24,14 +24,24 @@ long_line_column=72
 
 [files]
 current_page=6
-FILE_NAME_0=388;C++;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Fsrc%2Fprog_2_main.cpp;0;3
-FILE_NAME_1=187;C++;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Fsrc%2Fprog_2.cpp;0;3
-FILE_NAME_2=462;C;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Finclude%2Fprog_2.h;0;3
-FILE_NAME_3=1188;C;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Finclude%2Fstitcher.h;0;3
-FILE_NAME_4=5172;C++;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Fsrc%2Fstitcher.cpp;0;3
-FILE_NAME_5=1089;C;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Finclude%2Fmanual_stitch.h;0;3
-FILE_NAME_6=114;C++;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Fsrc%2Fmanual_stitch.cpp;0;3
+FILE_NAME_0=611;C++;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Fsrc%2Fprog_2_main.cpp;0;3
+FILE_NAME_1=211;C++;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Fsrc%2Fprog_2.cpp;0;3
+FILE_NAME_2=121;C;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Finclude%2Fprog_2.h;0;3
+FILE_NAME_3=515;C;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Finclude%2Fstitcher.h;0;3
+FILE_NAME_4=535;C++;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Fsrc%2Fstitcher.cpp;0;3
+FILE_NAME_5=567;C;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Finclude%2Fmanual_stitch.h;0;3
+FILE_NAME_6=4182;C++;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Fsrc%2Fmanual_stitch.cpp;0;3
 FILE_NAME_7=456;Make;0;16;1;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2FMakefile;0;3
+FILE_NAME_8=1757;C++;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Fsrc%2Fstitch_menu.cpp;0;3
+FILE_NAME_9=353;C;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Finclude%2Fstitch_menu.h;0;3
+FILE_NAME_10=1794;C++;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Fsrc%2Fget_user_points.cpp;0;3
+FILE_NAME_11=481;C;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Finclude%2Fget_user_points.h;0;3
 
 [VTE]
 last_dir=/home/bcf/school/Fall2012/ComputerVision/prog_2
+
+[gproject]
+source_patterns=*.c;*.C;*.cpp;*.cxx;*.c++;*.cc;
+header_patterns=*.h;*.H;*.hpp;*.hxx;*.h++;*.hh;*.m;
+ignored_dirs_patterns=.*;CVS;
+generate_tags=false

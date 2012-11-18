@@ -11,14 +11,21 @@
 #include <stitcher.h>
 
 #define WINDOW_SIZE_CHOICE CV_WINDOW_NORMAL
+#define MANUAL_FRAME_STITCH 0
+#define SEMI_AUTO_FRAME_STITCH 1
+#define MANUAL_MOSAIC_STITCH 2
 
 class manual_stitch: private stitcher
 {
    public:
    
+   //Public Members
+      unsigned int stitch_type;
+      unsigned int num_points_get;
+   
    //Public Methods
       manual_stitch();
-      manual_stitch(string p_file_name, string p_prime_file_name, const unsigned int num_points = 8);
+      manual_stitch(string p_file_name, string p_prime_file_name, const unsigned int num_points = 8, const unsigned int stitch_type = 0);
       virtual ~manual_stitch();
       static void mouse_callback( int event, int x, int y, int flags, void* param );
       int run();

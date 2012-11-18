@@ -21,9 +21,20 @@ manual_stitch::manual_stitch()
 // Main constructor for the manual class
 ////////////////////////
 
-manual_stitch::manual_stitch(string p_file_name, string p_prime_file_name, const unsigned int num_points)
+manual_stitch::manual_stitch(string p_file_name, string p_prime_file_name, const unsigned int num_points, const unsigned int stitch_type)
    : stitcher(p_file_name, p_prime_file_name, num_points)
 {
+   this->stitch_type = stitch_type;
+   
+   if( stitch_type == MANUAL_FRAME_STITCH || stitch_type == MANUAL_MOSAIC_STITCH )
+   {
+      num_points_get = 8;
+   }
+   else
+   {
+      num_points_get = 4;
+   }
+   
    box_x = 0.0;
    box_y = 0.0;
    
@@ -56,8 +67,8 @@ void manual_stitch::determine_bounding_boxes()
    
    p_prime_max_x = -100000.0;
    p_prime_max_y = -100000.0;
-   p_prime_min_x = 1000000.0;
-   p_prime_min_y = 1000000.0;
+   p_prime_min_x = 100000.0;
+   p_prime_min_y = 100000.0;
    
    for( unsigned int curr_point = 0; curr_point < num_points_div_2; curr_point++ )
    {
@@ -138,23 +149,19 @@ void manual_stitch::get_points()
    int fontFace = FONT_HERSHEY_DUPLEX;
    int key_pressed = 'a';
    
-   //Create the combined image to display for getting the points
-   for( int curr_row = 0; curr_row < p_image.rows; curr_row++ )
+   for(int curr_row = 0; curr_row < p_image.rows; curr_row++ )
    {
-      for( int curr_col = 0; curr_col < p_image.cols; curr_col++ )
+      for(int curr_col = 0; curr_col < p_image.cols; curr_col++)
       {
-         for( int curr_color = 0; curr_color < 3; curr_color++ )
-         {
-            combined_images.at<Vec3b>( curr_row, curr_col )[ curr_color ] = p_image.at<Vec3b>( curr_row, curr_col )[ curr_color ];
-         }
+         combined_images.at<Vec3b>( curr_row, curr_col ) = p_image.at<Vec3b>( curr_row, curr_col );
       }
    }
    
-   for( int curr_row = 0; curr_row < p_prime_image.rows; curr_row++ )
+   for(int curr_row = 0; curr_row < p_prime_image.rows; curr_row++ )
    {
-      for( int curr_col = 0; curr_col < p_prime_image.cols; curr_col++ )
+      for(int curr_col = 0; curr_col < p_prime_image.cols; curr_col++)
       {
-            combined_images.at<Vec3b>( curr_row, curr_col + p_image.cols ) = p_prime_image.at<Vec3b>( curr_row, curr_col );
+         combined_images.at<Vec3b>( curr_row, curr_col + p_image.cols) = p_prime_image.at<Vec3b>( curr_row, curr_col );
       }
    }
    
@@ -192,16 +199,45 @@ void manual_stitch::get_points()
       } 
    }
    
-   //Account for combined image offset of points
-   for(unsigned int curr_p_prime_point = num_points_div_2; curr_p_prime_point < num_points; curr_p_prime_point++ )
+   //If manual stitch, then 8 points are needed to be selected with 4 from
+   //p image and 4 from p prime image. Otherwise, just 4 points from the
+   //p prime image should be selected.
+   if( stitch_type == MANUAL_FRAME_STITCH || stitch_type == MANUAL_MOSAIC_STITCH )
    {
-      chosen_points[ curr_p_prime_point ].x -= p_image.cols;
+      //Account for combined image offset of points
+      for(unsigned int curr_p_prime_point = num_points_get / 2; curr_p_prime_point < num_points_get; curr_p_prime_point++ )
+      {
+         chosen_points[ curr_p_prime_point ].x -= p_image.cols;
+      }
    }
+   else
+   {
+      //Puts the points in the correct location of the chosen points array.
+      //All of this is a bit hacked but oh well. Not getting paid to do it
+      //and probably trying way too hard anyways.
+      for( unsigned int curr_point = 0; curr_point < num_points_get; curr_point++ )
+      {
+         chosen_points.push_back( chosen_points[ curr_point ] );
+         chosen_points[ num_points_get / 2 + curr_point ].x -= p_image.cols;
+      }
+   
+      chosen_points[ 0 ] = Point( 0, 0 );
+      chosen_points[ 1 ] = Point( p_image.cols - 1, 0 );
+      chosen_points[ 2 ] = Point( p_image.cols - 1, p_image.rows - 1 );
+      chosen_points[ 3 ] = Point( 0, p_image.rows - 1 );
+   }  
 }
+
+////////////////////////////////
+// Author: Brian Fehrman
+// Stitches one image into a frame contained within
+// a second image.
+/////////////////////////////
 
 void manual_stitch::frame_stitch()
 {
    vector<Vec3d> chosen_p_points, chosen_p_prime_points;
+   
    
    get_points();
    
@@ -231,8 +267,6 @@ void manual_stitch::frame_stitch()
          
       if( (int) waitKey( 30 ) > 0 ) break;
    }
-
-   
 }
 
 ////////////////////////
@@ -255,7 +289,7 @@ void manual_stitch::mouse_callback( int event, int x, int y, int flags, void* pa
       case CV_EVENT_LBUTTONDOWN:
         cout << " x: " << x << " y: " << y << endl;
         
-        if( man_stitch_obj->chosen_points.size() < 8 )
+        if( man_stitch_obj->chosen_points.size() < man_stitch_obj->num_points_get )
         {
            man_stitch_obj->chosen_points.push_back(Point( x, y ) );
         }

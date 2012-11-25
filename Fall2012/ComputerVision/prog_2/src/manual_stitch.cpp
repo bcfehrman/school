@@ -139,6 +139,36 @@ void manual_stitch::determine_bounding_boxes()
    
    intermediate_box.create( box_y, box_x, CV_8UC3 );
 }
+////////////////////////////////
+// Author: Brian Fehrman
+// Stitches one image into a frame contained within
+// a second image.
+/////////////////////////////
+
+void manual_stitch::frame_stitch()
+{
+   determine_bounding_boxes();
+   
+   compute_H( box_points, chosen_p_points, box_to_p_H_matrix );
+   compute_H( box_points, chosen_p_prime_points, box_to_p_prime_H_matrix );
+   
+   transform_p_to_box();
+   transform_box_to_image();
+   
+   namedWindow("img1", WINDOW_SIZE_CHOICE );
+   for(;;)
+   {
+      imshow("img1", p_prime_image);
+         
+      if( (int) waitKey( 30 ) > 0 ) break;
+   }
+}
+
+//////////////////////////////
+// Author: Brian Fehrman
+// Gets points used for frame or
+// mosaic manual/ semi-auto stitching
+/////////////////////////////
 
 void manual_stitch::get_points()
 {
@@ -228,42 +258,19 @@ void manual_stitch::get_points()
    }  
 }
 
-////////////////////////////////
-// Author: Brian Fehrman
-// Stitches one image into a frame contained within
-// a second image.
-/////////////////////////////
-
-void manual_stitch::frame_stitch()
+void manual_stitch::manual_mosaic_stitch()
 {
-   vector<Vec3d> chosen_p_points, chosen_p_prime_points;
+   Mat mosaic_image;
+   Mat H_inv;
    
-   
-   get_points();
-   
-   //Move points from single vector into seperate vectors for easier processing
-   for( unsigned int curr_point = 0; curr_point < num_points_div_2; curr_point++ )
-   {
-      chosen_p_points.push_back( Vec3d( (double) chosen_points[ curr_point ].x, (double) chosen_points[ curr_point ].y, 1.0 ) );
-   }
-   
-   for( unsigned int curr_point = num_points_div_2; curr_point < num_points; curr_point++ )
-   {
-      chosen_p_prime_points.push_back( Vec3d( (double) chosen_points[ curr_point ].x, (double) chosen_points[ curr_point ].y, 1.0 ) );
-   }
-   
-   determine_bounding_boxes();
-   
-   compute_H( box_points, chosen_p_points, box_to_p_H_matrix );
-   compute_H( box_points, chosen_p_prime_points, box_to_p_prime_H_matrix );
-   
-   transform_p_to_box();
-   transform_box_to_image();
+   compute_H( chosen_p_points, chosen_p_prime_points, H_matrix );
+         
+   create_mosaic( mosaic_image );
    
    namedWindow("img1", WINDOW_SIZE_CHOICE );
    for(;;)
    {
-      imshow("img1", p_prime_image);
+      imshow("img1", mosaic_image);
          
       if( (int) waitKey( 30 ) > 0 ) break;
    }
@@ -311,9 +318,28 @@ void manual_stitch::mouse_callback( int event, int x, int y, int flags, void* pa
 }
 
 int manual_stitch::run()
-{
-   frame_stitch();
+{   
+   get_points();
    
+   //Move points from single vector into seperate vectors for easier processing
+   for( unsigned int curr_point = 0; curr_point < num_points_div_2; curr_point++ )
+   {
+      chosen_p_points.push_back( Vec3d( (double) chosen_points[ curr_point ].x, (double) chosen_points[ curr_point ].y, 1.0 ) );
+   }
+   
+   for( unsigned int curr_point = num_points_div_2; curr_point < num_points; curr_point++ )
+   {
+      chosen_p_prime_points.push_back( Vec3d( (double) chosen_points[ curr_point ].x, (double) chosen_points[ curr_point ].y, 1.0 ) );
+   }
+   
+   if( stitch_type == MANUAL_FRAME_STITCH || stitch_type == SEMI_AUTO_FRAME_STITCH )
+   {
+      frame_stitch();
+   }
+   else
+   {
+      manual_mosaic_stitch();
+   }
    return 0;
 }
 
@@ -348,7 +374,7 @@ void manual_stitch::transform_box_to_image()
          {
             curr_tran_y = p_prime_image.rows- 1;
          }
-         if(curr_tran_y > p_prime_image.rows)
+         if(curr_tran_y < 0)
          {
             curr_tran_y = 0;
          }

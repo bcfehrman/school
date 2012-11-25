@@ -33,6 +33,7 @@ class stitcher
       
    //Private members
       Mat A_matrix, H_matrix, H_vector;
+      double avg_intensity;
       string p_file_name, p_prime_file_name;
       unsigned int image_x_max, image_y_max;
       unsigned int num_points, num_points_div_2;
@@ -44,7 +45,9 @@ class stitcher
       vector<Vec3d> p_prime_normalized_points, p_prime_raw_points;
       
    //Private methods
-      void compute_H(vector<Vec3d> chosen_p_points, vector<Vec3d> chosen_p_prime_points, Mat& dst_mat);
+      void compute_H(const vector<Vec3d>& chosen_p_points, const vector<Vec3d>& chosen_p_prime_points, Mat& dst_mat);
+      void create_mosaic( Mat& dst_mat);
+      void find_extrema( Vec3d& extrema, Vec3d& point_offsets );
       void find_T_matrix_coefficients( );
       void normalize_points( );
       int read_image_file( Mat& dst_image, string file_name );

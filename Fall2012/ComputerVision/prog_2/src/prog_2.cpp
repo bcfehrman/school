@@ -7,3 +7,4 @@
 #include "manual_stitch.cpp"
 #include "stitcher.cpp"
 #include "stitch_menu.cpp"
+#include "auto_stitch.cpp"

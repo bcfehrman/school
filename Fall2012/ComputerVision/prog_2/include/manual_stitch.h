@@ -37,6 +37,7 @@ class manual_stitch: private stitcher
       vector<Vec3d> box_points;
       Mat intermediate_box;
       vector<Point> chosen_points;
+      vector<Vec3d> chosen_p_points, chosen_p_prime_points;
       Mat box_to_p_H_matrix, box_to_p_prime_H_matrix;
       double p_max_x, p_max_y;
       double p_min_x, p_min_y;
@@ -48,7 +49,7 @@ class manual_stitch: private stitcher
       void determine_bounding_boxes();
       void frame_stitch();
       void get_points();
-      void mosaic_stitch();
+      void manual_mosaic_stitch();
       void transform_box_to_image();
       void transform_p_to_box();
 };

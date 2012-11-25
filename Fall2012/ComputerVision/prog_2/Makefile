@@ -1,5 +1,5 @@
 CC = gcc
-CPP = gcc
+CPP = g++
 
 OBJDIR = build
 SRCDIR = src
@@ -11,13 +11,13 @@ BINDIR = bin
 EXEC = prog_2
 
 CFLAGS = -Wall -fpermissive -I$(INCDIR) -I$(LOCINCDIR)
-LFLAGS = -L$(LIBDIR) -L$(LIBDIR64) -lgsl -lm -lopencv_highgui -lopencv_core -lopencv_imgproc -lopencv_features2d -lstdc++
+LFLAGS = -L$(LIBDIR) -L$(LIBDIR64) -lgsl -lm -lopencv_highgui -lopencv_core -lopencv_imgproc -lopencv_features2d -lopencv_flann -lstdc++
 
 
 all: $(BINDIR)/$(EXEC)
 
 $(OBJDIR)/$(EXEC).o: $(SRCDIR)/$(EXEC).cpp | $(OBJDIR)
-	$(CPP) $(CFLAGS) -g -c -o $@ $^
+	$(CPP) $(CFLAGS) -c -o $@ $^
 
 $(BINDIR)/$(EXEC): $(OBJDIR)/$(EXEC).o | $(BINDIR)
 	$(CPP) $(LFLAGS) -o $@ $^

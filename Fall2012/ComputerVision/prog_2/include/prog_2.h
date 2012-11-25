@@ -5,6 +5,7 @@
 
 #include "stitch_menu.h"
 #include "manual_stitch.h"
+#include "auto_stitch.h"
 #include <ctime>
 #include <cmath>
 #include <opencv/cv.h>

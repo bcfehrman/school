@@ -40,10 +40,10 @@ float threshold_val = .01;
 /******** Main ***********/
 
 int main( int argc, char *argv[])
-{	
+{  
    Mat auto_corr_mat_1, gray_image_1, image_1_highlighted, orig_image_1;
    Mat auto_corr_mat_2, gray_image_2, image_2_highlighted, orig_image_2;
-	clock_t begin, end;
+   clock_t begin, end;
    CvScalar colors[100];
    Mat combined_images;
    const float deriv_standard_deviation = 1.5;
@@ -55,7 +55,7 @@ int main( int argc, char *argv[])
    const int kernel_size = 5;
    vector<matches> match_vec;
    Mat norm_LOG_kernels[NUM_SCALES];
-   const int num_keep = 40;
+   const int num_keep = 50;
    const int radius_suppress = 25;
    Mat smooth_gauss[NUM_SCALES];
    const float smooth_standard_deviation = 1.4;
@@ -91,8 +91,8 @@ int main( int argc, char *argv[])
    combined_size.height = tempCap.size().height;
    combined_size.width = tempCap.size().width * 2;
    
-   record_both.open( "vid/Matching.avi", CV_FOURCC('X','V','I','D'), 10, combined_size, true);
-   record_single.open( "vid/Single.avi", CV_FOURCC('X','V','I','D'), 10, tempCap.size(), true);
+   //record_both.open( "vid/Matching.avi", CV_FOURCC('X','V','I','D'), 10, combined_size, true);
+   //record_single.open( "vid/Single.avi", CV_FOURCC('X','V','I','D'), 10, tempCap.size(), true);
    
    for(;;)
    {
@@ -104,7 +104,7 @@ int main( int argc, char *argv[])
          
       tempCap.copyTo( orig_image_2);
       
-  // begin = clock();
+    begin = clock();
    //orig_image_1 = imread("img/graf/img1.ppm");
    orig_image_1.copyTo( image_1_highlighted);
    //orig_image_2 = imread("img/graf/img4.ppm");
@@ -122,7 +122,7 @@ int main( int argc, char *argv[])
    }
 
    //Convert to gray scale
-   orig_image_1.convertTo(gray_image_1, CV_32F, 1/255.0);	
+   orig_image_1.convertTo(gray_image_1, CV_32F, 1/255.0);   
    cvtColor(gray_image_1, gray_image_1, CV_BGR2GRAY);
    
    buildPyramid( gray_image_1, image_1_pyramid, NUM_SCALES );
@@ -136,8 +136,8 @@ int main( int argc, char *argv[])
    Ix = Ix.mul(Ix);
    Iy = Iy.mul(Iy);
    
-   namedWindow("IxIy", WINDOW_SIZE_CHOICE);
-   imshow( "IxIy", IxIy);
+  // namedWindow("IxIy", WINDOW_SIZE_CHOICE);
+   //imshow( "IxIy", IxIy);
    
    filter2D( IxIy, IxIy, -1, smooth_gauss[0]);
    filter2D( Ix, Ix, -1, smooth_gauss[0]);
@@ -148,7 +148,7 @@ int main( int argc, char *argv[])
    find_scales( image_1_pyramid, feat_vec_1, norm_LOG_kernels, smooth_standard_deviation);
    extract_features( image_1_pyramid, feat_vec_1, smooth_gauss, smooth_standard_deviation, gauss_Gx_kernels[ 0 ], gauss_Gy_kernels[ 0 ] );
    
-   orig_image_2.convertTo(gray_image_2, CV_32F, 1/255.0);	
+   orig_image_2.convertTo(gray_image_2, CV_32F, 1/255.0);   
    cvtColor(gray_image_2, gray_image_2, CV_BGR2GRAY);
    
    buildPyramid( gray_image_2, image_2_pyramid, NUM_SCALES );
@@ -170,15 +170,11 @@ int main( int argc, char *argv[])
    suppress_non_maximums_adaptive( auto_corr_mat_2, feat_vec_2, radius_suppress, num_keep);
    find_scales( image_2_pyramid, feat_vec_2, norm_LOG_kernels, smooth_standard_deviation);
    extract_features(image_2_pyramid, feat_vec_2, smooth_gauss, smooth_standard_deviation, gauss_Gx_kernels[ 0 ], gauss_Gy_kernels[ 0 ] );
-
-   //end = clock();
    
-   //cout << float( end - begin) / CLOCKS_PER_SEC << endl;
-   
-	namedWindow("Orig", WINDOW_SIZE_CHOICE);
-	cvMoveWindow("Orig", 900, 0);
-   namedWindow("Smoothed", WINDOW_SIZE_CHOICE);
-   namedWindow("Combined", WINDOW_SIZE_CHOICE);
+   namedWindow("Orig", WINDOW_SIZE_CHOICE);
+   cvMoveWindow("Orig", 900, 0);
+   //namedWindow("Smoothed", WINDOW_SIZE_CHOICE);
+   //namedWindow("Combined", WINDOW_SIZE_CHOICE);
 
    create_feat_boxes( feat_vec_1 );
    create_feat_boxes( feat_vec_2 );
@@ -200,7 +196,8 @@ int main( int argc, char *argv[])
 
    }
     
-   find_matches( gray_image_2.rows, gray_image_2.cols, feat_vec_1, feat_vec_2, match_vec, .16);
+    
+   //find_matches( gray_image_2.rows, gray_image_2.cols, feat_vec_1, feat_vec_2, match_vec, .16);
    
    for( unsigned int i = 0; i < match_vec.size(); i++ )
    {
@@ -212,15 +209,18 @@ int main( int argc, char *argv[])
       circle(combined_images, Point(match_vec.at(i).j_pos_2 + orig_image_1.cols, match_vec.at(i).i_pos_2) ,  5, Scalar(0, 100, 0), -1);
    }
     
-      record_single << image_1_highlighted;
-      record_both << combined_images;
+      //record_single << image_1_highlighted;
+     // record_both << combined_images;
       imshow("Orig", image_1_highlighted);
-      imshow("Smoothed", image_2_highlighted);
-      imshow("Combined", combined_images);
+     // imshow("Smoothed", image_2_highlighted);
+     // imshow("Combined", combined_images);
       //imshow("Combined", image_1_pyramid.at(2));
       
+      end = clock();
+   
+      //cout << float( end - begin) / CLOCKS_PER_SEC << endl;
       orig_image_2.copyTo( orig_image_1 );
       if(waitKey(30) >= 0) break;
-	}
-	return 0;
+   }
+   return 0;
 }

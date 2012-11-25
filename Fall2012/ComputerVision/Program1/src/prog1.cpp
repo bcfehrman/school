@@ -35,10 +35,10 @@ using namespace std;
 /******** Main ***********/
 
 int main( int argc, char *argv[])
-{	
+{  
    Mat auto_corr_mat_1, gray_image_1, image_1_highlighted, orig_image_1;
    Mat auto_corr_mat_2, gray_image_2, image_2_highlighted, orig_image_2;
-	clock_t begin, end;
+   clock_t begin, end;
    CvScalar colors[NUM_SCALES];
    Mat combined_images, combined_images_ratio;
    const float deriv_standard_deviation = 1.5;
@@ -76,9 +76,9 @@ int main( int argc, char *argv[])
    } 
    
    begin = clock();
-   orig_image_1 = imread("img/mine/buzzard2.jpg");
+   orig_image_1 = imread("img/Yosemite/Yosemite1.jpg");
    orig_image_1.copyTo( image_1_highlighted);
-   orig_image_2 = imread("img/mine/buzzard1.jpg");
+   orig_image_2 = imread("img/Yosemite/Yosemite2.jpg");
    orig_image_2.copyTo( image_2_highlighted);
    
    combined_images.create( orig_image_1.rows, orig_image_1.cols * 2, CV_8UC3);
@@ -95,7 +95,7 @@ int main( int argc, char *argv[])
    combined_images.copyTo(combined_images_ratio);
 
    //Convert to gray scale
-   orig_image_1.convertTo(gray_image_1, CV_32F, 1/255.0);	
+   orig_image_1.convertTo(gray_image_1, CV_32F, 1/255.0);   
    cvtColor(gray_image_1, gray_image_1, CV_BGR2GRAY);
    
    buildPyramid( gray_image_1, image_1_pyramid, NUM_SCALES );
@@ -121,7 +121,7 @@ int main( int argc, char *argv[])
    find_scales( image_1_pyramid, feat_vec_1, norm_LOG_kernels, smooth_standard_deviation);
    extract_features( image_1_pyramid, feat_vec_1, smooth_gauss, smooth_standard_deviation, gauss_Gx_kernels[ 0 ], gauss_Gy_kernels[ 0 ] );
    
-   orig_image_2.convertTo(gray_image_2, CV_32F, 1/255.0);	
+   orig_image_2.convertTo(gray_image_2, CV_32F, 1/255.0);   
    cvtColor(gray_image_2, gray_image_2, CV_BGR2GRAY);
    
    buildPyramid( gray_image_2, image_2_pyramid, NUM_SCALES );
@@ -148,8 +148,8 @@ int main( int argc, char *argv[])
    
    cout << float( end - begin) / CLOCKS_PER_SEC << endl;
    
-	namedWindow("Orig", WINDOW_SIZE_CHOICE);
-	cvMoveWindow("Orig", 900, 0);
+   namedWindow("Orig", WINDOW_SIZE_CHOICE);
+   cvMoveWindow("Orig", 900, 0);
    namedWindow("Smoothed", WINDOW_SIZE_CHOICE);
    namedWindow("Combined", WINDOW_SIZE_CHOICE);
    
@@ -231,7 +231,7 @@ int main( int argc, char *argv[])
       //imshow("Combined", image_1_pyramid.at(2));
       
       if(waitKey(30) >= 0) break;
-	}
+   }
 
-	return 0;
+   return 0;
 }

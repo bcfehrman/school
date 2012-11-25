@@ -85,14 +85,17 @@ stitcher::~stitcher()
 // points vector
 ////////////////////////
 
-void stitcher::compute_H(vector<Vec3d> chosen_p_points, vector<Vec3d> chosen_p_prime_points, Mat& dst_mat)
+void stitcher::compute_H(const vector<Vec3d>& chosen_p_points, const vector<Vec3d>& chosen_p_prime_points, Mat& dst_mat)
 {   
    unsigned int curr_vec_pos = 0;
    double curr_x_prime = 0.0;
    double curr_y_prime = 0.0;
    SVD svd;
 
-   for(unsigned int curr_point = 0; curr_point < num_points_div_2; curr_point++ )
+   num_points = chosen_p_points.size();
+   num_points_div_2 = num_points / 2.0;
+
+   for(unsigned int curr_point = 0; curr_point < num_points; curr_point++ )
    {
       p_raw_points[ curr_point ] = chosen_p_points[ curr_point ];
       p_prime_raw_points[ curr_point ] = chosen_p_prime_points[ curr_point ];
@@ -100,10 +103,9 @@ void stitcher::compute_H(vector<Vec3d> chosen_p_points, vector<Vec3d> chosen_p_p
 
    //Normalize points to make algorithm numerically stable
    normalize_points();
-   
-   //Fill the A matrix with each corresponding pair of points. This assumes that the ith and
-   //(ith + num_points_div_2) points in normalized points are corresponding pairs. 
-   for( unsigned int curr_pair_points = 0, curr_mat_row = 0; curr_pair_points < num_points_div_2; curr_pair_points++, curr_mat_row += 2 )
+
+   //Fill the A matrix with each corresponding pair of points. 
+   for( unsigned int curr_pair_points = 0, curr_mat_row = 0; curr_pair_points < num_points; curr_pair_points++, curr_mat_row += 2 )
    {
       curr_x_prime = p_prime_normalized_points[ curr_pair_points ][0];
       curr_y_prime = p_prime_normalized_points[ curr_pair_points ][1];
@@ -132,7 +134,7 @@ void stitcher::compute_H(vector<Vec3d> chosen_p_points, vector<Vec3d> chosen_p_p
       A_matrix.at<double>( curr_mat_row + 1, 7 ) =  p_normalized_points[ curr_pair_points ][1] * -curr_x_prime;
       A_matrix.at<double>( curr_mat_row + 1, 8 ) =  -curr_x_prime;                                                
    }
-   
+      cout << "HERE" << endl;
    //Perform the SVD on the A_matrix, use full flag to get null space vector
    svd(A_matrix, SVD::FULL_UV);
    
@@ -153,6 +155,146 @@ void stitcher::compute_H(vector<Vec3d> chosen_p_points, vector<Vec3d> chosen_p_p
    H_matrix.copyTo(dst_mat);
 }
 
+///////////////////////////
+// Author: Brian Fehrman
+// Creates a mosaic given a p and p_prime image. Assumes P image is to the
+// left and P_prime is to the right (this may not be a needed assumption)
+// Assumes H matrix takes p to p_prime.
+///////////////////////////
+void stitcher::create_mosaic( Mat& dst_mat)
+{
+   double curr_tran_x = 0.0, curr_tran_y = 0.0;
+   Mat H_matrix_inv = H_matrix.inv();
+   double scale_val = 0.0;
+   Vec3d extrema;
+   Vec3d point_offsets;
+   Mat temp_mat;
+   
+   find_extrema( extrema, point_offsets );
+   
+   temp_mat.create( (int) extrema[1], (int) extrema[0], CV_8UC3 );
+
+   for( int curr_row = 0; curr_row < temp_mat.rows; curr_row++)
+   {
+      for( int curr_col = 0; curr_col < temp_mat.cols; curr_col++)
+      {
+         temp_mat.at<Vec3b>( curr_row, curr_col) = Vec3b( 0, 0, 0);
+      }
+   }
+
+   for(double curr_x = 0; curr_x < p_prime_image.cols - 1; curr_x += 1 )
+   {   
+      for( double curr_y = 0; curr_y < p_prime_image.rows - 1; curr_y += 1 )
+      {
+         scale_val = curr_x * H_matrix_inv.at<double>(2,0)  + curr_y * H_matrix_inv.at<double>(2,1) + H_matrix_inv.at<double>(2,2);
+         curr_tran_x = (curr_x * H_matrix_inv.at<double>(0,0) + curr_y * H_matrix_inv.at<double>(0,1) + H_matrix_inv.at<double>(0,2))/scale_val;
+         curr_tran_y = (curr_x * H_matrix_inv.at<double>(1,0) + curr_y * H_matrix_inv.at<double>(1,1) + H_matrix_inv.at<double>(1,2))/scale_val;
+         
+         if( curr_tran_y > 0 && curr_tran_x > 0 && curr_tran_y < temp_mat.rows && curr_tran_x < temp_mat.cols)
+         temp_mat.at<Vec3b>( curr_tran_y, curr_tran_x) = p_prime_image.at<Vec3b>( curr_y, curr_x );
+   
+      }
+   }
+   
+   for(double curr_x = 0; curr_x < temp_mat.cols - 1; curr_x += 1 )
+   {   
+      for( double curr_y = 0; curr_y < temp_mat.rows - 1; curr_y += 1 )
+      {
+         scale_val = curr_x * H_matrix.at<double>(2,0)  + curr_y * H_matrix.at<double>(2,1) + H_matrix.at<double>(2,2);
+         curr_tran_x = (curr_x * H_matrix.at<double>(0,0) + curr_y * H_matrix.at<double>(0,1) + H_matrix.at<double>(0,2))/scale_val;
+         curr_tran_y = (curr_x * H_matrix.at<double>(1,0) + curr_y * H_matrix.at<double>(1,1) + H_matrix.at<double>(1,2))/scale_val;
+         
+         if( curr_tran_y > 0 && curr_tran_x > 0 && curr_tran_y < p_prime_image.rows && curr_tran_x < p_prime_image.cols)
+            temp_mat.at<Vec3b>( curr_y, curr_x) = p_prime_image.at<Vec3b>( curr_tran_y, curr_tran_x );
+   
+      }
+   }
+
+   for(double curr_x = 0; curr_x < p_image.cols - 1; curr_x += 1 )
+   {   
+      for( double curr_y = 0; curr_y < p_image.rows - 1; curr_y += 1 )
+      {
+         temp_mat.at<Vec3b>( curr_y, curr_x) = p_image.at<Vec3b>( curr_y, curr_x );
+      }
+   }
+
+   temp_mat.copyTo( dst_mat);
+}
+
+///////////////////////////////
+// Author: Brian Fehrman
+// Finds extrema needed for mosaic output image
+///////////////////////////////
+
+void stitcher::find_extrema( Vec3d& extrema, Vec3d& point_offsets )
+{
+   double curr_tran_x = 0.0, curr_tran_y = 0.0;
+   Mat H_matrix_inv = H_matrix.inv();
+   double max_x = -10000.0, max_y = -10000.0, min_x = 10000.0, min_y = 10000.0;
+   double scale_val = 0.0;
+   
+   
+   for(double curr_x = 0; curr_x < p_prime_image.cols - 1; curr_x += 1 )
+   {   
+      for( double curr_y = 0; curr_y < p_prime_image.rows - 1; curr_y += 1 )
+      {
+         scale_val = curr_x * H_matrix_inv.at<double>(2,0)  + curr_y * H_matrix_inv.at<double>(2,1) + H_matrix_inv.at<double>(2,2);
+         curr_tran_x = (curr_x * H_matrix_inv.at<double>(0,0) + curr_y * H_matrix_inv.at<double>(0,1) + H_matrix_inv.at<double>(0,2))/scale_val;
+         curr_tran_y = (curr_x * H_matrix_inv.at<double>(1,0) + curr_y * H_matrix_inv.at<double>(1,1) + H_matrix_inv.at<double>(1,2))/scale_val;
+         
+         if(curr_tran_x > max_x )
+         {
+            max_x = curr_tran_x;
+         }
+         if(curr_tran_x < min_x )
+         {
+            min_x = curr_tran_x;
+         }
+         
+         if(curr_tran_y > max_y )
+         {
+            max_y = curr_tran_y;
+         }
+         if(curr_tran_y < min_y )
+         {
+            min_y = curr_tran_y;
+         }
+      }
+   }
+   
+   /*
+   if( p_image.cols > max_x )
+   {
+      max_x = p_image.cols;
+   }
+   if( 0 < min_x )
+   {
+      min_x = 0;
+   }
+   if( p_image.rows > max_y )
+   {
+      max_y = p_image.rows;
+   }
+   if( 0 < min_y )
+   {
+      min_y = 0;
+   } 
+   * 
+   * */  
+   
+   if(max_x > 5000)
+   {
+    max_x = 5000;  
+   }
+   if(max_y > 5000)
+   {
+    max_y = 5000;  
+   }
+   
+   extrema[0] = (double) max_x;
+   extrema[1] = (double) max_y;
+}
+
 ///////////////////////
 // Author: Brian Fehrman
 // Calculates the mu and alpha coefficients
@@ -170,7 +312,7 @@ void stitcher::find_T_matrix_coefficients( )
    p_prime_mu_y = 0.0;
    
    //Find the x and y mean for the raw points
-   for( unsigned int curr_point = 0; curr_point < num_points_div_2; curr_point++ )
+   for( unsigned int curr_point = 0; curr_point < num_points; curr_point++ )
    {
       p_mu_x += p_raw_points[ curr_point ][0];
       p_mu_y += p_raw_points[ curr_point ][1];
@@ -179,14 +321,14 @@ void stitcher::find_T_matrix_coefficients( )
    }
    
    //Finalize the mu values
-   p_mu_x /= (double) num_points_div_2;
-   p_mu_y /= (double) num_points_div_2;
-   p_prime_mu_x /= (double) num_points_div_2;
-   p_prime_mu_y /= (double) num_points_div_2;
+   p_mu_x /= (double) num_points;
+   p_mu_y /= (double) num_points;
+   p_prime_mu_x /= (double) num_points;
+   p_prime_mu_y /= (double) num_points;
    
    //Find the alpha coefficient that is needed to scale the points to be an
    //average distance of sqrt(2.0) from the origin
-   for( unsigned int curr_point = 0; curr_point < num_points_div_2; curr_point++ )
+   for( unsigned int curr_point = 0; curr_point < num_points; curr_point++ )
    {
       p_alpha += sqrt( ( p_raw_points[ curr_point ][0] - p_mu_x ) * ( p_raw_points[ curr_point ][0] - p_mu_x ) +
                      ( p_raw_points[ curr_point ][1] - p_mu_y ) * ( p_raw_points[ curr_point ][1] - p_mu_y ) );
@@ -196,8 +338,8 @@ void stitcher::find_T_matrix_coefficients( )
    }
    
    //Finalize the alpha values
-   p_alpha = (num_points_div_2 * sqrt( 2.0 ) ) / p_alpha;
-   p_prime_alpha = (num_points_div_2 * sqrt( 2.0 ) ) / p_prime_alpha;
+   p_alpha = (num_points* sqrt( 2.0 ) ) / p_alpha;
+   p_prime_alpha = (num_points * sqrt( 2.0 ) ) / p_prime_alpha;
 }
 
 /////////////////////////////
@@ -213,7 +355,7 @@ void stitcher::normalize_points()
    find_T_matrix_coefficients();
    
    //Normalize the raw points
-   for( unsigned int curr_point = 0; curr_point < num_points_div_2; curr_point++ )
+   for( unsigned int curr_point = 0; curr_point < num_points; curr_point++ )
    {
    
       p_normalized_points[ curr_point ][0] = p_raw_points[ curr_point ][0] - p_mu_x;

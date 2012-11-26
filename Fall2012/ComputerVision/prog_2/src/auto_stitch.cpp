@@ -14,8 +14,8 @@ auto_stitch::auto_stitch()
    
 }
 
-auto_stitch::auto_stitch(string p_file_name, string p_prime_file_name, const unsigned int num_points, const unsigned int stitch_type)
-   : stitcher(p_file_name, p_prime_file_name, num_points)
+auto_stitch::auto_stitch(string p_file_name, string p_prime_file_name, const unsigned int num_points, string output_mosaic_name, const unsigned int stitch_type)
+   : stitcher(p_file_name, p_prime_file_name, num_points, output_mosaic_name)
 {
    
 }
@@ -40,7 +40,7 @@ int auto_stitch::run()
    vector<KeyPoint> p_prime_key_points, p_prime_suppressed_key_points;
    Mat p_descriptors, p_prime_descriptors;
    Mat temp_h_mat;
-   
+   unsigned int size_erase = 50;
    
    p_detector.detect( p_image, p_key_points);
    p_prime_detector.detect( p_prime_image, p_prime_key_points);
@@ -59,22 +59,28 @@ int auto_stitch::run()
    
    flann_matcher.match( p_descriptors, p_prime_descriptors, point_matches);
 
-   //sort( point_matches.begin(), point_matches.end(), auto_stitch::sort_match_val );
+   sort( point_matches.begin(), point_matches.end(), auto_stitch::sort_match_val );
+     
+   if( point_matches.size() < size_erase )
+   {
+      size_erase = point_matches.size() - 1;
+   }
+   
+   point_matches.erase( point_matches.begin() + size_erase, point_matches.end());
    
    srand((unsigned int) time(0) );
-   double scale_val, curr_tran_x, curr_tran_y;
+   //double scale_val, curr_tran_x, curr_tran_y;
    
    /*
    for( int curr_point = 0; curr_point < 10; curr_point++)
    {
       Scalar curr_color = Scalar( rand() % 255, rand() % 255, rand()%255);
-      circle(p_image_highlight, p_suppressed_key_points[ point_matches[curr_point].queryIdx].pt, 10, curr_color, -1);
-      circle(p_prime_image_highlight, p_prime_suppressed_key_points[ point_matches[curr_point].trainIdx].pt, 10, curr_color, -1);
-      chosen_p_points.push_back(Vec3d( (double)p_suppressed_key_points[ point_matches[curr_point].queryIdx].pt.x,(double)p_suppressed_key_points[ point_matches[curr_point].queryIdx].pt.y, 1.0 ) );
-      chosen_p_prime_points.push_back(Vec3d( (double)p_prime_suppressed_key_points[ point_matches[curr_point].trainIdx].pt.x,(double)p_prime_suppressed_key_points[ point_matches[curr_point].trainIdx].pt.y, 1.0 ) );
+      circle(p_image_highlight, p_key_points[ point_matches[curr_point].queryIdx].pt, 10, curr_color, -1);
+      circle(p_prime_image_highlight, p_prime_key_points[ point_matches[curr_point].trainIdx].pt, 10, curr_color, -1);
+      //chosen_p_points.push_back(Vec3d( (double)p_key_points[ point_matches[curr_point].queryIdx].pt.x,(double)p_key_points[ point_matches[curr_point].queryIdx].pt.y, 1.0 ) );
+      //chosen_p_prime_points.push_back(Vec3d( (double)p_prime_key_points[ point_matches[curr_point].trainIdx].pt.x,(double)p_prime_key_points[ point_matches[curr_point].trainIdx].pt.y, 1.0 ) );
    }
-   * */
-   
+   */
    //compute_H( chosen_p_points, chosen_p_prime_points, temp_h_mat);
    
    /* Debugging code
@@ -91,6 +97,7 @@ int auto_stitch::run()
    
    
    ransac_auto_stitch( p_key_points, p_prime_key_points, point_matches);
+   
    create_mosaic( mosaic_image );
 
    namedWindow( "highlighted", WINDOW_SIZE_CHOICE);
@@ -112,7 +119,7 @@ int auto_stitch::run()
    
 }
 
-void auto_stitch::ransac_auto_stitch(const vector<KeyPoint>& p_suppressed_key_points, const vector<KeyPoint>& p_prime_suppressed_key_points,
+void auto_stitch::ransac_auto_stitch(const vector<KeyPoint>& p_key_points, const vector<KeyPoint>& p_prime_key_points,
                                        const vector<DMatch>& point_matches)
 {
    Mat best_H_matrix(3,3,CV_64FC1);
@@ -126,52 +133,65 @@ void auto_stitch::ransac_auto_stitch(const vector<KeyPoint>& p_suppressed_key_po
    int max_num_correct = -1;
    double scale_val = 0.0;
    vector<Vec3d> chosen_p_points, chosen_p_prime_points;
+   vector<int> selected_indices;
    Mat temp_h_mat;
    
    
-   for(int i = 0; i < 25; i++)
+   for(int i = 0; i < 100000; i++)
    {
-      cout << i << endl;
       chosen_p_points.clear();
       chosen_p_prime_points.clear();
       curr_num_correct = 0;
+      selected_indices.clear();
       
-      for(int curr_point = 0; curr_point < 8; curr_point++ )
+      for(int curr_point = 0; curr_point < 6; curr_point++ )
       {
-         curr_rand_index = rand() % num_matches;
+         //Get a random index to get a random match from the matches array
+         do
+         {
+            curr_rand_index = rand() % num_matches;
+
+         }while( is_selected( p_key_points, p_prime_key_points, point_matches, selected_indices, curr_rand_index ) );
+         
+         selected_indices.push_back( curr_rand_index );
+      
+         
          curr_q_idx = point_matches[curr_rand_index].queryIdx;
          curr_t_idx = point_matches[curr_rand_index].trainIdx;
          
-         curr_x = (double) p_suppressed_key_points[ curr_q_idx ].pt.x;
-         curr_y = (double)p_suppressed_key_points[ curr_q_idx ].pt.y;
+         //Get  prime coordinates for current match
+         curr_x = (double) p_key_points[ curr_q_idx ].pt.x;
+         curr_y = (double) p_key_points[ curr_q_idx ].pt.y;
          
          chosen_p_points.push_back( Vec3d( curr_x, curr_y, 1.0 ) );
          
-         curr_x_prime = (double) p_suppressed_key_points[ curr_t_idx ].pt.x;
-         curr_y_prime = (double)p_suppressed_key_points[ curr_t_idx ].pt.y;
+         //Get p prime coordinates for current match
+         curr_x_prime = (double) p_prime_key_points[ curr_t_idx ].pt.x;
+         curr_y_prime = (double) p_prime_key_points[ curr_t_idx ].pt.y;
          
-         chosen_p_prime_points.push_back( Vec3d( curr_x_prime,curr_y_prime, 1.0 ) );
-      }
+         chosen_p_prime_points.push_back( Vec3d( curr_x_prime, curr_y_prime, 1.0 ) );
       
+      }
+   
       compute_H( chosen_p_points, chosen_p_prime_points, temp_h_mat);
-      cout << i << endl;
+
       for( int curr_match = 0; curr_match < num_matches; curr_match++)
       {
          curr_q_idx = point_matches [ curr_match ].queryIdx;
          curr_t_idx = point_matches [ curr_match ].trainIdx;
          
-         curr_x = (double) p_suppressed_key_points[ curr_q_idx ].pt.x;
-         curr_y = (double)p_suppressed_key_points[ curr_q_idx ].pt.y;
+         curr_x = (double) p_key_points[ curr_q_idx ].pt.x;
+         curr_y = (double) p_key_points[ curr_q_idx ].pt.y;
          
-         scale_val = curr_x * H_matrix.at<double>(2,0)  + curr_y * H_matrix.at<double>(2,1) + H_matrix.at<double>(2,2);
-         curr_tran_x = (curr_x * H_matrix.at<double>(0,0) + curr_y * H_matrix.at<double>(0,1) + H_matrix.at<double>(0,2))/scale_val;
-         curr_tran_y = (curr_x * H_matrix.at<double>(1,0) + curr_y * H_matrix.at<double>(1,1) + H_matrix.at<double>(1,2))/scale_val;
+         scale_val = curr_x * H_matrix.at<double>( 2, 0 )  + curr_y * H_matrix.at<double>( 2, 1 ) + H_matrix.at<double>( 2, 2 );
+         curr_tran_x = ( curr_x * H_matrix.at<double>( 0, 0 ) + curr_y * H_matrix.at<double>( 0, 1 ) + H_matrix.at<double>( 0, 2 ) ) / scale_val;
+         curr_tran_y = ( curr_x * H_matrix.at<double>( 1, 0 ) + curr_y * H_matrix.at<double>( 1, 1 ) + H_matrix.at<double>( 1, 2 ) ) / scale_val;
          
-         curr_x_prime = p_prime_suppressed_key_points[curr_t_idx].pt.x;
+         curr_x_prime = p_prime_key_points[curr_t_idx].pt.x;
       
          if( abs( curr_tran_x - curr_x_prime ) < 0.01 )
          {
-            curr_y_prime = p_prime_suppressed_key_points[curr_t_idx].pt.y;
+            curr_y_prime = p_prime_key_points[curr_t_idx].pt.y;
             
             if( abs( curr_tran_y - curr_y_prime ) < 0.01 )
             {
@@ -179,17 +199,70 @@ void auto_stitch::ransac_auto_stitch(const vector<KeyPoint>& p_suppressed_key_po
             }
          }  
       }
-      cout << "Curr num correct " << curr_num_correct << endl;
+      
       if( curr_num_correct > max_num_correct )
       {
-         cout << "Max Num correct: " << max_num_correct << endl;
          max_num_correct = curr_num_correct;
+         cout << "Max Num correct: " << max_num_correct << endl;
          H_matrix.copyTo( best_H_matrix );
       }
    } 
-   cout <<"Before" << endl;
+   
+
    best_H_matrix.copyTo(H_matrix);
-   cout << "After"<<endl;
+}
+
+bool auto_stitch::is_selected(const vector<KeyPoint>& p_key_points, const vector<KeyPoint>& p_prime_key_points,
+                                       const vector<DMatch>& point_matches, const vector<int>& selected_indices, 
+                                       const int curr_rand_index)
+{
+   int curr_q_idx = 0, curr_t_idx = 0;
+   double curr_x = 0.0, curr_y = 0.0;
+   double curr_check_x = 0.0, curr_check_y = 0.0;
+   double curr_x_prime = 0.0, curr_y_prime = 0.0;
+   double curr_check_x_prime = 0.0, curr_check_y_prime = 0.0;
+   int curr_selected_idx = 0;
+   int min_distance = 5;
+   bool used = false;
+
+   curr_q_idx = point_matches[curr_rand_index].queryIdx;
+   curr_t_idx = point_matches[curr_rand_index].trainIdx;
+   curr_check_x = (double) p_key_points[ curr_q_idx ].pt.x;
+   curr_check_y = (double) p_key_points[ curr_q_idx ].pt.y;
+   curr_check_x_prime = (double) p_prime_key_points[ curr_t_idx ].pt.x;
+   curr_check_y_prime = (double) p_prime_key_points[ curr_t_idx ].pt.y;
+   
+   
+   for( unsigned int curr_idx = 0; curr_idx < selected_indices.size(); curr_idx++ )
+   {
+      curr_selected_idx = selected_indices[ curr_idx ];
+               
+      curr_q_idx = point_matches[ curr_selected_idx ].queryIdx;
+      curr_t_idx = point_matches[ curr_selected_idx ].trainIdx;
+      
+      //Get  prime coordinates for current match
+      curr_x = (double) p_key_points[ curr_selected_idx ].pt.x;
+      curr_y = (double) p_key_points[ curr_selected_idx ].pt.y;
+      
+      //Get p prime coordinates for current match
+      curr_x_prime = (double) p_prime_key_points[ curr_t_idx ].pt.x;
+      curr_y_prime = (double) p_prime_key_points[ curr_t_idx ].pt.y;
+
+      //Forces at minimum pixel distance between points and inherently
+      //does not allow for repeats
+      if( abs( curr_check_x - curr_x ) < min_distance || abs( curr_check_y - curr_y ) < min_distance )
+      {
+         used = true;
+         break;
+      }
+      else if( abs( curr_check_x_prime - curr_x_prime ) < min_distance || abs( curr_check_y_prime - curr_y_prime ) < min_distance )
+      {
+         used = true;
+         break;
+      } 
+   }
+   
+   return used;
 }
 
 bool auto_stitch::sort_response_val( KeyPoint response_val_1, KeyPoint response_val_2 )

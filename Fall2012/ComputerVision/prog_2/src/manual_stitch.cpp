@@ -21,16 +21,12 @@ manual_stitch::manual_stitch()
 // Main constructor for the manual class
 ////////////////////////
 
-manual_stitch::manual_stitch(string p_file_name, string p_prime_file_name, const unsigned int num_points, const unsigned int stitch_type)
-   : stitcher(p_file_name, p_prime_file_name, num_points)
+manual_stitch::manual_stitch(string p_file_name, string p_prime_file_name, const unsigned int num_points, string output_mosaic_name, const unsigned int stitch_type)
+   : stitcher(p_file_name, p_prime_file_name, num_points, output_mosaic_name)
 {
    this->stitch_type = stitch_type;
    
    if( stitch_type == MANUAL_FRAME_STITCH || stitch_type == MANUAL_MOSAIC_STITCH )
-   {
-      num_points_get = 8;
-   }
-   else
    {
       num_points_get = 4;
    }
@@ -70,42 +66,42 @@ void manual_stitch::determine_bounding_boxes()
    p_prime_min_x = 100000.0;
    p_prime_min_y = 100000.0;
    
-   for( unsigned int curr_point = 0; curr_point < num_points_div_2; curr_point++ )
+   for( unsigned int curr_point = 0; curr_point < num_points_get; curr_point++ )
    {
       //Determine p points extrema
-      if( chosen_points[ curr_point ].x > p_max_x )
+      if( chosen_p_points[ curr_point ][0] > p_max_x )
       {
-         p_max_x = chosen_points[ curr_point ].x;
+         p_max_x = chosen_p_points[ curr_point ][0];
       }
-      if( chosen_points[ curr_point ].x < p_min_x )
+      if( chosen_p_points[ curr_point ][0] < p_min_x )
       {
-         p_min_x = chosen_points[ curr_point ].x;
+         p_min_x = chosen_p_points[ curr_point ][0];
       }
-      if( chosen_points[ curr_point ].y > p_max_y )
+      if( chosen_p_points[ curr_point ][1] > p_max_y )
       {
-         p_max_y = chosen_points[ curr_point ].y;
+         p_max_y = chosen_p_points[ curr_point ][1];
       }
-      if( chosen_points[ curr_point ].y < p_min_y )
+      if( chosen_p_points[ curr_point ][1] < p_min_y )
       {
-         p_min_y = chosen_points[ curr_point ].y;
+         p_min_y = chosen_p_points[ curr_point ][1];
       }
       
       //Determine p_prime points extrema
-      if( chosen_points[ curr_point + num_points_div_2 ].x > p_prime_max_x )
+      if( chosen_p_prime_points[ curr_point ][0] > p_prime_max_x )
       {
-         p_prime_max_x = chosen_points[ curr_point + num_points_div_2 ].x;
+         p_prime_max_x = chosen_p_prime_points[ curr_point ][0];
       }
-      if( chosen_points[ curr_point + num_points_div_2 ].x < p_prime_min_x )
+      if( chosen_p_prime_points[ curr_point ][0] < p_prime_min_x )
       {
-         p_prime_min_x = chosen_points[ curr_point + num_points_div_2 ].x;
+         p_prime_min_x = chosen_p_prime_points[ curr_point ][0];
       }
-      if( chosen_points[ curr_point + num_points_div_2 ].y > p_prime_max_y )
+      if( chosen_p_prime_points[ curr_point ][1] > p_prime_max_y )
       {
-         p_prime_max_y = chosen_points[ curr_point + num_points_div_2 ].y;
+         p_prime_max_y = chosen_p_prime_points[ curr_point ][1];
       }
-      if( chosen_points[ curr_point + num_points_div_2 ].y < p_prime_min_y )
+      if( chosen_p_prime_points[ curr_point ][1] < p_prime_min_y )
       {
-         p_prime_min_y = chosen_points[ curr_point + num_points_div_2 ].y;
+         p_prime_min_y = chosen_p_prime_points[ curr_point ][1];
       }
    }
    
@@ -202,16 +198,28 @@ void manual_stitch::get_points()
    {
       combined_images.copyTo( combined_images_highlight );
       
-      for(unsigned int i = 0; i < chosen_points.size(); i++ )
+      for(unsigned int i = 0; i < chosen_p_points.size(); i++ )
       {
 
-         circle(combined_images_highlight, chosen_points[ i ], 10, colors[i % 4], -1);
+         circle(combined_images_highlight, Point((int)chosen_p_points[ i ][0], (int)chosen_p_points[ i ][1]) , 10, colors[i % 4], -1);
          converter << i % 4;
-         putText (combined_images_highlight,converter.str(),chosen_points[ i ], fontFace, 2, colors[i % 4], 3);
+         putText (combined_images_highlight,converter.str(),Point((int)chosen_p_points[ i ][0], (int)chosen_p_points[ i ][1]), fontFace, 2, colors[i % 4], 3);
          converter.str("");
          converter.clear();
 
       }
+      
+      for(unsigned int i = 0; i < chosen_p_prime_points.size(); i++ )
+      {
+
+         circle(combined_images_highlight, Point(chosen_p_prime_points[ i ][0], chosen_p_prime_points[ i ][1]), 10, colors[i % 4], -1);
+         converter << i % 4;
+         putText (combined_images_highlight,converter.str(),Point(chosen_p_prime_points[ i ][0], chosen_p_prime_points[ i ][1]), fontFace, 2, colors[i % 4], 3);
+         converter.str("");
+         converter.clear();
+
+      }
+      
       imshow("Pick corresponding points", combined_images_highlight);
       
       key_pressed = (int) waitKey( 30 );
@@ -235,26 +243,22 @@ void manual_stitch::get_points()
    if( stitch_type == MANUAL_FRAME_STITCH || stitch_type == MANUAL_MOSAIC_STITCH )
    {
       //Account for combined image offset of points
-      for(unsigned int curr_p_prime_point = num_points_get / 2; curr_p_prime_point < num_points_get; curr_p_prime_point++ )
+      for(unsigned int curr_point = 0; curr_point < chosen_p_prime_points.size(); curr_point++ )
       {
-         chosen_points[ curr_p_prime_point ].x -= p_image.cols;
+         chosen_p_prime_points[ curr_point ][0] -= p_image.cols;
       }
    }
    else
    {
-      //Puts the points in the correct location of the chosen points array.
-      //All of this is a bit hacked but oh well. Not getting paid to do it
-      //and probably trying way too hard anyways.
-      for( unsigned int curr_point = 0; curr_point < num_points_get; curr_point++ )
-      {
-         chosen_points.push_back( chosen_points[ curr_point ] );
-         chosen_points[ num_points_get / 2 + curr_point ].x -= p_image.cols;
-      }
-   
-      chosen_points[ 0 ] = Point( 0, 0 );
-      chosen_points[ 1 ] = Point( p_image.cols - 1, 0 );
-      chosen_points[ 2 ] = Point( p_image.cols - 1, p_image.rows - 1 );
-      chosen_points[ 3 ] = Point( 0, p_image.rows - 1 );
+      //Make frame in image be p prime, then the corners of the image to
+      //warp to be p. 
+      chosen_p_prime_points.resize( chosen_p_points.size() );
+      copy( chosen_p_points.begin(), chosen_p_points.end(), chosen_p_prime_points.begin());
+      
+      chosen_p_points[ 0 ] = Vec3d( 0.0, 0.0, 0.0 );
+      chosen_p_points[ 1 ] = Vec3d( p_image.cols - 1.0, 0.0, 1.0 );
+      chosen_p_points[ 2 ] = Vec3d( p_image.cols - 1.0, p_image.rows - 1.0 );
+      chosen_p_points[ 3 ] = Vec3d( 0.0, p_image.rows - 1.0, 1.0 );
    }  
 }
 
@@ -296,17 +300,25 @@ void manual_stitch::mouse_callback( int event, int x, int y, int flags, void* pa
       case CV_EVENT_LBUTTONDOWN:
         cout << " x: " << x << " y: " << y << endl;
         
-        if( man_stitch_obj->chosen_points.size() < man_stitch_obj->num_points_get )
+        if( man_stitch_obj->chosen_p_points.size() < man_stitch_obj->num_points_get )
         {
-           man_stitch_obj->chosen_points.push_back(Point( x, y ) );
+           man_stitch_obj->chosen_p_points.push_back(Vec3d( (double) x, (double) y,  1.0 ) );
+        }
+        else if( man_stitch_obj->chosen_p_prime_points.size() < man_stitch_obj->num_points_get )
+        {
+           man_stitch_obj->chosen_p_prime_points.push_back(Vec3d( (double) x, (double) y,  1.0 ) );
         }
         break;
       
       //Deselect a point
       case CV_EVENT_RBUTTONDOWN:
-        if( man_stitch_obj->chosen_points.size() > 0 )
+        if( man_stitch_obj->chosen_p_prime_points.size() > 0 )
         {
-           man_stitch_obj->chosen_points.erase( man_stitch_obj->chosen_points.end() );
+           man_stitch_obj->chosen_p_prime_points.erase( man_stitch_obj->chosen_p_prime_points.end() );
+        }
+        else if( man_stitch_obj->chosen_p_points.size() > 0 )
+        {
+           man_stitch_obj->chosen_p_points.erase( man_stitch_obj->chosen_p_points.end() );
         }
         break;
 
@@ -320,17 +332,6 @@ void manual_stitch::mouse_callback( int event, int x, int y, int flags, void* pa
 int manual_stitch::run()
 {   
    get_points();
-   
-   //Move points from single vector into seperate vectors for easier processing
-   for( unsigned int curr_point = 0; curr_point < num_points_div_2; curr_point++ )
-   {
-      chosen_p_points.push_back( Vec3d( (double) chosen_points[ curr_point ].x, (double) chosen_points[ curr_point ].y, 1.0 ) );
-   }
-   
-   for( unsigned int curr_point = num_points_div_2; curr_point < num_points; curr_point++ )
-   {
-      chosen_p_prime_points.push_back( Vec3d( (double) chosen_points[ curr_point ].x, (double) chosen_points[ curr_point ].y, 1.0 ) );
-   }
    
    if( stitch_type == MANUAL_FRAME_STITCH || stitch_type == SEMI_AUTO_FRAME_STITCH )
    {

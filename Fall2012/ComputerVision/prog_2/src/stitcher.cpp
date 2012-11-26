@@ -18,13 +18,14 @@ stitcher::stitcher()
 // Main constructor for the stitcher class
 ////////////////////////
 
-stitcher::stitcher( string p_file_name, string p_prime_file_name, const unsigned int num_points)
+stitcher::stitcher( string p_file_name, string p_prime_file_name, const unsigned int num_points_get, string output_mosaic_name )
 {
    this->p_file_name = p_file_name;
    this->p_prime_file_name = p_prime_file_name;
-   this->num_points = num_points;
+   this->num_points_get = num_points_get;
+   this->output_mosaic_name = output_mosaic_name;
    
-   num_points_div_2 = num_points / 2;
+   //num_points_div_2 = num_points / 2;
    
    //No point in doing everything else if images don't load, so try it first
    read_images();
@@ -50,13 +51,13 @@ stitcher::stitcher( string p_file_name, string p_prime_file_name, const unsigned
    }
    
    //Setup vectors for correspondence points
-   p_normalized_points.resize( num_points_div_2 );
-   p_prime_normalized_points.resize( num_points_div_2 );
-   p_raw_points.resize( num_points );
-   p_prime_raw_points.resize( num_points );
+   p_normalized_points.resize( num_points_get);
+   p_prime_normalized_points.resize( num_points_get );
+   p_raw_points.resize( num_points_get );
+   p_prime_raw_points.resize( num_points_get );
    
    //Setup matrices for homography
-   A_matrix.create( num_points, 9, CV_64FC1 );
+   A_matrix.create( num_points * 2, 9, CV_64FC1 );
    H_matrix.create( 3, 3, CV_64FC1 );
    H_vector.create( 9, 1, CV_64FC1 );
    
@@ -94,6 +95,11 @@ void stitcher::compute_H(const vector<Vec3d>& chosen_p_points, const vector<Vec3
 
    num_points = chosen_p_points.size();
    num_points_div_2 = num_points / 2.0;
+   
+   p_raw_points.resize( num_points );
+   p_prime_raw_points.resize( num_points );
+   
+   A_matrix.create( num_points * 2, 9, CV_64FC1 );
 
    for(unsigned int curr_point = 0; curr_point < num_points; curr_point++ )
    {
@@ -134,10 +140,10 @@ void stitcher::compute_H(const vector<Vec3d>& chosen_p_points, const vector<Vec3
       A_matrix.at<double>( curr_mat_row + 1, 7 ) =  p_normalized_points[ curr_pair_points ][1] * -curr_x_prime;
       A_matrix.at<double>( curr_mat_row + 1, 8 ) =  -curr_x_prime;                                                
    }
-      cout << "HERE" << endl;
+
    //Perform the SVD on the A_matrix, use full flag to get null space vector
    svd(A_matrix, SVD::FULL_UV);
-   
+
    //Turn the null space vector into the 3x3 matrix H matrix
    for( unsigned int curr_row = 0; curr_row < 3; curr_row++ )
    {
@@ -164,6 +170,7 @@ void stitcher::compute_H(const vector<Vec3d>& chosen_p_points, const vector<Vec3
 void stitcher::create_mosaic( Mat& dst_mat)
 {
    double curr_tran_x = 0.0, curr_tran_y = 0.0;
+   Mat scaled_mat;
    Mat H_matrix_inv = H_matrix.inv();
    double scale_val = 0.0;
    Vec3d extrema;
@@ -219,6 +226,8 @@ void stitcher::create_mosaic( Mat& dst_mat)
    }
 
    temp_mat.copyTo( dst_mat);
+   
+   imwrite(output_mosaic_name, temp_mat);
 }
 
 ///////////////////////////////
@@ -282,13 +291,13 @@ void stitcher::find_extrema( Vec3d& extrema, Vec3d& point_offsets )
    * 
    * */  
    
-   if(max_x > 5000)
+   if(max_x > 10000)
    {
-    max_x = 5000;  
+    max_x = 10000;  
    }
-   if(max_y > 5000)
+   if(max_y > 10000)
    {
-    max_y = 5000;  
+    max_y = 10000;  
    }
    
    extrema[0] = (double) max_x;
@@ -351,18 +360,18 @@ void stitcher::find_T_matrix_coefficients( )
 
 void stitcher::normalize_points()
 {
+   p_normalized_points.resize( num_points);
+   p_prime_normalized_points.resize( num_points );
+   
    //Find the mu's and alphas for normalizing and unnormalizing the points.
    find_T_matrix_coefficients();
-   
    //Normalize the raw points
    for( unsigned int curr_point = 0; curr_point < num_points; curr_point++ )
    {
-   
       p_normalized_points[ curr_point ][0] = p_raw_points[ curr_point ][0] - p_mu_x;
       p_normalized_points[ curr_point ][0] *= p_alpha;
       p_normalized_points[ curr_point ][1] = p_raw_points[ curr_point ][1] - p_mu_y;
       p_normalized_points[ curr_point ][1] *= p_alpha;
-      
       p_prime_normalized_points[ curr_point ][0] =  p_prime_raw_points[ curr_point ][0] - p_prime_mu_x;
       p_prime_normalized_points[ curr_point ][0] *= p_prime_alpha;
       p_prime_normalized_points[ curr_point ][1] = p_prime_raw_points[ curr_point ][1] - p_prime_mu_y;

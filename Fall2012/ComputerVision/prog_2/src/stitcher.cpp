@@ -291,13 +291,13 @@ void stitcher::find_extrema( Vec3d& extrema, Vec3d& point_offsets )
    * 
    * */  
    
-   if(max_x > 10000)
+   if(max_x > 6000)
    {
-    max_x = 10000;  
+    max_x = 6000;  
    }
-   if(max_y > 10000)
+   if(max_y > 6000)
    {
-    max_y = 10000;  
+    max_y = 6000;  
    }
    
    extrema[0] = (double) max_x;

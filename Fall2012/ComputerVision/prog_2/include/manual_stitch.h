@@ -21,11 +21,11 @@ class manual_stitch: private stitcher
    
    //Public Members
       unsigned int stitch_type;
-      unsigned int num_points_get;
    
    //Public Methods
       manual_stitch();
-      manual_stitch(string p_file_name, string p_prime_file_name, const unsigned int num_points = 8, const unsigned int stitch_type = 0);
+      manual_stitch(string p_file_name, string p_prime_file_name, const unsigned int num_points_get = 8, 
+                        string output_mosaic_name ="", const unsigned int stitch_type = 0);
       virtual ~manual_stitch();
       static void mouse_callback( int event, int x, int y, int flags, void* param );
       int run();
@@ -36,7 +36,6 @@ class manual_stitch: private stitcher
       double box_x, box_y;
       vector<Vec3d> box_points;
       Mat intermediate_box;
-      vector<Point> chosen_points;
       vector<Vec3d> chosen_p_points, chosen_p_prime_points;
       Mat box_to_p_H_matrix, box_to_p_prime_H_matrix;
       double p_max_x, p_max_y;

@@ -28,7 +28,7 @@ class stitcher
 {
    public:
       stitcher();
-      stitcher( string p_file_name, string p_prime_file_name, const unsigned int num_points = 8 );
+      stitcher( string p_file_name, string p_prime_file_name, const unsigned int num_points = 8, string output_mosaic_name = "");
       virtual ~stitcher();
       
    //Private members
@@ -36,7 +36,8 @@ class stitcher
       double avg_intensity;
       string p_file_name, p_prime_file_name;
       unsigned int image_x_max, image_y_max;
-      unsigned int num_points, num_points_div_2;
+      unsigned int num_points_get, num_points, num_points_div_2;
+      string output_mosaic_name;
       double p_alpha, p_mu_x, p_mu_y;
       Mat p_image, p_image_highlight;
       vector<Vec3d> p_normalized_points, p_raw_points;
@@ -53,8 +54,6 @@ class stitcher
       int read_image_file( Mat& dst_image, string file_name );
       int read_images();
       void unnormalize_points( );
-   
-   private:
 };
 
 #endif /* STITCHER_H */ 

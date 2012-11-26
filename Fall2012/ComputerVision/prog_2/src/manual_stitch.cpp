@@ -255,6 +255,12 @@ void manual_stitch::get_points()
       chosen_p_prime_points.resize( chosen_p_points.size() );
       copy( chosen_p_points.begin(), chosen_p_points.end(), chosen_p_prime_points.begin());
       
+      //Account for combined image offset of points
+      for(unsigned int curr_point = 0; curr_point < chosen_p_prime_points.size(); curr_point++ )
+      {
+         chosen_p_prime_points[ curr_point ][0] -= p_image.cols;
+      }
+      
       chosen_p_points[ 0 ] = Vec3d( 0.0, 0.0, 0.0 );
       chosen_p_points[ 1 ] = Vec3d( p_image.cols - 1.0, 0.0, 1.0 );
       chosen_p_points[ 2 ] = Vec3d( p_image.cols - 1.0, p_image.rows - 1.0 );

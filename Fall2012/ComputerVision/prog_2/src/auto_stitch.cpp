@@ -144,7 +144,7 @@ void auto_stitch::ransac_auto_stitch(const vector<KeyPoint>& p_key_points, const
       curr_num_correct = 0;
       selected_indices.clear();
       
-      for(int curr_point = 0; curr_point < 6; curr_point++ )
+      for(int curr_point = 0; curr_point < 10; curr_point++ )
       {
          //Get a random index to get a random match from the matches array
          do
@@ -189,11 +189,11 @@ void auto_stitch::ransac_auto_stitch(const vector<KeyPoint>& p_key_points, const
          
          curr_x_prime = p_prime_key_points[curr_t_idx].pt.x;
       
-         if( abs( curr_tran_x - curr_x_prime ) < 0.01 )
+         if( abs( curr_tran_x - curr_x_prime ) < 5 )
          {
             curr_y_prime = p_prime_key_points[curr_t_idx].pt.y;
             
-            if( abs( curr_tran_y - curr_y_prime ) < 0.01 )
+            if( abs( curr_tran_y - curr_y_prime ) < 5 )
             {
                curr_num_correct++;
             }

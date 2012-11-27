@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=latex 2012.9.28)  26 NOV 2012 00:22
+This is pdfTeX, Version 3.1415926-2.5-1.40.13 (TeX Live 2013/dev) (format=latex 2012.9.28)  26 NOV 2012 21:43
 entering extended mode
  restricted \write18 enabled.
  Source specials enabled.
@@ -210,42 +210,52 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
 (Font)              Font shape `OT1/ptm/b/n' tried instead on input line 38.
-
-Underfull \hbox (badness 2547) in paragraph at lines 39--40
-[][]\OT1/ptm/m/it/10 In this work I ex-plored fea-ture de-tec-tion, ex-trac-
- []
-
 File: img/prog_2_menu.eps Graphic file (type eps)
+
 <img/prog_2_menu.eps>
 File: img/man_frame_points.eps Graphic file (type eps)
  <img/man_frame_points.eps>
-Underfull \vbox (badness 10000) has occurred while \output is active []
+File: img/semi_auto_frame_points.eps Graphic file (type eps)
+
+<img/semi_auto_frame_points.eps>
+Underfull \vbox (badness 1603) has occurred while \output is active []
 
  [1
 
 
 ]
-File: img/semi_auto_frame_points.eps Graphic file (type eps)
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
-<img/semi_auto_frame_points.eps>
-File: img/manual_mosaic_points.eps Graphic file (type eps)
- <img/manual_mosaic_points.eps>
-No file bf_prog2_CV_2012.bbl.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [2]
-Underfull \vbox (badness 7832) has occurred while \output is active []
+File: img/manual_mosaic_points.eps Graphic file (type eps)
 
- [3]
-(./bf_prog2_CV_2012.aux) ) 
+<img/manual_mosaic_points.eps>
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+File: img/tv_man_out.eps Graphic file (type eps)
+
+<img/tv_man_out.eps>
+File: img/graf_auto_out.eps Graphic file (type eps)
+ <img/graf_auto_out.eps>
+File: img/tv_auto_out.eps Graphic file (type eps)
+ <img/tv_auto_out.eps>
+File: img/man_mos_buzzard.eps Graphic file (type eps)
+
+<img/man_mos_buzzard.eps>
+File: img/auto_mos_buzzard.eps Graphic file (type eps)
+ <img/auto_mos_buzzard.eps>
+No file bf_prog2_CV_2012.bbl.
+[3] [4] [5] (./bf_prog2_CV_2012.aux) ) 
 Here is how much of TeX's memory you used:
- 1920 strings out of 493500
- 23782 string characters out of 3143858
- 77632 words of memory out of 3000000
- 5200 multiletter control sequences out of 15000+200000
+ 1935 strings out of 493500
+ 24085 string characters out of 3143858
+ 79672 words of memory out of 3000000
+ 5210 multiletter control sequences out of 15000+200000
  17321 words of font info for 58 fonts, out of 3000000 for 9000
  953 hyphenation exceptions out of 8191
  32i,9n,24p,1766b,314s stack positions out of 5000i,500n,10000p,200000b,50000s
 
-Output written on bf_prog2_CV_2012.dvi (3 pages, 13656 bytes).
+Output written on bf_prog2_CV_2012.dvi (5 pages, 15368 bytes).

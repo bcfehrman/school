@@ -36,7 +36,7 @@ SDSM\&T\\
 \maketitle
 %%%%%%%%% ABSTRACT
 \begin{abstract}
-In this work I explored feature detection, extraction/description, and matching. The method implemented was a version of the Harris-Laplace method which offers scale, rotation, and illumination invariance when properly implemented. In addition to this, adaptive non-maximum suppression was also implemented and found to have better results than just picking the features with the largest response. A special pruning algorithm has also been implemented during the matching stage which will not allow for multiple matches to the same point and instead will pick the best pair of matches. This pruning along with using the ratio test (instead of just the SSD) was found to get rid of a large amount of the false matches that were present before implementing these techniques. All bench mark images were tested using the same tuning variable values such as the smoothing/derivation scales and the thresholds. Lastly, the algorithm was extended to work on live video feed and is able to track features between successive frames quite well.
+In this work I explored homographies. Multiple applications are covered including frame stitching and mosaic stitching which can be done manually or automatically. The algorithms and functions used to accomplish each stage from beginning to end are over-viewed. Samples results are given in this paper and the entire set of results are found on the web page.
 
 \end{abstract}
 
@@ -89,12 +89,62 @@ For the manual mosaic stitch the initial procedure is largely the same as that f
 \caption{Selection of four correspondence points in each image that were used for manual mosaic stitching.}
 \label{fig:man_mosaic_points}
 \end{figure*}
+
+\section{Automatic Mosaic Stitching}
+The automatic mosaic stitching was just a matter of automatically obtaining matching correspondence points from two input images rather than letting the user select those points as with the manual mosaic stitching. OpenCV's SURF detect function was used to find key points in each image and were placed in to a vector of \emph{KeyPoint} structs. I then ran my own adaptive non-maximum suppression algorithm on the SURF key points in order to find local maxima that were 10\% greater in value than any neighbors within a five pixel radius. This also forced the points to have at least a reasonable spacing among themselves. The feature descriptions were then extracted at each remaining key point by the use of OpenCV's SURF extract function. The features were then matched using OpenCV's FLANN matching function which places potential matches into a vector of \emph{DMatch} structs. The matches are then sorted by ascending distance and the top 50 matches are kept. My self-implemented RANSAC algorithm is then performed on the 50 remaining points in order to further ensure that good matches are being used to form the H matrix. 10 points are selected at random from the 50 potential matches. There is logic in place to ensure that the same point is not selected twice. H is then computed for the given set of random points and is then applied to all $p$ match points which are then compared to all of the $p'$ match points. A tally is kept of how many potential match points the current H matrix successfully transforms and this information is used to select the best H matrix. The $p$ and $p'$ points are then transferred to the output frame using the same procedure as was used for the manual mosaic stitching.
+
+\section{Results}
+This section will show the output images which resulted from each of the four applications that were detailed in the preceding sections.
+
+\subsection{Manual Frame Stitch}
+
+\begin{figure*}[ht!]
+\centering
+\includegraphics[width=0.3\textwidth]{img/tv_man_out.eps}
+\caption{Result from manually stitching a frame from one image in to a frame contained within a second image.}
+\label{fig:man_frame_tv_res}
+\end{figure*}
+
+\begin{figure*}[ht!]
+\centering
+\includegraphics[width=0.3\textwidth]{img/graf_auto_out.eps}
+\caption{Second result from manually stitching a frame from one image in to a frame contained within a second image.}
+\label{fig:man_frame_graf_res}
+\end{figure*}
+
+\subsection{Semi-Auto Frame Stitch}
+
+ \begin{figure*}[ht!]
+ \centering
+ \includegraphics[width=0.3\textwidth]{img/tv_auto_out.eps}
+ \caption{Result from semi-automatically stitching a frame from one image in to a frame contained within a second image.}
+ \label{fig:auto_frame_tv_res}
+ \end{figure*}
+ 
+ \subsection{Manual Mosaic Stitch}
+ 
+    \begin{figure*}[ht!]
+    \centering
+    \includegraphics[width=0.3\textwidth]{img/man_mos_buzzard.eps}
+    \caption{Mosaic created by manually selecting correspondence points.}
+    \label{fig:manual_mosaic_res}
+    \end{figure*}
+  
+  \subsection{Auto Mosaic Stitch}
+
+    \begin{figure*}[ht!]
+    \centering
+    \includegraphics[width=0.3\textwidth]{img/auto_mos_buzzard.eps}
+    \caption{Mosaic created by automatically selecting correspondence points.}
+    \label{fig:auto_mosaic_res}
+    \end{figure*}
+    
+\section{Conclusions/Future Work}
+All of the algorithms were found to work fairly well. The program had a hard time with the fireTower image set and could be due to the large change in the bars that are up close to the camera. The program also seems to randomly crash from time to time when running it and that will be looked in to at a later date.
+
 {\small
 \bibliographystyle{ieee}
 \bibliography{egbib}
 }
-
-\section{Automatic Mosaic Stitching}
-The automatic mosaic stitching was just a matter of automatically obtaining matching correspondence points from two input images rather than letting the user select those points as with the manual mosaic stitching. OpenCV's SURF detect function was used to find key points in each image and were placed in to a vector of \emph{KeyPoint} structs. I then ran my own adaptive non-maximum suppression algorithm on the SURF key points in order to find local maxima that were 10\% greater in value than any neighbors within a five pixel radius. This also forced the points to have at least a reasonable spacing among themselves. The feature descriptions were then extracted at each remaining key point by the use of OpenCV's SURF extract function. The features were then matched using OpenCV's FLANN matching function which places potential matches into a vector of \emph{DMatch} structs. The matches are then sorted by ascending distance and the top 50 matches are kept. My self-implemented RANSAC algorithm is then performed on the 50 remaining points in order to further ensure that good matches are being used to form the H matrix. 10 points are selected at random from the 50 potential matches. There is logic in place to ensure that the same point is not selected twice. H is then computed for the given set of random points and is then applied to all $p$ match points which are then compared to all of the $p'$ match points. A tally is kept of how many potential match points the current H matrix successfully transforms and this information is used to select the best H matrix. The $p$ and $p'$ points are then transferred to the output frame using the same procedure as was used for the manual mosaic stitching.
 
 \end{document}

@@ -158,6 +158,8 @@ void manual_stitch::frame_stitch()
          
       if( (int) waitKey( 30 ) > 0 ) break;
    }
+   
+   imwrite(output_mosaic_name, p_prime_image);
 }
 
 //////////////////////////////

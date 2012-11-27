@@ -23,21 +23,20 @@ long_line_behaviour=1
 long_line_column=72
 
 [files]
-current_page=8
-FILE_NAME_0=693;C++;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Fsrc%2Fprog_2_main.cpp;0;3
+current_page=1
+FILE_NAME_0=377;C++;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Fsrc%2Fprog_2_main.cpp;0;3
 FILE_NAME_1=264;C++;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Fsrc%2Fprog_2.cpp;0;3
 FILE_NAME_2=198;C;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Finclude%2Fprog_2.h;0;3
 FILE_NAME_3=1269;C;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Finclude%2Fstitcher.h;0;3
-FILE_NAME_4=5502;C++;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Fsrc%2Fstitcher.cpp;0;3
+FILE_NAME_4=8142;C++;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Fsrc%2Fstitcher.cpp;0;3
 FILE_NAME_5=261;C;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Finclude%2Fmanual_stitch.h;0;3
-FILE_NAME_6=7664;C++;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Fsrc%2Fmanual_stitch.cpp;0;3
+FILE_NAME_6=4251;C++;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Fsrc%2Fmanual_stitch.cpp;0;3
 FILE_NAME_7=19;Make;0;16;1;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2FMakefile;0;3
-FILE_NAME_8=4966;C++;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Fsrc%2Fauto_stitch.cpp;0;3
-FILE_NAME_9=853;C;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Finclude%2Fauto_stitch.h;0;3
-FILE_NAME_10=18879;C++;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2FProgram1%2Flib%2Flibvision_functions.cpp;0;3
+FILE_NAME_8=79;C++;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Fsrc%2Fauto_stitch.cpp;0;3
+FILE_NAME_9=752;C;0;16;0;1;0;%2Fhome%2Fbcf%2Fschool%2FFall2012%2FComputerVision%2Fprog_2%2Finclude%2Fauto_stitch.h;0;3
 
 [VTE]
-last_dir=/home/bcf/school/Fall2012/ComputerVision/Program1
+last_dir=/home/bcf/school/Fall2012/ComputerVision/prog_2
 
 [gproject]
 source_patterns=*.c;*.C;*.cpp;*.cxx;*.c++;*.cc;

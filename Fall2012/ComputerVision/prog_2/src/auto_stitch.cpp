@@ -14,10 +14,10 @@ auto_stitch::auto_stitch()
    
 }
 
-auto_stitch::auto_stitch(string p_file_name, string p_prime_file_name, const unsigned int num_points, string output_mosaic_name, const unsigned int stitch_type)
+auto_stitch::auto_stitch(string p_file_name, string p_prime_file_name, const unsigned int num_points, string output_mosaic_name, const unsigned int stitch_type, const bool use_ransac)
    : stitcher(p_file_name, p_prime_file_name, num_points, output_mosaic_name)
 {
-   
+   this->use_ransac = use_ransac;
 }
 
 
@@ -28,11 +28,11 @@ auto_stitch::~auto_stitch()
 
 int auto_stitch::run()
 {
+   vector<Vec3d> chosen_p_points, chosen_p_prime_points;
    SurfFeatureDetector p_detector;
    SurfFeatureDetector p_prime_detector;
    SurfDescriptorExtractor p_extractor, p_prime_extractor;
    FlannBasedMatcher flann_matcher;
-   //BruteForceMatcher< L2<float> > flann_matcher;
    vector<DMatch> good_matches;
    Mat mosaic_image;
    vector<DMatch> point_matches;
@@ -45,14 +45,14 @@ int auto_stitch::run()
    p_detector.detect( p_image, p_key_points);
    p_prime_detector.detect( p_prime_image, p_prime_key_points);
    
-   //vector<KeyPoint> p_temp_suppress;
-   //vector<KeyPoint> p_prime_temp_suppress;
-   //surf_suppress_non_maximums_adaptive( p_image, p_key_points, p_temp_suppress, 60, 30 );
+   vector<KeyPoint> p_temp_suppress;
+   vector<KeyPoint> p_prime_temp_suppress;
+   surf_suppress_non_maximums_adaptive( p_image, p_key_points, p_temp_suppress, 60, 30 );
    
-   //surf_suppress_non_maximums_adaptive( p_image, p_temp_suppress, p_suppressed_key_points, 60, 30 );
-   //surf_suppress_non_maximums_adaptive( p_prime_image, p_prime_key_points, p_prime_temp_suppress, 60, 30 );
+   surf_suppress_non_maximums_adaptive( p_image, p_temp_suppress, p_suppressed_key_points, 60, 30 );
+   surf_suppress_non_maximums_adaptive( p_prime_image, p_prime_key_points, p_prime_temp_suppress, 60, 30 );
    
-   //surf_suppress_non_maximums_adaptive( p_prime_image, p_prime_temp_suppress, p_prime_suppressed_key_points, 60, 30 );
+   surf_suppress_non_maximums_adaptive( p_prime_image, p_prime_temp_suppress, p_prime_suppressed_key_points, 60, 30 );
    
    p_extractor.compute( p_image, p_key_points, p_descriptors);
    p_prime_extractor.compute( p_prime_image, p_prime_key_points, p_prime_descriptors);
@@ -66,37 +66,26 @@ int auto_stitch::run()
       size_erase = point_matches.size() - 1;
    }
    
+   //Keep top matches
    point_matches.erase( point_matches.begin() + size_erase, point_matches.end());
    
    srand((unsigned int) time(0) );
-   //double scale_val, curr_tran_x, curr_tran_y;
-   
-   /*
-   for( int curr_point = 0; curr_point < 10; curr_point++)
+
+   if( use_ransac )
    {
-      Scalar curr_color = Scalar( rand() % 255, rand() % 255, rand()%255);
-      circle(p_image_highlight, p_key_points[ point_matches[curr_point].queryIdx].pt, 10, curr_color, -1);
-      circle(p_prime_image_highlight, p_prime_key_points[ point_matches[curr_point].trainIdx].pt, 10, curr_color, -1);
-      //chosen_p_points.push_back(Vec3d( (double)p_key_points[ point_matches[curr_point].queryIdx].pt.x,(double)p_key_points[ point_matches[curr_point].queryIdx].pt.y, 1.0 ) );
-      //chosen_p_prime_points.push_back(Vec3d( (double)p_prime_key_points[ point_matches[curr_point].trainIdx].pt.x,(double)p_prime_key_points[ point_matches[curr_point].trainIdx].pt.y, 1.0 ) );
+      ransac_auto_stitch( p_key_points, p_prime_key_points, point_matches);
    }
-   */
-   //compute_H( chosen_p_points, chosen_p_prime_points, temp_h_mat);
    
-   /* Debugging code
-   for(int curr_point = 0; curr_point < 4; curr_point++)
+   else
    {
-      scale_val = chosen_p_points[curr_point][0] * H_matrix.at<double>(2,0)  + chosen_p_points[curr_point][1]* H_matrix.at<double>(2,1) + H_matrix.at<double>(2,2);
-      curr_tran_x = (chosen_p_points[curr_point][0] * H_matrix.at<double>(0,0) + chosen_p_points[curr_point][1] * H_matrix.at<double>(0,1) + H_matrix.at<double>(0,2))/scale_val;
-      curr_tran_y = (chosen_p_points[curr_point][0] * H_matrix.at<double>(1,0) + chosen_p_points[curr_point][1] * H_matrix.at<double>(1,1) + H_matrix.at<double>(1,2))/scale_val;
-   
-      cout << chosen_p_prime_points[curr_point][0] << " " << chosen_p_prime_points[curr_point][1] << endl;
-      cout << curr_tran_x << " " << curr_tran_y << endl;
+      for( int curr_point = 0; curr_point < 10; curr_point++)
+      {
+         chosen_p_points.push_back(Vec3d( (double)p_key_points[ point_matches[curr_point].queryIdx].pt.x,(double)p_key_points[ point_matches[curr_point].queryIdx].pt.y, 1.0 ) );
+         chosen_p_prime_points.push_back(Vec3d( (double)p_prime_key_points[ point_matches[curr_point].trainIdx].pt.x,(double)p_prime_key_points[ point_matches[curr_point].trainIdx].pt.y, 1.0 ) );
+      }
+      
+      compute_H( chosen_p_points, chosen_p_prime_points, temp_h_mat);
    }
-   * */
-   
-   
-   ransac_auto_stitch( p_key_points, p_prime_key_points, point_matches);
    
    create_mosaic( mosaic_image );
 
@@ -385,20 +374,6 @@ void auto_stitch::surf_suppress_non_maximums_adaptive( const Mat& src_mat, const
          }
       }
       
-   }
-   
-   
-   //Make sure we have features
-   if( !dst_vec.empty() )
-   {
-      //Sort based on harris response value
-      //sort( dst_vec.begin(), dst_vec.end(), auto_stitch::sort_response_val );
-      
-      //If more features than desired, get rid of the extra features.
-      //if( dst_vec.size() >  num_keep )
-      //{
-    //     dst_vec.erase( dst_vec.begin() + num_keep, dst_vec.end() );
-      //}
    }
 }
 

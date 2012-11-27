@@ -1,0 +1,16 @@
+Computer Vision Prog 2
+Brian Fehrman
+
+COMPILE
+------------
+From within the prog_2 directory, the program should be able to be compiled with a simple:
+
+make clean
+make all
+
+You may need to edit the directories in the make file. This command will simply use
+prog_2.cpp as the compile target which is actually a "unity" compile file.
+
+RUN
+---------------
+From the top menu

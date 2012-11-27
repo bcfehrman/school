@@ -41,7 +41,7 @@ int main( int argc, char *argv[])
    switch( menu_choice )
    {
       case 'a':
-         auto_stitch_obj = new auto_stitch( p_image_file_name, p_prime_image_file_name, 8, output_mosaic_name, AUTO_MOSAIC_STITCH);
+         auto_stitch_obj = new auto_stitch( p_image_file_name, p_prime_image_file_name, 8, output_mosaic_name, AUTO_MOSAIC_STITCH, true);
          auto_stitch_obj->run();
          break;
          

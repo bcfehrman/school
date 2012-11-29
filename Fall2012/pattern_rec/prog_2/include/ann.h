@@ -12,6 +12,7 @@
 
 /// Includes ///
 
+#include <cmath>
 #include "constant.h"
 #include <fstream>
 #include <iostream>
@@ -77,15 +78,16 @@ struct feat_vec
 
 struct perceptron
 {
-   DEC_TYPE curr_in;
-   DEC_TYPE curr_out;
+   DEC_TYPE in;
+   DEC_TYPE out;
+   DEC_TYPE out_prime;
    DEC_TYPE error;
    
    //Default contstructor for perceptron struct
    perceptron()
    {
-      curr_in = 0;
-      curr_out = 0;
+      in = 0;
+      out = 0;
       error = 100000;
    }
 };
@@ -115,7 +117,7 @@ class ANN
    
       ANN();
       virtual ~ANN();
-      int run();
+      int run(const bool train_first = true );
    
    private:
    
@@ -126,7 +128,9 @@ class ANN
    vector< vector< perceptron > > layers;
    vector< vector< feat_vec > > input_vecs;
    int max_epochs;
+   int num_f_vals;
    DEC_TYPE tol;
+   bool train_first;
    vector< vector< vector< weight > > > weights;
    
    //Private methods
@@ -136,11 +140,12 @@ class ANN
    void compute_forward( vector< perceptron >& src, vector< perceptron >& dst, vector< vector < weight > >& src_to_dst_weights ); 
    void create_layers();
    void initialize();
+   void input_layer_init();
    void normalize_feat( feat_vec& curr_feat );
    int read_all_features();
-   void read_set_features( ifstream& fin, const int feat_set, const int num_feats, const int num_f_vals );
+   void read_feature_set( ifstream& fin, const int feat_set, const int num_feats );
    void read_all_weights();
-   void read_set_weights( ifstream& fin, const int w_set );
+   void read_weight_set( ifstream& fin, const int w_set );
    void test();
    void train();
    void update_h_to_o_weights();

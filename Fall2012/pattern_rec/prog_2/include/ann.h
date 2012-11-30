@@ -12,6 +12,7 @@
 
 /// Includes ///
 
+#include <algorithm>
 #include <cmath>
 #include "constant.h"
 #include <fstream>
@@ -138,11 +139,12 @@ class ANN
    DEC_TYPE compute_f( const DEC_TYPE in_val );
    DEC_TYPE compute_f_deriv( const DEC_TYPE in_val );
    DEC_TYPE compute_error( const int f_des );
-   void compute_forward( const perceptron *src, perceptron *dst, const weight **src_to_dst_weights,
+   void compute_forward( const perceptron src[], perceptron dst[], const weight src_to_dst_weights[][MAXOUT + 1],
                            const int src_size, const int dst_size ); 
    void create_layers();
    void initialize();
-   void input_layer_init( const DEC_TYPE *f_vals );
+   void input_layer_init( const DEC_TYPE f_vals[] );
+   int find_output_class();
    void normalize_feat( feat_vec& curr_feat );
    int read_all_features();
    void read_feature_set( ifstream& fin, const int feat_set );

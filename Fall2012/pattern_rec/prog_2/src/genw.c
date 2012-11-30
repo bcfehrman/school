@@ -24,7 +24,7 @@ int main()
   offset = 0.1;
   double_off = offset * 2.0;
 
-  outfile.open(WEIGHT_FILE_NAME);
+  outfile.open("genw1.out");
   srand(time(NULL));
   outfile.setf(ios::fixed);
 

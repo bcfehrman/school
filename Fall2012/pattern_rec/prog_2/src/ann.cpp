@@ -61,7 +61,7 @@ DEC_TYPE ANN::compute_error( int f_des )
       }
       else
       {
-         layers[ OUTPUT ][ o_idx ].error = 0 - layers[ OUTPUT ][ o_idx ].out;
+         layers[ OUTPUT ][ o_idx ].error = -1 - layers[ OUTPUT ][ o_idx ].out;
       }
       
       curr_error += layers[ OUTPUT ][ o_idx ].error;
@@ -79,17 +79,17 @@ DEC_TYPE ANN::compute_error( int f_des )
 ///////////////////
 DEC_TYPE ANN::compute_f( const DEC_TYPE in_val )
 {
-   
+   /*
    if( in_val > 10 )
    {
       return 1.0;
    }
    else if( in_val < -10 )
    {
-      return 0.0;
-   }
+      return -1.0;
+   }*/
    
-   return ( 1.0 / ( 1 + exp( -in_val ) ) );
+   return ( (exp( in_val) - exp(-in_val) ) / (exp( in_val) + exp(-in_val)));
 }
 
 ///////////////////////
@@ -98,27 +98,47 @@ DEC_TYPE ANN::compute_f( const DEC_TYPE in_val )
 ////////////////////////
 DEC_TYPE ANN::compute_f_deriv( const DEC_TYPE in_val )
 {
-   return ( in_val * ( 1 - in_val ) );
+   return ( 1 - in_val * in_val );
 }
 
 ////////////////////
 // Author: Brian Fehrman
 // Computes the feed forward between two layers
 //////////////////////
-void ANN::compute_forward( const perceptron *src, perceptron *dst, const weight **src_to_dst_weights, const int src_size, const int dst_size )
+void ANN::compute_forward( const perceptron src[], perceptron dst[], const weight src_to_dst_weights[][MAXOUT + 1], const int src_size, const int dst_size )
 {
    for( int dst_idx = 0; dst_idx < dst_size; dst_idx++ )
    {
       dst[ dst_idx ].in = 0.0;
    
-      for( int src_idx = 0; src_idx < src_size ; src_idx++ )
+      for( int src_idx = 0; src_idx < src_size; src_idx++ )
       {
          dst[ dst_idx ].in += src[ src_idx ].out * src_to_dst_weights[ dst_idx ][ src_idx ].curr_w;
       }
       
+      //bias weight
+      dst[ dst_idx ].in += -1.0 *  src_to_dst_weights[ dst_idx ][ src_size ].curr_w;
+      
       dst[ dst_idx ].out = compute_f( dst[ dst_idx ].in );
       dst[ dst_idx ].out_prime = compute_f_deriv( dst[ dst_idx ].out );
    }
+}
+
+int ANN::find_output_class()
+{
+   int curr_class = 0;
+   float max_response = -10000;
+   
+   for( int o_idx = 0; o_idx < MAXOUT; o_idx++ )
+   {
+      if( layers[ OUTPUT ][ o_idx ].out > max_response )
+      {
+         max_response = layers[ OUTPUT ][ o_idx ].out;
+         curr_class = o_idx;
+      }
+   }
+   
+   return curr_class;
 }
 
 /////////////////
@@ -127,11 +147,11 @@ void ANN::compute_forward( const perceptron *src, perceptron *dst, const weight 
 ////////////////
 void ANN::initialize()
 {
-   max_epochs = 300;
+   max_epochs = 3000;
    tol = 0.01;
 }
 
-void ANN::input_layer_init( const DEC_TYPE *f_vals )
+void ANN::input_layer_init( const DEC_TYPE f_vals[] )
 {
    for( int f_val_idx = 0; f_val_idx < MAXIN + 1; f_val_idx++ )
    {
@@ -220,7 +240,6 @@ void ANN::read_feature_set( ifstream& fin, const int f_set)
    {
       //Read in class of current feature
       fin >> input_vecs[ f_set ][ f_vec_idx ].class_num;
-      cout << input_vecs[f_set][f_vec_idx].class_num << endl;
       //If FONT_DATA flag is set, read in the font type
       //and increment the starting feat_val index
       if( FONT_DATA )
@@ -292,15 +311,20 @@ int ANN::run( const bool train_first )
 
 void ANN::train()
 {
+   int curr_class = 0;
    int curr_epoch = 0;
+   int num_right = 0;
+   int num_wrong = 100;
    //read in weights for each layer pair
-   read_all_weights( WEIGHT_FILE_NAME );
+   read_all_weights( WEIGHT_FILE_NAME);
    
    curr_epoch_error = 100000;
    
-   while( abs( curr_epoch_error ) > tol && curr_epoch < max_epochs )
+   while( num_wrong > 0  && curr_epoch < 100000 )
    {
       curr_epoch_error = 0;
+      num_right = 0;
+      num_wrong = 0;
       
       for( int f_vec_idx = 0; f_vec_idx < NUMUV; f_vec_idx++ )
       {
@@ -308,12 +332,12 @@ void ANN::train()
          //layer. Allows for reuse of code for the compute
          //forward function
          input_layer_init( input_vecs[ TRAIN ][ f_vec_idx ].f_vals );
-         
+
          //Compute feed forwad from input to hidden layer
-         compute_forward( (const perceptron*) layers[ INPUT ], (perceptron*) layers[ HIDDEN ], (const weight**) weights[ I_TO_H ], MAXIN + 1, MAXH );
-         
+         compute_forward( layers[ INPUT ], layers[ HIDDEN ], weights[ I_TO_H ], MAXIN, MAXH );
+                 
          //Compute feed forward from hidden to output layer
-         compute_forward( (const perceptron*) layers[ HIDDEN ], (perceptron*) layers[ OUTPUT ], (const weight**) weights[ H_TO_O ], MAXH + 1, MAXOUT );
+         compute_forward( layers[ HIDDEN ], layers[ OUTPUT ], weights[ H_TO_O ], MAXH, MAXOUT );
          
          //Determine the current error and add it to the current epoch error;
          curr_epoch_error += compute_error( input_vecs[ TRAIN ][ f_vec_idx ].class_num );
@@ -321,42 +345,32 @@ void ANN::train()
          //Compute the del values
          compute_del();
          
-         update_h_to_o_weights();
          update_i_to_h_weights();
+         update_h_to_o_weights();
        //  cout << input_vecs[ TRAIN ][ f_vec_idx ].class_num << endl;
          
+         curr_class = find_output_class();
          
-         cout << "CURR OUT" << endl;
+         //cout << "Desired: " << input_vecs[ TRAIN ][ f_vec_idx ].class_num << "Actual " << curr_class << endl;
          
-         for( int i = 0; i < 15; i++ )
+         if( curr_class == input_vecs[ TRAIN ][ f_vec_idx ].class_num )
          {
-            cout << layers[ OUTPUT ][ i ].out << " ";
+            num_right++;
          }
-         
-         cout << endl << endl;
-         
-         cout << "DESIRED" << endl;
-         
-         for( int i = 0; i < 26; i++ )
+         else
          {
-            if( i == input_vecs[ TRAIN ][ f_vec_idx ].class_num )
-            {
-               cout << 1 << " ";
-            }
-            else
-            {
-               cout << 0 << " ";
-            }
+            num_wrong++;
          }
+                  
+         //cout << "f_vec " << f_vec_idx << endl;
          
-         cout << endl << endl;
-         
-         cout << "f_vec " << f_vec_idx << endl;
-         
-         
+
       }
-      //cout << abs( curr_epoch_error ) << endl;        
+      cout << curr_epoch << endl;
+      cout << "Right: " << num_right << " Wrong: " << num_wrong << endl;
+     // cout << abs( curr_epoch_error ) << endl;        
       curr_epoch++;
+      
       //cout << curr_epoch << endl;
    }
 }
@@ -368,21 +382,22 @@ void ANN::train()
 ////////////////////////
 void ANN::update_h_to_o_weights()
 {
-   for( int h_idx = 0; h_idx < MAXH + 1; h_idx++ )
+   for( int o_idx = 0; o_idx < MAXOUT; o_idx++ )
    {
-      for( int o_idx = 0; o_idx < MAXOUT; o_idx++ )
+      for( int h_idx = 0; h_idx < MAXH + 1; h_idx++ )
       {
-         weights[ H_TO_O ][ h_idx ][ o_idx ].prev_w = weights[ H_TO_O ][ h_idx ][ o_idx ].curr_w;
+         weights[ H_TO_O ][ o_idx ][ h_idx ].prev_w = weights[ H_TO_O ][ o_idx ][ h_idx ].curr_w;
          
-         weights[ H_TO_O ][ h_idx ][ o_idx ].curr_w = weights[ H_TO_O ][ h_idx ][ o_idx ].prev_w +
+         weights[ H_TO_O ][ o_idx ][ h_idx ].curr_w = weights[ H_TO_O ][ o_idx ][ h_idx ].prev_w +
                                                       layers[ OUTPUT ][ o_idx ].error *
                                                       layers[ OUTPUT ][ o_idx ].out_prime *
                                                       layers[ HIDDEN ][ h_idx ].out * 
-                                                      ETA + ALPHA * weights[ H_TO_O ][ h_idx ][ o_idx ].prev_change;
+                                                      ETA + ALPHA * weights[ H_TO_O ][ o_idx ][ h_idx ].prev_change;
+         //cout << layers[ OUTPUT ][ o_idx ].error * layers[ OUTPUT ][ o_idx ].out_prime * layers[ HIDDEN ][ h_idx ].out * ETA << " ";
          
          //Update change in weights which is used for momentum
-         weights[ H_TO_O ][ h_idx ][ o_idx ].prev_change = weights[ H_TO_O ][ h_idx ][ o_idx ].curr_w - 
-                                                            weights[ H_TO_O ][ h_idx ][ o_idx ].prev_w;
+         weights[ H_TO_O ][ o_idx ][ h_idx ].prev_change = weights[ H_TO_O ][ o_idx ][ h_idx ].curr_w - 
+                                                            weights[ H_TO_O ][ o_idx ][ h_idx ].prev_w;
                                                       
       }
    }
@@ -395,20 +410,21 @@ void ANN::update_h_to_o_weights()
 ////////////////////////
 void ANN::update_i_to_h_weights()
 {
-   for( int in_idx = 0; in_idx < MAXIN + 1; in_idx++ )
+   for( int h_idx = 0; h_idx < MAXH; h_idx++ )
    {
-      for( int h_idx = 0; h_idx < MAXH; h_idx++ )
+      for( int in_idx = 0; in_idx < MAXIN + 1; in_idx++ )
       {
-         weights[ I_TO_H ][ in_idx ][ h_idx ].prev_w = weights[ I_TO_H ][ in_idx ][ h_idx ].curr_w;
+         weights[ I_TO_H ][ h_idx ][ in_idx ].prev_w = weights[ I_TO_H ][ h_idx ][ in_idx ].curr_w;
          
-         weights[ I_TO_H ][ in_idx ][ h_idx ].curr_w = weights[ I_TO_H ][ in_idx ][ h_idx ].prev_w +
-                                                      layers[ INPUT ][ in_idx ].out *
+         weights[ I_TO_H ][ h_idx ][ in_idx ].curr_w = weights[ I_TO_H ][ h_idx ][ in_idx ].prev_w +
+                                                      layers[ INPUT ][ in_idx ].out * 
+                                                      layers[ HIDDEN ][ h_idx ].out_prime *
                                                       del[ h_idx ] * ETA +  
-                                                      ALPHA * weights[ I_TO_H ][ in_idx ][ h_idx ].prev_change;
+                                                      ALPHA * weights[ I_TO_H ][ h_idx ][ in_idx ].prev_change;
          
          //Update change in weights which is used for momentum
-         weights[ I_TO_H ][ in_idx ][ h_idx ].prev_change = weights[ I_TO_H ][ in_idx ][ h_idx ].curr_w - 
-                                                            weights[ I_TO_H ][ in_idx ][ h_idx ].prev_w;
+         weights[ I_TO_H ][ h_idx ][ in_idx ].prev_change = weights[ I_TO_H ][ h_idx ][ in_idx ].curr_w - 
+                                                            weights[ I_TO_H ][ h_idx ][ in_idx ].prev_w;
                                                       
       }
    }

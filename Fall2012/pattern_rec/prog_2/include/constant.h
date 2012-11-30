@@ -2,12 +2,12 @@
 //          Constants for Backprop Font Data                      //
 ////////////////////////////////////////////////////////////////////
 
-#define  FV_IN       "data/norm.sep"
+#define  FV_IN       "data/norm.mix"
 #define  NORMALIZE    false
 #define  FONT_DATA    true
 
 #define  ALPHA         0.0     // momentum factor
-#define  ETA           0.1     // learning rate
+#define  ETA           0.1    // learning rate
 #define  MAXIN         14      // number of input nodes
 #define  MAXH          20      // number of nodes hidden layer
 #define  MAXOUT        26      // number of nodes output layer

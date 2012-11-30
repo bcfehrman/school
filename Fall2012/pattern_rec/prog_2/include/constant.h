@@ -3,7 +3,7 @@
 ////////////////////////////////////////////////////////////////////
 
 #define  FV_IN       "data/norm.sep"
-#define  NORMALIZE    true
+#define  NORMALIZE    false
 #define  FONT_DATA    true
 
 #define  ALPHA         0.0     // momentum factor
@@ -16,7 +16,7 @@
 #define  NUMUV         78      // number of test vectors
 #define  LOG_MOD       10      // print results every LOG_MOD iterations
 
-#define  RESULTS_OUT_NAME   "bp.out"
-#define  WEIGHTS_IN         "bpw.in"
-#define  WEIGHTS_OUT        "bpw.out"
-#define  WEIGHT_FILE_NAME   "genw.out"  // for genweights
+#define  RESULTS_OUT_NAME   "data/bp.out"
+#define  WEIGHTS_IN         "data/bpw.in"
+#define  WEIGHTS_OUT        "data/bpw.out"
+#define  WEIGHT_FILE_NAME   "data/genw.out"  // for genweights

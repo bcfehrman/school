@@ -125,26 +125,27 @@ class ANN
    vector< class_data > class_info;
    DEC_TYPE curr_epoch_error;
    vector< DEC_TYPE > del;
-   vector< vector< perceptron > > layers;
    vector< vector< feat_vec > > input_vecs;
+   vector< vector< perceptron > > layers;
    int max_epochs;
-   int num_f_vals;
+   int num_f_read;
    DEC_TYPE tol;
    bool train_first;
    vector< vector< vector< weight > > > weights;
    
    //Private methods
-   DEC_TYPE compute_f( DEC_TYPE in_val );
-   DEC_TYPE compute_f_deriv( DEC_TYPE in_val );
-   void compute_back();
-   void compute_forward( vector< perceptron >& src, vector< perceptron >& dst, vector< vector < weight > >& src_to_dst_weights ); 
+   void compute_del();
+   DEC_TYPE compute_f( const DEC_TYPE in_val );
+   DEC_TYPE compute_f_deriv( const DEC_TYPE in_val );
+   DEC_TYPE compute_error( const int f_des );
+   void compute_forward( const vector< perceptron >& src, vector< perceptron >& dst, const vector< vector < weight > >& src_to_dst_weights ); 
    void create_layers();
    void initialize();
-   void input_layer_init();
+   void input_layer_init( const vector< DEC_TYPE >& f_vals );
    void normalize_feat( feat_vec& curr_feat );
    int read_all_features();
-   void read_feature_set( ifstream& fin, const int feat_set, const int num_feats );
-   void read_all_weights();
+   void read_feature_set( ifstream& fin, const int feat_set );
+   int read_all_weights( const string w_file_name = WEIGHTS_IN );
    void read_weight_set( ifstream& fin, const int w_set );
    void test();
    void train();

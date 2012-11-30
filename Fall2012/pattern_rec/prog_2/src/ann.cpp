@@ -29,14 +29,11 @@ ANN::~ANN()
 ////////////////////////
 void ANN::compute_del()
 {
-   int del_size = del.size();
-   int num_out = layers[ OUTPUT ].size();
-   
-   for( int del_idx = 0; del_idx < del_size; del_idx++ )
+   for( int del_idx = 0; del_idx < MAXH + 1; del_idx++ )
    {
       del[ del_idx ] = 0.0;
       
-      for( int o_idx = 0; o_idx < num_out; o_idx++ )
+      for( int o_idx = 0; o_idx < MAXOUT; o_idx++ )
       {
          del[ del_idx ] += layers[ OUTPUT ][ o_idx ].error * 
                            layers[ OUTPUT ][ o_idx ].out_prime *
@@ -53,9 +50,8 @@ void ANN::compute_del()
 DEC_TYPE ANN::compute_error( int f_des )
 {
    DEC_TYPE curr_error = 0.0;
-   int num_out = layers[ OUTPUT ].size();
-   
-   for( int o_idx = 0; o_idx < num_out; o_idx++ )
+
+   for( int o_idx = 0; o_idx < MAXOUT; o_idx++ )
    {
       //Want index num correspondning to desired class number
       //to be 1 and all others to be 0
@@ -109,11 +105,8 @@ DEC_TYPE ANN::compute_f_deriv( const DEC_TYPE in_val )
 // Author: Brian Fehrman
 // Computes the feed forward between two layers
 //////////////////////
-void ANN::compute_forward( const vector< perceptron >& src, vector< perceptron >& dst, const vector< vector < weight > >& src_to_dst_weights )
+void ANN::compute_forward( const perceptron *src, perceptron *dst, const weight **src_to_dst_weights, const int src_size, const int dst_size )
 {
-   int dst_size = src_to_dst_weights.size();
-   int src_size = src_to_dst_weights[ 0 ].size();
-   
    for( int dst_idx = 0; dst_idx < dst_size; dst_idx++ )
    {
       dst[ dst_idx ].in = 0.0;
@@ -134,71 +127,13 @@ void ANN::compute_forward( const vector< perceptron >& src, vector< perceptron >
 ////////////////
 void ANN::initialize()
 {
-   int num_vec_sets = 2;
-   int num_layers = 3;
-
    max_epochs = 300;
    tol = 0.01;
-   
-   //Dynamically create space for the input vectors
-   input_vecs.resize( num_vec_sets );
-   
-   //Create space for training and testing vectors
-   input_vecs[ TRAIN ].resize( NUMUV );
-   input_vecs[ TEST ].resize( NUMUV );
-   
-   //Might be interesting to try two loops for this instead of one
-   //to see if there is a difference in terms of memory performance
-   for( int f_vec_idx = 0; f_vec_idx < NUMUV; f_vec_idx++ )
-   {
-      input_vecs[ TRAIN ][ f_vec_idx ].f_vals.resize( MAXIN + 1);
-      input_vecs[ TEST ][ f_vec_idx ].f_vals.resize( MAXIN + 1);
-   }
-
-   //Dynamically create space for layers
-   layers.resize( num_layers );
-   
-   //Create space for input layer
-   layers[ INPUT ].resize( MAXIN + 1);
-
-   //Create space for hidden layer
-   layers[ HIDDEN ].resize( MAXH + 1 );
-   
-   //Create space for output layer
-   layers[ OUTPUT ].resize( MAXOUT );
-   
-   //Dynamically create space for weights
-   weights.resize( num_layers - 1 );
-   
-   //Create space for input to hidden weights
-   weights[ I_TO_H ].resize( MAXH );
-   for( unsigned int h_idx = 0; h_idx < weights[ I_TO_H ].size(); h_idx++ )
-   {
-      //Plus 1 for bias weight
-      weights[ I_TO_H ][ h_idx ].resize( MAXIN +  1 );
-   }
-   
-   //Create space for hidden to output weights
-   weights[ H_TO_O ].resize( MAXOUT );
-   for( unsigned int o_idx = 0; o_idx < weights[ H_TO_O ].size(); o_idx++ )
-   {
-      //Plus 1 for bias weight
-      weights[ H_TO_O ][ o_idx ].resize( MAXH + 1 );
-   }
-   
-   //Create space for del vector
-   del.resize( MAXH );
-   
-   //Create space for class info vector which tracks classification stats
-   //for each class
-   class_info.resize( MAXOUT );
 }
 
-void ANN::input_layer_init( const vector< DEC_TYPE >& f_vals )
+void ANN::input_layer_init( const DEC_TYPE *f_vals )
 {
-   int num_f_vals = f_vals.size();
-   
-   for( int f_val_idx = 0; f_val_idx < num_f_vals; f_val_idx++ )
+   for( int f_val_idx = 0; f_val_idx < MAXIN + 1; f_val_idx++ )
    {
       layers[ INPUT ][ f_val_idx ].out = f_vals[ f_val_idx ];
    }
@@ -208,7 +143,7 @@ void ANN::normalize_feat( feat_vec& curr_feat )
 {
    cout << "MAX " << curr_feat.max_val << endl;
    
-   for( unsigned int f_val_idx = 0; f_val_idx < curr_feat.f_vals.size(); f_val_idx++ )
+   for( unsigned int f_val_idx = 0; f_val_idx < MAXIN + 1; f_val_idx++ )
    {
       curr_feat.f_vals[ f_val_idx ] /= curr_feat.max_val;
    }
@@ -262,10 +197,10 @@ int ANN::read_all_weights( const string w_file_name )
    }
    
    //Read in weights for input to hidden
-   read_weight_set( fin, I_TO_H );
+   read_weight_set( fin, I_TO_H, MAXIN + 1, MAXH );
    
    //Read in weights for hidden to output
-   read_weight_set( fin, H_TO_O );
+   read_weight_set( fin, H_TO_O, MAXH + 1, MAXOUT );
    
    fin.close();
    
@@ -279,11 +214,9 @@ int ANN::read_all_weights( const string w_file_name )
 void ANN::read_feature_set( ifstream& fin, const int f_set)
 {
    DEC_TYPE curr_val = 0.0;
-   int num_f_vals = input_vecs[ f_set ][ 0 ].f_vals.size() - 1; //minus 1 for bias input
-   int num_f_vecs = input_vecs[ f_set ].size();
    
    //Read in the training features
-   for( int f_vec_idx = 0; f_vec_idx < num_f_vecs; f_vec_idx++ )
+   for( int f_vec_idx = 0; f_vec_idx < NUMUV; f_vec_idx++ )
    {
       //Read in class of current feature
       fin >> input_vecs[ f_set ][ f_vec_idx ].class_num;
@@ -297,7 +230,7 @@ void ANN::read_feature_set( ifstream& fin, const int f_set)
       
       //Empty initalize parameter so that it starts
       //from where it was set in the above few lines
-      for( int f_val_idx = 0; f_val_idx < num_f_vals; f_val_idx++ )
+      for( int f_val_idx = 0; f_val_idx < MAXIN ; f_val_idx++ )
       {
          fin >> curr_val;
          input_vecs[ f_set][ f_vec_idx ].f_vals[ f_val_idx ] = curr_val;
@@ -311,7 +244,7 @@ void ANN::read_feature_set( ifstream& fin, const int f_set)
       }
       
       //bias input
-      input_vecs[ f_set ][ f_vec_idx ].f_vals[ num_f_vals ] = -1;
+      input_vecs[ f_set ][ f_vec_idx ].f_vals[ MAXIN ] = -1;
       
       //Normalize current feature vector is flag is set
       if( NORMALIZE )
@@ -325,16 +258,13 @@ void ANN::read_feature_set( ifstream& fin, const int f_set)
 // Author: Brian Fehrman
 // Reads in a set of weights
 ////////////////////////
-void ANN::read_weight_set( ifstream& fin, const int layer )
+void ANN::read_weight_set( ifstream& fin, const int w_set, const int src_size, const int dst_size )
 {
-   int dst_size = weights[ layer ].size();
-   int src_size = weights[ layer ][ 0 ].size();
-   
    for( int dst_idx = 0; dst_idx < dst_size; dst_idx++ )
    {
       for( int src_idx = 0; src_idx < src_size; src_idx++ )
       {
-         fin >> weights[ layer ][ dst_idx ][ src_idx ].curr_w;
+         fin >> weights[ w_set ][ dst_idx ][ src_idx ].curr_w;
       }
    }
 }
@@ -363,8 +293,6 @@ int ANN::run( const bool train_first )
 void ANN::train()
 {
    int curr_epoch = 0;
-   int f_vec_size = input_vecs[ TRAIN ].size();
-   
    //read in weights for each layer pair
    read_all_weights( WEIGHT_FILE_NAME );
    
@@ -374,7 +302,7 @@ void ANN::train()
    {
       curr_epoch_error = 0;
       
-      for( int f_vec_idx = 0; f_vec_idx < f_vec_size; f_vec_idx++ )
+      for( int f_vec_idx = 0; f_vec_idx < NUMUV; f_vec_idx++ )
       {
          //Setup the feature values to be the output of the input
          //layer. Allows for reuse of code for the compute
@@ -382,10 +310,10 @@ void ANN::train()
          input_layer_init( input_vecs[ TRAIN ][ f_vec_idx ].f_vals );
          
          //Compute feed forwad from input to hidden layer
-         compute_forward( layers[ INPUT ], layers[ HIDDEN ], weights[ I_TO_H ] );
+         compute_forward( (const perceptron*) layers[ INPUT ], (perceptron*) layers[ HIDDEN ], (const weight**) weights[ I_TO_H ], MAXIN + 1, MAXH );
          
          //Compute feed forward from hidden to output layer
-         compute_forward( layers[ HIDDEN ], layers[ OUTPUT ], weights[ H_TO_O ] );
+         compute_forward( (const perceptron*) layers[ HIDDEN ], (perceptron*) layers[ OUTPUT ], (const weight**) weights[ H_TO_O ], MAXH + 1, MAXOUT );
          
          //Determine the current error and add it to the current epoch error;
          curr_epoch_error += compute_error( input_vecs[ TRAIN ][ f_vec_idx ].class_num );
@@ -440,13 +368,9 @@ void ANN::train()
 ////////////////////////
 void ANN::update_h_to_o_weights()
 {
-   int num_h = layers[ HIDDEN ].size();
-   int num_out = layers[ OUTPUT ].size();
-   
-   for( int h_idx = 0; h_idx < num_h; h_idx++ )
+   for( int h_idx = 0; h_idx < MAXH + 1; h_idx++ )
    {
-      //-1 because of bias weight
-      for( int o_idx = 0; o_idx < num_out; o_idx++ )
+      for( int o_idx = 0; o_idx < MAXOUT; o_idx++ )
       {
          weights[ H_TO_O ][ h_idx ][ o_idx ].prev_w = weights[ H_TO_O ][ h_idx ][ o_idx ].curr_w;
          
@@ -471,12 +395,9 @@ void ANN::update_h_to_o_weights()
 ////////////////////////
 void ANN::update_i_to_h_weights()
 {
-   int num_h = layers[ HIDDEN ].size();
-   int num_in = layers[ INPUT ].size();
-   
-   for( int in_idx = 0; in_idx < num_in; in_idx++ )
+   for( int in_idx = 0; in_idx < MAXIN + 1; in_idx++ )
    {
-      for( int h_idx = 0; h_idx < num_h; h_idx++ )
+      for( int h_idx = 0; h_idx < MAXH; h_idx++ )
       {
          weights[ I_TO_H ][ in_idx ][ h_idx ].prev_w = weights[ I_TO_H ][ in_idx ][ h_idx ].curr_w;
          

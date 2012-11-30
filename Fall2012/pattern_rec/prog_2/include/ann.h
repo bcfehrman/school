@@ -61,7 +61,7 @@ struct class_data
 struct feat_vec
 {
    int class_num;
-   vector< DEC_TYPE > f_vals;
+   DEC_TYPE f_vals[ MAXIN + 1 ];
    int font_type;
    DEC_TYPE max_val;
    DEC_TYPE min_val;
@@ -117,36 +117,37 @@ class ANN
    
       ANN();
       virtual ~ANN();
-      int run(const bool train_first = true );
+      int run( const bool train_first = true );
    
    private:
    
    //Private members
-   vector< class_data > class_info;
+   class_data class_info[ MAXOUT ];
    DEC_TYPE curr_epoch_error;
-   vector< DEC_TYPE > del;
-   vector< vector< feat_vec > > input_vecs;
-   vector< vector< perceptron > > layers;
+   DEC_TYPE del[ MAXH + 1 ];
+   feat_vec input_vecs[ 2 ][ NUMUV ];
+   perceptron layers[ 3 ][ MAXOUT + 1 ];
    int max_epochs;
    int num_f_read;
    DEC_TYPE tol;
    bool train_first;
-   vector< vector< vector< weight > > > weights;
+   weight weights[ 2 ][ MAXOUT + 1 ][ MAXOUT + 1 ];
    
    //Private methods
    void compute_del();
    DEC_TYPE compute_f( const DEC_TYPE in_val );
    DEC_TYPE compute_f_deriv( const DEC_TYPE in_val );
    DEC_TYPE compute_error( const int f_des );
-   void compute_forward( const vector< perceptron >& src, vector< perceptron >& dst, const vector< vector < weight > >& src_to_dst_weights ); 
+   void compute_forward( const perceptron *src, perceptron *dst, const weight **src_to_dst_weights,
+                           const int src_size, const int dst_size ); 
    void create_layers();
    void initialize();
-   void input_layer_init( const vector< DEC_TYPE >& f_vals );
+   void input_layer_init( const DEC_TYPE *f_vals );
    void normalize_feat( feat_vec& curr_feat );
    int read_all_features();
    void read_feature_set( ifstream& fin, const int feat_set );
    int read_all_weights( const string w_file_name = WEIGHTS_IN );
-   void read_weight_set( ifstream& fin, const int w_set );
+   void read_weight_set( ifstream& fin, const int w_set, const int src_size, const int dst_size );
    void test();
    void train();
    void update_h_to_o_weights();

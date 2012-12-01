@@ -12,7 +12,7 @@ int main( int argc, char** argv)
 {
    ANN* ann_obj = new ANN();
    
-   ann_obj->run( true );
+   ann_obj->run( );
 
    return 0;
 }

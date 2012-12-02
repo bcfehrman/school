@@ -1,0 +1,21 @@
+<package>
+  <description brief="my_turtle_teleop">
+
+     my_turtle_teleop
+
+  </description>
+  <author>bcf</author>
+  <license>BSD</license>
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/my_turtle_teleop</url>
+  <depend package="std_msgs"/>
+  <depend package="rospy"/>
+  <depend package="roscpp"/>
+  <depend package="roslib"/>
+  <depend package="rosconsole"/>
+  <depend package="std_srvs"/>
+  <depend package="geometry_msgs"/>
+
+</package>
+
+

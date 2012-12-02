@@ -348,6 +348,8 @@ void ANN::test( )
       //Compute feed forward from hidden to output layer
       compute_forward( layers[ HIDDEN ], layers[ OUTPUT ], weights[ H_TO_O ], MAXH, MAXOUT );
       
+      curr_class = find_output_class();
+      
       //Update classification stats
       if( curr_class == input_vecs[ TEST ][ f_vec_idx ].class_num )
       {
